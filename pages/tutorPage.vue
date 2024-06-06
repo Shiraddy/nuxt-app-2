@@ -13,7 +13,7 @@
             <div class="">
               <img
                 class="profile-pic d-none d-lg-block"
-                src="images/Pic.png"
+                src="/images/Pic.png"
                 alt=""
               />
 
