@@ -132,9 +132,9 @@
                 <NuxtLink class="nav-link menu-link text-white" to="/about"
                   >About</NuxtLink
                 >
-                <NuxtLink class="nav-link menu-link text-white" to="/lifeline"
+                <!-- <NuxtLink class="nav-link menu-link text-white" to="/lifeline"
                   >Admin</NuxtLink
-                >
+                > -->
               </div>
             </li>
             <li class="nav-item menu px-2 text-center">
