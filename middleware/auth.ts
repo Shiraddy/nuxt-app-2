@@ -21,26 +21,26 @@ const auth = getAuth(firebase);
 const user = auth.currentUser;
 
 // ---cut---
-// export default defineNuxtRouteMiddleware((to, from) => {
-//   if (!user) {
-//     // return abortNavigation();
-//     return navigateTo("/login");
-//   }
-// });
-
-function isAuthenticated(): boolean {
-  return !!auth.currentUser;
-}
-
 export default defineNuxtRouteMiddleware((to, from) => {
-  if (to.path === "/login") {
-    if (isAuthenticated()) {
-      return navigateTo("/personal");
-    }
-    return;
-  }
-
-  if (!isAuthenticated()) {
+  if (!user) {
+    // return abortNavigation();
     return navigateTo("/login");
   }
 });
+
+// function isAuthenticated(): boolean {
+//   return !!auth.currentUser;
+// }
+
+// export default defineNuxtRouteMiddleware((to, from) => {
+//   if (to.path === "/login") {
+//     if (isAuthenticated()) {
+//       return navigateTo("/personal");
+//     }
+//     return;
+//   }
+
+//   if (!isAuthenticated()) {
+//     return navigateTo("/login");
+//   }
+// });
