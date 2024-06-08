@@ -109,6 +109,10 @@
             <label for="ssn">SSN</label>
           </FloatLabel>
 
+          <div class="card flex justify-content-center">
+            <Calendar v-model="date" inline showWeek />
+          </div>
+
           <div class="toast-container position-fixed top-0 end-0 p-3">
             <div
               class="toast"

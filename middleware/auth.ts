@@ -3,6 +3,8 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -16,14 +18,29 @@ const firebaseConfig = {
 
 const firebase = initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
+const user = auth.currentUser;
+
+// ---cut---
+// export default defineNuxtRouteMiddleware((to, from) => {
+//   if (!user) {
+//     // return abortNavigation();
+//     return navigateTo("/login");
+//   }
+// });
 
 function isAuthenticated(): boolean {
-  return false;
+  return !!auth.currentUser;
 }
-// ---cut---
+
 export default defineNuxtRouteMiddleware((to, from) => {
-  // isAuthenticated() is an example method verifying if a user is authenticated
-  if (isAuthenticated() === false) {
-    return navigateTo("/faq");
+  if (to.path === "/login") {
+    if (isAuthenticated()) {
+      return navigateTo("/personal");
+    }
+    return;
+  }
+
+  if (!isAuthenticated()) {
+    return navigateTo("/login");
   }
 });

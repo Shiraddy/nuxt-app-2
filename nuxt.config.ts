@@ -1,13 +1,4 @@
 export default defineNuxtConfig({
-  // runtimeConfig: {
-  //   // apiKey: process.env.FIREBASE_API_KEY,
-  //   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
-  //   public: {
-  //     // baseURL: process.env.FIREBASE_API_KEY,
-  //     baseURL: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
-  //   },
-  // },
-
   app: {
     head: {
       link: [
@@ -52,11 +43,12 @@ export default defineNuxtConfig({
   primevue: {
     /* Options */
   },
+
+  // components: [
+  //   { path: "~/node_modules/primevue/components/", prefix: "Prime" },
+  // ],
   css: [
     "primevue/resources/themes/aura-light-green/theme.css",
     "~/assets/css/main.css",
   ],
 });
-
-
-

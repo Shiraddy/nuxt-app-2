@@ -205,7 +205,6 @@
                 </div>
               </div>
             </div>
-            (offer, index)
 
             <!-- BOARD -->
             <section class="row">
@@ -831,6 +830,11 @@
 </template>
 
 <script>
+definePageMeta({
+  // middleware: ["auth"],
+  middleware: "auth",
+  layout: "default",
+});
 import FileUpload from "primevue/fileupload";
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
@@ -846,15 +850,11 @@ import {
   where,
   updateDoc,
 } from "firebase/firestore";
-// import { ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-// import emailjs from "@emailjs/browser";
-
 const firebaseConfig = {
   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
   authDomain: "lifeline-edu-site.firebaseapp.com",
   projectId: "lifeline-edu-site",
-  storageBucket: "gs://lifeline-edu-site.appspot.com/",
   storageBucket: "lifeline-edu-site.appspot.com",
   messagingSenderId: "1059969595497",
   appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
@@ -884,15 +884,15 @@ export default {
   },
 
   methods: {
-    signingOut() {
-      const auth = getAuth();
-      signOut(auth)
-        .then(() => {
-          this.$router.push("/login");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    async signingOut() {
+      try {
+        const router = useRouter();
+        const auth = getAuth();
+        await auth.signOut();
+        router.push("/login");
+      } catch (error) {
+        console.error(error);
+      }
     },
 
     onAdvancedUpload(event) {
@@ -930,6 +930,7 @@ export default {
       const auth = getAuth();
       const user = auth.currentUser;
       const email = user.email;
+      // const uid = user.uid;
 
       const usersRef = collection(db, "Tutor Applications");
       const q = query(usersRef, where("email", "==", email));
@@ -1063,25 +1064,7 @@ export default {
     },
   },
 
-  created() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.loggedIn = true;
-      } else {
-        this.loggedIn = false;
-      }
-    });
-
-    this.fetchNotice();
-    this.getUserInfo();
-    // await this.getCurrentNote();
-
-    // this.updateTime();
-    // setInterval(this.updateTime, 1000);
-  },
-
-  // async mounted() {
+  // created() {
   //   const auth = getAuth();
   //   onAuthStateChanged(auth, (user) => {
   //     if (user) {
@@ -1091,13 +1074,27 @@ export default {
   //     }
   //   });
 
-  //   await this.fetchNotice();
-  //   await this.getUserInfo();
-  //   // await this.getCurrentNote();
-
-  //   this.updateTime();
-  //   setInterval(this.updateTime, 1000);
+  //   this.fetchNotice();
+  //   this.getUserInfo();
   // },
+
+  async mounted() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    });
+
+    await this.fetchNotice();
+    await this.getUserInfo();
+    // await this.getCurrentNote();
+
+    this.updateTime();
+    setInterval(this.updateTime, 1000);
+  },
 };
 </script>
 

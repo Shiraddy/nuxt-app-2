@@ -73,24 +73,24 @@
 </template>
 
 <script>
-import { initializeApp } from "firebase/app";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+// import { initializeApp } from "firebase/app";
+// import {
+//   createUserWithEmailAndPassword,
+//   getAuth,
+//   signInWithEmailAndPassword,
+// } from "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
-  authDomain: "lifeline-edu-site.firebaseapp.com",
-  projectId: "lifeline-edu-site",
-  storageBucket: "lifeline-edu-site.appspot.com",
-  messagingSenderId: "1059969595497",
-  appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
+//   authDomain: "lifeline-edu-site.firebaseapp.com",
+//   projectId: "lifeline-edu-site",
+//   storageBucket: "lifeline-edu-site.appspot.com",
+//   messagingSenderId: "1059969595497",
+//   appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
+// };
 
-const firebase = initializeApp(firebaseConfig);
-const auth = getAuth(firebase);
+// const firebase = initializeApp(firebaseConfig);
+// const auth = getAuth(firebase);
 
 export default {
   name: "Login",
@@ -105,40 +105,45 @@ export default {
   },
 
   methods: {
-    signInUser() {
-      this.wheel = true;
-      signInWithEmailAndPassword(auth, this.email, this.password)
-        .then((userCredential) => {
-          // Sign in successful
-          console.log("Login Successful");
-          this.$router.push("/personal");
-        })
-        .catch((error) => {
-          this.loginError = true;
-          this.wheel = false;
-          console.error("Sign-in error:", error.code);
-          switch (error.code) {
-            case "auth/invalid-email":
-              this.errorMessage = "Invalid email";
-              break;
+    async signInUser() {
+      try {
+        this.wheel = true;
+        const router = useRouter();
+        const email = this.email;
+        const password = this.password;
+        const credentials = await signInUser(email, password);
+        console.log("Login Successful", credentials);
+        router.push("/personal");
+      } catch (error) {
+        this.loginError = true;
+        this.wheel = false;
+        console.error("Sign-in error:", error.message);
 
-            case "auth/user-not-found":
-              this.errorMessage = "Email not registered";
-              break;
-
-            case "auth/wrong-password":
-              this.errorMessage = "Wrong password";
-              break;
-
-            case "auth/network-request-failed":
-              this.errorMessage = "No internet connection";
-              break;
-
-            default:
-              this.errorMessage = "Incorrect Email or Password";
-              break;
-          }
-        });
+        switch (error.code) {
+          case "auth/invalid-email":
+            this.errorMessage = "Invalid email";
+            break;
+          case "auth/user-not-found":
+            this.errorMessage = "Email not registered";
+            break;
+          case "auth/wrong-password":
+            this.errorMessage = "Wrong password";
+            break;
+          case "auth/network-request-failed":
+            this.errorMessage = "No internet connection";
+            break;
+          case "auth/too-many-requests":
+            this.errorMessage =
+              "Too many failed attempts, please try again later";
+            break;
+          case "auth/email-already-in-use":
+            this.errorMessage = "Email is already in use";
+            break;
+          default:
+            this.errorMessage = "Incorrect Email or Password";
+            break;
+        }
+      }
     },
 
     loginErrorDisplay() {
