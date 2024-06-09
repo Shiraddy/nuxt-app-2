@@ -4,8 +4,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  setPersistence,
-  browserSessionPersistence,
   signOut,
 } from "firebase/auth";
 
@@ -32,15 +30,4 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (!user) {
     return navigateTo("/login");
   }
-
-  // onAuthStateChanged(auth, (user) => {
-  //   if (to.path === "/personal") {
-  //     navigateTo("/personal");
-  //     console.log("Page Refreshed", user);
-  //   }
-
-  //   firebaseUser.value = user;
-
-  //   userCookie.value = user;
-  // });
 });
