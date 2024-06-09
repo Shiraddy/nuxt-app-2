@@ -18,29 +18,27 @@ const firebaseConfig = {
 
 const firebase = initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
-const user = auth.currentUser;
 
 // ---cut---
 export default defineNuxtRouteMiddleware((to, from) => {
+  const user = auth.currentUser;
+  const firebaseUser = useFirebaseUser();
+  // firebaseUser.value = auth.currentUser;
+  const userCookie = useCookie("userCookie");
+  const router = useRouter();
+
   if (!user) {
-    // return abortNavigation();
     return navigateTo("/login");
   }
+
+  // onAuthStateChanged(auth, (user) => {
+  //   if (to.path === "/personal") {
+  //     navigateTo("/personal");
+  //     console.log("Page Refreshed", user);
+  //   }
+
+  //   firebaseUser.value = user;
+
+  //   userCookie.value = user;
+  // });
 });
-
-// function isAuthenticated(): boolean {
-//   return !!auth.currentUser;
-// }
-
-// export default defineNuxtRouteMiddleware((to, from) => {
-//   if (to.path === "/login") {
-//     if (isAuthenticated()) {
-//       return navigateTo("/personal");
-//     }
-//     return;
-//   }
-
-//   if (!isAuthenticated()) {
-//     return navigateTo("/login");
-//   }
-// });

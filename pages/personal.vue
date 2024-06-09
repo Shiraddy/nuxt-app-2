@@ -831,7 +831,6 @@
 
 <script>
 definePageMeta({
-  // middleware: ["auth"],
   middleware: "auth",
   layout: "default",
 });
@@ -864,6 +863,10 @@ const firebase = initializeApp(firebaseConfig);
 const db = getFirestore(firebase);
 const auth = getAuth(firebase);
 const storage = getStorage();
+// const user = auth.currentUser;
+const firebaseUser = useFirebaseUser();
+// firebaseUser.value = user;
+const router = useRouter();
 
 export default {
   name: "Tutor Profile Page",
@@ -890,6 +893,7 @@ export default {
         const auth = getAuth();
         await auth.signOut();
         router.push("/login");
+        // firebaseUser = null;
       } catch (error) {
         console.error(error);
       }
@@ -1087,6 +1091,16 @@ export default {
         this.loggedIn = false;
       }
     });
+
+    // const storedUser = JSON.parse(localStorage.getItem("firebaseUser"));
+
+    // if (storedUser) {
+    //   // User authentication state exists, set user to firebaseUser
+    //   firebaseUser.value = storedUser;
+    // } else {
+    //   // User authentication state does not exist, redirect to login page
+    //   router.push("/login");
+    // }
 
     await this.fetchNotice();
     await this.getUserInfo();
