@@ -4,6 +4,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  setPersistence,
+  browserSessionPersistence,
   signOut,
 } from "firebase/auth";
 

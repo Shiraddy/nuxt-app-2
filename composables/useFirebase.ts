@@ -4,6 +4,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
   onAuthStateChanged,
 } from "firebase/auth";
 
@@ -23,6 +25,7 @@ export const createUser = async (email, password) => {
 export const signInUser = async (email, password) => {
   try {
     const auth = getAuth();
+    await setPersistence(auth, browserSessionPersistence);
     const credentials = await signInWithEmailAndPassword(auth, email, password);
     return credentials;
   } catch (error) {
@@ -53,7 +56,7 @@ export const initUser = async () => {
     firebaseUser.value = user;
 
     // @ts-ignore
-    userCookie.value = user; 
+    userCookie.value = user;
 
     // $fetch("/api/auth", {
     //   method: "POST",
