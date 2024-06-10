@@ -30,23 +30,29 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Kanit:wght@200;300&family=Merriweather:wght@400;900&family=Montserrat:wght@800&family=Noto+Serif:wght@600&family=Open+Sans&family=PT+Sans&display=swap",
         },
+
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.min.css",
+        },
       ],
     },
+  },
+
+  routeRules: {
+    "/admin/**": { ssr: false },
   },
 
   devtools: { enabled: true, vscode: {} },
 
   modules: ["nuxt-primevue"],
 
-  // plugins: ["@/plugins/firebase"],
-
   primevue: {
-    /* Options */
+    components: {
+      exclude: [],
+    },
   },
 
-  // components: [
-  //   { path: "~/node_modules/primevue/components/", prefix: "Prime" },
-  // ],
   css: [
     "primevue/resources/themes/aura-light-green/theme.css",
     "~/assets/css/main.css",

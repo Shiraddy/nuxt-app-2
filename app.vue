@@ -16,7 +16,7 @@ useHead({
       // valid options are: 'head' | 'bodyClose' | 'bodyOpen'
       tagPosition: "bodyClose",
     },
-    
+
     {
       src: "https://www.google.com/recaptcha/api.js",
       async: true,
