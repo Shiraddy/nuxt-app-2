@@ -8,12 +8,11 @@
           <div class="col-lg-6"></div>
           <div class="col-lg-6 text-white my-5 res-hero mt-sm-5 text-lg-start">
             <h2 class="hero-header mt-lg-5 fs-1 mt-5">
-              NEED A EXCELLENT <br />
-              <span class="text-info">HOME TUTOR?</span>
+              REQUEST A
+              <span class="text-info">HOME TUTOR</span> TODAY
             </h2>
             <p class="px-lg-5 fs-5 lh-base fs-beauty ms-lg-2">
-              We provide you qualified and excellent tutors to help your ward at
-              home. Let us give you improved results.
+              We cannot wait to start helping your ward become his very best!
             </p>
 
             <a
@@ -21,7 +20,7 @@
               class="btn btn-success btn-lg shadow-two my-lg-2 ms-lg-5"
               @click="display"
             >
-              Request A Tutor
+              Click Here
             </a>
           </div>
         </div>

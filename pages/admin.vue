@@ -1662,16 +1662,16 @@
             <template #footer>
               <Button
                 label="Cancel"
-                icon="pi pi-times"
+                icon="pi pi-ban"
                 text
                 @click="hideParentDialog"
               />
-              <!-- <Button
-                label="Save"
-                icon="pi pi-check"
+              <Button
+                label="Delete"
+                icon="pi pi-times"
                 text
-                @click="saveParentDialog"
-              /> -->
+                @click="deleteParent"
+              />
             </template>
           </Dialog>
 
@@ -3179,13 +3179,6 @@ export default {
       }
     },
 
-    async deleteMessageField() {
-      const cityRef = doc(db, "cities", "BJ");
-      await updateDoc(cityRef, {
-        capital: deleteField(),
-      });
-    },
-
     dateDisplay() {
       var options = {
         month: "long",
@@ -3255,6 +3248,19 @@ export default {
         //   life: 3000,
         // });
         console.error("Error deleting message:", error);
+      }
+    },
+
+    async deleteParent() {
+      const parent = this.selectedParent.id;
+      try {
+        await deleteDoc(doc(db, "Request For Tutor", parent));
+        // parent.splice();
+        this.parentDialog = false;
+        // alert("Parent Deleted");
+        console.log("Parent deleted", parent);
+      } catch (error) {
+        console.log("Error Deleting Parent", error);
       }
     },
 

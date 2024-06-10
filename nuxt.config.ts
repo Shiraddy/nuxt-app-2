@@ -20,7 +20,8 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css",
+          href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css",
+          // "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
         },
         {
           rel: "stylesheet",
@@ -41,6 +42,10 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/admin/**": { ssr: false },
+  },
+
+  experimental: {
+    restoreState: true,
   },
 
   devtools: { enabled: true, vscode: {} },
