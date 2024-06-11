@@ -66,7 +66,7 @@
         <div class="shadow-one mx-lg-3 testimony">
           <div class="text-center">
             <h3 class="title fw-bolder mt-lg-5">REQUEST A TUTOR NOW</h3>
-            <p class="paragraph py-0 my-0">
+            <p class="paragraph py-0 my-0 lead">
               Your child deserves top-tier tutoring and a superior educational
               experience. Lifeline is dedicated to providing just that. We
               prioritize results, customer satisfaction, and problem-solving. We
@@ -160,5 +160,9 @@ export default {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+}
+
+/* Landscape */
+@media only screen and (orientation: landscape) {
 }
 </style>
