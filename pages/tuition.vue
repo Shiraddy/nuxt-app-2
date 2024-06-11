@@ -17,7 +17,7 @@
 
             <a
               href="#tutorFormRegister"
-              class="btn btn-success btn-lg shadow-two my-lg-2 ms-lg-5"
+              class="btn btn-success btn-lg shadow-two my-lg-2 ms-lg-5 animate__animated animate__bounceIn"
               @click="display"
             >
               Click Here
@@ -236,7 +236,7 @@
           </div>
           <a
             href="#tutorFormRegister"
-            class="btn btn-danger px-lg-5 btn-lg my-lg-2 allTuitionDataBtn"
+            class="btn btn-danger px-lg-5 btn-lg my-lg-2 allTuitionDataBtn animate__animated animate__bounceIn"
             @click="display"
             >SIGN UP</a
           >

@@ -10,7 +10,8 @@
           <div class="row">
             <div class="col-lg-6"></div>
             <div
-              class="col-lg-6 text-white my-5 service-hero-text text-start res-hero" :class="description ? 'd-block' : 'd-none'"
+              class="col-lg-6 text-white my-5 service-hero-text text-start res-hero"
+              :class="description ? 'd-block' : 'd-none'"
             >
               <h1 class="hero-header mt-lg-5 mt-5 mb-0 pt-lg-3 pt-3">
                 ARE YOU IN NEED OF
@@ -23,7 +24,7 @@
                 <br />
                 <a
                   href="#booking"
-                  class="btn btn-primary btn-lg shadow-two mx my-3 bookSession"
+                  class="btn btn-primary btn-lg shadow-two mx my-3 bookSession animate__animated animate__bounceIn"
                   @click="formToggle()"
                 >
                   BOOK SESSION

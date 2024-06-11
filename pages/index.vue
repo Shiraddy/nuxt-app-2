@@ -64,8 +64,11 @@
       <!-- FORM -->
       <section>
         <div class="shadow-one mx-lg-3 testimony">
-          <div class="text-center">
+          <div class="text-center animate__animated animate__fadeInRight">
             <h3 class="title fw-bolder mt-lg-5">REQUEST A TUTOR NOW</h3>
+            <!-- <Divider align="center" type="dotted">
+              <b>Center</b>
+            </Divider> -->
             <p class="paragraph py-0 my-0 lead">
               Your child deserves top-tier tutoring and a superior educational
               experience. Lifeline is dedicated to providing just that. We
@@ -111,6 +114,7 @@
 </template>
 
 <script>
+import "animate.css";
 export default {
   data() {
     return {

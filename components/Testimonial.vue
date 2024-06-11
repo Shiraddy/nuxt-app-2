@@ -8,22 +8,19 @@
               <template #header>
                 <div class="flex align-items-center gap-2">
                   <Avatar
-                    class="d-none d-lg-block"
+                    class=""
                     image="/images/Pic.png"
-                    size="large"
+                    size="small"
                     shape="circle"
                   />
+                  <span class="p-text-secondary">Mr. Sulemana</span>
                 </div>
               </template>
               <template #footer>
                 <div
                   class="flex flex-wrap align-items-center justify-content-between gap-3"
                 >
-                  <div class="flex align-items-center gap-2">
-                    <Button icon="pi pi-user" rounded text></Button>
-                  </div>
-                  <!-- <span class="p-text-secondary">Updated 2 hours ago</span> -->
-                  <span class="p-text-secondary">Mr. Sule</span>
+                  <span class="p-text-secondary">--Lifeline--</span>
                 </div>
               </template>
               <template #icons>
@@ -43,17 +40,14 @@
               <template #header>
                 <div class="flex align-items-center gap-2">
                   <Avatar image="/images/Pic.png" size="large" shape="circle" />
+                  <span class="p-text-secondary">Madam Beatrice</span>
                 </div>
               </template>
               <template #footer>
                 <div
                   class="flex flex-wrap align-items-center justify-content-between gap-3"
                 >
-                  <div class="flex align-items-center gap-2">
-                    <Button icon="pi pi-user" rounded text></Button>
-                  </div>
-                  <!-- <span class="p-text-secondary">Updated 2 hours ago</span> -->
-                  <span class="p-text-secondary">Madam Beatrice</span>
+                  <span class="p-text-secondary">--Lifeline--</span>
                 </div>
               </template>
               <template #icons>
@@ -73,17 +67,14 @@
               <template #header>
                 <div class="flex align-items-center gap-2">
                   <Avatar image="/images/Pic.png" size="large" shape="circle" />
+                  <span class="p-text-secondary">Alhaji Ahmed Adam</span>
                 </div>
               </template>
               <template #footer>
                 <div
                   class="flex flex-wrap align-items-center justify-content-between gap-3"
                 >
-                  <div class="flex align-items-center gap-2">
-                    <Button icon="pi pi-user" rounded text></Button>
-                  </div>
-                  <!-- <span class="p-text-secondary">Updated 2 hours ago</span> -->
-                  <span class="p-text-secondary">Alhaji Ahmed Adam</span>
+                  <span class="p-text-secondary">--Lifeline--</span>
                 </div>
               </template>
               <template #icons>

@@ -26,7 +26,10 @@
 
         <div class="col-sm-12 col-md-12 col-lg-6 laptop">
           <img class="about-tuition-image" src="/images/homepage.png" alt="" />
-          <div v-if="showContact" class="phone">
+          <div
+            v-if="showContact"
+            class="phone animate__animated animate__bounceIn"
+          >
             <p class="tel">
               <i class="bi-telephone-outbound"></i>Helpline: 0246-011-004
             </p>
@@ -34,7 +37,10 @@
               <i class="bi-envelope-fill"></i>Manager: 0243-934-353
             </p>
           </div>
-          <div class="email" v-if="showEmail">
+          <div
+            class="email animate__animated animate__bounceIn"
+            v-if="showEmail"
+          >
             <p class="mail">Lifelineedusolutions@gmail.com</p>
             <p class="mail">Shirazadnan53@gmail.com</p>
           </div>

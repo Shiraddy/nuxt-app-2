@@ -6,7 +6,7 @@ body {
   background-color: #ece2e1;
   text-align: center;
   box-sizing: border-box;
-  font-family: "Kanit", "Lora", ;
+  font-family: "Kanit", "Lora";
 }
 
 /* Vue-code Over-ride */
@@ -1086,6 +1086,10 @@ hr {
 /**************SHADOWS************************/
 .shadow-one {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.shadow-four {
+  box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.16), -5px -5px 9px rgba(0, 0, 0, 0.23);
 }
 
 .blur {

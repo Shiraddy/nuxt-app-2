@@ -14,7 +14,9 @@
               level. Let us help make the journey easier...
             </p>
             <div class="ms-lg-5 my-2 my-lg-2 text-center text-lg-start">
-              <button class="btn btn-info btn-lg shadow-two">
+              <button
+                class="btn btn-info btn-lg shadow-two animate__animated animate__bounceIn"
+              >
                 BOOK SESSION
               </button>
             </div>
@@ -46,9 +48,9 @@
             <img class="card-image" src="/images/consul5.jpg" alt="" />
             <div class="card-title">Service Training</div>
             <p class="card-text text-dark-emphasis">
-              We offer refresher trainings in teaching methodologies and techniques,
-              classroom management, effective teacher-student communication,
-              lesson-notes-preparation, etc
+              We offer refresher trainings in teaching methodologies and
+              techniques, classroom management, effective teacher-student
+              communication, lesson-notes-preparation, etc
             </p>
           </div>
         </div>
