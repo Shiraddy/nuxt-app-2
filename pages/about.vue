@@ -106,21 +106,8 @@
 </template>
 
 <script>
-import About from "@/components/About.vue";
-import ContactUs from "@/components/ContactUs.vue";
-import TheMessage from "@/components/TheMessage.vue";
-import Footer from "@/components/Footer.vue";
-import NavBar from "@/components/NavBar.vue";
 export default {
   name: "About Page",
-  components: {
-    About,
-    ContactUs,
-    TheMessage,
-    NavBar,
-    Footer,
-  },
-
   data() {
     return {};
   },

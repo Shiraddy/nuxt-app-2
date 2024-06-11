@@ -7,7 +7,12 @@
             <Panel>
               <template #header>
                 <div class="flex align-items-center gap-2">
-                  <Avatar image="/images/Pic.png" size="large" shape="circle" />
+                  <Avatar
+                    class="d-none d-lg-block"
+                    image="/images/Pic.png"
+                    size="large"
+                    shape="circle"
+                  />
                 </div>
               </template>
               <template #footer>
@@ -24,11 +29,10 @@
               <template #icons>
                 <Menu ref="menu" id="config_menu" :model="items" popup />
               </template>
-              <p class="m-0">
-                My son is currently being prepared for the Basic Education
-                Certificate Examination (B.E.C.E). When I contacted Lifeline, I
-                was given two tutors to handle different subjects. I find their
-                packages to be affordable. I highly recommend them for you too.
+              <p class="m-0 parent-quote">
+                "My son is currently preparing for the B.E.C.E. Lifeline
+                provided two tutors for different subjects and their prices are
+                affordable. I highly recommend them to you too."
               </p>
             </Panel>
           </div>
@@ -55,11 +59,10 @@
               <template #icons>
                 <Menu ref="menu" id="config_menu" :model="items" popup />
               </template>
-              <p class="m-0">
-                Two tutors from Lifeline are currently teaching my daughters. I
-                like their professionalism, seriousness and the way they conduct
-                themselves. My daughters love their teaching. As a parent, I can
-                say that my daughters have improved greatly.
+              <p class="m-0 parent-quote">
+                "My daughters are being taught by two tutors from Lifeline. I
+                appreciate their professionalism and dedication. My daughters
+                enjoy their teaching and have improved greatly."
               </p>
             </Panel>
           </div>
@@ -86,9 +89,9 @@
               <template #icons>
                 <Menu ref="menu" id="config_menu" :model="items" popup />
               </template>
-              <p class="m-0">
-                The Lifeline teacher I have is teaching reading to my children.
-                He is doing a good job and I find their service to be
+              <p class="m-0 parent-quote">
+                Lifeline is teaching reading to my children. The tutor assigned
+                to me doing a good job and I find their service to be
                 affordable. I commend Lifeline for the good job they are doing.
               </p>
             </Panel>
@@ -154,9 +157,9 @@ export default {
 .card {
   position: absolute;
   top: 50%;
-  left: 46%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%; /* Adjust the width as needed */
+  width: 90%; /* Adjust the width as needed */
   max-width: 800px; /* Set a maximum width for the card */
   background-color: rgba(
     255,
@@ -178,5 +181,22 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+}
+
+.parent-quote {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .parent-quote {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
 }
 </style>

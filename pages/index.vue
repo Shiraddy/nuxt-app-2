@@ -63,20 +63,20 @@
 
       <!-- FORM -->
       <section>
-        <div class="banner-half">
-          <div class="text-white text-center">
-            <!-- <img src="/images/mobile.png" alt="" /> -->
-            <div class="">
-              <h3 class="title fw-bolder mt-lg-5">REQUEST A TUTOR NOW</h3>
-              <p class="paragraph pt-0 mt-0">
-                Experience the best form of home tuition.
-              </p>
-              <RouterLink
-                class="btn shadow-two px-lg-4 search-button me-3 my-2"
-                to="/form"
-                >Request Now<i class="fa-solid fa-magnifying-glass me-2"></i
-              ></RouterLink>
-            </div>
+        <div class="shadow-one mx-lg-3 testimony">
+          <div class="text-center">
+            <h3 class="title fw-bolder mt-lg-5">REQUEST A TUTOR NOW</h3>
+            <p class="paragraph py-0 my-0">
+              Your child deserves top-tier tutoring and a superior educational
+              experience. Lifeline is dedicated to providing just that. We
+              prioritize results, customer satisfaction, and problem-solving. We
+              are your Lifeline, let's get started..
+            </p>
+            <RouterLink
+              class="btn shadow-two px-lg-4 btn-danger me-3 my-2"
+              to="/form"
+              >Request Now<i class="fa-solid fa-magnifying-glass me-2"></i
+            ></RouterLink>
           </div>
           <div class="text-center"></div>
         </div>
@@ -128,12 +128,37 @@ export default {
 
 <style scoped>
 .title {
-  padding-top: 10rem;
+  /* padding-top: 20vh; */
+  /* font-size: 2.3vh; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.paragraph,
+.paragraph {
+  /* font-size: 1vh; */
+  padding: 5% 7%;
+}
+
+.testimony {
+  padding: 7% 3%;
+}
+
 .reqBtn {
   margin: 0 2rem 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .paragraph {
+    font-size: 1.7vh;
+    /* padding: 5% 7%; */
+  }
+
+  .title {
+    font-size: 1.7vh;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
 }
 </style>

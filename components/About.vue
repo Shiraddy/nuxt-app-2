@@ -109,6 +109,15 @@ export default {
 
 <style scoped>
 .about-desc {
-  line-height: 2;
+  line-height: 1.7;
+  font-size: 1.2vw;
+  padding: 10px 0;
 }
+
+@media only screen and (max-width: 600px) {
+.about-desc {
+  font-size: 0.99rem;
+}
+}
+
 </style>

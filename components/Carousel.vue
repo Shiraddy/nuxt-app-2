@@ -79,13 +79,12 @@
                 class="col-lg-6 text-white my-5 service-hero-text text-start"
               >
                 <h1 class="hero-header mt-lg-5 mt-5 mb-0">
-                  WANT YOUR
-                  <span class="text-success shadow-two">SCHOOL</span>
-                  TO GROW?
+                  GROW YOUR
+                  <span class="text-success shadow-two">SCHOOL...</span>
                 </h1>
                 <p class="hero-text fs-5 mt-0">
-                  We help schools become effective, efficient and
-                  achieve their goals. 
+                  Consult with us and let us help your school reach its
+                  potential. We are the professionals...
                   <br />
                   <RouterLink
                     class="btn btn-success btn-lg shadow-two my-3"
