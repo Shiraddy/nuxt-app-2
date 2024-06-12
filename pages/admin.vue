@@ -2472,20 +2472,20 @@
                 ><section class="shadow-two my-3 row">
                   <div class="col-lg-6 d-none d-lg-block pb-5 bg-success"></div>
                   <div class="col-lg-6 shadow-two bg-white row text-start">
-                    <form @submit.prevent="">
+                    <form @submit.prevent="uploadOffer" class="row">
                       <h4 class="my-lg-4 my-2">OFFER UPLOADS</h4>
                       <div class="col-lg-6">
                         <label for="">Contract Type:</label> <br />
                         <select
                           name="type"
-                          id=""
+                          v-model.number="offer.weeklySession"
                           class="form-control shadow-two"
                         >
                           <option disabled>Select offer</option>
-                          <option value="DUO">DUO</option>
-                          <option value="TRI">TRI</option>
-                          <option value="QUAD">QUAD</option>
-                          <option value="PENT">PENT</option>
+                          <option value="2">DUO</option>
+                          <option value="3">TRI</option>
+                          <option value="4">QUAD</option>
+                          <option value="5">PENT</option>
                         </select>
                       </div>
 
@@ -2493,7 +2493,7 @@
                         <label class="" for="">Mode:</label> <br />
                         <select
                           name="mode"
-                          id=""
+                          v-model="offer.mode"
                           class="form-control shadow-two"
                         >
                           <option value="">MODE OF TUITION</option>
@@ -2504,7 +2504,10 @@
 
                       <div class="col-lg-6">
                         <label for="">Level:</label> <br />
-                        <select name="level" class="form-control shadow-two">
+                        <select
+                          v-model="offer.level"
+                          class="form-control shadow-two"
+                        >
                           <option disabled>Level of student</option>
                           <option value="KG">Kindergarten</option>
                           <option value="PRIMARY">Primary</option>
@@ -2518,7 +2521,7 @@
                         <input
                           class="form-control shadow-two"
                           type="text"
-                          name="class"
+                          v-model="offer.class"
                           placeholder="CLASS"
                         />
                       </div>
@@ -2527,7 +2530,7 @@
                         <label for="">Subjects:</label> <br />
                         <textarea
                           name="subjects"
-                          id=""
+                          v-model="offer.subjects"
                           class="form-control shadow-two"
                           placeholder="TUITION SUBJECT(S)"
                         ></textarea>
@@ -2537,18 +2540,15 @@
                         <label for="">Lesson Duration</label> <br />
                         <select
                           name="duration"
-                          id=""
+                          v-model.number="offer.duration"
                           class="form-control shadow-two"
                         >
-                          <option disabled>
-                            Select Duration
-                            <i class="fa-solid fa-chevron-down ms-auto"></i>
-                          </option>
-                          <option value="1 hour">1 hour</option>
-                          <option value="1.5 hours">1.5 hrs</option>
-                          <option value="2 hours">2 hrs</option>
-                          <option value="2.5 hours">2.5 hrs</option>
-                          <option value="3 hours">3 hrs</option>
+                          <option disabled>Select Duration</option>
+                          <option value="1">1 hour</option>
+                          <option value="1.5">1.5 hrs</option>
+                          <option value="2">2 hrs</option>
+                          <option value="2.5">2.5 hrs</option>
+                          <option value="3">3 hrs</option>
                         </select>
                       </div>
 
@@ -2558,6 +2558,7 @@
                           class="form-control shadow-two"
                           type="text"
                           name="location"
+                          v-model="offer.location"
                           placeholder="Location"
                         />
                       </div>
@@ -2568,6 +2569,7 @@
                           class="form-control shadow-two"
                           type="text"
                           name="allowance"
+                          v-model.number="offer.allowance"
                           placeholder="ALLOWANCE"
                         />
                       </div>
@@ -2575,7 +2577,6 @@
                       <button
                         class="btn btn-success my-lg-4 my-3 shadow-two"
                         type="submit"
-                        name="postContract"
                       >
                         POST CONTRACT
                       </button>
@@ -2588,7 +2589,6 @@
                   <div class="col-lg-6 d-none d-lg-block pb-5 bg-success"></div>
                   <div class="col-lg-6 shadow-two bg-white">
                     <h4 class="my-lg-3">NOTICE BOARD</h4>
-                    <!-- <h3 class="py-1">NOTICE</h3> -->
                     <form @submit.prevent="uploadNotice" class="">
                       <div class="my-4">
                         <label
@@ -2601,6 +2601,7 @@
                           class="shadow-one form-control"
                           type="text"
                           name="title"
+                          v-model="notice.title"
                           placeholder="Notice Title"
                         />
                       </div>
@@ -2610,6 +2611,7 @@
                         <input
                           class="shadow-one form-control"
                           type="date"
+                          v-model="notice.Date_Issued"
                           name="Date_Issued"
                           placeholder="Select Date"
                         />
@@ -2620,7 +2622,7 @@
                         <textarea
                           class="form-control shadow-one"
                           name="message"
-                          id=""
+                          v-model="notice.message"
                           placeholder="Enter notice"
                         ></textarea>
                       </div>
@@ -2648,7 +2650,11 @@
                     <form @submit.prevent="sendEmail" class="">
                       <div class="my-4">
                         <label for="sendTo" class="label">EMAIL</label>
-                        <input type="text" class="form-control shadow-one" />
+                        <input
+                          type="text"
+                          class="form-control shadow-one"
+                          v-model="email.to"
+                        />
                       </div>
 
                       <div class="my-4">
@@ -2662,6 +2668,7 @@
                           class="form-control shadow-one"
                           type="text"
                           name="subject"
+                          v-model="email.subject"
                           placeholder="Enter email subject"
                         />
                       </div>
@@ -2672,14 +2679,15 @@
                           class="form-control shadow-one"
                           type="date"
                           name="date"
-                          placeholder="Notice Title"
+                          v-model="email.date"
+                          placeholder="Enter date"
                         />
                       </div>
 
                       <div class="my-4">
                         <label for="message" class="label">MESSAGE</label>
                         <Editor
-                          v-model="value"
+                          v-model="email.message"
                           editorStyle="height: 120px"
                           class="form-control shadow-one"
                           name="message"
@@ -2884,6 +2892,13 @@ export default {
                 this.financeTableView();
               },
             },
+            {
+              label: "Uploads",
+              icon: "pi pi-dollar me-2",
+              command: () => {
+                this.uploadsSectionView();
+              },
+            },
           ],
         },
         {
@@ -3045,7 +3060,7 @@ export default {
         allowance: 0,
       },
 
-      notices: {
+      notice: {
         subject: "",
         Date_Issued: "",
         message: "",
@@ -3084,6 +3099,7 @@ export default {
         const notice = this.notices;
         const NoticesRef = await addDoc(collection(db, "Notices"), notice);
         console.log("Document written with ID: ", NoticeRef.id);
+        notice = "";
       } catch (error) {
         console.log("Error Updating Notice", error);
       }
@@ -3094,6 +3110,7 @@ export default {
         const offer = this.offer;
         const offersRef = await addDoc(collection(db, "Offers"), offer);
         console.log("Document written with ID: ", offersRef.id);
+        offer = "";
       } catch (error) {
         console.log("Error Updating Notice", error);
       }
@@ -3101,6 +3118,7 @@ export default {
 
     sendEmail() {
       try {
+        const email = this.email;
         const to = this.email.to;
         const message = this.email.message;
         const subject = this.email.subject;
@@ -3115,6 +3133,7 @@ export default {
           text: message,
         });
         console.log("Email Sent");
+        email = "";
       } catch (error) {
         console.log("Sending Email Error:", error);
       }
@@ -3199,7 +3218,7 @@ export default {
       this.dashboard = false;
     },
 
-    uploadsSectionBtn() {
+    uploadsSectionView() {
       this.uploadsSection = !this.uploadsSection;
       this.dashboard = false;
     },
