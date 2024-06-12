@@ -3099,7 +3099,9 @@ export default {
         const notice = this.notice;
         const NoticeRef = await addDoc(collection(db, "Notices"), notice);
         console.log("Document written with ID: ", NoticeRef.id);
-        notice = "";
+        this.notice.title = "";
+        this.notice.message = "";
+        this.notice.Date_Issued = "";
       } catch (error) {
         console.log("Error Updating Notice", error);
       }
