@@ -2472,104 +2472,114 @@
                 ><section class="shadow-two my-3 row">
                   <div class="col-lg-6 d-none d-lg-block pb-5 bg-success"></div>
                   <div class="col-lg-6 shadow-two bg-white row text-start">
-                    <h4 class="my-lg-4 my-2">OFFER UPLOADS</h4>
-                    <div class="col-lg-6">
-                      <label for="">Contract Type:</label> <br />
-                      <select name="type" id="" class="form-control shadow-two">
-                        <option disabled>Select offer</option>
-                        <option value="DUO">DUO</option>
-                        <option value="TRI">TRI</option>
-                        <option value="QUAD">QUAD</option>
-                        <option value="PENT">PENT</option>
-                      </select>
-                    </div>
+                    <form @submit.prevent="">
+                      <h4 class="my-lg-4 my-2">OFFER UPLOADS</h4>
+                      <div class="col-lg-6">
+                        <label for="">Contract Type:</label> <br />
+                        <select
+                          name="type"
+                          id=""
+                          class="form-control shadow-two"
+                        >
+                          <option disabled>Select offer</option>
+                          <option value="DUO">DUO</option>
+                          <option value="TRI">TRI</option>
+                          <option value="QUAD">QUAD</option>
+                          <option value="PENT">PENT</option>
+                        </select>
+                      </div>
 
-                    <div class="col-lg-6">
-                      <label class="" for="">Mode:</label> <br />
-                      <select name="mode" id="" class="form-control shadow-two">
-                        <option value="">MODE OF TUITION</option>
-                        <option value="online">Online</option>
-                        <option value="in-person">In-Person</option>
-                      </select>
-                    </div>
+                      <div class="col-lg-6">
+                        <label class="" for="">Mode:</label> <br />
+                        <select
+                          name="mode"
+                          id=""
+                          class="form-control shadow-two"
+                        >
+                          <option value="">MODE OF TUITION</option>
+                          <option value="online">Online</option>
+                          <option value="in-person">In-Person</option>
+                        </select>
+                      </div>
 
-                    <div class="col-lg-6">
-                      <label for="">Level:</label> <br />
-                      <select name="level" class="form-control shadow-two">
-                        <option disabled>Level of student</option>
-                        <option value="KG">Kindergarten</option>
-                        <option value="PRIMARY">Primary</option>
-                        <option value="JHS">JHS</option>
-                        <option value="SHS">SHS</option>
-                      </select>
-                    </div>
+                      <div class="col-lg-6">
+                        <label for="">Level:</label> <br />
+                        <select name="level" class="form-control shadow-two">
+                          <option disabled>Level of student</option>
+                          <option value="KG">Kindergarten</option>
+                          <option value="PRIMARY">Primary</option>
+                          <option value="JHS">JHS</option>
+                          <option value="SHS">SHS</option>
+                        </select>
+                      </div>
 
-                    <div class="col-lg-6">
-                      <label for="">Class:</label> <br />
-                      <input
-                        class="form-control shadow-two"
-                        type="text"
-                        name="class"
-                        placeholder="CLASS"
-                      />
-                    </div>
+                      <div class="col-lg-6">
+                        <label for="">Class:</label> <br />
+                        <input
+                          class="form-control shadow-two"
+                          type="text"
+                          name="class"
+                          placeholder="CLASS"
+                        />
+                      </div>
 
-                    <div class="col-lg-12">
-                      <label for="">Subjects:</label> <br />
-                      <textarea
-                        name="subjects"
-                        id=""
-                        class="form-control shadow-two"
-                        placeholder="TUITION SUBJECT(S)"
-                      ></textarea>
-                    </div>
+                      <div class="col-lg-12">
+                        <label for="">Subjects:</label> <br />
+                        <textarea
+                          name="subjects"
+                          id=""
+                          class="form-control shadow-two"
+                          placeholder="TUITION SUBJECT(S)"
+                        ></textarea>
+                      </div>
 
-                    <div class="col-lg-6">
-                      <label for="">Lesson Duration</label> <br />
-                      <select
-                        name="duration"
-                        id=""
-                        class="form-control shadow-two"
+                      <div class="col-lg-6">
+                        <label for="">Lesson Duration</label> <br />
+                        <select
+                          name="duration"
+                          id=""
+                          class="form-control shadow-two"
+                        >
+                          <option disabled>
+                            Select Duration
+                            <i class="fa-solid fa-chevron-down ms-auto"></i>
+                          </option>
+                          <option value="1 hour">1 hour</option>
+                          <option value="1.5 hours">1.5 hrs</option>
+                          <option value="2 hours">2 hrs</option>
+                          <option value="2.5 hours">2.5 hrs</option>
+                          <option value="3 hours">3 hrs</option>
+                        </select>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <label for="">Location:</label> <br />
+                        <input
+                          class="form-control shadow-two"
+                          type="text"
+                          name="location"
+                          placeholder="Location"
+                        />
+                      </div>
+
+                      <div class="col-lg-12">
+                        <label for="">Allowance</label> <br />
+                        <input
+                          class="form-control shadow-two"
+                          type="text"
+                          name="allowance"
+                          placeholder="ALLOWANCE"
+                        />
+                      </div>
+
+                      <button
+                        class="btn btn-success my-lg-4 my-3 shadow-two"
+                        type="submit"
+                        name="postContract"
                       >
-                        <option disabled>
-                          Select Duration
-                          <i class="fa-solid fa-chevron-down ms-auto"></i>
-                        </option>
-                        <option value="1 hour">1 hour</option>
-                        <option value="1.5 hours">1.5 hrs</option>
-                        <option value="2 hours">2 hrs</option>
-                        <option value="2.5 hours">2.5 hrs</option>
-                        <option value="3 hours">3 hrs</option>
-                      </select>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <label for="">Location:</label> <br />
-                      <input
-                        class="form-control shadow-two"
-                        type="text"
-                        name="location"
-                        placeholder="Location"
-                      />
-                    </div>
-
-                    <div class="col-lg-12">
-                      <label for="">Allowance</label> <br />
-                      <input
-                        class="form-control shadow-two"
-                        type="text"
-                        name="allowance"
-                        placeholder="ALLOWANCE"
-                      />
-                    </div>
-
-                    <button
-                      class="btn btn-success my-lg-4 my-3 shadow-two"
-                      type="submit"
-                      name="postContract"
-                    >
-                      POST CONTRACT
-                    </button>
+                        POST CONTRACT
+                      </button>
+                    </form>
                   </div>
                 </section>
               </TabPanel>
@@ -2579,7 +2589,7 @@
                   <div class="col-lg-6 shadow-two bg-white">
                     <h4 class="my-lg-3">NOTICE BOARD</h4>
                     <!-- <h3 class="py-1">NOTICE</h3> -->
-                    <form action="/notice" method="post" class="">
+                    <form @submit.prevent="uploadNotice" class="">
                       <div class="my-4">
                         <label
                           class="d-flex justify-content-start"
@@ -2635,7 +2645,12 @@
                   <div class="col-lg-6 shadow-two bg-white">
                     <h4 class="my-lg-4">EMAIL</h4>
                     <!-- <h3 class="py-1">NOTICE</h3> -->
-                    <form action="/email" method="post" class="">
+                    <form @submit.prevent="sendEmail" class="">
+                      <div class="my-4">
+                        <label for="sendTo" class="label">EMAIL</label>
+                        <input type="text" class="form-control shadow-one" />
+                      </div>
+
                       <div class="my-4">
                         <label
                           class="d-flex justify-content-start"
@@ -2651,7 +2666,7 @@
                         />
                       </div>
 
-                      <div class="">
+                      <div class="my-4">
                         <label class="label" for="News Title">DATE</label>
                         <input
                           class="form-control shadow-one"
@@ -2662,28 +2677,14 @@
                       </div>
 
                       <div class="my-4">
-                        <label for="sendTo" class="label">SEND TO:</label>
-                        <select
-                          name="sendTo"
-                          id=""
-                          class="form-control shadow-one"
-                        >
-                          <option value="all">All</option>
-                          <option value="tutors">Tutors</option>
-                          <option value="applicants">Applicants</option>
-                          <option value="clients">Clients</option>
-                          <option value="prospects">Prospects</option>
-                        </select>
-                      </div>
-
-                      <div class="">
                         <label for="message" class="label">MESSAGE</label>
-                        <textarea
+                        <Editor
+                          v-model="value"
+                          editorStyle="height: 120px"
                           class="form-control shadow-one"
                           name="message"
-                          id=""
-                          placeholder="Enter notice"
-                        ></textarea>
+                          placeholder="Enter Email Message"
+                        />
                       </div>
 
                       <div class="text-success my-2" id="responseMessage"></div>
@@ -2776,7 +2777,7 @@ export default {
       chartData: null,
       chartOptions: null,
       parentTable: false,
-      uploadsSection: false,
+      uploadsSection: true,
       tutorTable: false,
       applicantsTable: false,
       tutorsTable: true,
@@ -3032,15 +3033,29 @@ export default {
         comment: "",
       },
 
-      uploadContract: {
+      offer: {
         weeklySession: 0,
         mode: "",
         level: "",
         class: "",
+        availability: "available",
         subjects: "",
         duration: 0,
         location: "",
         allowance: 0,
+      },
+
+      notices: {
+        subject: "",
+        Date_Issued: "",
+        message: "",
+      },
+
+      email: {
+        to: "",
+        subject: "",
+        date: "",
+        message: "",
       },
 
       contractUpdate: {
@@ -3062,6 +3077,47 @@ export default {
         .catch((error) => {
           console.error(error);
         });
+    },
+
+    async uploadNotice() {
+      try {
+        const notice = this.notices;
+        const NoticesRef = await addDoc(collection(db, "Notices"), notice);
+        console.log("Document written with ID: ", NoticeRef.id);
+      } catch (error) {
+        console.log("Error Updating Notice", error);
+      }
+    },
+
+    async uploadOffer() {
+      try {
+        const offer = this.offer;
+        const offersRef = await addDoc(collection(db, "Offers"), offer);
+        console.log("Document written with ID: ", offersRef.id);
+      } catch (error) {
+        console.log("Error Updating Notice", error);
+      }
+    },
+
+    sendEmail() {
+      try {
+        const to = this.email.to;
+        const message = this.email.message;
+        const subject = this.email.subject;
+        const date = this.email.date;
+
+        this.$mail.send({
+          from: "Lifeline Educational Solutions",
+          to: to,
+          cc: "lifelineedusolutions@gmail.com",
+          bcc: "shirazadnan53@gmail.com",
+          subject: subject,
+          text: message,
+        });
+        console.log("Email Sent");
+      } catch (error) {
+        console.log("Sending Email Error:", error);
+      }
     },
 
     wideScreenBtn() {

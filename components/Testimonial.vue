@@ -27,9 +27,10 @@
                 <Menu ref="menu" id="config_menu" :model="items" popup />
               </template>
               <p class="m-0 parent-quote">
-                "My son is currently preparing for the B.E.C.E. Lifeline
-                provided two tutors for different subjects and their prices are
-                affordable. I highly recommend them to you too."
+                "My son is currently preparing for the Basic Edu. Certificate
+                Exam. (B.E.C.E). Lifeline provided two tutors for different
+                subjects and their prices are affordable. I highly recommend
+                them to you too."
               </p>
             </Panel>
           </div>

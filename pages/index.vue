@@ -65,7 +65,9 @@
       <section>
         <div class="shadow-one mx-lg-3 testimony">
           <div class="text-center animate__animated animate__fadeInRight">
-            <h3 class="title fw-bolder mt-lg-5">REQUEST A TUTOR NOW</h3>
+            <h3 class="title fw-bolder mt-lg-5 text-muted">
+              REQUEST A TUTOR NOW
+            </h3>
             <!-- <Divider align="center" type="dotted">
               <b>Center</b>
             </Divider> -->

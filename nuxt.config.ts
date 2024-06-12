@@ -50,7 +50,29 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true, vscode: {} },
 
-  modules: ["nuxt-primevue"],
+  modules: [
+    "nuxt-primevue",
+    [
+      "nuxt-mail",
+      {
+        message: {
+          to: process.env.NUXT_MAIL_TARGET,
+          cc: process.env.NUXT_MAIL_CC,
+        },
+        smtp: {
+          host: process.env.NUXT_MAIL_SMPT,
+          port: process.env.NUXT_MAIL_PORT,
+          secure: true,
+          auth: {
+            user: process.env.NUXT_MAIL_USERNAME,
+            pass: process.env.NUXT_MAIL_PASSWORD,
+          },
+          // port: 587,
+        },
+      },
+    ],
+    "@nuxt/image",
+  ],
 
   primevue: {
     components: {

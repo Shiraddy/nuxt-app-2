@@ -428,7 +428,7 @@ body {
 
 .con-image {
   width: 75%;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .caller {

@@ -50,7 +50,13 @@
           <div class="my-5 py-3">
             <div class="row">
               <div class="col-lg-4 col-sm-12">
-                <img src="/images/con8.gif" alt="" class="con-image round" />
+                <NuxtImg
+                  src="/images/career.jpg"
+                  alt=""
+                  class="con-image my-2"
+                />
+
+                <!-- <img src="/images/con8.gif" alt="" class="con-image round" /> -->
                 <h5>Career Guidance</h5>
                 <p class="px-2 px-lg-4 text-body-secondary">
                   Make the right decisions about your career path. Seek
@@ -59,7 +65,13 @@
               </div>
 
               <div class="col-lg-4 col-sm-12">
-                <img src="/images/con2.gif" alt="" class="con-image" />
+                <NuxtImg
+                  src="/images/academic.jpg"
+                  alt=""
+                  class="con-image my-2"
+                />
+
+                <!-- <img src="/images/con2.gif" alt="" class="con-image" /> -->
                 <h5>Academic Guidance</h5>
                 <p class="px-2 px-lg-4 text-body-secondary">
                   Get the right advice to make informed educational choices.
@@ -67,7 +79,8 @@
               </div>
 
               <div class="col-lg-4 col-sm-12">
-                <img src="/images/con3.gif" alt="" class="con-image" />
+                <NuxtImg src="/images/coun.jpg" alt="" class="con-image my-2" />
+                <!-- <img src="/images/con3.gif" alt="" class="con-image" /> -->
                 <h5>Counselling Service</h5>
                 <p class="px-2 px-lg-4 text-body-secondary">
                   Let us help you through your challenges. Get the right
@@ -78,11 +91,16 @@
           </div>
 
           <section>
-            <div class="row bg-primary">
+            <div class="row bg-primary shadow-one">
               <div
                 class="col-lg-5 d-flex align-items-center justify-content-center"
               >
-                <img src="/images/conso2.png" alt="" class="py-3" />
+                <NuxtImg
+                  src="/images/decision.png"
+                  alt=""
+                  class="py-3 decision"
+                />
+                <!-- <img src="/images/conso2.png" alt="" class="py-3" /> -->
               </div>
               <div class="col-lg-7 text-white py-lg-3 py-2 px-3 px-lg-5">
                 <h3 class="mb-0">WANT TO MAKE A DECISION?</h3>
@@ -144,7 +162,8 @@
                 </button>
               </div>
               <div class="col-lg-6">
-                <img src="/images/conso3.png" alt="" />
+                <NuxtImg src="/images/next.jpg" alt="" class="decision" />
+                <!-- <img src="/images/conso3.png" alt="" /> -->
               </div>
             </div>
           </section>
@@ -164,19 +183,33 @@
                 </button>
               </div>
               <div class="col-lg-6">
-                <img src="/images/call3.png" alt="" class="caller" />
+                <NuxtImg
+                  src="/images/call3.png"
+                  alt=""
+                  class="caller"
+                  quality="80"
+                />
+                <!-- <img src="/images/call3.png" alt="" class="caller" /> -->
               </div>
             </div>
           </section>
 
           <section>
-            <div class="row">
-              <div class="col-lg-5">
-                <img src="/images/conso1.png" alt="" class="py-lg-3" />
-              </div>
-              <div class="col-lg-7">
-                <div class="px-3">
-                  <h3>What Challenge Are You Facing?</h3>
+            <div class="row my-5 py-3 text-center">
+              <div class="col-lg-12">
+                <div class="px-3 lead">
+                  <h2>Have a Challenge?</h2>
+                  <p class="fs-beauty">
+                    Talk to us about your challenge(s). We are a dependable
+                    partner, ready to offer you solutions!
+                  </p>
+                  <router-link to="/" target="_blank" rel="noopener">
+                    <Button
+                      label="Let's Start"
+                      class="animate__animated animate__rollIn"
+                    />
+                  </router-link>
+                  <!-- <h3>What Challenge Are You Facing?</h3>
                   <ol class="text-start text-dark-50 fs-beauty px-lg-3 px-2">
                     <li class="my-2 text-dark-emphasis">
                       Do you need someone to talk to about your ward's
@@ -200,7 +233,7 @@
                       Do you want information on how to help your ward overcome
                       a challenge?
                     </li>
-                  </ol>
+                  </ol> -->
                 </div>
               </div>
             </div>
@@ -775,7 +808,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.decision {
+  width: 90%;
+  max-width: 95%;
+}
+</style>
 
 <!-- Icons -->
 <!-- <i class="bi-backspace pe-2"></i> -->

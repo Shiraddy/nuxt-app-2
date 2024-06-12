@@ -55,13 +55,12 @@
                 <p>
                   Our motto, "Think Solutions; think Lifeline," encapsulates our
                   commitment to being the definitive answer to educational
-                  needs. We are more than just a solution; we are the epitome of
-                  excellence in education.
+                  needs.
                 </p>
 
                 <p>
-                  We're dedicated to being the go-to solution for all your
-                  educational needs.
+                  We are more than just a solution; we are the epitome of
+                  excellence in education.
                 </p>
               </div>
 
@@ -72,6 +71,13 @@
                   hurdles.
                 </p>
 
+                <p>
+                  We're dedicated to being the go-to solution for all your
+                  educational needs.
+                </p>
+              </div>
+
+              <div class="carousel-item caro-item-about">
                 <p>
                   Discover the Lifeline advantage – where innovative solutions
                   meet educational excellence! 🚀 <br />
@@ -110,14 +116,13 @@ export default {
 <style scoped>
 .about-desc {
   line-height: 1.7;
-  font-size: 1.2vw;
+  font-size: 1.3rem;
   padding: 10px 0;
 }
 
 @media only screen and (max-width: 600px) {
-.about-desc {
-  font-size: 0.99rem;
+  .about-desc {
+    font-size: 0.99rem;
+  }
 }
-}
-
 </style>

@@ -8,7 +8,7 @@
           <div class="col-lg-8 text-start d-none d-lg-block"></div>
           <div class="col-lg-4 col-md-6 col-sm-12 py-4 shadow-two login">
             <div class="py-2">
-              <h3>WELCOME BACK</h3>
+              <h3 class="fw-bolder fs-beauty">WELCOME BACK</h3>
               <p>Login With Your Credentials</p>
             </div>
             <form @submit.prevent="signInUser">

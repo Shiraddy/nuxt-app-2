@@ -61,7 +61,7 @@
           </div>
           <div class="card-body text-muted">
             <p>
-              We provide tailored guidance to you and your ward. Contact us
+              We provide tailored guidance to you and your ward. Contact us for 
               comprehensive guidance and counseling services. Together, let's
               pave the way for your ward's holistic development and a brighter,
               more fulfilling future! 🌟📚

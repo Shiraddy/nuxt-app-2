@@ -111,35 +111,7 @@
 </template>
 
 <script>
-import NavBar from "./NavBar.vue";
-// import { initializeApp } from "firebase/app";
-// import {
-//   getFirestore,
-//   collection,
-//   getDocs,
-//   setDoc,
-//   doc,
-//   addDoc,
-//   updateDoc,
-// } from "firebase/firestore";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
-//   authDomain: "lifeline-edu-site.firebaseapp.com",
-//   projectId: "lifeline-edu-site",
-//   storageBucket: "gs://lifeline-edu-site.appspot.com/",
-//   messagingSenderId: "1059969595497",
-//   appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
-// };
-
-// const firebase = initializeApp(firebaseConfig);
-// const db = getFirestore(firebase);
-
 export default {
-  components: {
-    NavBar,
-  },
-
   data() {
     return {
       contactUs: {
