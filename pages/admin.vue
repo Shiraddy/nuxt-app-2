@@ -3129,7 +3129,7 @@ export default {
           from: "Lifeline Educational Solutions",
           to: to,
           cc: "lifelineedusolutions@gmail.com",
-          // bcc: "shirazadnan53@gmail.com",
+          bcc: "shirazadnan53@gmail.com",
           subject: subject,
           text: message,
         });
@@ -3138,7 +3138,6 @@ export default {
         this.email.message = "";
         this.email.subject = "";
         this.email.date = "";
-
       } catch (error) {
         console.log("Sending Email Error:", error);
       }
