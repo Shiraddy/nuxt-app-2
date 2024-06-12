@@ -3129,7 +3129,7 @@ export default {
           from: "Lifeline Educational Solutions",
           to: to,
           cc: "lifelineedusolutions@gmail.com",
-          bcc: "shirazadnan53@gmail.com",
+          // bcc: "shirazadnan53@gmail.com",
           subject: subject,
           text: message,
         });
