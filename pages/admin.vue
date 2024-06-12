@@ -3061,7 +3061,7 @@ export default {
       },
 
       notice: {
-        subject: "",
+        title: "",
         Date_Issued: "",
         message: "",
       },
@@ -3096,8 +3096,8 @@ export default {
 
     async uploadNotice() {
       try {
-        const notice = this.notices;
-        const NoticesRef = await addDoc(collection(db, "Notices"), notice);
+        const notice = this.notice;
+        const NoticeRef = await addDoc(collection(db, "Notices"), notice);
         console.log("Document written with ID: ", NoticeRef.id);
         notice = "";
       } catch (error) {
@@ -3110,7 +3110,8 @@ export default {
         const offer = this.offer;
         const offersRef = await addDoc(collection(db, "Offers"), offer);
         console.log("Document written with ID: ", offersRef.id);
-        offer = "";
+        offer.allowance = "";
+        offer.location = "";
       } catch (error) {
         console.log("Error Updating Notice", error);
       }
@@ -3133,7 +3134,11 @@ export default {
           text: message,
         });
         console.log("Email Sent");
-        email = "";
+        this.email.to = "";
+        this.email.message = "";
+        this.email.subject = "";
+        this.email.date = "";
+
       } catch (error) {
         console.log("Sending Email Error:", error);
       }
