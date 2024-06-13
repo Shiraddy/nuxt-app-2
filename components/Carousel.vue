@@ -17,7 +17,7 @@
                 class="col-lg-6 text-white my-5 service-hero-text text-white text-start"
               >
                 <h1
-                  class="hero-header fs-1 mt-lg-5 mt-5 mb-0 animate__animated animate__fadeInRight"
+                  class="hero-header fs-1 mt-lg-5 mt-5 mb-0 animate__animated animate__zoomIn"
                 >
                   DO YOU NEED A <br />
                   <span class="hero-home shadow-one text-info"
@@ -28,7 +28,7 @@
                   We provide your ward a professional home tutor to help your
                   ward become better. <br />
                   <RouterLink
-                    class="btn shadow-two px-lg-4 search-button me-3 my-2 animate__animated animate__bounce  animate__delay-2s"
+                    class="btn shadow-two px-lg-4 search-button me-3 my-2 animate__animated animate__bounce animate__delay-2s"
                     to="/form"
                     >GET A TUTOR<i class="fa-solid fa-magnifying-glass me-2"></i
                   ></RouterLink>
@@ -47,7 +47,7 @@
                 class="col-lg-6 text-white my-5 service-hero-text text-start"
               >
                 <h1
-                  class="hero-header mt-lg-5 mt-5 mb-0 animate__animated animate__fadeInRight"
+                  class="hero-header mt-lg-5 mt-5 mb-0 animate__animated animate__zoomIn"
                 >
                   ARE YOU IN NEED OF
                   <span class="text-primary shadow-two"
@@ -83,7 +83,7 @@
                 class="col-lg-6 text-white my-5 service-hero-text text-start"
               >
                 <h1
-                  class="hero-header mt-lg-5 mt-5 mb-0 animate__animated animate__fadeInRight"
+                  class="hero-header mt-lg-5 mt-5 mb-0 animate__animated animate__zoomIn"
                 >
                   GROW YOUR
                   <span class="text-success shadow-two">SCHOOL...</span>

@@ -42,6 +42,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/admin/**": { ssr: false },
+    "/personal/**": { ssr: false },
   },
 
   experimental: {

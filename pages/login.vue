@@ -112,7 +112,7 @@ export default {
         const email = this.email;
         const password = this.password;
         const credentials = await signInUser(email, password);
-        console.log("Login Successful", credentials);
+        // console.log("Login Successful", credentials);
         router.push("/personal");
       } catch (error) {
         this.loginError = true;
@@ -150,12 +150,6 @@ export default {
       this.loginError = false;
     },
   },
-
-  // async mounted() {
-  //   // Call the signInUser function here
-  //   // This will run on the client-side
-  //   const credentials = await signInUser(this.email, this.password)
-  // },
 };
 </script>
 

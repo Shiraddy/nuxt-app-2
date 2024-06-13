@@ -203,12 +203,13 @@
                     Talk to us about your challenge(s). We are a dependable
                     partner, ready to offer you solutions!
                   </p>
-                  <router-link to="/" target="_blank" rel="noopener">
-                    <Button
-                      label="Let's Start"
-                      class="animate__animated animate__rollIn"
-                    />
-                  </router-link>
+                  <!-- <router-link to="/" target="_blank" rel="noopener">
+                  </router-link> -->
+                  <Button
+                    label="Let's Start"
+                    class="animate__animated animate__zoomIn animate__slower"
+                    @click="formToggle()"
+                  />
                   <!-- <h3>What Challenge Are You Facing?</h3>
                   <ol class="text-start text-dark-50 fs-beauty px-lg-3 px-2">
                     <li class="my-2 text-dark-emphasis">

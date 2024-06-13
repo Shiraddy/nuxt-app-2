@@ -832,7 +832,6 @@
 <script>
 definePageMeta({
   middleware: "auth",
-  layout: "default",
 });
 import FileUpload from "primevue/fileupload";
 import { initializeApp } from "firebase/app";
@@ -863,10 +862,8 @@ const firebase = initializeApp(firebaseConfig);
 const db = getFirestore(firebase);
 const auth = getAuth(firebase);
 const storage = getStorage();
-// const user = auth.currentUser;
-const firebaseUser = useFirebaseUser();
-// firebaseUser.value = user;
-const router = useRouter();
+// const firebaseUser = useFirebaseUser();
+// const router = useRouter();
 
 export default {
   name: "Tutor Profile Page",
@@ -1037,21 +1034,6 @@ export default {
     formatTime(time) {
       return time < 10 ? `0${time}` : time;
     },
-
-    sendEmail() {
-      emailjs
-        .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this.$refs.form, {
-          publicKey: "YOUR_PUBLIC_KEY",
-        })
-        .then(
-          () => {
-            console.log("SUCCESS!");
-          },
-          (error) => {
-            console.log("FAILED...", error.text);
-          }
-        );
-    },
   },
 
   computed: {
@@ -1068,43 +1050,20 @@ export default {
     },
   },
 
-  // created() {
-  //   const auth = getAuth();
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       this.loggedIn = true;
-  //     } else {
-  //       this.loggedIn = false;
-  //     }
-  //   });
-
-  //   this.fetchNotice();
-  //   this.getUserInfo();
-  // },
+  // created() {},
 
   async mounted() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.loggedIn = true;
-      } else {
-        this.loggedIn = false;
-      }
-    });
-
-    // const storedUser = JSON.parse(localStorage.getItem("firebaseUser"));
-
-    // if (storedUser) {
-    //   // User authentication state exists, set user to firebaseUser
-    //   firebaseUser.value = storedUser;
-    // } else {
-    //   // User authentication state does not exist, redirect to login page
-    //   router.push("/login");
-    // }
+    const user = auth.currentUser;
+    // console.log("Mounted user", user);
+    const firebaseUser = useFirebaseUser();
+    const storedUser = localStorage.setItem(
+      "firebaseUser",
+      JSON.stringify(user)
+    );
+    firebaseUser.value = storedUser;
 
     await this.fetchNotice();
     await this.getUserInfo();
-    // await this.getCurrentNote();
 
     this.updateTime();
     setInterval(this.updateTime, 1000);
