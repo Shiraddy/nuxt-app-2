@@ -46,7 +46,6 @@
                       <Avatar image="/images/logo.png" shape="circle" />
                     </template>
                     <p class="text-start mt-3 mx-3">
-                    
                       Review our Frequently Asked Questions
                       <RouterLink class="link" to="/faq">(FAQ)</RouterLink>
                       for additional information.
@@ -977,7 +976,6 @@ export default {
       error: {
         parentName: false,
         address: false,
-        contact: false,
         relationship: false,
         contact: false,
         student: false,

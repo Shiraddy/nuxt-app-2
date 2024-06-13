@@ -1822,7 +1822,7 @@
               <template #paginatorend>
                 <Button
                   type="button"
-                  @click="exportCSV($event)"
+                  @click="exportCS($event)"
                   icon="pi pi-download"
                   text
                 />
@@ -2761,7 +2761,6 @@ const firebaseConfig = {
   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
   authDomain: "lifeline-edu-site.firebaseapp.com",
   projectId: "lifeline-edu-site",
-  storageBucket: "gs://lifeline-edu-site.appspot.com/",
   storageBucket: "lifeline-edu-site.appspot.com",
   messagingSenderId: "1059969595497",
   appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
@@ -3157,7 +3156,7 @@ export default {
       this.$refs.dt.exportCSV();
     },
 
-    exportCSV() {
+    exportCS() {
       this.$refs.tt.exportCSV();
     },
 

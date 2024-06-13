@@ -1361,7 +1361,6 @@ export default {
         lastName: "",
         sex: "",
         DoB: "",
-        contact: "",
         emergency: "",
         school_attending: "",
         qualification: "",
