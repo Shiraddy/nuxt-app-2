@@ -10,11 +10,11 @@
           <div class="d-flex justify-content-start">
             <div class="mt-lg-2">
               <div class="">
-                <img
+                <!-- <img
                   class="profile-pic d-none d-lg-block"
                   src="/images/Pic.png"
                   alt=""
-                />
+                /> -->
 
                 <div class="">
                   <h5 class="text-uppercase text-white mb-0 fs-6">
@@ -833,6 +833,7 @@
 definePageMeta({
   middleware: "auth",
 });
+
 import FileUpload from "primevue/fileupload";
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
@@ -885,6 +886,11 @@ export default {
 
   methods: {
     async signingOut() {
+      // onAuthStateChanged(auth, (user) => {
+      //   if (!user) {
+      //     navigateTo("/login");
+      //   }
+      // });
       try {
         const router = useRouter();
         const auth = getAuth();

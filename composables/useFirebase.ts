@@ -47,9 +47,11 @@ export const initUser = async () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // const uid = user.uid;
-      console.log("Auth changed", user);
+      localStorage.setItem("firebaseUser", JSON.stringify(user));
+      console.log("User Signed In", user);
     } else {
-      console.log("Auth changed", user);
+      localStorage.removeItem("firebaseUser");
+      console.log("User Signed Out", user);
     }
 
     firebaseUser.value = user;

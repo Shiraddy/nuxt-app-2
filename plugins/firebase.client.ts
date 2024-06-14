@@ -35,6 +35,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   const auth = getAuth(app);
 
   // console.log(app);
-  initUser();
+  // initUser();
 });
 
