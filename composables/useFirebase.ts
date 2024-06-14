@@ -47,10 +47,10 @@ export const initUser = async () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // const uid = user.uid;
-      localStorage.setItem("firebaseUser", JSON.stringify(user));
+      // localStorage.setItem("firebaseUser", JSON.stringify(user));
       console.log("User Signed In", user);
     } else {
-      localStorage.removeItem("firebaseUser");
+      // localStorage.removeItem("firebaseUser");
       console.log("User Signed Out", user);
     }
 
