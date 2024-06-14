@@ -21,8 +21,8 @@ const auth = getAuth(firebase);
 
 export default defineNuxtRouteMiddleware((to, from) => {
   const firebaseUser = auth.currentUser;
-  const storedUser = JSON.parse(localStorage.getItem("firebaseUser"));
-  const user = storedUser || firebaseUser
+  // const storedUser = JSON.parse(localStorage.getItem("firebaseUser"));
+  const user = firebaseUser
   // console.log("User Auth", user);
   // console.log("Firebase Auth", firebase);
 
