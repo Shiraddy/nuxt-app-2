@@ -45,7 +45,7 @@ export const initUser = async () => {
   const router = useRouter();
 
   onAuthStateChanged(auth, (user) => {
-    if (typeof window !== "undefined") {
+    if (window !== undefined) {
       if (user) {
         // const uid = user.uid;
         localStorage.setItem("firebaseUser", JSON.stringify(user));
