@@ -45,13 +45,15 @@ export const initUser = async () => {
   const router = useRouter();
 
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // const uid = user.uid;
-      // localStorage.setItem("firebaseUser", JSON.stringify(user));
-      console.log("User Signed In", user);
-    } else {
-      // localStorage.removeItem("firebaseUser");
-      console.log("User Signed Out", user);
+    if (typeof window !== "undefined") {
+      if (user) {
+        // const uid = user.uid;
+        localStorage.setItem("firebaseUser", JSON.stringify(user));
+        console.log("User Signed In", user);
+      } else {
+        localStorage.removeItem("firebaseUser");
+        console.log("User Signed Out", user);
+      }
     }
 
     firebaseUser.value = user;
