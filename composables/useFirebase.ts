@@ -40,7 +40,7 @@ export const initUser = async () => {
   const firebaseUser = useFirebaseUser();
   firebaseUser.value = auth.currentUser;
 
-  const userCookie = useCookie("userCookie");
+  // const userCookie = useCookie("userCookie");
 
   const router = useRouter();
 
@@ -49,19 +49,13 @@ export const initUser = async () => {
       // const uid = user.uid;
       console.log("Auth changed", user);
     } else {
-      router.push("/login");
       console.log("Auth changed", user);
     }
 
     firebaseUser.value = user;
 
     // @ts-ignore
-    userCookie.value = user;
-
-    // $fetch("/api/auth", {
-    //   method: "POST",
-    //   body: { user },
-    // });
+    // userCookie.value = user;
   });
 };
 
@@ -70,3 +64,5 @@ export const signOutUser = async () => {
   const result = await auth.signOut();
   return result;
 };
+
+initUser();

@@ -1053,14 +1053,14 @@ export default {
   // created() {},
 
   async mounted() {
-    const user = auth.currentUser;
-    // console.log("Mounted user", user);
-    const firebaseUser = useFirebaseUser();
-    const storedUser = localStorage.setItem(
-      "firebaseUser",
-      JSON.stringify(user)
-    );
-    firebaseUser.value = storedUser;
+    // const user = auth.currentUser;
+    // // console.log("Mounted user", user);
+    // const firebaseUser = useFirebaseUser();
+    // const storedUser = localStorage.setItem(
+    //   "firebaseUser",
+    //   JSON.stringify(user)
+    // );
+    // firebaseUser.value = user;
 
     await this.fetchNotice();
     await this.getUserInfo();
