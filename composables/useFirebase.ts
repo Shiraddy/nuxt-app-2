@@ -45,15 +45,14 @@ export const initUser = async () => {
   const router = useRouter();
 
   onAuthStateChanged(auth, (user) => {
-    if (window !== undefined) {
-      if (user) {
-        // const uid = user.uid;
-        localStorage.setItem("firebaseUser", JSON.stringify(user));
-        console.log("User Signed In", user);
-      } else {
-        localStorage.removeItem("firebaseUser");
-        console.log("User Signed Out", user);
-      }
+    // if (window !== undefined) {
+    // }
+    if (user) {
+      // localStorage.setItem("firebaseUser", JSON.stringify(user));
+      // console.log("User Signed In", user);
+    } else {
+      // localStorage.removeItem("firebaseUser");
+      // console.log("User Signed Out", user);
     }
 
     firebaseUser.value = user;
@@ -69,4 +68,4 @@ export const signOutUser = async () => {
   return result;
 };
 
-initUser();
+// initUser();

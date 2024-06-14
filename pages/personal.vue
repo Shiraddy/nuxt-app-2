@@ -1059,14 +1059,23 @@ export default {
   // created() {},
 
   async mounted() {
-    // const user = auth.currentUser;
-    // // console.log("Mounted user", user);
-    // const firebaseUser = useFirebaseUser();
-    // const storedUser = localStorage.setItem(
-    //   "firebaseUser",
-    //   JSON.stringify(user)
-    // );
+    const user = auth.currentUser;
+    const firebaseUser = useFirebaseUser();
     // firebaseUser.value = user;
+    onAuthStateChanged(auth, (user) => {
+      if (window !== undefined) {
+        if (user) {
+          // const uid = user.uid;
+          localStorage.setItem("firebaseUser", JSON.stringify(user));
+          console.log("User Signed In Personal ", user);
+        } else {
+          localStorage.removeItem("firebaseUser");
+          console.log("User Signed Out Personal", user);
+        }
+      }
+
+      firebaseUser.value = user;
+    });
 
     await this.fetchNotice();
     await this.getUserInfo();
