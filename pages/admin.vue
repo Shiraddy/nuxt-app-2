@@ -2415,7 +2415,7 @@
                           <label for="Remuneration">Remuneration</label>
                           <InputText
                             type="number"
-                            v-model="tutorContract.pay"
+                            v-model.number="tutorContract.pay"
                           />
                         </small>
                       </div>
@@ -3122,6 +3122,8 @@ export default {
         weeklySession: "",
         periodLength: "",
         charges: 0,
+        deduction: 0,
+        consideration: 0,
         tuitionDays: [],
         payments: [],
         activeMonths: [],

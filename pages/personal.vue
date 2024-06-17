@@ -192,7 +192,7 @@
                 <div class="profit shadow-two bg-white text-primary">
                   <h6 class="">BONUS</h6>
                   <h4 class="fw-bolder">
-                    <i class="bi-graph-up me-2"></i>Ghc 000.00
+                    <i class="bi-graph-up me-2"></i>Ghc {{ bonus }}.00
                   </h4>
                 </div>
               </div>
@@ -201,7 +201,7 @@
                 <div class="client shadow-two bg-white text-danger">
                   <h6>DEDUCTIONS</h6>
                   <h4 class="fw-bolder">
-                    <i class="bi-graph-down me-2"></i>Ghc 000.00
+                    <i class="bi-graph-down me-2"></i>Ghc {{ penalty }}.00
                   </h4>
                 </div>
               </div>
@@ -210,9 +210,9 @@
                 <div
                   class="revenue shadow-two(offer, index) bg-white text-success"
                 >
-                  <h6>REMUNERATION</h6>
+                  <h6>ALLOWANCE</h6>
                   <h4 class="fw-bolder">
-                    <i class="bi-receipt-cutoff me-2"></i>Ghc 000.00
+                    <i class="bi-receipt-cutoff me-2"></i>Ghc {{ totalPay }}.00
                   </h4>
                 </div>
               </div>
@@ -430,6 +430,77 @@
                         class="shadow-two resource-frame"
                         frameborder="0"
                       ></iframe>
+                    </section>
+
+                    <!-- TUTOR CONTRACTS -->
+                    <section class="shadow-two my-lg-4 my-3">
+                      <h4 class="text-start pt-4 mx-3 fw-bolder">
+                        Tutor contracts
+                      </h4>
+                      <DataTable
+                        :value="profile.contracts"
+                        sortMode="multiple"
+                        showGridlines
+                        removableSort
+                        paginator
+                        :rows="5"
+                        :rowsPerPageOptions="[5, 10, 20, 50]"
+                        tableStyle="min-width: 50rem"
+                      >
+                        <Column
+                          field="parent"
+                          header="Parent"
+                          sortable
+                          style="width: 20%"
+                        ></Column>
+                        <Column
+                          field="student"
+                          header="Student"
+                          sortable
+                          style="width: 25%"
+                        ></Column>
+                        <Column
+                          field="class"
+                          header="Class"
+                          sortable
+                          style="width: 5%"
+                        ></Column>
+                        <Column
+                          field="status"
+                          header="Status"
+                          sortable
+                          style="width: 5%"
+                        ></Column>
+                        <Column
+                          field="weeklySession"
+                          header="Session"
+                          sortable
+                          style="width: 5%"
+                        ></Column>
+                        <Column
+                          field="contact"
+                          header="Contact"
+                          style="width: 10%"
+                        ></Column>
+                        <Column
+                          field="pay"
+                          header="Pay"
+                          sortable
+                          style="width: 5%"
+                        ></Column>
+                        <Column
+                          field="deduction"
+                          header="Penalty"
+                          sortable
+                          style="width: 5%"
+                        ></Column>
+                        <Column
+                          field="consideration"
+                          header="Bonus"
+                          sortable
+                          style="width: 5%"
+                        ></Column>
+                      </DataTable>
                     </section>
 
                     <!-- GES DATA TABLE -->
@@ -766,8 +837,6 @@
               </div>
             </section>
 
-            
-
             <!-- TRAINING -->
             <section
               class="d-none d-lg-block px-5 py-3 shadow-two"
@@ -896,6 +965,7 @@ export default {
       lastIndex: 0,
       layout: "grid",
       offers: [],
+      contracts: [],
       profile: {},
     };
   },
@@ -1069,6 +1139,38 @@ export default {
 
     fullName() {
       return this.profile.lastName + " " + this.profile.firstName;
+    },
+
+    totalPay() {
+      if (this.profile && this.profile.contracts) {
+        return this.profile.contracts.reduce(
+          (total, current) => total + current.pay,
+          0
+        );
+      } else {
+        return 0; // or any other default value you want to return when contracts is not defined
+      }
+    },
+    penalty() {
+      if (this.profile && this.profile.contracts) {
+        return this.profile.contracts.reduce(
+          (total, current) => total + current.deduction,
+          0
+        );
+      } else {
+        return 0; // or any other default value you want to return when contracts is not defined
+      }
+    },
+
+    bonus() {
+      if (this.profile && this.profile.contracts) {
+        return this.profile.contracts.reduce(
+          (total, current) => total + current.consideration,
+          0
+        );
+      } else {
+        return 0; // or any other default value you want to return when contracts is not defined
+      }
     },
   },
 
