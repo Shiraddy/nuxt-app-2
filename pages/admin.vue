@@ -2372,8 +2372,7 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="parent">Parent</label>
-                          <input
-                            class="apply-input"
+                          <inputText
                             type="text"
                             v-model="tutorContract.parent"
                           />
@@ -2382,8 +2381,7 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="Contact">Contact</label>
-                          <input
-                            class="apply-input"
+                          <inputText
                             type="text"
                             v-model="tutorContract.contact"
                           />
@@ -2458,8 +2456,7 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="Starting">Starting Date</label>
-                          <input
-                            class="apply-input"
+                          <inputText
                             type="month"
                             v-model="tutorContract.starting"
                           />
@@ -2468,16 +2465,22 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="Period Length">Period Length</label>
-                          <input
-                            class="apply-input"
+                          <inputText
                             type="number"
-                            v-model="tutorContract.periodLength"
+                            v-model.number="tutorContract.periodLength"
                           />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Status">Contract Status</label>
+                          <!-- <Select
+                            v-model="tutorContract.status"
+                            :options="tutorContractState"
+                            optionLabel="name"
+                            placeholder="Contract State"
+                            class="w-full md:w-56"
+                          /> -->
                           <select
                             class="apply-input"
                             v-model="tutorContract.status"
@@ -2884,6 +2887,12 @@ export default {
         { name: "Friday", key: "Fri" },
         { name: "Saturday", key: "Sat" },
         { name: "Sunday", key: "Sun" },
+      ],
+      tutorContractState: [
+        { name: "active", key: "ac" },
+        { name: "completed", key: "com" },
+        { name: "terminated", key: "term" },
+        { name: "paused", key: "pause" },
       ],
       toastMessages: {
         message: "",
