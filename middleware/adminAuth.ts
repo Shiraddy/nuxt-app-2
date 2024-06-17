@@ -19,15 +19,15 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const auth = getAuth(firebase);
 
-// ---cut---
 export default defineNuxtRouteMiddleware((to, from) => {
-  const user = auth.currentUser;
-  const firebaseUser = useFirebaseUser();
-  // firebaseUser.value = auth.currentUser;
-  const userCookie = useCookie("userCookie");
-  const router = useRouter();
-
-  if (!user || user.email !== "shirazadnan53@gmail.com") {
-    return navigateTo("/lifeline");
+  if (typeof window !== "undefined") {
+    const firebaseUser = auth.currentUser;
+    const storedUser = JSON.parse(localStorage.getItem("lifelineAdmin"));
+    const user = storedUser || firebaseUser;
+    // console.log("User Auth", user);
+    // console.log("Firebase Auth", firebase);
+    if (!user || user.email !== "shirazadnan53@gmail.com") {
+      return navigateTo("/lifeline");
+    }
   }
 });

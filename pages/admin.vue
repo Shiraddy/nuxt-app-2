@@ -2209,7 +2209,7 @@
                 </TabPanel>
 
                 <TabPanel header="Status">
-                  <form class="text-start">
+                  <form class="text-start" @submit.prevent="verdict">
                     <div class="bg-success text-white py-2 fw-bolder px-2 mb-3">
                       Tutor Status
                     </div>
@@ -2259,7 +2259,11 @@
                             <div class="text-start fw-bolder">
                               <label for="">Rating</label>
                             </div>
-                            <select class="apply-input" name="ratings" v-model="tutorUpdate.rating">
+                            <select
+                              class="apply-input"
+                              name="ratings"
+                              v-model="tutorUpdate.rating"
+                            >
                               <option value="A+">A+</option>
                               <option value="A">A</option>
                               <option value="B+">B+</option>
@@ -2291,7 +2295,11 @@
                             <div class="text-start fw-bolder">
                               <label for="">Category</label>
                             </div>
-                            <select name="category" class="apply-input" v-model="tutorUpdate.category">
+                            <select
+                              name="category"
+                              class="apply-input"
+                              v-model="tutorUpdate.category"
+                            >
                               <option value="tutor">Tutor</option>
                               <option value="applicant">Applicant</option>
                               <option value="pending">pending</option>
@@ -2305,7 +2313,7 @@
                         <Inplace>
                           <template #display>
                             <div class="text-start fw-bolder">
-                              <label for="">Type</label>
+                              <label for="">Student Status</label>
                             </div>
 
                             <div>
@@ -2320,9 +2328,14 @@
                             <div class="text-start fw-bolder">
                               <label for="">Type</label>
                             </div>
-                            <select class="apply-input" v-model="tutorUpdate.qualification">
+                            <select
+                              class="apply-input"
+                              v-model="tutorUpdate.qualification"
+                            >
                               <option value="Graduate">Graduate</option>
-                              <option value="Undergraduate">UnderGraduate</option>
+                              <option value="Undergraduate">
+                                UnderGraduate
+                              </option>
                               <option value="other">Other</option>
                             </select>
                           </template>
@@ -2331,7 +2344,10 @@
 
                       <div class="col-lg-12">
                         <div class="card my-3">
-                          <Editor v-model="tutorUpdate.comment" editorStyle="height: 120px" />
+                          <Editor
+                            v-model="tutorUpdate.comment"
+                            editorStyle="height: 120px"
+                          />
                         </div>
                       </div>
 
@@ -2348,7 +2364,7 @@
                 </TabPanel>
 
                 <TabPanel header="Contract">
-                  <form class="text start">
+                  <form class="text start" @submit.prevent="awardContract">
                     <div class="bg-success text-white py-2 fw-bolder px-2 mb-3">
                       Contract Award
                     </div>
@@ -2376,18 +2392,21 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="Student">Student</label>
-                          <input
-                            class="apply-input"
+                          <InputText
                             type="text"
                             v-model="tutorContract.student"
                           />
+                          <!-- <input
+                            class="apply-input"
+                            type="text"
+                            v-model="tutorContract.student"
+                          /> -->
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Class">Class</label>
-                          <input
-                            class="apply-input"
+                          <InputText
                             type="text"
                             v-model="tutorContract.class"
                           />
@@ -2396,8 +2415,7 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="Remuneration">Remuneration</label>
-                          <input
-                            class="apply-input"
+                          <InputText
                             type="number"
                             v-model="tutorContract.pay"
                           />
@@ -2406,7 +2424,7 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="Date">Date</label>
-                          <input class="apply-input" type="date" />
+                          <InputText type="date" v-model="tutorContract.date" />
                         </small>
                       </div>
                       <div class="col-lg-6">
@@ -2414,21 +2432,27 @@
                           <label for="Sessions Per Week"
                             >Sessions Per Week</label
                           >
-                          <input
-                            class="apply-input"
+                          <InputText
                             type="number"
-                            v-model="tutorContract.weeklySession"
+                            v-model.number="tutorContract.weeklySession"
                           />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Meeting Days">Meeting Days</label>
-                          <input
-                            class="apply-input"
-                            type="text"
-                            v-model="tutorContract.meetingDays"
-                          />
+                          <div class="card flex justify-center">
+                            <MultiSelect
+                              v-model="tutorContract.tuitionDays"
+                              :options="selectTuitionDays"
+                              optionLabel="name"
+                              display="chip"
+                              filter
+                              placeholder="Select Meeting Days"
+                              :maxSelectedLabels="7"
+                              class="w-full md:w-80"
+                            />
+                          </div>
                         </small>
                       </div>
                       <div class="col-lg-6">
@@ -2436,7 +2460,7 @@
                           <label for="Starting">Starting Date</label>
                           <input
                             class="apply-input"
-                            type="text"
+                            type="month"
                             v-model="tutorContract.starting"
                           />
                         </small>
@@ -2791,6 +2815,7 @@ import {
   deleteDoc,
   addDoc,
   query,
+  setDoc,
   where,
   serverTimestamp,
   updateDoc,
@@ -2851,6 +2876,15 @@ export default {
       todoList: [],
       todoItem: "",
       done: false,
+      selectTuitionDays: [
+        { name: "Monday", key: "Mon" },
+        { name: "Tuesday", key: "Tue" },
+        { name: "Wednesday", key: "Wed" },
+        { name: "Thursday", key: "Thurs" },
+        { name: "Friday", key: "Fri" },
+        { name: "Saturday", key: "Sat" },
+        { name: "Sunday", key: "Sun" },
+      ],
       toastMessages: {
         message: "",
         tutorPay: "",
@@ -3069,9 +3103,8 @@ export default {
         class: "",
         challenges: "",
         objectives: "",
-        serverTimestamp: serverTimestamp(),
         starting: "",
-        ended:"",
+        ended: "",
         status: "",
         pay: 0,
         meetingDays: "",
@@ -3199,12 +3232,50 @@ export default {
       }
     },
 
-    wideScreenBtn() {
-      this.wideScreen = !this.wideScreen;
+    verdict() {
+      try {
+        const tutor = this.selectedTutor.email;
+        const form = this.tutorUpdate;
+        const tutorRef = doc(db, "Tutor Applications", tutor);
+        setDoc(tutorRef, form, { merge: true });
+        console.log("Tutor Data Updated", tutor);
+        alert("Tutor Data Updated");
+      } catch (error) {
+        console.log("Update Error", error);
+      }
+      // console.log("Interview Verdict", tutor);
+      // console.log("Interview Data", form);
     },
 
-    tutorContractSubmit() {
-      const tutor = this.selectedTutor();
+    async awardContract() {
+      try {
+        const tutor = this.selectedTutor.email;
+        const contract = this.tutorContract;
+        const contractRef = doc(db, "Tutor Applications", tutor);
+
+        const docSnap = await getDoc(contractRef);
+        let existingContracts = [];
+        if (docSnap.exists()) {
+          existingContracts = docSnap.data().contracts || [];
+        }
+
+        existingContracts.push(contract);
+
+        await setDoc(
+          contractRef,
+          {
+            contracts: existingContracts,
+          },
+          { merge: true }
+        );
+        console.log("contract awarded", existingContracts);
+      } catch (error) {
+        console.log("Error Awarding Contract", error);
+      }
+    },
+
+    wideScreenBtn() {
+      this.wideScreen = !this.wideScreen;
     },
 
     exportCSV() {
@@ -3603,10 +3674,24 @@ export default {
 
   // beforeCreate() {},
   // beforeMount() {},
-  mounted() {
-    // this.tutorApplications;
-    // this.parentsData;
-    // this.message;
+  async mounted() {
+    const user = auth.currentUser;
+    const admin = adminState();
+    // firebaseUser.value = user;
+    onAuthStateChanged(auth, (user) => {
+      if (window !== undefined) {
+        if (user) {
+          // const uid = user.uid;
+          localStorage.setItem("lifelineAdmin", JSON.stringify(user));
+          // console.log("User Signed In Personal ", user);
+        } else {
+          localStorage.removeItem("lifelineAdmin");
+          // console.log("User Signed Out Personal", user);
+        }
+      }
+
+      admin.value = user;
+    });
   },
 
   computed: {

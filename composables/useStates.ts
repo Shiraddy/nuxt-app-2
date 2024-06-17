@@ -1,2 +1,2 @@
 export const useFirebaseUser = () => useState("firebaseUser", () => {});
-// export const storedUser = useState("firebaseUser", () => ({}));
+export const adminState = () => useState("lifelineAdmin", () => ({}));
