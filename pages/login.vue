@@ -140,7 +140,7 @@ export default {
             this.errorMessage = "Email is already in use";
             break;
           default:
-            this.errorMessage = "Incorrect Email or Password";
+            this.errorMessage = "Network Unavailable, try again";
             break;
         }
       }

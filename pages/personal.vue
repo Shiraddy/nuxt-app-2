@@ -16,10 +16,16 @@
                   alt=""
                 /> -->
 
-                <div class="">
-                  <h5 class="text-uppercase text-white mb-0 fs-6">
-                    {{ profile.lastName }} {{ profile.firstName }}
-                  </h5>
+                <div class="mt-lg-3">
+                  <Avatar
+                    label="LT"
+                    class="mr-2"
+                    size="xlarge"
+                    shape="circle"
+                  />
+                  <h1 class="text-uppercase text-white mb-0 fs-6">
+                    {{ fullName }}
+                  </h1>
                   <small class="mt-0 text-white d-6 fs-beauty">{{
                     profile.email
                   }}</small>
@@ -138,7 +144,7 @@
       </div>
 
       <!-- MAIN BODY AREA -->
-      <div class="col-lg-10 col-sm-12 co(offer, index)l-md-12">
+      <div class="col-lg-10 col-sm-12 col-md-12 (offer, index)">
         <div class="tutor-profile-banner">
           <nav class="d-none d-lg-block">
             <div class="container-fluid">
@@ -153,7 +159,7 @@
 
                 <p class="text-white">{{ currentTime }}</p>
 
-                <h6 class="text-white mt-1 me-2">
+                <h6 class="text-white mt-1 mx-2">
                   {{ profile.lastName }} {{ profile.firstName }}
                 </h6>
                 <i class="bi-sliders mx-1 text-white"></i>
@@ -184,24 +190,30 @@
 
               <div class="col-lg-4 col-12">
                 <div class="profit shadow-two bg-white text-primary">
-                  <h6>BONUS</h6>
-                  <h6><i class="bi-graph-up me-2"></i>Ghc 000.00</h6>
+                  <h6 class="">BONUS</h6>
+                  <h4 class="fw-bolder">
+                    <i class="bi-graph-up me-2"></i>Ghc 000.00
+                  </h4>
                 </div>
               </div>
 
               <div class="col-lg-4 col-12">
                 <div class="client shadow-two bg-white text-danger">
                   <h6>DEDUCTIONS</h6>
-                  <h6><i class="bi-graph-down me-2"></i>Ghc 000.00</h6>
+                  <h4 class="fw-bolder">
+                    <i class="bi-graph-down me-2"></i>Ghc 000.00
+                  </h4>
                 </div>
               </div>
 
               <div class="col-lg-4 col-12">
                 <div
-                  class="revenue shad(offer, index)ow-two bg-white text-success"
+                  class="revenue shadow-two(offer, index) bg-white text-success"
                 >
                   <h6>REMUNERATION</h6>
-                  <h6><i class="bi-receipt-cutoff me-2"></i>Ghc 000.00</h6>
+                  <h4 class="fw-bolder">
+                    <i class="bi-receipt-cutoff me-2"></i>Ghc 000.00
+                  </h4>
                 </div>
               </div>
             </div>
@@ -307,7 +319,7 @@
                     <div class="lifeline text-start" id="lesResource">
                       <div class="row my-3 py-2">
                         <div class="col-lg-6">
-                          <h5>Lifeline Tutor Repository</h5>
+                          <h4 class="mx-3 fw-bolder">Tutor Repository</h4>
                           <!-- <small>Download Lifeline's Resources</small> -->
                         </div>
                         <div class="col-lg-6 col-sm-12">
@@ -410,7 +422,9 @@
 
                     <!-- READING CLINIC -->
                     <section class="shadow-two my-lg-4 my-3">
-                      <h5 class="text-start pt-4">Reading Clinic</h5>
+                      <h4 class="text-start pt-4 mx-3 fw-bolder">
+                        Reading Clinic
+                      </h4>
                       <iframe
                         src="https://www.uniteforliteracy.com/"
                         class="shadow-two resource-frame"
@@ -752,6 +766,8 @@
               </div>
             </section>
 
+            
+
             <!-- TRAINING -->
             <section
               class="d-none d-lg-block px-5 py-3 shadow-two"
@@ -1056,7 +1072,10 @@ export default {
     },
   },
 
-  // created() {},
+  async created() {
+    await this.fetchNotice();
+    await this.getUserInfo();
+  },
 
   async mounted() {
     const user = auth.currentUser;
@@ -1067,18 +1086,15 @@ export default {
         if (user) {
           // const uid = user.uid;
           localStorage.setItem("firebaseUser", JSON.stringify(user));
-          console.log("User Signed In Personal ", user);
+          // console.log("User Signed In Personal ", user);
         } else {
           localStorage.removeItem("firebaseUser");
-          console.log("User Signed Out Personal", user);
+          // console.log("User Signed Out Personal", user);
         }
       }
 
       firebaseUser.value = user;
     });
-
-    await this.fetchNotice();
-    await this.getUserInfo();
 
     this.updateTime();
     setInterval(this.updateTime, 1000);

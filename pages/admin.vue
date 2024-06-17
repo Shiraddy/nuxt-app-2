@@ -2259,14 +2259,14 @@
                             <div class="text-start fw-bolder">
                               <label for="">Rating</label>
                             </div>
-                            <select class="apply-input" name="ratings">
-                              <option value="7">A+</option>
-                              <option value="6">A</option>
-                              <option value="5">B+</option>
-                              <option value="4">B</option>
-                              <option value="3">C+</option>
-                              <option value="2">C</option>
-                              <option value="1">D</option>
+                            <select class="apply-input" name="ratings" v-model="tutorUpdate.rating">
+                              <option value="A+">A+</option>
+                              <option value="A">A</option>
+                              <option value="B+">B+</option>
+                              <option value="B">B</option>
+                              <option value="C+">C+</option>
+                              <option value="C">C</option>
+                              <option value="D">D</option>
                             </select>
                           </template>
                         </Inplace>
@@ -2291,7 +2291,7 @@
                             <div class="text-start fw-bolder">
                               <label for="">Category</label>
                             </div>
-                            <select name="category" class="apply-input">
+                            <select name="category" class="apply-input" v-model="tutorUpdate.category">
                               <option value="tutor">Tutor</option>
                               <option value="applicant">Applicant</option>
                               <option value="pending">pending</option>
@@ -2320,10 +2320,10 @@
                             <div class="text-start fw-bolder">
                               <label for="">Type</label>
                             </div>
-                            <select class="apply-input">
+                            <select class="apply-input" v-model="tutorUpdate.qualification">
                               <option value="Graduate">Graduate</option>
-                              <option value="Undergraduate">Applicant</option>
-                              <option value="pending">pending</option>
+                              <option value="Undergraduate">UnderGraduate</option>
+                              <option value="other">Other</option>
                             </select>
                           </template>
                         </Inplace>
@@ -2331,7 +2331,7 @@
 
                       <div class="col-lg-12">
                         <div class="card my-3">
-                          <Editor v-model="value" editorStyle="height: 120px" />
+                          <Editor v-model="tutorUpdate.comment" editorStyle="height: 120px" />
                         </div>
                       </div>
 
@@ -2356,31 +2356,51 @@
                       <div class="col-lg-6">
                         <small>
                           <label for="parent">Parent</label>
-                          <input class="apply-input" type="text" />
+                          <input
+                            class="apply-input"
+                            type="text"
+                            v-model="tutorContract.parent"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Contact">Contact</label>
-                          <input class="apply-input" type="text" />
+                          <input
+                            class="apply-input"
+                            type="text"
+                            v-model="tutorContract.contact"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Student">Student</label>
-                          <input class="apply-input" type="text" />
+                          <input
+                            class="apply-input"
+                            type="text"
+                            v-model="tutorContract.student"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Class">Class</label>
-                          <input class="apply-input" type="text" />
+                          <input
+                            class="apply-input"
+                            type="text"
+                            v-model="tutorContract.class"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Remuneration">Remuneration</label>
-                          <input class="apply-input" type="number" />
+                          <input
+                            class="apply-input"
+                            type="number"
+                            v-model="tutorContract.pay"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
@@ -2394,25 +2414,50 @@
                           <label for="Sessions Per Week"
                             >Sessions Per Week</label
                           >
-                          <input class="apply-input" type="number" />
+                          <input
+                            class="apply-input"
+                            type="number"
+                            v-model="tutorContract.weeklySession"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Meeting Days">Meeting Days</label>
-                          <input class="apply-input" type="text" />
+                          <input
+                            class="apply-input"
+                            type="text"
+                            v-model="tutorContract.meetingDays"
+                          />
+                        </small>
+                      </div>
+                      <div class="col-lg-6">
+                        <small>
+                          <label for="Starting">Starting Date</label>
+                          <input
+                            class="apply-input"
+                            type="text"
+                            v-model="tutorContract.starting"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Period Length">Period Length</label>
-                          <input class="apply-input" type="number" />
+                          <input
+                            class="apply-input"
+                            type="number"
+                            v-model="tutorContract.periodLength"
+                          />
                         </small>
                       </div>
                       <div class="col-lg-6">
                         <small>
                           <label for="Status">Contract Status</label>
-                          <select name="" id="" class="apply-input">
+                          <select
+                            class="apply-input"
+                            v-model="tutorContract.status"
+                          >
                             <option value="to begin">To Begin</option>
                             <option value="active">Active</option>
                             <option value="paused">Paused</option>
@@ -2427,8 +2472,8 @@
                               >Tuition Objective(s):</label
                             >
                             <Editor
-                              v-model="value"
                               editorStyle="height: 120px"
+                              v-model="tutorContract.objectives"
                             />
                           </div>
                         </small>
@@ -2478,7 +2523,7 @@
                         <label for="">Contract Type:</label> <br />
                         <select
                           name="type"
-                          v-model.number="offer.weeklySession"
+                          v-model.number="offer.type"
                           class="form-control shadow-two"
                         >
                           <option disabled>Select offer</option>
@@ -3019,15 +3064,17 @@ export default {
       category: ["tutor", "applicant", "suspended", "terminated"],
       tutorContract: {
         parent: "",
-        parentContact: "",
+        contact: "",
         student: "",
         class: "",
         challenges: "",
         objectives: "",
         serverTimestamp: serverTimestamp(),
-        startingDate: "",
+        starting: "",
+        ended:"",
         status: "",
-        remuneration: 0,
+        pay: 0,
+        meetingDays: "",
         tutorRef: "",
         tutorContact: "",
         weeklySession: "",
@@ -3057,6 +3104,7 @@ export default {
         duration: 0,
         location: "",
         allowance: 0,
+        type: "",
       },
 
       notice: {
@@ -3111,8 +3159,15 @@ export default {
         const offer = this.offer;
         const offersRef = await addDoc(collection(db, "Offers"), offer);
         console.log("Document written with ID: ", offersRef.id);
-        offer.allowance = "";
-        offer.location = "";
+        this.offer.allowance = "";
+        this.offer.location = "";
+        this.offer.type = "";
+        this.offer.class = "";
+        this.offer.level = "";
+        this.offer.mode = "";
+        this.offer.duration = "";
+        this.offer.subjects = "";
+        this.offer.weeklySession = "";
       } catch (error) {
         console.log("Error Updating Notice", error);
       }
