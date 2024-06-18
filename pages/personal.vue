@@ -787,51 +787,83 @@
                   <div
                     class="col-lg-6 shadow-two bg-white py-3 container-fluid"
                   >
-                    <h4 class="my-lg-3">LOG SHEET</h4>
-                    <form class="row">
-                      <div class="col-lg-6">
+                    <h4 class="my-lg-3 fw-bolder text-secondary">LOG SHEET</h4>
+                    <form class="row my-3" @submit.prevent="submitLogSheet">
+                      <div class="col-lg-6 my-2">
                         <label class="label" for="">Student</label>
-                        <input class="apply-input" type="text" name="date" />
+                        <inputText
+                          class="apply-input"
+                          type="text"
+                          v-model="logSheet.student"
+                        />
                       </div>
 
-                      <div class="col-lg-6">
+                      <div class="col-lg-6 my-2">
                         <label class="label" for="">Month</label>
-                        <input class="apply-input" type="month" name="date" />
+                        <inputText
+                          class="apply-input"
+                          type="month"
+                          v-model="logSheet.month"
+                        />
                       </div>
 
-                      <div class="col-lg-6">
+                      <div class="col-lg-6 my-2">
                         <label class="label" for="">Expected Sessions</label>
-                        <input class="apply-input" type="number" name="date" />
+                        <inputText
+                          class="apply-input"
+                          type="number"
+                          v-model="logSheet.expected"
+                        />
                       </div>
 
-                      <div class="col-lg-6">
+                      <div class="col-lg-6 my-2">
                         <label class="label" for="">Total Sessions</label>
-                        <input class="apply-input" type="number" name="date" />
+                        <inputText
+                          class="apply-input"
+                          type="number"
+                          v-model="logSheet.total"
+                        />
                       </div>
 
-                      <input type="file" @change="onAdUpload" />
+                      <div class="col-lg-6 my-2">
+                        <label class="label" for="">Contact</label>
+                        <inputText
+                          class="apply-input"
+                          type="number"
+                          v-model="logSheet.contact"
+                        />
+                      </div>
+                      <div class="col-lg-6 my-2">
+                        <label class="label" for="">Momo No.(MTN Only)</label>
+                        <inputText
+                          class="apply-input"
+                          type="tel"
+                          v-model="logSheet.momo_number"
+                        />
+                      </div>
 
-                      <!-- <div class="">
+                      <div class="my-5">
+                        <input type="file" @change="onUpload" />
+                      </div>
+
+                      <div class="my-4">
                         <FileUpload
                           customUpload
-                          @change="onAdvancedUpload"
-                          :multiple="true"
-                          accept="image/*"
+                          @uploader="onUpload"
+                          :multiple="false"
                           :maxFileSize="1000000"
+                          invalidFileSizeMessage="File too big (Should be less than 1mb)"
+                          accept="image/*"
                         >
                           <template #empty>
                             <span>Drag and drop your Log Sheet to upload.</span>
                           </template>
                         </FileUpload>
-                      </div> -->
+                      </div>
+                      <button class="btn btn-success my-lg-4" type="submit">
+                        SUBMIT
+                      </button>
                     </form>
-                    <button
-                      class="btn btn-success my-lg-4"
-                      type="submit"
-                      @click="onAdvancedUpload"
-                    >
-                      SUBMIT
-                    </button>
                   </div>
                 </div>
               </div>
@@ -928,6 +960,7 @@ import {
   getDocs,
   doc,
   getDoc,
+  setDoc,
   deleteDoc,
   addDoc,
   query,
@@ -967,16 +1000,20 @@ export default {
       offers: [],
       contracts: [],
       profile: {},
+      logSheet: {
+        student: "",
+        month: "",
+        expected: "",
+        total: "",
+        imageUrl: "",
+        contact: "",
+        momo_number: "",
+      },
     };
   },
 
   methods: {
     async signingOut() {
-      // onAuthStateChanged(auth, (user) => {
-      //   if (!user) {
-      //     navigateTo("/login");
-      //   }
-      // });
       try {
         const router = useRouter();
         const auth = getAuth();
@@ -988,48 +1025,64 @@ export default {
       }
     },
 
-    // onAdvancedUpload(event) {
-    //   const file = event.target.files[0];
-    //   const user = auth.currentUser;
-    //   const storageRef = ref(storage, "Log Sheets/" + user.email);
+    async submitLogSheet() {
+      try {
+        const user = auth.currentUser;
+        const form = this.logSheet;
+        const tutor = user.email;
+        const student = this.logSheet.student;
+        const logSheetRef = doc(db, "Tutor Applications", tutor);
 
-    //   uploadBytes(storageRef, file)
-    //     .then((snapshot) => {
-    //       getDownloadURL(snapshot.ref)
-    //         .then((url) => {
-    //           console.log(url);
-    //           // this.formData.imageUrl = url;
-    //         })
-    //         .catch((error) => {
-    //           console.error("Error getting download URL:", error);
-    //         });
-    //       console.log("Uploaded a blob or file!");
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error uploading file:", error);
-    //     });
-    // },
+        const docSnap = await getDoc(logSheetRef);
+        let existingSheets = [];
+        if (docSnap.exists()) {
+          existingSheets = docSnap.data().logSheet || [];
+        }
 
-    
+        existingSheets.push(form);
+        await setDoc(
+          logSheetRef,
+          {
+            logSheet: existingSheets,
+          },
+          { merge: true }
+        );
+        console.log("Sheet Info Uploaded", existingSheets);
+        alert("Sheet Uploaded");
+      } catch (error) {
+        console.log("Error submitting LogSheet", error);
+      }
+    },
 
-    async handleFileUpload(event) {
-      const file = event.files[0];
+    onUpload(event) {
+      const file = event.target.files[0];
       const user = auth.currentUser;
+      const contact = this.profile.contact;
+      const student = this.logSheet.student;
+      const month = this.logSheet.month;
+      const fileName = student + "-" + month + "-";
+      console.log(file);
+
       const storageRef = ref(
         storage,
-        "Log Sheets/" + user.uid + "/" + file.name
+        "Log Sheets/" + user.email + "/" + month + "/" + fileName
       );
 
-      try {
-        const snapshot = await uploadBytes(storageRef, file);
-
-        const url = await getDownloadURL(snapshot.ref);
-        console.log("File uploaded successfully. Download URL:", url);
-
-        // Add additional logic here with the download URL
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
+      uploadBytes(storageRef, file)
+        .then((snapshot) => {
+          getDownloadURL(snapshot.ref)
+            .then((url) => {
+              console.log(url);
+              // this.formData.imageUrl = url;
+            })
+            .catch((error) => {
+              console.error("Error getting download URL:", error);
+            });
+          console.log("Uploaded a blob or file!");
+        })
+        .catch((error) => {
+          console.error("Error uploading file:", error);
+        });
     },
 
     async getUserInfo() {
