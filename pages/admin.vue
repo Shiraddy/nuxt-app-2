@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row view-height">
       <!-- SIDE BAR -->
-      <div :class="wideScreen ? 'd-none' : 'col-2'" class="shadow-two">
+      <div :class="wideScreen ? 'd-none' : 'col-lg-2'" class="shadow-two">
         <div class="mt-lg-2 side-bar">
           <!-- <img class="admin-pic" src="/images/Pic.png" alt="" /> -->
 

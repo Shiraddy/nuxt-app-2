@@ -189,6 +189,17 @@
               <h5 class="text-start fw-bolder py-1">MY DASHBOARD</h5>
 
               <div class="col-lg-4 col-12">
+                <div
+                  class="revenue shadow-two(offer, index) bg-white text-success"
+                >
+                  <h6>ALLOWANCE</h6>
+                  <h4 class="fw-bolder">
+                    <i class="bi-receipt-cutoff me-2"></i>Ghc {{ totalPay }}.00
+                  </h4>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-12">
                 <div class="profit shadow-two bg-white text-primary">
                   <h6 class="">BONUS</h6>
                   <h4 class="fw-bolder">
@@ -202,17 +213,6 @@
                   <h6>DEDUCTIONS</h6>
                   <h4 class="fw-bolder">
                     <i class="bi-graph-down me-2"></i>Ghc {{ penalty }}.00
-                  </h4>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-12">
-                <div
-                  class="revenue shadow-two(offer, index) bg-white text-success"
-                >
-                  <h6>ALLOWANCE</h6>
-                  <h4 class="fw-bolder">
-                    <i class="bi-receipt-cutoff me-2"></i>Ghc {{ totalPay }}.00
                   </h4>
                 </div>
               </div>
@@ -809,21 +809,21 @@
                         <input class="apply-input" type="number" name="date" />
                       </div>
 
-                      <div class="card">
-                        <!-- <Toast /> -->
+                      <input type="file" @change="onAdUpload" />
+
+                      <!-- <div class="">
                         <FileUpload
-                          name="demo[]"
-                          url="/api/upload"
-                          @upload="onAdvancedUpload($event)"
-                          :multiple="false"
+                          customUpload
+                          @change="onAdvancedUpload"
+                          :multiple="true"
                           accept="image/*"
                           :maxFileSize="1000000"
                         >
                           <template #empty>
-                            <span>Drag and drop files to here to upload.</span>
+                            <span>Drag and drop your Log Sheet to upload.</span>
                           </template>
                         </FileUpload>
-                      </div>
+                      </div> -->
                     </form>
                     <button
                       class="btn btn-success my-lg-4"
@@ -921,7 +921,7 @@ definePageMeta({
 
 import FileUpload from "primevue/fileupload";
 import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   getFirestore,
   collection,
@@ -988,35 +988,48 @@ export default {
       }
     },
 
-    onAdvancedUpload(event) {
-      // Get the uploaded file
-      const file = event.target.files[0];
+    // onAdvancedUpload(event) {
+    //   const file = event.target.files[0];
+    //   const user = auth.currentUser;
+    //   const storageRef = ref(storage, "Log Sheets/" + user.email);
 
-      // Initialize Firebase
-      // const storageRef = firebase.storage().ref();
-      const storageRef = ref(storage, ref());
-      const logSheetsRef = storageRef.child("Log Sheets/" + file.name);
+    //   uploadBytes(storageRef, file)
+    //     .then((snapshot) => {
+    //       getDownloadURL(snapshot.ref)
+    //         .then((url) => {
+    //           console.log(url);
+    //           // this.formData.imageUrl = url;
+    //         })
+    //         .catch((error) => {
+    //           console.error("Error getting download URL:", error);
+    //         });
+    //       console.log("Uploaded a blob or file!");
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error uploading file:", error);
+    //     });
+    // },
 
-      // Upload the file to Firebase storage
-      const uploadTask = logSheetsRef.put(file);
+    
 
-      uploadTask
-        .then((snapshot) => {
-          // Get the download URL of the uploaded file
-          logSheetsRef
-            .getDownloadURL()
-            .then((url) => {
-              // Add the URL to the form for submission to Firestore
-              console.log(url);
-              this.formData.imageUrl = url;
-            })
-            .catch((error) => {
-              console.error("Error getting download URL:", error);
-            });
-        })
-        .catch((error) => {
-          console.error("Error uploading file:", error);
-        });
+    async handleFileUpload(event) {
+      const file = event.files[0];
+      const user = auth.currentUser;
+      const storageRef = ref(
+        storage,
+        "Log Sheets/" + user.uid + "/" + file.name
+      );
+
+      try {
+        const snapshot = await uploadBytes(storageRef, file);
+
+        const url = await getDownloadURL(snapshot.ref);
+        console.log("File uploaded successfully. Download URL:", url);
+
+        // Add additional logic here with the download URL
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
     },
 
     async getUserInfo() {

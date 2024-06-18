@@ -143,16 +143,9 @@
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import Menu from "primevue/menu";
-import Hero from "@/components/Hero.vue";
-
 export default {
   name: "Practice Area",
-  components: {
-    NavBar,
-    Hero,
-  },
+
   data() {
     return (
       {
