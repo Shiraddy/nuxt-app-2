@@ -1,10 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div
-        class="col-lg-2 shadow-two col-sm-12 bg-success d-none d-lg-block"
-        id=""
-      >
+      <div class="col-lg-2 shadow-two bg-success d-none d-lg-block">
         <!-- SIDE BAR -->
         <div class="side-bar">
           <div class="d-flex justify-content-start">
@@ -144,7 +141,7 @@
       </div>
 
       <!-- MAIN BODY AREA -->
-      <div class="col-lg-10 col-sm-12 col-md-12 (offer, index)">
+      <div class="col-lg-10 col-sm-12 col-md-12">
         <div class="tutor-profile-banner">
           <nav class="d-none d-lg-block">
             <div class="container-fluid">
@@ -842,15 +839,29 @@
                         />
                       </div>
 
-                      <div class="my-5">
+                      <!-- <div class="my-5">
                         <input type="file" @change="onUpload" />
+                      </div> -->
+                      <div class="my-3 card">
+                        <h4>Image Preview Sheet</h4>
+                        <img
+                          :src="logSheet.imageUrl"
+                          alt="Uploaded Sheet Preview"
+                          :width="300"
+                        />
                       </div>
 
-                      <div class="my-4">
+                      <div class="my-3">
                         <FileUpload
                           customUpload
-                          @uploader="onUpload"
                           :multiple="false"
+                          :mode="advanced"
+                          @uploader="onPrimevueUpload"
+                          filelimit="1"
+                          :auto="true"
+                          :showCancelButton="false"
+                          :showUploadButton="false"
+                          previewWidth="150"
                           :maxFileSize="1000000"
                           invalidFileSizeMessage="File too big (Should be less than 1mb)"
                           accept="image/*"
@@ -859,10 +870,13 @@
                             <span>Drag and drop your Log Sheet to upload.</span>
                           </template>
                         </FileUpload>
+                        <button class="btn btn-danger px-3 mx-3" type="reset">
+                          RESET
+                        </button>
+                        <button class="btn btn-success my-lg-4" type="submit">
+                          SUBMIT
+                        </button>
                       </div>
-                      <button class="btn btn-success my-lg-4" type="submit">
-                        SUBMIT
-                      </button>
                     </form>
                   </div>
                 </div>
@@ -1005,7 +1019,7 @@ export default {
         month: "",
         expected: "",
         total: "",
-        imageUrl: "",
+        imageUrl: null,
         contact: "",
         momo_number: "",
       },
@@ -1083,6 +1097,29 @@ export default {
         .catch((error) => {
           console.error("Error uploading file:", error);
         });
+    },
+
+    async onPrimevueUpload(event) {
+      const file = event.files[0];
+      const user = auth.currentUser;
+      const contact = this.profile.contact;
+      const student = this.logSheet.student;
+      const month = this.logSheet.month;
+      const fileName = student + "-" + month;
+      const storageRef = ref(
+        storage,
+        "Log Sheets/" + user.email + "/" + month + "/" + fileName
+      );
+
+      try {
+        const snapshot = await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(snapshot.ref);
+        console.log(url);
+        this.logSheet.imageUrl = url;
+        console.log("File uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
     },
 
     async getUserInfo() {

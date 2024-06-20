@@ -49,7 +49,7 @@ export default defineNuxtConfig({
     restoreState: true,
   },
 
-  devtools: { enabled: true, vscode: {} },
+  // devtools: { enabled: true, vscode: {} },
 
   modules: [
     "nuxt-primevue",
