@@ -176,19 +176,14 @@
           </div>
         </div>
 
-        <div class="admin-body mt-lg-3">
+        <div class="container-fluid">
           <!-- DASHBOARD -->
-          <section
-            class="row shadow-two rounded bg-white profile my-lg-4"
-            id="dashboard"
-          >
+          <section class="row shadow-two rounded profile my-lg-2">
             <div class="col-lg-12 col-sm-12 py-3 row">
               <h5 class="text-start fw-bolder py-1">MY DASHBOARD</h5>
 
               <div class="col-lg-4 col-12">
-                <div
-                  class="revenue shadow-two(offer, index) bg-white text-success"
-                >
+                <div class="revenue shadow-two bg-white text-success">
                   <h6>ALLOWANCE</h6>
                   <h4 class="fw-bolder">
                     <i class="bi-receipt-cutoff me-2"></i>Ghc {{ totalPay }}.00
@@ -279,7 +274,7 @@
             </section>
 
             <!-- RESOURCE CENTRE -->
-            <section id="resourceCentre" class="col-lg-12 mt-5 mt-lg-2">
+            <section class="col-lg-12 mt-5 mt-lg-2">
               <!-- <h4>Resource Centre</h4> -->
               <div class="section shadow-two">
                 <!-- LIFELINE -->
@@ -635,7 +630,7 @@
 
             <!-- CONTRACTS -->
 
-            <section id="offers" class="col-lg-12 shadow-two">
+            <section class="col-lg-12 shadow-two">
               <div class="section">
                 <a class="navbar-brand pt-3" href="#">Lifeline Offers</a>
                 <div class="row">
@@ -667,7 +662,7 @@
             </section>
 
             <!-- FORMS -->
-            <section id="tutorForms" class="col-lg-12 shadow-two my-3">
+            <section class="col-lg-12 shadow-two my-3">
               <!-- SWITCH BTN -->
               <div class="btn-group my-4" role="group">
                 <button
@@ -778,109 +773,115 @@
               </div>
 
               <!-- LOG SHEET -->
-              <div id="logsheet" class="px-5 py-3" v-if="logSheet">
-                <div class="row shadow-two">
-                  <div class="col-lg-6 d-none d-lg-block"></div>
-                  <div
-                    class="col-lg-6 shadow-two bg-white py-3 container-fluid"
-                  >
-                    <h4 class="my-lg-3 fw-bolder text-secondary">LOG SHEET</h4>
-                    <form class="row my-3" @submit.prevent="submitLogSheet">
-                      <div class="col-lg-6 my-2">
-                        <label class="label" for="">Student</label>
-                        <inputText
-                          class="apply-input"
-                          type="text"
-                          v-model="logSheet.student"
-                        />
-                      </div>
+              <KeepAlive>
+                <div class="px-5 py-2" v-if="logSheet">
+                  <div class="row shadow-two">
+                    <div class="col-lg-6 d-none d-lg-block"></div>
+                    <div
+                      class="col-lg-6 shadow-two bg-white py-2 container-fluid"
+                    >
+                      <h4 class="my-lg-3 fw-bolder text-secondary">
+                        LOG SHEET
+                      </h4>
+                      <form class="row my-3" @submit.prevent="submitLogSheet">
+                        <div class="col-lg-6 my-2">
+                          <label class="label" for="">Student</label>
+                          <inputText
+                            class="apply-input"
+                            type="text"
+                            v-model="logSheet.student"
+                          />
+                        </div>
 
-                      <div class="col-lg-6 my-2">
-                        <label class="label" for="">Month</label>
-                        <inputText
-                          class="apply-input"
-                          type="month"
-                          v-model="logSheet.month"
-                        />
-                      </div>
+                        <div class="col-lg-6 my-2">
+                          <label class="label" for="">Month</label>
+                          <inputText
+                            class="apply-input"
+                            type="month"
+                            v-model="logSheet.month"
+                          />
+                        </div>
 
-                      <div class="col-lg-6 my-2">
-                        <label class="label" for="">Expected Sessions</label>
-                        <inputText
-                          class="apply-input"
-                          type="number"
-                          v-model="logSheet.expected"
-                        />
-                      </div>
+                        <div class="col-lg-6 my-2">
+                          <label class="label" for="">Expected Sessions</label>
+                          <inputText
+                            class="apply-input"
+                            type="number"
+                            v-model="logSheet.expected"
+                          />
+                        </div>
 
-                      <div class="col-lg-6 my-2">
-                        <label class="label" for="">Total Sessions</label>
-                        <inputText
-                          class="apply-input"
-                          type="number"
-                          v-model="logSheet.total"
-                        />
-                      </div>
+                        <div class="col-lg-6 my-2">
+                          <label class="label" for="">Total Sessions</label>
+                          <inputText
+                            class="apply-input"
+                            type="number"
+                            v-model="logSheet.total"
+                          />
+                        </div>
 
-                      <div class="col-lg-6 my-2">
-                        <label class="label" for="">Contact</label>
-                        <inputText
-                          class="apply-input"
-                          type="number"
-                          v-model="logSheet.contact"
-                        />
-                      </div>
-                      <div class="col-lg-6 my-2">
-                        <label class="label" for="">Momo No.(MTN Only)</label>
-                        <inputText
-                          class="apply-input"
-                          type="tel"
-                          v-model="logSheet.momo_number"
-                        />
-                      </div>
+                        <div class="col-lg-6 my-2">
+                          <label class="label" for="">Contact</label>
+                          <inputText
+                            class="apply-input"
+                            type="number"
+                            v-model="logSheet.contact"
+                          />
+                        </div>
+                        <div class="col-lg-6 my-2">
+                          <label class="label" for="">Momo No.(MTN Only)</label>
+                          <inputText
+                            class="apply-input"
+                            type="tel"
+                            v-model="logSheet.momo_number"
+                          />
+                        </div>
 
-                      <!-- <div class="my-5">
+                        <!-- <div class="my-5">
                         <input type="file" @change="onUpload" />
                       </div> -->
-                      <div class="my-3 card">
-                        <h4>Image Preview Sheet</h4>
-                        <img
-                          :src="logSheet.imageUrl"
-                          alt="Uploaded Sheet Preview"
-                          :width="300"
-                        />
-                      </div>
+                        <div class="my-2 card">
+                          <h5>Image Preview Sheet</h5>
+                          <img
+                            :src="logSheet.imageUrl"
+                            alt="Uploaded Sheet Preview"
+                            :width="300"
+                          />
+                        </div>
 
-                      <div class="my-3">
-                        <FileUpload
-                          customUpload
-                          :multiple="false"
-                          :mode="advanced"
-                          @uploader="onPrimevueUpload"
-                          filelimit="1"
-                          :auto="true"
-                          :showCancelButton="false"
-                          :showUploadButton="false"
-                          previewWidth="150"
-                          :maxFileSize="1000000"
-                          invalidFileSizeMessage="File too big (Should be less than 1mb)"
-                          accept="image/*"
-                        >
-                          <template #empty>
-                            <span>Drag and drop your Log Sheet to upload.</span>
-                          </template>
-                        </FileUpload>
-                        <button class="btn btn-danger px-3 mx-3" type="reset">
-                          RESET
-                        </button>
-                        <button class="btn btn-success my-lg-4" type="submit">
-                          SUBMIT
-                        </button>
-                      </div>
-                    </form>
+                        <div class="my-1">
+                          <FileUpload
+                            customUpload
+                            :multiple="false"
+                            mode="basic"
+                            @uploader="onPrimevueUpload"
+                            filelimit="1"
+                            :auto="true"
+                            :showCancelButton="false"
+                            :showUploadButton="false"
+                            previewWidth="150"
+                            :maxFileSize="1000000"
+                            invalidFileSizeMessage="File too big (Should be less than 1mb)"
+                            accept="image/*"
+                          >
+                            <template #empty>
+                              <span
+                                >Drag and drop your Log Sheet to upload.</span
+                              >
+                            </template>
+                          </FileUpload>
+                          <button class="btn btn-danger px-3 mx-3" type="reset">
+                            RESET
+                          </button>
+                          <button class="btn btn-success my-lg-4" type="submit">
+                            SUBMIT
+                          </button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </KeepAlive>
             </section>
 
             <!-- TRAINING -->
@@ -1062,7 +1063,14 @@ export default {
           { merge: true }
         );
         console.log("Sheet Info Uploaded", existingSheets);
-        alert("Sheet Uploaded");
+        alert("Log Sheet Uploaded");
+        this.logSheet.student = "";
+        this.logSheet.contact = "";
+        this.logSheet.expected = "";
+        this.logSheet.total = "";
+        this.logSheet.imageUrl = "";
+        this.logSheet.momo_number = "";
+        this.logSheet.month = "";
       } catch (error) {
         console.log("Error submitting LogSheet", error);
       }
