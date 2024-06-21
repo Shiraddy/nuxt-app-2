@@ -178,7 +178,7 @@
 
         <div class="container-fluid">
           <!-- DASHBOARD -->
-          <section class="row shadow-two rounded profile my-lg-2">
+          <section class="row shadow-two rounded profile">
             <div class="col-lg-12 col-sm-12 py-3 row">
               <h5 class="text-start fw-bolder py-1">MY DASHBOARD</h5>
 
@@ -273,42 +273,86 @@
               </div>
             </section>
 
+            <!-- TUTOR CONTRACTS -->
+            <section class="my-lg-4 my-3">
+              <h4 class="text-start pt-4 mx-3 fw-bolder">Tutor contracts</h4>
+              <DataTable
+                :value="profile.contracts"
+                sortMode="multiple"
+                showGridlines
+                removableSort
+                paginator
+                :rows="5"
+                :rowsPerPageOptions="[5, 10, 20, 50]"
+                tableStyle="min-width: 50rem"
+                class="shadow-one"
+              >
+                <Column
+                  field="parent"
+                  header="Parent"
+                  sortable
+                  style="width: 20%"
+                ></Column>
+                <Column
+                  field="student"
+                  header="Student"
+                  sortable
+                  style="width: 25%"
+                ></Column>
+                <Column
+                  field="class"
+                  header="Class"
+                  sortable
+                  style="width: 5%"
+                ></Column>
+                <Column
+                  field="status"
+                  header="Status"
+                  sortable
+                  style="width: 5%"
+                ></Column>
+                <Column
+                  field="weeklySession"
+                  header="Session"
+                  sortable
+                  style="width: 5%"
+                ></Column>
+                <Column
+                  field="contact"
+                  header="Contact"
+                  style="width: 10%"
+                ></Column>
+                <Column
+                  field="pay"
+                  header="Pay"
+                  sortable
+                  style="width: 5%"
+                ></Column>
+                <Column
+                  field="deduction"
+                  header="Penalty"
+                  sortable
+                  style="width: 5%"
+                ></Column>
+                <Column
+                  field="consideration"
+                  header="Bonus"
+                  sortable
+                  style="width: 5%"
+                ></Column>
+              </DataTable>
+            </section>
+
             <!-- RESOURCE CENTRE -->
             <section class="col-lg-12 mt-5 mt-lg-2">
               <!-- <h4>Resource Centre</h4> -->
-              <div class="section shadow-two">
+              <div class="section bg-white shadow-one">
                 <!-- LIFELINE -->
                 <a class="navbar-brand" href="#">Resource Centre</a>
 
                 <div class="row">
-                  <!-- <div class="col-lg-12 row my-5">
-              <div class="col">
-                <div class="res hover" id="lBtn">
-                  <img class="image-link" src="/images/logo.png" alt="" />
-                  <div class="card-title">LIFELINE RESOURCE</div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="res hover" id="gBtn">
-                  <img class="image-link" src="/images/ges.png" alt="" />
-                  <div class="card-title">G.E.S RESOURCE</div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="res hover" id="tBtn">
-                  <img class="image-link" src="/images/res.png" alt="" />
-                  <div class="card-title">TUTOR RESOURCE</div>
-                </div>
-              </div>
-
-            </div> -->
-
-                  <!-- <div class="col"><i class="fa-regular fa-file-pdf"></i></div>
-            <div class="col"><i class="fa-regular fa-file-pdf"></i></div>
-            <div class="col"><i class="fa-solid fa-file-pdf"></i></div> -->
                   <div class="col-12">
-                    <div class="lifeline text-start" id="lesResource">
+                    <div class="lifeline text-start">
                       <div class="row my-3 py-2">
                         <div class="col-lg-6">
                           <h4 class="mx-3 fw-bolder">Tutor Repository</h4>
@@ -320,180 +364,106 @@
                               class="form-control me-2 shadow-one"
                               type="search"
                               placeholder="Search"
-                              aria-label="Search"
-                              id="lesResSearch"
                             />
                           </form>
                         </div>
-                        <div class="col-lg-12 col-sm-12 my-2">
-                          <button type="button" class="btn btn-outline-primary">
-                            Lifeline Repository
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-outline-secondary"
-                          >
-                            Reading Clinic
-                          </button>
-                          <button type="button" class="btn btn-outline-success">
-                            G.E.S Repository
-                          </button>
-                        </div>
                       </div>
 
-                      <table
-                        class="table table-sm table-bordered border-primary table-hover resource"
-                      >
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Download</th>
-                          </tr>
-                        </thead>
+                      <TabView>
+                        <TabPanel header="Lifeline">
+                          <table
+                            class="table table-sm table-bordered border-primary table-hover resource"
+                          >
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Download</th>
+                              </tr>
+                            </thead>
 
-                        <tbody class="table-group-divider" id="lesResCentre">
-                          <tr>
-                            <td>1</td>
-                            <td>Log Sheet</td>
-                            <td>This is used to record tutor attendance.</td>
-                            <td>
-                              <a
-                                class="btn btn-danger"
-                                href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLog%20sheet.pdf?alt=media&token=a1a2927c-c086-4f20-8930-808a782794bb"
-                                id="download"
-                                ><i class="fa fa-download"></i
-                              ></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Code of Conduct</td>
-                            <td>This documents spells out our rules.</td>
-                            <td>
-                              <a
-                                class="btn btn-danger"
-                                href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLifeline's%20Tutor%20Code%20of%20Conduct.pdf?alt=media&token=17cbb614-401f-495f-9311-8b4aa8076a6e"
-                                id="download"
-                                ><i class="fa fa-download"></i
-                              ></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Tutor's Handbook</td>
-                            <td>
-                              This document will help you become a better tutor.
-                            </td>
-                            <td>
-                              <a class="btn btn-danger" href="#" id="download"
-                                ><i class="fa fa-download"></i
-                              ></a>
-                            </td>
-                          </tr>
+                            <tbody
+                              class="table-group-divider"
+                              id="lesResCentre"
+                            >
+                              <tr>
+                                <td>1</td>
+                                <td>Log Sheet</td>
+                                <td>
+                                  This is used to record tutor attendance.
+                                </td>
+                                <td>
+                                  <a
+                                    class="btn btn-danger"
+                                    href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLog%20sheet.pdf?alt=media&token=a1a2927c-c086-4f20-8930-808a782794bb"
+                                    id="download"
+                                    ><i class="fa fa-download"></i
+                                  ></a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>Code of Conduct</td>
+                                <td>This documents spells out our rules.</td>
+                                <td>
+                                  <a
+                                    class="btn btn-danger"
+                                    href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLifeline's%20Tutor%20Code%20of%20Conduct.pdf?alt=media&token=17cbb614-401f-495f-9311-8b4aa8076a6e"
+                                    id="download"
+                                    ><i class="fa fa-download"></i
+                                  ></a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>Tutor's Handbook</td>
+                                <td>
+                                  This document will help you become a better
+                                  tutor.
+                                </td>
+                                <td>
+                                  <a
+                                    class="btn btn-danger"
+                                    href="#"
+                                    id="download"
+                                    ><i class="fa fa-download"></i
+                                  ></a>
+                                </td>
+                              </tr>
 
-                          <tr>
-                            <td>3</td>
-                            <td>Phonics</td>
-                            <td>
-                              Learn the sounds of letters, blending and more.
-                            </td>
-                            <td>
-                              <a
-                                class="btn btn-danger"
-                                href="https://www.readingbear.org/"
-                                target="framename"
-                                ><i class="fa fa-download"></i
-                              ></a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                              <tr>
+                                <td>3</td>
+                                <td>Phonics</td>
+                                <td>
+                                  Learn the sounds of letters, blending and
+                                  more.
+                                </td>
+                                <td>
+                                  <a
+                                    class="btn btn-danger"
+                                    href="https://www.readingbear.org/"
+                                    target="framename"
+                                    ><i class="fa fa-download"></i
+                                  ></a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </TabPanel>
+                        <TabPanel header="Linked">
+                          <!-- READING CLINIC -->
+                          <section class="shadow-two">
+                            <iframe
+                              src="https://www.uniteforliteracy.com/"
+                              class="shadow-two resource-frame"
+                              frameborder="0"
+                            ></iframe>
+                          </section>
+                        </TabPanel>
+                        <TabPanel header="G.E.S"></TabPanel>
+                      </TabView>
                     </div>
-
-                    <!-- READING CLINIC -->
-                    <section class="shadow-two my-lg-4 my-3">
-                      <h4 class="text-start pt-4 mx-3 fw-bolder">
-                        Reading Clinic
-                      </h4>
-                      <iframe
-                        src="https://www.uniteforliteracy.com/"
-                        class="shadow-two resource-frame"
-                        frameborder="0"
-                      ></iframe>
-                    </section>
-
-                    <!-- TUTOR CONTRACTS -->
-                    <section class="shadow-two my-lg-4 my-3">
-                      <h4 class="text-start pt-4 mx-3 fw-bolder">
-                        Tutor contracts
-                      </h4>
-                      <DataTable
-                        :value="profile.contracts"
-                        sortMode="multiple"
-                        showGridlines
-                        removableSort
-                        paginator
-                        :rows="5"
-                        :rowsPerPageOptions="[5, 10, 20, 50]"
-                        tableStyle="min-width: 50rem"
-                      >
-                        <Column
-                          field="parent"
-                          header="Parent"
-                          sortable
-                          style="width: 20%"
-                        ></Column>
-                        <Column
-                          field="student"
-                          header="Student"
-                          sortable
-                          style="width: 25%"
-                        ></Column>
-                        <Column
-                          field="class"
-                          header="Class"
-                          sortable
-                          style="width: 5%"
-                        ></Column>
-                        <Column
-                          field="status"
-                          header="Status"
-                          sortable
-                          style="width: 5%"
-                        ></Column>
-                        <Column
-                          field="weeklySession"
-                          header="Session"
-                          sortable
-                          style="width: 5%"
-                        ></Column>
-                        <Column
-                          field="contact"
-                          header="Contact"
-                          style="width: 10%"
-                        ></Column>
-                        <Column
-                          field="pay"
-                          header="Pay"
-                          sortable
-                          style="width: 5%"
-                        ></Column>
-                        <Column
-                          field="deduction"
-                          header="Penalty"
-                          sortable
-                          style="width: 5%"
-                        ></Column>
-                        <Column
-                          field="consideration"
-                          header="Bonus"
-                          sortable
-                          style="width: 5%"
-                        ></Column>
-                      </DataTable>
-                    </section>
 
                     <!-- GES DATA TABLE -->
                     <template>
@@ -774,17 +744,15 @@
 
               <!-- LOG SHEET -->
               <KeepAlive>
-                <div class="px-5 py-2" v-if="logSheet">
+                <div class="px-lg-5 py-4" v-if="logSheet">
                   <div class="row shadow-two">
                     <div class="col-lg-6 d-none d-lg-block"></div>
-                    <div
-                      class="col-lg-6 shadow-two bg-white py-2 container-fluid"
-                    >
+                    <div class="col-lg-6 shadow-two bg-white py-2 container">
                       <h4 class="my-lg-3 fw-bolder text-secondary">
                         LOG SHEET
                       </h4>
                       <form class="row my-3" @submit.prevent="submitLogSheet">
-                        <div class="col-lg-6 my-2">
+                        <div class="col-lg-6 my-lg-2">
                           <label class="label" for="">Student</label>
                           <inputText
                             class="apply-input"
@@ -793,7 +761,7 @@
                           />
                         </div>
 
-                        <div class="col-lg-6 my-2">
+                        <div class="col-lg-6 my-lg-2">
                           <label class="label" for="">Month</label>
                           <inputText
                             class="apply-input"
@@ -802,7 +770,7 @@
                           />
                         </div>
 
-                        <div class="col-lg-6 my-2">
+                        <div class="col-lg-6 my-lg-2">
                           <label class="label" for="">Expected Sessions</label>
                           <inputText
                             class="apply-input"
@@ -811,7 +779,7 @@
                           />
                         </div>
 
-                        <div class="col-lg-6 my-2">
+                        <div class="col-lg-6 my-lg-2">
                           <label class="label" for="">Total Sessions</label>
                           <inputText
                             class="apply-input"
@@ -820,22 +788,22 @@
                           />
                         </div>
 
-                        <div class="col-lg-6 my-2">
+                        <!-- <div class="col-lg-6 my-lg-2">
                           <label class="label" for="">Contact</label>
                           <inputText
                             class="apply-input"
                             type="number"
                             v-model="logSheet.contact"
                           />
-                        </div>
-                        <div class="col-lg-6 my-2">
+                        </div> -->
+                        <!-- <div class="col-lg-6 my-lg-2">
                           <label class="label" for="">Momo No.(MTN Only)</label>
                           <inputText
                             class="apply-input"
                             type="tel"
                             v-model="logSheet.momo_number"
                           />
-                        </div>
+                        </div> -->
 
                         <!-- <div class="my-5">
                         <input type="file" @change="onUpload" />
@@ -849,27 +817,26 @@
                           />
                         </div>
 
-                        <div class="my-1">
-                          <FileUpload
-                            customUpload
-                            :multiple="false"
-                            mode="basic"
-                            @uploader="onPrimevueUpload"
-                            filelimit="1"
-                            :auto="true"
-                            :showCancelButton="false"
-                            :showUploadButton="false"
-                            previewWidth="150"
-                            :maxFileSize="1000000"
-                            invalidFileSizeMessage="File too big (Should be less than 1mb)"
-                            accept="image/*"
-                          >
-                            <template #empty>
-                              <span
-                                >Drag and drop your Log Sheet to upload.</span
-                              >
-                            </template>
-                          </FileUpload>
+                        <FileUpload
+                          customUpload
+                          :multiple="false"
+                          mode="basic"
+                          @uploader="onPrimevueUpload"
+                          filelimit="1"
+                          :auto="true"
+                          :showCancelButton="false"
+                          :showUploadButton="false"
+                          previewWidth="150"
+                          :maxFileSize="1000000"
+                          invalidFileSizeMessage="File too big (Should be less than 1mb)"
+                          accept="image/*"
+                        >
+                          <template #empty>
+                            <span>Drag and drop your Log Sheet to upload.</span>
+                          </template>
+                        </FileUpload>
+
+                        <div class="my-3">
                           <button class="btn btn-danger px-3 mx-3" type="reset">
                             RESET
                           </button>

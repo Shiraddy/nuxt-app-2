@@ -27,6 +27,38 @@
   </section>
 
   <div class="container-sm py-3 services">
+    <section v-if="consultancyForm">
+      <div class="container-sm">
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="">Name of School/Organization</label> <br />
+            <InputText type="text" v-model="value" />
+          </div>
+          <div class="col-lg-6">
+            <label for="Email">Email</label> <br />
+            <InputText type="text" v-model="value" />
+          </div>
+          <div class="col-lg-6">
+            <label for="contact">Contact</label> <br />
+            <InputText type="text" v-model="value" />
+          </div>
+          <div class="col-lg-6">
+            <label for="position"> Designation/Position</label>
+            <InputText type="text" v-model="value" />
+          </div>
+
+          <div class="col-lg-6">
+            <label for="Address">Address</label>
+            <InputText type="text" v-model="value" />
+          </div>
+
+          <div class="col-12">
+            <Editor v-model="value" editorStyle="height: 300px" />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section>
       <h2 class="fs-2 pt-2 mb-0 fw-bolder">EDUCATIONAL CONSULTANCY</h2>
       <h5 class="text-dark-emphasis mt-0">
