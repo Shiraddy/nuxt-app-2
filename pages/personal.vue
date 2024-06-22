@@ -102,22 +102,22 @@
               </li>
 
               <li class="nav-item">
-                <a class="link-user" href="#resourceCentre"
+                <a class="link-user" href="#profile"
                   ><i class="bi-collection me-2"></i>PROFILE</a
                 >
               </li>
 
               <li class="nav-item">
-                <a class="link-user" href="#resourceCentre"
+                <a class="link-user" href="#resource"
                   ><i class="bi-collection me-2"></i>RESOURCES</a
                 >
               </li>
 
-              <!-- <li class="nav-item">
-            <a class="link-user" href="#training"
-              ><i class="fa fa-laptop me-2"></i>TRAINING</a
-            >
-          </li> -->
+              <li class="nav-item">
+                <a class="link-user" href="#training"
+                  ><i class="fa fa-laptop me-2"></i>TRAINING</a
+                >
+              </li>
 
               <li class="nav-item">
                 <a class="link-user" href="#offers"
@@ -126,7 +126,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="link-user" href="#tutorForms"
+                <a class="link-user" href="#forms"
                   ><i class="bi-clipboard-data me-2"></i>SUBMIT FORMS</a
                 >
               </li>
@@ -141,7 +141,7 @@
       </div>
 
       <!-- MAIN BODY AREA -->
-      <div class="col-lg-10 col-sm-12 col-md-12">
+      <div class="col-lg-10 col-12">
         <div class="tutor-profile-banner">
           <nav class="d-none d-lg-block">
             <div class="container-fluid">
@@ -176,7 +176,7 @@
           </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="dashboard">
           <!-- DASHBOARD -->
           <section class="row shadow-two rounded profile">
             <div class="col-lg-12 col-sm-12 py-3 row">
@@ -219,7 +219,9 @@
                   <div id="noticeBoard">
                     <div v-if="getCurrentNote">
                       <h5 class="fw-bolder">{{ getCurrentNote.title }}</h5>
-                      <p class="mx-3">{{ getCurrentNote.message }}</p>
+                      <p class="mx-3 user-select-none">
+                        {{ getCurrentNote.message }}
+                      </p>
                       <div class="text-end">
                         <small>{{ getCurrentNote.Date_Issued }}</small>
                       </div>
@@ -246,7 +248,7 @@
               </div>
 
               <!-- PROFILE -->
-              <div class="col-lg-4">
+              <div class="col-lg-4" id="profile">
                 <div class="quote shadow-two text-start my-lg-1 my-3">
                   <h4 class="fw-bolder mt-2">My Profile</h4>
                   <div class="col mt-4">
@@ -274,7 +276,7 @@
             </section>
 
             <!-- TUTOR CONTRACTS -->
-            <section class="my-lg-4 my-3">
+            <section class="my-lg-4 my-3" id="contracts">
               <h4 class="text-start pt-4 mx-3 fw-bolder">Tutor contracts</h4>
               <DataTable
                 :value="profile.contracts"
@@ -344,13 +346,13 @@
             </section>
 
             <!-- RESOURCE CENTRE -->
-            <section class="col-lg-12 mt-5 mt-lg-2">
+            <section class="col-lg-12 mt-5 mt-lg-2" id="resource">
               <!-- <h4>Resource Centre</h4> -->
               <div class="section bg-white shadow-one">
                 <!-- LIFELINE -->
                 <a class="navbar-brand" href="#">Resource Centre</a>
 
-                <div class="row">
+                <div class="row object-fit-cover">
                   <div class="col-12">
                     <div class="lifeline text-start">
                       <div class="row my-3 py-2">
@@ -372,7 +374,7 @@
                       <TabView>
                         <TabPanel header="Lifeline">
                           <table
-                            class="table table-sm table-bordered border-primary table-hover resource"
+                            class="table table-sm border-primary table-hover resource"
                           >
                             <thead>
                               <tr>
@@ -390,7 +392,7 @@
                               <tr>
                                 <td>1</td>
                                 <td>Log Sheet</td>
-                                <td>
+                                <td class="">
                                   This is used to record tutor attendance.
                                 </td>
                                 <td>
@@ -598,41 +600,111 @@
               </div>
             </section>
 
-            <!-- CONTRACTS -->
+            <!-- OFFERS -->
 
-            <section class="col-lg-12 shadow-two">
+            <section class="col-lg-12 shadow-two" id="offers">
               <div class="section">
                 <a class="navbar-brand pt-3" href="#">Lifeline Offers</a>
-                <div class="row">
-                  <div class="col-lg-4 col-sm-6" v-for="offer in offers">
-                    <div class="card h-80 mb-3 hoverTutor rounded">
+                <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+                  <div
+                    class="col-lg-4 col-sm-6 gy-3 gx-4 overflow-hidden"
+                    v-for="offer in offers"
+                  >
+                    <div class="card h-80 mb-3 rounded">
                       <div class="card-header py-1">
-                        <h4>{{ offer.type }}</h4>
+                        <h4 class="fw-bolder text-secondary pt-1">
+                          {{ offer.type }}
+                        </h4>
                       </div>
                       <div class="card-body">
                         <p class="fs-6">MODE: {{ offer.mode }}</p>
                         <p>LEVEL: {{ offer.level }}</p>
                         <p>DURATION: {{ offer.duration }}</p>
                         <p>LOCATION: {{ offer.location }}</p>
-                        <h5>{{ offer.allowance }}</h5>
+                        <h5 class="fw-bolder">{{ offer.allowance }}</h5>
                         <div class="py-2 d-flex justify-content-between">
-                          <small class="text-end text-white shadow-two px-2">
-                            {{ offer.availability }}
+                          <small
+                            class="text-end shadow-three px-2 fw-bolder"
+                            :class="
+                              offer.available ? 'text-danger' : 'text-success'
+                            "
+                          >
+                            {{ offer.availability ? "Available" : "Awarded" }}
                           </small>
-                          <small class="text-white shadow-two px-2">
+                          <small
+                            class="shadow-three fw-bolder text-primary px-2"
+                          >
                             {{ offer.mode }}
                           </small>
                         </div>
-                        <button class="btn btn-primary">More Info</button>
+                        <!-- <small
+                          class="pi pi-info-circle text-primary fw-bolder fs-5 m-4"
+                          @click="offerInfo(offer)"
+                        >Info</small> -->
+
+                        <small
+                          class="pi pi-expand fw-bolder bg-success p-2 rounded fs-5 m-4"
+                          @click="offerInfo(offer)"
+                          ><span class="mx-1">Details</span></small
+                        >
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <Dialog
+                v-model:visible="offerInfoDialog"
+                modal
+                maximizable
+                draggable="true"
+                :pt="{
+                  root: 'border-none',
+                  mask: {
+                    style: 'backdrop-filter: blur(2px)',
+                  },
+                }"
+                header="Offer Application"
+                :style="{ width: '35vw' }"
+                :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
+              >
+                <span class="text-surface-500 dark:text-surface-400 block mb-8"
+                  >Offer Objectives</span
+                >
+                <pre>
+                  {{ selectedOffer }}
+                </pre>
+                <div class="text-start">
+                  <p>Level: {{ selectedOffer.level }}</p>
+                  <p>Class: {{ selectedOffer.class }}</p>
+                  <p>Location: {{ selectedOffer.location }}</p>
+                  <p>Subjects: {{ selectedOffer.subjects }}</p>
+                  <!-- <p>Subjects: {{ selectedOffer.subjects }}</p> -->
+                  <p>Subjects: {{ selectedOffer.objectives }}</p>
+                </div>
+
+                <!-- <div class="container-fluid">
+                  <Editor v-model="value" editorStyle="height: 300px" />
+                </div> -->
+
+                <div class="flex justify-end g-2 my-3">
+                  <Button
+                    type="button"
+                    label="Reset"
+                    class="mx-3"
+                    severity="secondary"
+                  ></Button>
+                  <Button
+                    type="button"
+                    label="Apply"
+                    @click="offerInfoDialog = false"
+                  ></Button>
+                </div>
+              </Dialog>
             </section>
 
             <!-- FORMS -->
-            <section class="col-lg-12 shadow-two my-3">
+            <section class="col-lg-12 shadow-two my-3" id="forms">
               <!-- SWITCH BTN -->
               <div class="btn-group my-4" role="group">
                 <button
@@ -744,7 +816,7 @@
 
               <!-- LOG SHEET -->
               <KeepAlive>
-                <div class="px-lg-5 py-4" v-if="logSheet">
+                <div class="px-lg-5 py-4 mx-2 mx-lg-3" v-if="logSheet">
                   <div class="row shadow-two">
                     <div class="col-lg-6 d-none d-lg-block"></div>
                     <div class="col-lg-6 shadow-two bg-white py-2 container">
@@ -787,23 +859,6 @@
                             v-model="logSheet.total"
                           />
                         </div>
-
-                        <!-- <div class="col-lg-6 my-lg-2">
-                          <label class="label" for="">Contact</label>
-                          <inputText
-                            class="apply-input"
-                            type="number"
-                            v-model="logSheet.contact"
-                          />
-                        </div> -->
-                        <!-- <div class="col-lg-6 my-lg-2">
-                          <label class="label" for="">Momo No.(MTN Only)</label>
-                          <inputText
-                            class="apply-input"
-                            type="tel"
-                            v-model="logSheet.momo_number"
-                          />
-                        </div> -->
 
                         <!-- <div class="my-5">
                         <input type="file" @change="onUpload" />
@@ -972,6 +1027,8 @@ export default {
     return {
       loggedIn: false,
       logSheet: true,
+      selectedOffer: null,
+      offerInfoDialog: false,
       currentTime: "",
       progressReport: false,
       prospectData: [],
@@ -1177,6 +1234,12 @@ export default {
     progressReportBtn() {
       this.progressReport = true;
       this.logSheet = false;
+    },
+
+    offerInfo(key) {
+      this.selectedOffer = key;
+      this.offerInfoDialog = true;
+      console.log(this.selectedOffer);
     },
 
     date() {

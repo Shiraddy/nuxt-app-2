@@ -1386,6 +1386,7 @@ export default {
         upper_primary: [],
         JHS: [],
         SHS: [],
+        logSheets: [],
         otherSubjects: "",
         profilePictureUrl: "",
         rating: "",

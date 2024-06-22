@@ -54,7 +54,7 @@
             <!-- <h2 class="text-center mb-4 choose-title">What We Do...</h2> -->
             <!-- Add your services content here -->
             <div class="row">
-              <div class="col-md-4 col-lg-4">
+              <div class="col-md-4 col-lg-4 order-1">
                 <div class="card myCard">
                   <div class="card-body">
                     <!-- <i class="fa-solid fa-book-open option-icon"></i> -->
@@ -63,7 +63,7 @@
                       alt=""
                       class="service-image"
                     />
-                    <h5 class="card-title">Test Preparation</h5>
+                    <h5 class="card-title fw-bolder">Test Preparation</h5>
                     <p class="card-text text-dark-emphasis">
                       We prepare students to write examinations.
                     </p>
@@ -81,7 +81,7 @@
                       alt=""
                       class="service-image"
                     />
-                    <h5 class="card-title">Subject Tutoring</h5>
+                    <h5 class="card-title fw-bolder">Subject Tutoring</h5>
                     <p class="card-text px-2 text-dark-emphasis">
                       We teach students in various academic subjects.
                     </p>
@@ -99,7 +99,7 @@
                       alt=""
                       class="service-image"
                     />
-                    <h5 class="card-title">Homework Help</h5>
+                    <h5 class="card-title fw-bolder">Homework Help</h5>
                     <p class="card-text text-dark-emphasis">
                       We guide students to do their homework.
                     </p>
@@ -140,7 +140,7 @@
                 <img
                   src="/images/tutor2.jpg"
                   alt=""
-                  class="consultantPic mt-4"
+                  class="consultantPic mt-4 img-fluid"
                 />
                 <small>Let's start learning now.</small>
               </div>

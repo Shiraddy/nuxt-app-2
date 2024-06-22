@@ -2544,7 +2544,7 @@
                 ><section class="shadow-two my-3 row">
                   <div class="col-lg-6 d-none d-lg-block pb-5 bg-success"></div>
                   <div class="col-lg-6 shadow-two bg-white row text-start">
-                    <form @submit.prevent="uploadOffer" class="row">
+                    <form @submit.prevent="uploadOffer" class="row row-g-">
                       <h4 class="my-lg-4 my-2">OFFER UPLOADS</h4>
                       <div class="col-lg-6">
                         <label for="">Contract Type:</label> <br />
@@ -2633,6 +2633,11 @@
                           v-model="offer.location"
                           placeholder="Location"
                         />
+                      </div>
+
+                      <div class="col-lg-12">
+                        <label for="">Objectives</label>
+                        <Editor v-model="value" editorStyle="height: 150px" />
                       </div>
 
                       <div class="col-lg-12">
@@ -3143,11 +3148,12 @@ export default {
         mode: "",
         level: "",
         class: "",
-        availability: "available",
+        availability: true,
         subjects: "",
         duration: 0,
         location: "",
         allowance: 0,
+        objectives: "",
         type: "",
       },
 

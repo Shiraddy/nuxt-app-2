@@ -800,14 +800,6 @@ hr {
 
 /***************TUTORS*****************/
 
-#profile {
-  margin: auto auto;
-}
-
-/* .profile {
-  background-color: #e5d4ff;
-} */
-
 .profile-pic {
   margin: 2rem;
   width: 50%;
@@ -1483,9 +1475,13 @@ hr {
   }
 
   .container-sm {
-    max-width: 99%;
+    max-width: 100%;
     margin: auto auto;
   }
+
+  /* .container-fluid {
+    width: 100%;
+  } */
 
   .services {
     position: relative;
@@ -1744,6 +1740,8 @@ hr {
 
   .tutor-profile-banner {
     height: 3.5%;
+    width: 100%;
+    background-size: fill;
   }
 
   .caro-item-about {
@@ -1829,6 +1827,7 @@ hr {
 
   .notice {
     padding: 2rem 0;
+    width: 100%;
   }
 
   .motivation {
