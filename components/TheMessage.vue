@@ -7,57 +7,56 @@
       <div class="col-lg-6 bg-white shadow-two">
         <h4 class="my-lg-4 my-3">CONTACT US</h4>
         <form @submit.prevent="contactForm" class="">
-          <div class="my-1">
+          <div class="">
             <label for="type" class="label">Topic:</label>
-            <input
+            <inputText
               type="text"
-              class="apply-input"
+              class="apply-input shadow-three"
               v-model="contactUs.type"
               placeholder="Type your topic"
             />
           </div>
 
-          <div class="my-1">
+          <div class="">
             <label for="name" class="label">Name</label>
-            <input
+            <inputText
               type="text"
               name="name"
               v-model.trim="contactUs.sender"
               required
               placeholder="Please Enter Your Full Name"
-              class="apply-input"
+              class="apply-input shadow-three"
             />
           </div>
 
-          <div class="my-1">
+          <div class="">
             <label for="email" class="label">Email</label>
-            <input
+            <inputText
               type="email"
               name="email"
               v-model.trim="contactUs.email"
               required
               placeholder="Please Enter Your Email"
-              class="apply-input"
+              class="apply-input shadow-three"
             />
           </div>
 
-          <div class="my-1">
+          <div class="">
             <label for="contact" class="label">Contact</label>
-            <input
+            <inputText
               type="tel"
               required
               v-model.trim="contactUs.contact"
               name="contact"
               placeholder="Enter your phone number"
-              class="apply-input"
+              class="apply-input shadow-three"
             />
           </div>
 
           <div class="">
             <label for="message" class="label">Message</label>
             <textarea
-              class="shadow-one apply-input mb-0"
-              name="message"
+              class="shadow-three apply-input mb-0"
               v-model.trim="contactUs.message"
               required
               placeholder="Space for your message"

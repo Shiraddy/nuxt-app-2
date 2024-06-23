@@ -284,7 +284,7 @@
               <div class="row">
                 <div class="col-lg-6 col-sm-12 my-2">
                   <label class="label" for="firstName">First Name</label>
-                  <input
+                  <inputText
                     class="apply-input"
                     name="firstName"
                     type="text"
@@ -299,7 +299,7 @@
 
                 <div class="col-lg-6 col-sm-12 my-2">
                   <label class="label" for="lastName">Last Name</label>
-                  <input
+                  <inputText
                     class="apply-input"
                     type="text"
                     name="lastName"
