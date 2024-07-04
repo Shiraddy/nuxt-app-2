@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   setPersistence,
   browserSessionPersistence,
+  sendPasswordResetEmail,
   onAuthStateChanged,
 } from "firebase/auth";
 
@@ -66,6 +67,19 @@ export const signOutUser = async () => {
   const auth = getAuth();
   const result = await auth.signOut();
   return result;
+};
+
+export const resetPassword = async (email) => {
+  try {
+    const auth = getAuth();
+    const credentials = sendPasswordResetEmail(auth, email);
+    return credentials;
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    throw new Error(`${errorCode}: ${errorMessage}`);
+  }
 };
 
 // initUser();

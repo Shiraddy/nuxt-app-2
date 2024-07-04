@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4">
           <div class="card shadow-three hover myCard">
-            <img class="service-image" src="/images/student1.png" alt="" />
+            <nuxt-img class="service-image" src="/images/student1.png" alt="" />
             <RouterLink class="btn btn-danger btn-service" to="/tuition"
               >Private Tuition</RouterLink
             >
@@ -26,7 +26,7 @@
 
         <div class="col-sm-12 col-md-4 col-lg-4">
           <div class="card shadow-three hover myCard">
-            <img
+            <nuxt-img
               class="service-image"
               src="/images/counsel1.png"
               alt="images/skill"
@@ -44,7 +44,11 @@
 
         <div class="col-sm-12 col-md-4 col-lg-4">
           <div class="card shadow-three hover myCard">
-            <img class="service-image" src="/images/skill1.png" alt="images" />
+            <nuxt-img
+              class="service-image"
+              src="/images/skill1.png"
+              alt="images"
+            />
             <RouterLink class="btn btn-danger btn-service" to="/consultancy"
               >Consultancy</RouterLink
             >

@@ -1,4 +1,14 @@
 <template>
+  <Message severity="secondary" :life="1000">
+    <!-- <template #messageicon>
+      <Avatar image="/images/logo.png" shape="circle" />
+    </template> -->
+    <p class="text-start mt-3 mx-3">
+      Review our Frequently Asked Questions
+      <RouterLink class="link" to="/faq">(FAQ)</RouterLink>
+      for additional information.
+    </p>
+  </Message>
   <section>
     <div v-if="smallBanner" class="client-banner"><NavBar></NavBar></div>
   </section>
@@ -41,17 +51,6 @@
                   data-section="1"
                   id="parentInfo"
                 >
-                  <Message severity="secondary" :life="1000">
-                    <template #messageicon>
-                      <Avatar image="/images/logo.png" shape="circle" />
-                    </template>
-                    <p class="text-start mt-3 mx-3">
-                      Review our Frequently Asked Questions
-                      <RouterLink class="link" to="/faq">(FAQ)</RouterLink>
-                      for additional information.
-                    </p>
-                  </Message>
-
                   <h5 class="legend me-auto">Parent/Guardian Details</h5>
 
                   <div class="row">
@@ -905,12 +904,12 @@
 </template>
 
 <script>
-import About from "@/components/About.vue";
-import ContactUs from "@/components/ContactUs.vue";
-import Footer from "@/components/Footer.vue";
-import ChooseUs from "@/components/ChooseUs.vue";
-import NavBar from "@/components/NavBar.vue";
-import TheMessage from "@/components/TheMessage.vue";
+// import About from "@/components/About.vue";
+// import ContactUs from "@/components/ContactUs.vue";
+// import Footer from "@/components/Footer.vue";
+// import ChooseUs from "@/components/ChooseUs.vue";
+// import NavBar from "@/components/NavBar.vue";
+// import TheMessage from "@/components/TheMessage.vue";
 // import { initializeApp } from "firebase/app";
 // import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 // import {
@@ -940,14 +939,14 @@ import TheMessage from "@/components/TheMessage.vue";
 export default {
   name: "Private Tuition",
 
-  components: {
-    About,
-    ContactUs,
-    Footer,
-    ChooseUs,
-    TheMessage,
-    NavBar,
-  },
+  // components: {
+  //   About,
+  //   ContactUs,
+  //   Footer,
+  //   ChooseUs,
+  //   TheMessage,
+  //   NavBar,
+  // },
 
   data() {
     return {

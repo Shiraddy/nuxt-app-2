@@ -37,7 +37,11 @@
                 <template #start>
                   <span class="inline-flex align-items-center gap-1 py-2">
                     <a class="navbar-brand text-danger" href="#">
-                      <img class="admin-logo" src="/images/logo.png" alt="" />
+                      <nuxt-img
+                        class="admin-logo"
+                        src="/images/logo.png"
+                        alt=""
+                      />
                       LIFELINE</a
                     >
                   </span>
@@ -1684,7 +1688,7 @@
               aria-atomic="true"
             >
               <div class="toast-header">
-                <img src="" class="rounded me-2" alt="" />
+                <nuxt-img src="" class="rounded me-2" alt="" />
                 <strong class="me-auto">Message</strong>
                 <small class="text-body-secondary">Status</small>
                 <button
@@ -1704,7 +1708,7 @@
               aria-atomic="true"
             >
               <div class="toast-header">
-                <img src="" class="rounded me-2" alt="" />
+                <nuxt-img src="" class="rounded me-2" alt="" />
                 <strong class="me-auto">Updated</strong>
                 <small class="text-body-secondary">Status</small>
                 <button

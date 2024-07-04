@@ -50,13 +50,13 @@
           <div class="my-5 py-3">
             <div class="row">
               <div class="col-lg-4 col-sm-12">
-                <NuxtImg
+                <nuxt-img
                   src="/images/career.jpg"
                   alt=""
                   class="con-image my-2"
                 />
 
-                <!-- <img src="/images/con8.gif" alt="" class="con-image round" /> -->
+                <!-- <nuxt-img src="/images/con8.gif" alt="" class="con-image round" /> -->
                 <h5>Career Guidance</h5>
                 <p class="px-2 px-lg-4 text-body-secondary">
                   Make the right decisions about your career path. Seek
@@ -65,13 +65,13 @@
               </div>
 
               <div class="col-lg-4 col-sm-12">
-                <NuxtImg
+                <nuxt-img
                   src="/images/academic.jpg"
                   alt=""
                   class="con-image my-2"
                 />
 
-                <!-- <img src="/images/con2.gif" alt="" class="con-image" /> -->
+                <!-- <nuxt-img src="/images/con2.gif" alt="" class="con-image" /> -->
                 <h5>Academic Guidance</h5>
                 <p class="px-2 px-lg-4 text-body-secondary">
                   Get the right advice to make informed educational choices.
@@ -79,8 +79,12 @@
               </div>
 
               <div class="col-lg-4 col-sm-12">
-                <NuxtImg src="/images/coun.jpg" alt="" class="con-image my-2" />
-                <!-- <img src="/images/con3.gif" alt="" class="con-image" /> -->
+                <nuxt-img
+                  src="/images/coun.jpg"
+                  alt=""
+                  class="con-image my-2"
+                />
+                <!-- <nuxt-img src="/images/con3.gif" alt="" class="con-image" /> -->
                 <h5>Counselling Service</h5>
                 <p class="px-2 px-lg-4 text-body-secondary">
                   Let us help you through your challenges. Get the right
@@ -95,12 +99,12 @@
               <div
                 class="col-lg-5 d-flex align-items-center justify-content-center"
               >
-                <NuxtImg
+                <nuxt-img
                   src="/images/decision.png"
                   alt=""
                   class="py-3 decision"
                 />
-                <!-- <img src="/images/conso2.png" alt="" class="py-3" /> -->
+                <!-- <nuxt-img src="/images/conso2.png" alt="" class="py-3" /> -->
               </div>
               <div class="col-lg-7 text-white py-lg-3 py-2 px-3 px-lg-5">
                 <h3 class="mb-0">WANT TO MAKE A DECISION?</h3>
@@ -162,8 +166,8 @@
                 </button>
               </div>
               <div class="col-lg-6">
-                <NuxtImg src="/images/next.jpg" alt="" class="decision" />
-                <!-- <img src="/images/conso3.png" alt="" /> -->
+                <nuxt-img src="/images/next.jpg" alt="" class="decision" />
+                <!-- <nuxt-img src="/images/conso3.png" alt="" /> -->
               </div>
             </div>
           </section>
@@ -183,13 +187,13 @@
                 </button>
               </div>
               <div class="col-lg-6">
-                <NuxtImg
+                <nuxt-img
                   src="/images/call3.png"
                   alt=""
                   class="caller"
                   quality="80"
                 />
-                <!-- <img src="/images/call3.png" alt="" class="caller" /> -->
+                <!-- <nuxt-img src="/images/call3.png" alt="" class="caller" /> -->
               </div>
             </div>
           </section>

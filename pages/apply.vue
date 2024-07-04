@@ -4,23 +4,23 @@
     <section class="applyWall" v-if="form">
       <div class="row gx-5">
         <div
-          class="col-lg-6 d-none d-lg-flex text-start align-items-center justify-content-center bg-white"
+          class="col-lg-3 d-none d-lg-flex text-start align-items-center justify-content-center bg-white"
         >
           <div class="service-hero-text">
-            <h6 class="fs-beauty mx-5 fs-4">Apply for free</h6>
-            <h1 class="hero-header">
-              Become a
+            <h6 class="fs-beauty fs-4">Apply Here</h6>
+            <h1 class="fw-bolder">
+              Be a
               <span class="text-success fw-bolder">LIFELINE</span>
               tutor
             </h1>
 
-            <p class="mx-5 fs-5 fs-beauty">
+            <p class="fs-5 fs-beauty">
               <small
                 >Receive contracts to teach students at home after school and
-                weekends. Join to make a difference..
+                weekends.
               </small>
             </p>
-            <div class="mx-5">
+            <div class="">
               <button class="btn btn-success shadow-three">
                 <NuxtLink to="/faq" class="nav-link">READ MORE..</NuxtLink>
               </button>
@@ -28,7 +28,7 @@
           </div>
         </div>
 
-        <div class="col-lg-6 small text-white filter">
+        <div class="col-lg-9 small text-white filter">
           <form @submit.prevent="submitTutorForm()" class="applyForm">
             <h4 class="fw-bolder my-2 text-secondary">APPLICATION</h4>
 
@@ -543,7 +543,7 @@
             <!-- CONTACT AND LOCATION -->
             <fieldset
               id="contactLocation"
-              class="form-section "
+              class="form-section"
               data-section="5"
               v-if="location"
             >
@@ -585,16 +585,16 @@
                     <label class="label" for=""
                       >How did you hear about us?</label
                     >
-                    
+
                     <select
-                    v-model="tutorApplication.aboutMedia"
-                    class="apply-input"
-                  >
-                    <option disabled>Select Medium</option>
-                    <option value="WhatsApp">WhatsApp</option>
-                    <option value="Facebook">Facebook</option>
-                    <option value="Friends">Friends</option>
-                  </select>
+                      v-model="tutorApplication.aboutMedia"
+                      class="apply-input"
+                    >
+                      <option disabled>Select Medium</option>
+                      <option value="WhatsApp">WhatsApp</option>
+                      <option value="Facebook">Facebook</option>
+                      <option value="Friends">Friends</option>
+                    </select>
                     <p class="text-danger lh-1" v-if="error.aboutMedia">
                       <small>This field is required</small>
                     </p>
@@ -1437,7 +1437,7 @@ export default {
 
 .applyWall {
   margin: auto auto;
-  width: 70%;
+  width: 75%;
 }
 
 .applyForm {

@@ -58,7 +58,7 @@
                 <div class="card myCard">
                   <div class="card-body">
                     <!-- <i class="fa-solid fa-book-open option-icon"></i> -->
-                    <img
+                    <nuxt-img
                       src="/images/student2.png"
                       alt=""
                       class="service-image"
@@ -76,7 +76,7 @@
                 <div class="card myCard">
                   <div class="card-body">
                     <!-- <i class="fa-solid fa-lightbulb option-icon"></i> -->
-                    <img
+                    <nuxt-img
                       src="/images/student3.png"
                       alt=""
                       class="service-image"
@@ -94,7 +94,7 @@
                 <div class="card myCard">
                   <div class="card-body">
                     <!-- <i class="fa-solid fa-star option-icon"></i> -->
-                    <img
+                    <nuxt-img
                       src="/images/student1.png"
                       alt=""
                       class="service-image"
@@ -137,10 +137,10 @@
               class="col-sm-12 col-md-12 col-lg-6 shadow-two d-lg-block d-none"
             >
               <div>
-                <img
+                <nuxt-img
                   src="/images/tutor2.jpg"
                   alt=""
-                  class="consultantPic mt-4 img-fluid"
+                  class="consultantPic mt-4 nuxt-img-fluid"
                 />
                 <small>Let's start learning now.</small>
               </div>
@@ -321,7 +321,7 @@
                 <h2 class="choose-title">GALLERY</h2>
                 <!-- </hr> This line seems to be an error; it's not a valid HTML tag -->
                 <div class="carousel-item active card-body">
-                  <!-- <img src="images/Caro-A.jpg" class="w-100 caro-pic" alt="..." /> -->
+                  <!-- <nuxt-img src="images/Caro-A.jpg" class="w-100 caro-pic" alt="..." /> -->
                   <div class="banner-half">
                     <div class="carousel-caption">
                       <h4 class="slide-head">PROFESSIONALISM</h4>
@@ -333,7 +333,7 @@
                   </div>
                 </div>
                 <div class="carousel-item card-body">
-                  <!-- <img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
+                  <!-- <nuxt-img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
                   <div class="banner-half">
                     <div class="carousel-caption">
                       <h4 class="slide-head">SKILL</h4>
@@ -345,7 +345,7 @@
                   </div>
                 </div>
                 <div class="carousel-item card-body">
-                  <!-- <img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
+                  <!-- <nuxt-img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
                   <div class="banner-half">
                     <div class="carousel-caption">
                       <h4 class="slide-head">PROGRESS</h4>
@@ -357,7 +357,7 @@
                   </div>
                 </div>
                 <div class="carousel-item card-body">
-                  <!-- <img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
+                  <!-- <nuxt-img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
                   <div class="banner-half">
                     <div class="carousel-caption">
                       <h4 class="slide-head">CHOICE</h4>
@@ -370,7 +370,7 @@
                 </div>
                 <div class="carousel-item card-body">
                   <div class="banner-half">
-                    <!-- <img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
+                    <!-- <nuxt-img src="images/Caro-A.jpg" class="caro-pic" alt="..." /> -->
                     <div class="carousel-caption">
                       <h4 class="slide-head">GUIDANCE</h4>
                       <p class="slide-text">

@@ -109,7 +109,7 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="card card-body">
-              <img class="card-image" src="/images/consul3.jpg" alt="" />
+              <nuxt-img class="card-image" src="/images/consul3.jpg" alt="" />
               <div class="card-title">Educational Technology</div>
               <p class="card-text text-dark-emphasis">
                 We help schools use technology to assist in effective school
@@ -119,7 +119,7 @@
           </div>
           <div class="col-lg-4">
             <div class="card card-body">
-              <img class="card-image" src="/images/consul5.jpg" alt="" />
+              <nuxt-img class="card-image" src="/images/consul5.jpg" alt="" />
               <div class="card-title">Service Training</div>
               <p class="card-text text-dark-emphasis">
                 We offer refresher trainings in teaching methodologies and
@@ -131,7 +131,7 @@
 
           <div class="col-lg-4">
             <div class="card card-body">
-              <img class="card-image" src="/images/consul2.jpg" alt="" />
+              <nuxt-img class="card-image" src="/images/consul2.jpg" alt="" />
               <div class="card-title">Strategic Planning</div>
               <p class="card-text text-dark-emphasis">
                 We assist schools in developing long-term strategic plans,
@@ -146,7 +146,11 @@
       <section>
         <div class="row my-4 mx-lg-2">
           <div class="col-lg-6 shadow-two bg-success py-lg-5">
-            <img class="consultantPic pt-3" src="/images/website.jpg" alt="" />
+            <nuxt-img
+              class="consultantPic pt-3"
+              src="/images/website.jpg"
+              alt=""
+            />
           </div>
           <div class="col-lg-6 text-white shadow-two bg-success py-lg-5">
             <h3>Online Presence</h3>
@@ -164,7 +168,7 @@
 
       <div class="row my-4 py-5 px-lg-3">
         <div class="col-lg-6 bg-white pt-4 shadow-two">
-          <img class="consultantPic" src="/images/consul5.jpg" alt="" />
+          <nuxt-img class="consultantPic" src="/images/consul5.jpg" alt="" />
         </div>
         <div class="col-lg-6 px-lg-4 px-2 bg-white pt-lg-4 shadow-two">
           <h3 class="mb-0">Teacher Training</h3>

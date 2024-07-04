@@ -54,7 +54,9 @@
 
               <div class="row text-white">
                 <small class="col">
-                  <a class="link" href="#">Forgot Password</a>
+                  <a class="link" href="#" @click="resetPassword"
+                    >Forgot Password</a
+                  >
                 </small>
                 <small class="col">
                   <RouterLink class="link" to="/apply">Sign-Up</RouterLink>
@@ -99,12 +101,23 @@ export default {
       wheel: false,
       loginError: true,
       errorMessage: "",
+
       email: "",
       password: "",
     };
   },
 
   methods: {
+    async resetPassword() {
+      try {
+        const email = this.email;
+        const credentials = await resetPassword(email);
+        alert("Password Reset email sent to your email");
+      } catch (error) {
+        alert("ERROR, Enter a Valid Email and try again");
+      }
+    },
+
     async signInUser() {
       try {
         this.wheel = true;
