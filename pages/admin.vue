@@ -1794,6 +1794,122 @@
             </div>
           </section>
 
+          <section class="my-lg-4 my-3" id="contracts">
+            <h4 class="text-start pt-4 mx-3 fw-bolder">Tutor Log Sheets</h4>
+            <DataTable
+              :value="logSheets"
+              sortMode="multiple"
+              showGridlines
+              removableSort
+              paginator
+              :rows="5"
+              :rowsPerPageOptions="[5, 10, 20, 50]"
+              tableStyle="min-width: 50rem"
+              class="shadow-one"
+            >
+              <Column
+                field="firstName"
+                header="Tutor"
+                sortable
+                style="width: 25%"
+              ></Column>
+              <Column field="logSheet" header="Log Sheets" style="width: 25%">
+                <template #body="data">
+                  <ol>
+                    <li
+                      v-for="(logSheet, index) in data.data.logSheet"
+                      :key="index"
+                    >
+                      <a :href="logSheet.imageUrl" target="_blank">{{
+                        logSheet.student || "No name"
+                      }}</a>
+                    </li>
+                  </ol>
+                </template>
+              </Column>
+              <Column
+                field="logSheet"
+                header="Month"
+                sortable
+                style="width: 5%"
+              >
+                <template #body="data">
+                  <ol>
+                    <li
+                      v-for="(logSheet, index) in data.data.logSheet"
+                      :key="index"
+                    >
+                      {{ logSheet.month || "Not selected" }}
+                    </li>
+                  </ol>
+                </template>
+              </Column>
+              <Column
+                field="logSheet"
+                header="Status"
+                sortable
+                style="width: 5%"
+              >
+                <template #body="data">
+                  <ol>
+                    <li
+                      v-for="(logSheet, index) in data.data.logSheet"
+                      :key="index"
+                    >
+                      {{ logSheet.month || "Not selected" }}
+                    </li>
+                  </ol>
+                </template>
+              </Column>
+              <Column
+                field="logSheet"
+                header="Total"
+                sortable
+                style="width: 5%"
+              >
+                <template #body="data">
+                  <ol>
+                    <li
+                      v-for="(logSheet, index) in data.data.logSheet"
+                      :key="index"
+                    >
+                      {{ logSheet.month || "Not selected" }}
+                    </li>
+                  </ol>
+                </template>
+              </Column>
+              <Column
+                field="expected"
+                header="Expected"
+                sortable
+                style="width: 5%"
+              ></Column>
+              <Column
+                field="contact"
+                header="Contact"
+                style="width: 10%"
+              ></Column>
+              <Column
+                field="pay"
+                header="Pay"
+                sortable
+                style="width: 5%"
+              ></Column>
+              <Column
+                field="deduction"
+                header="Penalty"
+                sortable
+                style="width: 5%"
+              ></Column>
+              <Column
+                field="consideration"
+                header="Bonus"
+                sortable
+                style="width: 5%"
+              ></Column>
+            </DataTable>
+          </section>
+
           <!-- TUTORS PANEL -->
           <div class="card my-3 mx-4" v-if="tutorTable">
             <DataTable
@@ -3712,6 +3828,12 @@ export default {
   },
 
   computed: {
+    logSheets() {
+      return this.tutors.filter(
+        (tutor) => tutor.logSheet && tutor.logSheet.length > 0
+      );
+    },
+
     async parentsData() {
       try {
         const requestForTutorCol = collection(db, "Request For Tutor");
@@ -3748,7 +3870,8 @@ export default {
         querySnapshot.forEach((doc) => {
           // console.log(doc.data());
           applications.push(doc.data());
-          this.tutors = applications;
+          // this.tutors = applications;
+          console.log(applications);
         });
       } else {
         console.log("Tutor Data Unavailable");

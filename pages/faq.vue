@@ -45,7 +45,7 @@
                 />
                 <label
                   id="tutorFaqBtn"
-                  class="btn btn-outline-success btn-lg"
+                  class="btn btn-outline-primary btn-lg"
                   for="vbtn-radio2"
                   >TUTORS</label
                 >

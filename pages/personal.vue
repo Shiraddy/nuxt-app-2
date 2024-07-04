@@ -643,7 +643,7 @@
                         >Info</small> -->
 
                         <small
-                          class="pi pi-expand fw-bolder bg-success p-2 rounded fs-5 m-4"
+                          class="pi pi-info-circle fw-bolder bg-success p-2 rounded fs-5 m-4 text-white"
                           @click="offerInfo(offer)"
                           ><span class="mx-1">Details</span></small
                         >
@@ -830,6 +830,7 @@
                             class="apply-input"
                             type="text"
                             v-model="logSheet.student"
+                            required
                           />
                         </div>
 
@@ -839,6 +840,7 @@
                             class="apply-input"
                             type="month"
                             v-model="logSheet.month"
+                            required
                           />
                         </div>
 
@@ -848,6 +850,7 @@
                             class="apply-input"
                             type="number"
                             v-model="logSheet.expected"
+                            required
                           />
                         </div>
 
@@ -857,31 +860,20 @@
                             class="apply-input"
                             type="number"
                             v-model="logSheet.total"
-                          />
-                        </div>
-
-                        <!-- <div class="my-5">
-                        <input type="file" @change="onUpload" />
-                      </div> -->
-                        <div class="my-2 card">
-                          <h5>Image Preview Sheet</h5>
-                          <img
-                            :src="logSheet.imageUrl"
-                            alt="Uploaded Sheet Preview"
-                            :width="300"
+                            required
                           />
                         </div>
 
                         <FileUpload
+                          ref="fileUpload"
                           customUpload
                           :multiple="false"
-                          mode="basic"
-                          @uploader="onPrimevueUpload"
-                          filelimit="1"
-                          :auto="true"
-                          :showCancelButton="false"
+                          mode="advanced"
+                          :auto="false"
+                          :showCancelButton="true"
                           :showUploadButton="false"
-                          previewWidth="150"
+                          choose-label="Attach Log Sheet"
+                          :previewWidth="150"
                           :maxFileSize="1000000"
                           invalidFileSizeMessage="File too big (Should be less than 1mb)"
                           accept="image/*"
@@ -925,6 +917,104 @@
                   webkitallowfullscreen="true"
                 ></iframe> -->
                 </div>
+                <Stepper>
+                  <StepperPanel header="Course Outline">
+                    <template #content="{ nextCallback }">
+                      <div class="flex flex-column h-12rem">
+                        <div
+                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                        >
+                          <iframe
+                            src="https://docs.google.com/presentation/d/e/2PACX-1vS6LQfaUqPWGECS-5B8CotEciAAFI3PuLIacC9AXLYehYpd0cHSuTuoyZxxX6bZ41Hot8qi0UjHiJYK/embed?start=false&loop=false&delayms=3000"
+                            frameborder="0"
+                            width="850"
+                            height="569"
+                            allowfullscreen="true"
+                            mozallowfullscreen="true"
+                            webkitallowfullscreen="true"
+                          ></iframe>
+                        </div>
+                      </div>
+                      <div class="flex pt-4 justify-content-end">
+                        <Button
+                          label="Next"
+                          icon="pi pi-arrow-right"
+                          iconPos="right"
+                          @click="nextCallback"
+                        />
+                      </div>
+                    </template>
+                  </StepperPanel>
+                  <StepperPanel header="Introduction">
+                    <template #content="{ prevCallback, nextCallback }">
+                      <div class="flex flex-column h-12rem">
+                        <div
+                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                        >
+                          Content II
+                        </div>
+                      </div>
+                      <div class="flex pt-4 justify-content-between">
+                        <Button
+                          label="Back"
+                          severity="secondary"
+                          icon="pi pi-arrow-left"
+                          @click="prevCallback"
+                        />
+                        <Button
+                          label="Next"
+                          icon="pi pi-arrow-right"
+                          iconPos="right"
+                          @click="nextCallback"
+                        />
+                      </div>
+                    </template>
+                  </StepperPanel>
+                  <StepperPanel header="Mission & Vision">
+                    <template #content="{ prevCallback, nextCallback }">
+                      <div class="flex flex-column h-12rem">
+                        <div
+                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                        >
+                          Content III
+                        </div>
+                      </div>
+                      <div class="flex pt-4 justify-content-between">
+                        <Button
+                          label="Back"
+                          severity="secondary"
+                          icon="pi pi-arrow-left"
+                          @click="prevCallback"
+                        />
+                        <Button
+                          label="Next"
+                          icon="pi pi-arrow-right"
+                          iconPos="right"
+                          @click="nextCallback"
+                        />
+                      </div>
+                    </template>
+                  </StepperPanel>
+                  <StepperPanel header="Tools of the Trade">
+                    <template #content="{ prevCallback }">
+                      <div class="flex flex-column h-12rem">
+                        <div
+                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                        >
+                          Content III
+                        </div>
+                      </div>
+                      <div class="flex pt-4 justify-content-start">
+                        <Button
+                          label="Back"
+                          severity="secondary"
+                          icon="pi pi-arrow-left"
+                          @click="prevCallback"
+                        />
+                      </div>
+                    </template>
+                  </StepperPanel>
+                </Stepper>
               </div>
             </section>
 
@@ -1064,20 +1154,44 @@ export default {
       }
     },
 
-    async submitLogSheet() {
-      try {
-        const user = auth.currentUser;
-        const form = this.logSheet;
-        const tutor = user.email;
-        const student = this.logSheet.student;
-        const logSheetRef = doc(db, "Tutor Applications", tutor);
+    async submitLogSheet(event) {
+      const fileUpload = this.$refs.fileUpload;
+      const files = fileUpload.files;
 
+      if (files.length === 0) {
+        alert("Please attach a log sheet file before submitting.");
+        return;
+      }
+
+      const file = files[0];
+      const user = auth.currentUser;
+      const form = this.logSheet;
+      const tutor = user.email;
+      const student = this.logSheet.student;
+      const month = this.logSheet.month;
+      const fileName = student + "-" + month;
+      const storageRef = ref(
+        storage,
+        "Log Sheets/" + user.email + "/" + month + "/" + fileName
+      );
+
+      try {
+        // Upload the file and get the URL
+        const snapshot = await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(snapshot.ref);
+        console.log(url);
+        this.logSheet.imageUrl = url;
+        console.log("File uploaded successfully!");
+
+        // Get the existing log sheets for the user
+        const logSheetRef = doc(db, "Tutor Applications", tutor);
         const docSnap = await getDoc(logSheetRef);
         let existingSheets = [];
         if (docSnap.exists()) {
           existingSheets = docSnap.data().logSheet || [];
         }
 
+        // Add the new log sheet to the existing ones
         existingSheets.push(form);
         await setDoc(
           logSheetRef,
@@ -1088,6 +1202,8 @@ export default {
         );
         console.log("Sheet Info Uploaded", existingSheets);
         alert("Log Sheet Uploaded");
+
+        // Reset the form
         this.logSheet.student = "";
         this.logSheet.contact = "";
         this.logSheet.expected = "";
@@ -1095,64 +1211,81 @@ export default {
         this.logSheet.imageUrl = "";
         this.logSheet.momo_number = "";
         this.logSheet.month = "";
+        fileUpload.clear(); // Clear the file input
       } catch (error) {
         console.log("Error submitting LogSheet", error);
       }
     },
 
-    onUpload(event) {
-      const file = event.target.files[0];
-      const user = auth.currentUser;
-      const contact = this.profile.contact;
-      const student = this.logSheet.student;
-      const month = this.logSheet.month;
-      const fileName = student + "-" + month + "-";
-      console.log(file);
+    onUpload(e) {
+      const file = e.target.files[0]; //Vue upload
+      this.logSheet.imageUrl = URL.createObjectURL(file);
 
-      const storageRef = ref(
-        storage,
-        "Log Sheets/" + user.email + "/" + month + "/" + fileName
-      );
+      // const user = auth.currentUser;
+      // const contact = this.profile.contact;
+      // const student = this.logSheet.student;
+      // const month = this.logSheet.month;
+      // const fileName = student + "-" + month + "-";
+      // console.log(file);
 
-      uploadBytes(storageRef, file)
-        .then((snapshot) => {
-          getDownloadURL(snapshot.ref)
-            .then((url) => {
-              console.log(url);
-              // this.formData.imageUrl = url;
-            })
-            .catch((error) => {
-              console.error("Error getting download URL:", error);
-            });
-          console.log("Uploaded a blob or file!");
-        })
-        .catch((error) => {
-          console.error("Error uploading file:", error);
-        });
+      // const storageRef = ref(
+      //   storage,
+      //   "Log Sheets/" + user.email + "/" + month + "/" + fileName
+      // );
+
+      // uploadBytes(storageRef, file)
+      //   .then((snapshot) => {
+      //     g// const user = auth.currentUser;
+      // const contact = this.profile.contact;
+      // const student = this.logSheet.student;
+      // const month = this.logSheet.month;
+      // const fileName = student + "-" + month + "-";
+      // console.log(file);
+
+      // const storageRef = ref(
+      //   storage,
+      //   "Log Sheets/" + user.email + "/" + month + "/" + fileName
+      // );
+
+      // uploadBytes(storageRef, file)
+      //   .then((snapshot) => {
+      //     getDownloadURL(snapshot.ref)
+      //       .then((url) => {
+      //         console.log(url);
+      //         // this.formData.imageUrl = url;
+      //       })
+      //       .catch((error) => {
+      //         console.error("Error getting download URL:", error);
+      //       });
+      //     console.log("Uploaded a blob or file!");
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error uploading file:", error);
+      //   });
     },
 
-    async onPrimevueUpload(event) {
-      const file = event.files[0];
-      const user = auth.currentUser;
-      const contact = this.profile.contact;
-      const student = this.logSheet.student;
-      const month = this.logSheet.month;
-      const fileName = student + "-" + month;
-      const storageRef = ref(
-        storage,
-        "Log Sheets/" + user.email + "/" + month + "/" + fileName
-      );
+    // async onPrimevueUpload(event) {
+    //   const file = event.files[0];
+    //   const user = auth.currentUser;
+    //   const contact = this.profile.contact;
+    //   const student = this.logSheet.student;
+    //   const month = this.logSheet.month;
+    //   const fileName = student + "-" + month;
+    //   const storageRef = ref(
+    //     storage,
+    //     "Log Sheets/" + user.email + "/" + month + "/" + fileName
+    //   );
 
-      try {
-        const snapshot = await uploadBytes(storageRef, file);
-        const url = await getDownloadURL(snapshot.ref);
-        console.log(url);
-        this.logSheet.imageUrl = url;
-        console.log("File uploaded successfully!");
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
-    },
+    //   try {
+    //     const snapshot = await uploadBytes(storageRef, file);
+    //     const url = await getDownloadURL(snapshot.ref);
+    //     console.log(url);
+    //     this.logSheet.imageUrl = url;
+    //     console.log("File uploaded successfully!");
+    //   } catch (error) {
+    //     console.error("Error uploading file:", error);
+    //   }
+    // },
 
     async getUserInfo() {
       const auth = getAuth();
@@ -1167,7 +1300,7 @@ export default {
 
       if (!querySnapshot.empty) {
         querySnapshot.forEach((doc) => {
-          // console.log(doc.data());
+          // console.log(doc.data())
           this.profile = doc.data();
         });
       } else {

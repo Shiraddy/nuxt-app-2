@@ -14,6 +14,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import { getStorage, ref, uploadBytes } from "firebase/storage";
@@ -37,4 +38,3 @@ export default defineNuxtPlugin((nuxtApp) => {
   // console.log(app);
   // initUser();
 });
-

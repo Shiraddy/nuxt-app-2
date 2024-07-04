@@ -43,7 +43,6 @@
           id="#banner"
           class="logo"
           src="/images/logo.png"
-          alt="LIFELINE"
         />LIFELINE</NuxtLink
       >
 
@@ -75,7 +74,7 @@
 
         <!-- body -->
         <div class="offcanvas-body nav-background">
-          <ul class="navbar-nav ms-auto pt-4 ps-2 me-lg-4">
+          <ul class="navbar-nav ms-auto pt-2 ps-2 me-lg-4">
             <li class="nav-item menu px-2 text-center">
               <NuxtLink class="nav-link menu-link text-white" to="/"
                 >Home</NuxtLink

@@ -113,6 +113,153 @@
             <Calendar v-model="date" inline showWeek />
           </div>
 
+          <Panel header="Header" toggleable>
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </Panel>
+
+          <Panel toggleable>
+            <template #header>
+              <div class="flex align-items-center gap-2">
+                <Avatar
+                  image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
+                  size="large"
+                  shape="circle"
+                />
+                <span class="font-bold">Amy Elsner</span>
+              </div>
+            </template>
+            <template #footer>
+              <div
+                class="flex flex-wrap align-items-center justify-content-between gap-3"
+              >
+                <div class="flex align-items-center gap-2">
+                  <Button icon="pi pi-user" rounded text></Button>
+                  <Button
+                    icon="pi pi-bookmark"
+                    severity="secondary"
+                    rounded
+                    text
+                  ></Button>
+                </div>
+                <span class="p-text-secondary">Updated 2 hours ago</span>
+              </div>
+            </template>
+            <template #icons>
+              <button class="p-panel-header-icon p-link mr-2" @click="toggle">
+                <span class="pi pi-cog"></span>
+              </button>
+              <Menu ref="menu" id="config_menu" :model="items" popup />
+            </template>
+            <p class="m-0">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </Panel>
+
+          <Stepper>
+            <StepperPanel header="Login-Details">
+              <template #content="{ nextCallback }">
+                <div class="flex flex-column h-12rem">
+                  <div
+                    class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                  >
+                    Content I
+                  </div>
+                </div>
+                <div class="flex pt-4 justify-content-end">
+                  <Button
+                    label="Next"
+                    icon="pi pi-arrow-right"
+                    iconPos="right"
+                    @click="nextCallback"
+                  />
+                </div>
+              </template>
+            </StepperPanel>
+            <StepperPanel header="Personal Info">
+              <template #content="{ prevCallback, nextCallback }">
+                <div class="flex flex-column h-12rem">
+                  <div
+                    class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                  >
+                    Content II
+                  </div>
+                </div>
+                <div class="flex pt-4 justify-content-between">
+                  <Button
+                    label="Back"
+                    severity="secondary"
+                    icon="pi pi-arrow-left"
+                    @click="prevCallback"
+                  />
+                  <Button
+                    label="Next"
+                    icon="pi pi-arrow-right"
+                    iconPos="right"
+                    @click="nextCallback"
+                  />
+                </div>
+              </template>
+            </StepperPanel>
+            <StepperPanel header="Qualification">
+              <template #content="{ prevCallback, nextCallback }">
+                <div class="flex flex-column h-12rem">
+                  <div
+                    class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                  >
+                    Content III
+                  </div>
+                </div>
+                <div class="flex pt-4 justify-content-between">
+                  <Button
+                    label="Back"
+                    severity="secondary"
+                    icon="pi pi-arrow-left"
+                    @click="prevCallback"
+                  />
+                  <Button
+                    label="Next"
+                    icon="pi pi-arrow-right"
+                    iconPos="right"
+                    @click="nextCallback"
+                  />
+                </div>
+              </template>
+            </StepperPanel>
+            <StepperPanel header="Contact">
+              <template #content="{ prevCallback }">
+                <div class="flex flex-column h-12rem">
+                  <div
+                    class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                  >
+                    Content III
+                  </div>
+                </div>
+                <div class="flex pt-4 justify-content-start">
+                  <Button
+                    label="Back"
+                    severity="secondary"
+                    icon="pi pi-arrow-left"
+                    @click="prevCallback"
+                  />
+                </div>
+              </template>
+            </StepperPanel>
+          </Stepper>
+
           <div class="toast-container position-fixed top-0 end-0 p-3">
             <div
               class="toast"

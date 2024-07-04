@@ -8,8 +8,8 @@
           <div class="col-lg-6"></div>
           <div class="col-lg-6 text-white my-5 res-hero mt-sm-5 text-lg-start">
             <h2 class="hero-header mt-lg-5 fs-1 mt-5">
-              REQUEST A
-              <span class="text-info">HOME TUTOR</span> TODAY
+              LET US GET YOU
+              <span class="text-info">STARTED</span>
             </h2>
             <p class="px-lg-5 fs-5 lh-base fs-beauty ms-lg-2">
               We cannot wait to start helping your ward become his very best!
@@ -20,7 +20,7 @@
               class="btn btn-success btn-lg shadow-two my-lg-2 ms-lg-5 animate__animated animate__bounceIn"
               @click="display"
             >
-              Click Here
+              Request Now
             </a>
           </div>
         </div>
@@ -447,14 +447,6 @@
 </template>
 
 <script>
-import About from "@/components/About.vue";
-import ContactUs from "@/components/ContactUs.vue";
-import Footer from "@/components/Footer.vue";
-import ChooseUs from "@/components/ChooseUs.vue";
-import Form from "@/components/Form.vue";
-import NavBar from "@/components/NavBar.vue";
-import TheMessage from "@/components/TheMessage.vue";
-
 export default {
   name: "Private Tuition",
 
@@ -478,16 +470,6 @@ export default {
         (this.smallBanner = true),
         (this.contactSection = false);
     },
-  },
-
-  components: {
-    About,
-    ContactUs,
-    Footer,
-    ChooseUs,
-    Form,
-    TheMessage,
-    NavBar,
   },
 };
 </script>
