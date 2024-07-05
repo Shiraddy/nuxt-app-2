@@ -241,13 +241,13 @@
                         @click="prevMessage"
                         class="btn btn-outline-success me-3"
                       >
-                        <i class="fa fa-arrow-circle-o-left"></i>
+                        <i class="bi-chevron-double-left"></i>
                       </button>
                       <button
                         @click="nextMessage"
                         class="btn btn-outline-success"
                       >
-                        <i class="fa fa-arrow-circle-o-right"></i>
+                        <i class="bi-chevron-double-right"></i>
                       </button>
                     </div>
                   </div>
@@ -366,7 +366,7 @@
                       <label for="email">Email</label>
                       <InputText
                         type="text"
-                        v-model="value"
+                        v-model="email.to"
                         class="apply-input"
                       />
                     </div>
@@ -374,13 +374,16 @@
                       <label for="contact">Contact</label>
                       <InputText
                         type="text"
-                        v-model.number="value"
+                        v-model.number="email.contact"
                         class="apply-input"
                       />
                     </div>
                     <div class="card text-start my-3">
                       <label class="py-2 px-2" for="email">Content</label>
-                      <Editor v-model="value" editorStyle="height: 150px" />
+                      <Editor
+                        v-model="email.message"
+                        editorStyle="height: 150px"
+                      />
                     </div>
                   </TabPanel>
                 </TabView>
@@ -1819,75 +1822,78 @@
               ></Column>
               <Column field="logSheet" header="Log Sheets" style="width: 25%">
                 <template #body="data">
-                  <ol>
-                    <li
-                      v-for="(logSheet, index) in data.data.logSheet"
-                      :key="index"
-                    >
-                      <a :href="logSheet.imageUrl" target="_blank">{{
-                        logSheet.student || "No name"
-                      }}</a>
-                    </li>
-                  </ol>
+                  <small>
+                    <ol>
+                      <li
+                        v-for="(logSheet, index) in data.data.logSheet"
+                        :key="index"
+                      >
+                        <a :href="logSheet.imageUrl" target="_blank">{{
+                          logSheet.student || "No name"
+                        }}</a>
+                      </li>
+                    </ol>
+                  </small>
                 </template>
               </Column>
               <Column
                 field="logSheet"
                 header="Month"
                 sortable
-                style="width: 5%"
+                style="width: 15%"
               >
                 <template #body="data">
-                  <ol>
-                    <li
-                      v-for="(logSheet, index) in data.data.logSheet"
-                      :key="index"
-                    >
-                      {{ logSheet.month || "Not selected" }}
-                    </li>
-                  </ol>
+                  <small
+                    ><ol>
+                      <li
+                        v-for="(logSheet, index) in data.data.logSheet"
+                        :key="index"
+                      >
+                        {{ logSheet.month || "Not selected" }}
+                      </li>
+                    </ol>
+                  </small>
                 </template>
               </Column>
-              <Column
-                field="logSheet"
-                header="Status"
-                sortable
-                style="width: 5%"
-              >
-                <template #body="data">
-                  <ol>
-                    <li
-                      v-for="(logSheet, index) in data.data.logSheet"
-                      :key="index"
-                    >
-                      {{ logSheet.month || "Not selected" }}
-                    </li>
-                  </ol>
-                </template>
-              </Column>
+
               <Column
                 field="logSheet"
                 header="Total"
                 sortable
-                style="width: 5%"
+                style="width: 3%"
               >
                 <template #body="data">
-                  <ol>
-                    <li
-                      v-for="(logSheet, index) in data.data.logSheet"
-                      :key="index"
-                    >
-                      {{ logSheet.month || "Not selected" }}
-                    </li>
-                  </ol>
+                  <small>
+                    <ol>
+                      <li
+                        v-for="(logSheet, index) in data.data.logSheet"
+                        :key="index"
+                      >
+                        {{ logSheet.total || "Not selected" }}
+                      </li>
+                    </ol>
+                  </small>
                 </template>
               </Column>
               <Column
                 field="expected"
                 header="Expected"
                 sortable
-                style="width: 5%"
-              ></Column>
+                style="width: 3%"
+              >
+                <template #body="data">
+                  <small>
+                    <ol>
+                      <li
+                        v-for="(logSheet, index) in data.data.logSheet"
+                        :key="index"
+                      >
+                        {{ logSheet.expected || "Not selected" }}
+                      </li>
+                    </ol>
+                  </small>
+                </template>
+              </Column>
               <Column
                 field="contact"
                 header="Contact"
@@ -2757,7 +2763,10 @@
 
                       <div class="col-lg-12">
                         <label for="">Objectives</label>
-                        <Editor v-model="value" editorStyle="height: 150px" />
+                        <Editor
+                          v-model="offer.objectives"
+                          editorStyle="height: 150px"
+                        />
                       </div>
 
                       <div class="col-lg-12">
@@ -3126,12 +3135,6 @@ export default {
               label: "Clients",
               icon: "pi pi-address-book me-2",
             },
-
-            {
-              label: "Finance",
-              icon: "pi pi-dollar me-2",
-              badge: 2,
-            },
           ],
         },
         {
@@ -3143,10 +3146,6 @@ export default {
             {
               label: "Clients",
               icon: "pi pi-ethereum me-2",
-            },
-            {
-              label: "Finance",
-              icon: "pi pi-dollar me-2",
             },
           ],
         },
@@ -3202,10 +3201,12 @@ export default {
           icon: "pi pi-upload",
         },
       ],
+
       messageHeader: [
         { label: "Dashboard", icon: "pi pi-home" },
         { label: "Transactions", icon: "pi pi-chart-line" },
       ],
+
       filters: {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         "data.parent": { value: null, matchMode: FilterMatchMode.STARTS_WITH },
@@ -3222,6 +3223,7 @@ export default {
         "data.status": { value: null, matchMode: FilterMatchMode.EQUALS },
         "data.tutor": { value: null, matchMode: FilterMatchMode.EQUALS },
       },
+
       tutorFilter: {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         firstName: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
@@ -3291,6 +3293,7 @@ export default {
         subject: "",
         date: "",
         message: "",
+        contact: null,
       },
 
       contractUpdate: {
@@ -3378,7 +3381,7 @@ export default {
         const form = this.tutorUpdate;
         const tutorRef = doc(db, "Tutor Applications", tutor);
         setDoc(tutorRef, form, { merge: true });
-        console.log("Tutor Data Updated", tutor);
+        // console.log("Tutor Data Updated", tutor);
         alert("Tutor Data Updated");
       } catch (error) {
         console.log("Update Error", error);
@@ -3864,8 +3867,8 @@ export default {
         querySnapshot.forEach((doc) => {
           // console.log(doc.data());
           applications.push(doc.data());
-          // this.tutors = applications;
-          console.log(applications);
+          this.tutors = applications;
+          // console.log(applications);
         });
       } else {
         console.log("Tutor Data Unavailable");

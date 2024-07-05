@@ -33,6 +33,7 @@ export default defineNuxtConfig({
         {
           rel: "stylesheet",
           href: "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+          // href: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css",
         },
         {
           rel: "stylesheet",

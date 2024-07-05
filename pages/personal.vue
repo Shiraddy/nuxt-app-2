@@ -49,7 +49,7 @@
 
                   <li class="nav-item">
                     <a class="link-user" href="#training"
-                      ><i class="fa fa-laptop me-2"></i>TRAINING</a
+                      ><i class="bi-laptop me-2"></i>TRAINING</a
                     >
                   </li>
 
@@ -115,7 +115,7 @@
 
               <li class="nav-item">
                 <a class="link-user" href="#training"
-                  ><i class="fa fa-laptop me-2"></i>TRAINING</a
+                  ><i class="bi-laptop me-2"></i>TRAINING</a
                 >
               </li>
 
@@ -150,7 +150,7 @@
                   >LIFELINE</a
                 >
                 <div class="text-white me-4">
-                  <i class="fa fa-bell-o me-3"></i>
+                  <i class="bi-bell me-3"></i>
                   <i class="bi-chat-square-text"></i>
                 </div>
 
@@ -229,18 +229,18 @@
                     <div>
                       <button
                         type="button"
-                        class="btn btn-danger mx-3"
+                        class="btn btn-success mx-3"
                         @click="showPrevious"
                       >
-                        <i class="fa fa-arrow-circle-o-left"></i>
+                        <i class="bi-chevron-double-left"></i>
                       </button>
 
                       <button
                         type="button"
-                        class="btn btn-danger"
+                        class="btn btn-success"
                         @click="showNext"
                       >
-                        <i class="fa fa-arrow-circle-o-right"></i>
+                        <i class="bi-chevron-double-right"></i>
                       </button>
                     </div>
                   </div>
@@ -253,21 +253,21 @@
                   <h4 class="fw-bolder mt-2">My Profile</h4>
                   <div class="col mt-4">
                     <h6 class="fs-beauty text-muted text-uppercase">
-                      <i class="fa fa-user me-2"></i> Tutor:
+                      <i class="bi-person-circle me-2"></i> Tutor:
                       {{ profile.lastName }} {{ profile.firstName }}
                     </h6>
                   </div>
 
                   <div class="col">
                     <h6 class="fs-beauty text-muted text-uppercase">
-                      <i class="fa fa-play me-2"></i> Category:
+                      <i class="bi-check-circle me-2"></i>Category:
                       {{ profile.category }}
                     </h6>
                   </div>
 
                   <div class="col">
                     <h6 class="fs-beauty text-muted text-uppercase">
-                      <i class="fa fa-codepen me-2"></i> Status:
+                      <i class="bi-info-circle me-2"></i> Status:
                       {{ profile.status }}
                     </h6>
                   </div>
@@ -400,7 +400,7 @@
                                     class="btn btn-danger"
                                     href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLog%20sheet.pdf?alt=media&token=a1a2927c-c086-4f20-8930-808a782794bb"
                                     id="download"
-                                    ><i class="fa fa-download"></i
+                                    ><i class="bi-download"></i
                                   ></a>
                                 </td>
                               </tr>
@@ -413,7 +413,7 @@
                                     class="btn btn-danger"
                                     href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLifeline's%20Tutor%20Code%20of%20Conduct.pdf?alt=media&token=17cbb614-401f-495f-9311-8b4aa8076a6e"
                                     id="download"
-                                    ><i class="fa fa-download"></i
+                                    ><i class="bi-download"></i
                                   ></a>
                                 </td>
                               </tr>
@@ -429,7 +429,7 @@
                                     class="btn btn-danger"
                                     href="#"
                                     id="download"
-                                    ><i class="fa fa-download"></i
+                                    ><i class="bi-download"></i
                                   ></a>
                                 </td>
                               </tr>
@@ -446,7 +446,7 @@
                                     class="btn btn-danger"
                                     href="https://www.readingbear.org/"
                                     target="framename"
-                                    ><i class="fa fa-download"></i
+                                    ><i class="bi-download"></i
                                   ></a>
                                 </td>
                               </tr>
@@ -506,7 +506,7 @@
                               <td>ENGLISH LANGUAGE</td>
                               <td>
                                 <a class="btn btn-danger" href="#" id="download"
-                                  ><i class="fa fa-download"></i
+                                  ><i class="bi-download"></i
                                 ></a>
                               </td>
                             </tr>
@@ -516,7 +516,7 @@
                               <td>MATHEMATICS</td>
                               <td>
                                 <a class="btn btn-danger" href="#" id="download"
-                                  ><i class="fa fa-download"></i
+                                  ><<i class="bi-download"></i
                                 ></a>
                               </td>
                             </tr>
@@ -526,7 +526,7 @@
                               <td>SCIENCE</td>
                               <td>
                                 <a class="btn btn-danger" href="#" id="download"
-                                  ><i class="fa fa-download"></i
+                                  ><i class="bi-download"></i
                                 ></a>
                               </td>
                             </tr>
@@ -537,7 +537,7 @@
                               <td>ENGLISH LANGUAGE</td>
                               <td>
                                 <button class="btn btn-danger">
-                                  <i class="fa fa-download"></i>
+                                  <i class="bi-download"></i>
                                 </button>
                               </td>
                             </tr>
@@ -547,7 +547,7 @@
                               <td>MATHEMATICS</td>
                               <td>
                                 <button class="btn btn-danger">
-                                  <i class="fa fa-download"></i>
+                                  <i class="bi-download"></i>
                                 </button>
                               </td>
                             </tr>
@@ -557,7 +557,7 @@
                               <td>SCIENCE</td>
                               <td>
                                 <button class="btn btn-danger">
-                                  <i class="fa fa-download"></i>
+                                  <i class="bi-download"></i>
                                 </button>
                               </td>
                             </tr>
@@ -916,7 +916,11 @@
                     class="col-lg-6 shadow-two bg-white py-5"
                     v-if="submitted"
                   >
-                  <h3><i class="bi bi-hand-thumbs-up text-success success-icon"></i></h3>
+                    <h3>
+                      <i
+                        class="bi bi-hand-thumbs-up text-success success-icon"
+                      ></i>
+                    </h3>
                     <!-- <lord-icon
                       src="https://cdn.lordicon.com/dangivhk.json"
                       trigger="loop"
@@ -942,7 +946,6 @@
               <div class="px-5 py-5">
                 <a class="navbar-brand" href="#">Training</a>
 
-               
                 <Stepper>
                   <StepperPanel header="Course Outline">
                     <template #content="{ nextCallback }">
