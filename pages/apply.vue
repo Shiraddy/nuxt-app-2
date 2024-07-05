@@ -9,8 +9,8 @@
           <div class="service-hero-text">
             <h6 class="fs-beauty fs-4">Apply Here</h6>
             <h1 class="hero-apply">
-              Become a
-              <span class="text-success fw-bolder">TUTOR</span>
+              BECOME A
+              <span class="text-success fw-bolder">LIFELINE TUTOR</span>
             </h1>
 
             <p class="fs-5 fs-beauty">
@@ -447,7 +447,7 @@
             <!-- EXPERTISE -->
             <fieldset v-if="expertise" class="">
               <div class="container-fluid">
-                <div class="row gy-2">
+                <div class="row gy-4">
                   <!-- <div class="col-lg-6">
                     <label for="" class="label">Pre-School</label>
                     <MultiSelect
@@ -461,7 +461,7 @@
                       class="apply-input"
                     />
                   </div> -->
-                  <div class="col-12">
+                  <div class="col-lg-6 col-12">
                     <label for="" class="label">Lower Level</label>
                     <MultiSelect
                       v-model="tutorApplication.lower_primary"
@@ -474,7 +474,7 @@
                       class="apply-input"
                     />
                   </div>
-                  <div class="col-12">
+                  <div class="col-lg-6 col-12">
                     <label for="" class="label">Upper Primary</label>
                     <MultiSelect
                       v-model="tutorApplication.upper_primary"
@@ -487,7 +487,7 @@
                       class="apply-input"
                     />
                   </div>
-                  <div class="col-12">
+                  <div class="col-lg-6 col-12">
                     <label for="" class="label">Junior High Sch.</label>
                     <MultiSelect
                       v-model="tutorApplication.JHS"
@@ -500,7 +500,7 @@
                       class="apply-input"
                     />
                   </div>
-                  <div class="col-12">
+                  <div class="col-lg-6 col-12">
                     <label for="" class="label">Senior High Sch.</label>
                     <MultiSelect
                       v-model="tutorApplication.SHS"
@@ -512,6 +512,16 @@
                       :maxSelectedLabels="3"
                       class="apply-input"
                     />
+                  </div>
+                  <div class="col-12">
+                    <label for="" class="label">Other Subjects</label>
+                    <Textarea
+                      v-model="tutorApplication.otherSubjects"
+                      class="apply-input"
+                      autoResize
+                      variant="filled"
+                      placeholder="Enter other subjects you can teach"
+                    ></Textarea>
                   </div>
                 </div>
               </div>
@@ -549,7 +559,7 @@
               <section class="">
                 <legend class="legend">Location and Other Details</legend>
 
-                <div class="row gy-2">
+                <div class="row gy-3">
                   <div class="col-lg-6">
                     <label class="label" for="Mobile Money"
                       >Mobile Money Number</label
@@ -666,7 +676,6 @@
                     >
                   </label>
                 </div>
-           
 
                 <div v-if="submitError">
                   <small class="bg-danger text-white p-1 rounded">
@@ -674,7 +683,7 @@
                   </small>
                 </div>
 
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end py-3">
                   <!-- <button class="round" :class="location && 'round4'">4/4</button> -->
                   <div>
                     <button
@@ -907,7 +916,7 @@ export default {
       form: true,
       small: false,
       success: false,
-      
+
       contact: false,
       underGraduate: true,
       graduate: false,
@@ -1453,7 +1462,7 @@ export default {
   width: 98%;
   margin: auto auto;
   padding: 1% 3%;
-  height: 495px;
+  height: 90dvh;
   /* overflow-y: scroll; */
 }
 
@@ -1486,11 +1495,11 @@ export default {
   }
 
   .applyForm {
-    height: 60vh;
+    height: 60dvh;
   }
 
   .filter-hero {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0);
     backdrop-filter: blur(1px);
   }
 
