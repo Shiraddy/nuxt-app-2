@@ -1,6 +1,13 @@
 export default defineNuxtConfig({
   app: {
     head: {
+      script: [
+        {
+          src: "https://cdn.lordicon.com/lordicon.js",
+          body: true,
+        },
+      ],
+
       link: [
         {
           rel: "stylesheet",
@@ -36,6 +43,11 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.min.css",
         },
+
+        {
+          rel: "stylesheet",
+          href: "https://cdn.lordicon.com/lordicon.js",
+        },
       ],
     },
   },
@@ -47,6 +59,7 @@ export default defineNuxtConfig({
 
   experimental: {
     restoreState: true,
+    watcher: "chokidar",
   },
 
   modules: [

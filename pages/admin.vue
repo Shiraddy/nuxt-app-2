@@ -3576,20 +3576,7 @@ export default {
         if (index > -1) {
           this.messages.splice(index, 1);
         }
-
-        // this.$toast.add({
-        //   severity: "success",
-        //   summary: "Success Message",
-        //   detail: "Message Deleted",
-        //   life: 3000,
-        // });
       } catch (error) {
-        // this.$toast.add({
-        //   severity: "error",
-        //   summary: "Error Message",
-        //   detail: "Message Content",
-        //   life: 3000,
-        // });
         console.error("Error deleting message:", error);
       }
     },

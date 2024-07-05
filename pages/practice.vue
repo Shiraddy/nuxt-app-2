@@ -176,7 +176,12 @@
                   <div
                     class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
                   >
-                    Content I
+                    <lord-icon
+                      src="https://cdn.lordicon.com/emglzyuh.json"
+                      trigger="hover"
+                      style="width: 250px; height: 250px"
+                    >
+                    </lord-icon>
                   </div>
                 </div>
                 <div class="flex pt-4 justify-content-end">

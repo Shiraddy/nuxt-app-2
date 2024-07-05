@@ -704,198 +704,227 @@
             </section>
 
             <!-- FORMS -->
-            <section class="col-lg-12 shadow-two my-3" id="forms">
+            <section class="col-lg-12 shadow-two my-3">
               <!-- SWITCH BTN -->
               <div class="btn-group my-4" role="group">
                 <button
                   type="button"
-                  class="btn btn-outline-primary"
+                  class="btn btn-outline-success"
                   @click="logSheetBtn"
                 >
                   LOG SHEET
                 </button>
                 <button
                   type="button"
-                  class="btn btn-outline-primary"
+                  class="btn btn-outline-success"
                   @click="progressReportBtn"
                 >
                   PROGRESS REPORT
                 </button>
-                <!-- <button type="button" class="btn btn-outline-primary" id="assessmentBtn" >ASSESSMENT REPORT</button> -->
               </div>
 
-              <!-- PROGRESS REPORT -->
-              <div id="progress" class="px-5" v-if="progressReport">
+              <!-- <div class="px-5">
                 <div class="row shadow-two">
                   <div class="col-lg-6 d-none d-lg-block"></div>
-                  <div class="col-lg-6 shadow-two bg-white">
-                    <h4 class="my-lg-4 my-2">PROGRESS REPORT</h4>
-                    <div class="my-lg-3">
-                      <!-- <label for="">CONTRACT TYPE:</label> <br /> -->
-                      <select name="type" id="" class="profile-input">
-                        <option value="">CONTRACT TYPE</option>
-                        <option value="DUO">DUO</option>
-                        <option value="TRI">TRI</option>
-                        <option value="QUAD">QUAD</option>
-                        <option value="PENT">PENT</option>
-                      </select>
-                    </div>
+                </div>
+              </div> -->
 
-                    <div class="">
-                      <!-- <label class="" for="">Mode of Tuition:</label> <br /> -->
-                      <select name="mode" id="" class="profile-input">
-                        <option value="">MODE OF TUITION</option>
-                        <option value="online">Online</option>
-                        <option value="in-person">In-Person</option>
-                      </select>
-                    </div>
+              <div class="px-lg-5 py-4 mx-2 mx-lg-3">
+                <div class="row shadow-two">
+                  <div
+                    class="col-lg-6 shadow-two bg-white"
+                    v-if="progressReport"
+                  >
+                    <form class="row gy-3">
+                      <h4 class="py-4 text-secondary fw-bolder">
+                        PROGRESS REPORT
+                      </h4>
+                      <div class="col-lg-6 col-12">
+                        <label for="" class="label">Contract Type</label>
+                        <select class="apply-input">
+                          <option value="">select</option>
+                          <option value="DUO">DUO</option>
+                          <option value="TRI">TRI</option>
+                          <option value="QUAD">QUAD</option>
+                          <option value="PENT">PENT</option>
+                        </select>
+                      </div>
 
-                    <div class="my-3">
-                      <!-- <label for="">Level:</label> <br /> -->
-                      <select name="level" id="" class="profile-input">
-                        <option value="">LEVEL OF STUDENT</option>
-                        <option value="KG">KINDERGARTEN</option>
-                        <option value="PRIMARY">PRIMARY</option>
-                        <option value="JHS">JHS</option>
-                        <option value="SHS">SHS</option>
-                      </select>
-                    </div>
+                      <div class="col-lg-6 col-12">
+                        <label class="label" for="">Mode of Tuition:</label>
+                        <select class="apply-input">
+                          <option value="">select</option>
+                          <option value="online">Online</option>
+                          <option value="in-person">In-Person</option>
+                        </select>
+                      </div>
 
-                    <div class="div">
-                      <!-- <label for="">Class:</label> <br /> -->
-                      <input
-                        class="profile-input"
-                        type="tel"
-                        name="class"
-                        placeholder="CLASS"
-                      />
-                    </div>
+                      <div class="col-lg-6 col-12">
+                        <label for="level" class="label">Level:</label>
+                        <select class="apply-input">
+                          <option value="">select</option>
+                          <option value="KG">KINDERGARTEN</option>
+                          <option value="PRIMARY">PRIMARY</option>
+                          <option value="JHS">JHS</option>
+                          <option value="SHS">SHS</option>
+                        </select>
+                      </div>
 
-                    <div class="my-3">
-                      <!-- <label for="">Subjects:</label> <br /> -->
-                      <textarea
-                        name="subjects"
-                        id=""
-                        class="profile-input-textarea"
-                        placeholder="TUITION SUBJECT(S)"
-                      ></textarea>
-                    </div>
+                      <div class="col-lg-6 col-12">
+                        <label for="class" class="label">Class</label>
+                        <input
+                          class="apply-input"
+                          type="tel"
+                          name="class"
+                          placeholder="Eg: B1"
+                        />
+                      </div>
 
-                    <div class="div">
-                      <!-- <label for="">Lesson Duration</label> <br /> -->
-                      <select name="duration" id="" class="profile-input">
-                        <option value="">LESSON DURATION</option>
-                        <option value="1 hour">1 hour</option>
-                        <option value="1.5 hours">1.5 hrs</option>
-                        <option value="2 hours">2 hrs</option>
-                        <option value="2.5 hours">2.5 hrs</option>
-                        <option value="3 hours">3 hrs</option>
-                      </select>
-                    </div>
+                      <div class="col-lg-6 col-12">
+                        <label for="lesson duration" class="label"
+                          >Lesson Duration</label
+                        >
+                        <select name="duration" id="" class="apply-input">
+                          <option value="">select</option>
+                          <option value="1 hour">1 hour</option>
+                          <option value="1.5 hours">1.5 hrs</option>
+                          <option value="2 hours">2 hrs</option>
+                          <option value="2.5 hours">2.5 hrs</option>
+                          <option value="3 hours">3 hrs</option>
+                        </select>
+                      </div>
 
-                    <div class="my-3">
-                      <!-- <label for="">Location:</label> <br /> -->
-                      <input
-                        class="profile-input"
-                        type="text"
-                        name="location"
-                        placeholder="LOCATION"
-                      />
-                    </div>
+                      <div class="col-lg-6 col-12">
+                        <label for="location" class="label">Location:</label>
+                        <input
+                          class="apply-input"
+                          type="text"
+                          name="location"
+                          placeholder="LOCATION"
+                        />
+                      </div>
 
-                    <button
-                      class="btn btn-success my-lg-4 my-3 shadow-two"
-                      type="submit"
-                      name="postContract"
+                      <div class="col-12">
+                        <label for="subjects" class="label">Subjects</label>
+                        <textarea
+                          name="subjects"
+                          id=""
+                          class="apply-input"
+                          placeholder="Objectives/Subjects"
+                        ></textarea>
+                      </div>
+
+                      <div class="my-2">
+                        <button type="reset" class="btn btn-danger mx-3">
+                          RESET
+                        </button>
+                        <button
+                          class="btn btn-success my-2 shadow-two"
+                          type="submit"
+                          name="postContract"
+                        >
+                          SUBMIT
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- LOG SHEET -->
+                  <div
+                    class="col-lg-6 shadow-two bg-white py-2"
+                    v-if="logSheet"
+                  >
+                    <div></div>
+                    <h4 class="my-lg-3 fw-bolder text-secondary">LOG SHEET</h4>
+                    <form class="row my-3" @submit.prevent="submitLogSheet">
+                      <div class="col-lg-6 my-lg-2">
+                        <label class="label" for="">Student</label>
+                        <inputText
+                          class="apply-input"
+                          type="text"
+                          v-model="logSheet.student"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-lg-6 my-lg-2">
+                        <label class="label" for="">Month</label>
+                        <inputText
+                          class="apply-input"
+                          type="month"
+                          v-model="logSheet.month"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-lg-6 my-lg-2">
+                        <label class="label" for="">Expected Sessions</label>
+                        <inputText
+                          class="apply-input"
+                          type="number"
+                          v-model="logSheet.expected"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-lg-6 my-lg-2">
+                        <label class="label" for="">Total Sessions</label>
+                        <inputText
+                          class="apply-input"
+                          type="number"
+                          v-model="logSheet.total"
+                          required
+                        />
+                      </div>
+
+                      <FileUpload
+                        ref="fileUpload"
+                        customUpload
+                        :multiple="false"
+                        mode="advanced"
+                        :auto="false"
+                        :showCancelButton="true"
+                        :showUploadButton="false"
+                        choose-label="Attach Log Sheet"
+                        :previewWidth="150"
+                        :maxFileSize="1000000"
+                        invalidFileSizeMessage="File too big (Should be less than 1mb)"
+                        accept="image/*"
+                      >
+                        <template #empty>
+                          <span>Drag and drop your Log Sheet to upload.</span>
+                        </template>
+                      </FileUpload>
+
+                      <div class="my-3">
+                        <button class="btn btn-danger px-3 mx-3" type="reset">
+                          RESET
+                        </button>
+                        <button class="btn btn-success my-lg-4" type="submit">
+                          SUBMIT
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div
+                    class="col-lg-6 shadow-two bg-white py-2"
+                    v-if="submitted"
+                  >
+                    <lord-icon
+                      src="https://cdn.lordicon.com/dangivhk.json"
+                      trigger="loop"
+                      delay="2000"
+                      style="width: 85px; height: 85px"
                     >
-                      UPLOAD REPORT
+                    </lord-icon>
+                    <h2 class="text-success">Submission Successful</h2>
+                    <!-- <button class="btn btn-success me-3">View Sheet</button> -->
+                    <button class="btn btn-success" @click="moreLogsheet">
+                      Submit another
                     </button>
                   </div>
                 </div>
               </div>
-
-              <!-- LOG SHEET -->
-              <KeepAlive>
-                <div class="px-lg-5 py-4 mx-2 mx-lg-3" v-if="logSheet">
-                  <div class="row shadow-two">
-                    <div class="col-lg-6 d-none d-lg-block"></div>
-                    <div class="col-lg-6 shadow-two bg-white py-2 container">
-                      <h4 class="my-lg-3 fw-bolder text-secondary">
-                        LOG SHEET
-                      </h4>
-                      <form class="row my-3" @submit.prevent="submitLogSheet">
-                        <div class="col-lg-6 my-lg-2">
-                          <label class="label" for="">Student</label>
-                          <inputText
-                            class="apply-input"
-                            type="text"
-                            v-model="logSheet.student"
-                            required
-                          />
-                        </div>
-
-                        <div class="col-lg-6 my-lg-2">
-                          <label class="label" for="">Month</label>
-                          <inputText
-                            class="apply-input"
-                            type="month"
-                            v-model="logSheet.month"
-                            required
-                          />
-                        </div>
-
-                        <div class="col-lg-6 my-lg-2">
-                          <label class="label" for="">Expected Sessions</label>
-                          <inputText
-                            class="apply-input"
-                            type="number"
-                            v-model="logSheet.expected"
-                            required
-                          />
-                        </div>
-
-                        <div class="col-lg-6 my-lg-2">
-                          <label class="label" for="">Total Sessions</label>
-                          <inputText
-                            class="apply-input"
-                            type="number"
-                            v-model="logSheet.total"
-                            required
-                          />
-                        </div>
-
-                        <FileUpload
-                          ref="fileUpload"
-                          customUpload
-                          :multiple="false"
-                          mode="advanced"
-                          :auto="false"
-                          :showCancelButton="true"
-                          :showUploadButton="false"
-                          choose-label="Attach Log Sheet"
-                          :previewWidth="150"
-                          :maxFileSize="1000000"
-                          invalidFileSizeMessage="File too big (Should be less than 1mb)"
-                          accept="image/*"
-                        >
-                          <template #empty>
-                            <span>Drag and drop your Log Sheet to upload.</span>
-                          </template>
-                        </FileUpload>
-
-                        <div class="my-3">
-                          <button class="btn btn-danger px-3 mx-3" type="reset">
-                            RESET
-                          </button>
-                          <button class="btn btn-success my-lg-4" type="submit">
-                            SUBMIT
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </KeepAlive>
             </section>
 
             <!-- TRAINING -->
@@ -1123,6 +1152,7 @@ export default {
       progressReport: false,
       prospectData: [],
       notices: [],
+      submitted: false,
       currentNote: {},
       lastIndex: 0,
       layout: "grid",
@@ -1200,8 +1230,10 @@ export default {
           },
           { merge: true }
         );
-        console.log("Sheet Info Uploaded", existingSheets);
-        alert("Log Sheet Uploaded");
+        // console.log("Sheet Info Uploaded", existingSheets);
+        // alert("Log Sheet Uploaded");
+        this.logSheet = false;
+        this.submitted = true;
 
         // Reset the form
         this.logSheet.student = "";
@@ -1215,6 +1247,12 @@ export default {
       } catch (error) {
         console.log("Error submitting LogSheet", error);
       }
+    },
+
+    moreLogsheet() {
+      this.submitted = false;
+      this.logSheet = true;
+      this.progressReport = false;
     },
 
     onUpload(e) {

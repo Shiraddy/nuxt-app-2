@@ -4,14 +4,13 @@
     <section class="applyWall" v-if="form">
       <div class="row gx-5">
         <div
-          class="col-lg-3 d-none d-lg-flex text-start align-items-center justify-content-center bg-white"
+          class="col-lg-4 d-none d-lg-flex text-start align-items-center justify-content-center bg-white"
         >
           <div class="service-hero-text">
             <h6 class="fs-beauty fs-4">Apply Here</h6>
-            <h1 class="fw-bolder">
-              Be a
-              <span class="text-success fw-bolder">LIFELINE</span>
-              tutor
+            <h1 class="hero-apply">
+              Become a
+              <span class="text-success fw-bolder">TUTOR</span>
             </h1>
 
             <p class="fs-5 fs-beauty">
@@ -28,7 +27,7 @@
           </div>
         </div>
 
-        <div class="col-lg-9 small text-white filter">
+        <div class="col-lg-8 small text-white filter-hero">
           <form @submit.prevent="submitTutorForm()" class="applyForm">
             <h4 class="fw-bolder my-2 text-secondary">APPLICATION</h4>
 
@@ -632,7 +631,7 @@
                   </p>
                 </div>
 
-                <!-- <div class="col-lg-12 text-start">
+                <div class="col-lg-12 text-start">
                   <label for="">Motivation for applying</label>
                   <Textarea
                     class="apply-input mb-0 pb-0"
@@ -651,7 +650,7 @@
                       <small>This field is required</small>
                     </p>
                   </div>
-                </div> -->
+                </div>
 
                 <div class="col">
                   <input
@@ -667,10 +666,10 @@
                     >
                   </label>
                 </div>
-                <br />
+           
 
                 <div v-if="submitError">
-                  <small class="bg-danger text-white p-3 rounded">
+                  <small class="bg-danger text-white p-1 rounded">
                     {{ submitErrorMessage }}
                   </small>
                 </div>
@@ -908,6 +907,7 @@ export default {
       form: true,
       small: false,
       success: false,
+      
       contact: false,
       underGraduate: true,
       graduate: false,
@@ -1418,6 +1418,10 @@ export default {
   color: rgb(22, 172, 97);
 }
 
+.hero-apply {
+  font-weight: bolder;
+}
+
 .link {
   text-decoration: none;
   color: blue;
@@ -1433,6 +1437,11 @@ export default {
 
 .link:clicked {
   color: brown;
+}
+
+.filter-hero {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
 }
 
 .applyWall {
@@ -1478,6 +1487,11 @@ export default {
 
   .applyForm {
     height: 60vh;
+  }
+
+  .filter-hero {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
   }
 
   .applyWall {
