@@ -657,7 +657,7 @@
                 v-model:visible="offerInfoDialog"
                 modal
                 maximizable
-                draggable="true"
+                :draggable="true"
                 :pt="{
                   root: 'border-none',
                   mask: {
@@ -902,21 +902,28 @@
                         </button>
                         <button class="btn btn-success my-lg-4" type="submit">
                           SUBMIT
+                          <span id="loading-spinner" v-if="logWheel">
+                            <div
+                              class="spinner-border spinner-border-sm"
+                              role="status"
+                            ></div>
+                          </span>
                         </button>
                       </div>
                     </form>
                   </div>
                   <div
-                    class="col-lg-6 shadow-two bg-white py-2"
+                    class="col-lg-6 shadow-two bg-white py-5"
                     v-if="submitted"
                   >
-                    <lord-icon
+                  <h3><i class="bi bi-hand-thumbs-up text-success success-icon"></i></h3>
+                    <!-- <lord-icon
                       src="https://cdn.lordicon.com/dangivhk.json"
                       trigger="loop"
                       delay="2000"
                       style="width: 85px; height: 85px"
                     >
-                    </lord-icon>
+                    </lord-icon> -->
                     <h2 class="text-success">Submission Successful</h2>
                     <!-- <button class="btn btn-success me-3">View Sheet</button> -->
                     <button class="btn btn-success" @click="moreLogsheet">
@@ -935,17 +942,7 @@
               <div class="px-5 py-5">
                 <a class="navbar-brand" href="#">Training</a>
 
-                <div class="">
-                  <!-- <iframe
-                  src="https://docs.google.com/presentation/d/e/2PACX-1vS6LQfaUqPWGECS-5B8CotEciAAFI3PuLIacC9AXLYehYpd0cHSuTuoyZxxX6bZ41Hot8qi0UjHiJYK/embed?start=false&loop=false&delayms=3000"
-                  frameborder="0"
-                  width="920"
-                  height="569"
-                  allowfullscreen="true"
-                  mozallowfullscreen="true"
-                  webkitallowfullscreen="true"
-                ></iframe> -->
-                </div>
+               
                 <Stepper>
                   <StepperPanel header="Course Outline">
                     <template #content="{ nextCallback }">
@@ -953,7 +950,7 @@
                         <div
                           class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
                         >
-                          <iframe
+                          <!-- <iframe
                             src="https://docs.google.com/presentation/d/e/2PACX-1vS6LQfaUqPWGECS-5B8CotEciAAFI3PuLIacC9AXLYehYpd0cHSuTuoyZxxX6bZ41Hot8qi0UjHiJYK/embed?start=false&loop=false&delayms=3000"
                             frameborder="0"
                             width="850"
@@ -961,7 +958,7 @@
                             allowfullscreen="true"
                             mozallowfullscreen="true"
                             webkitallowfullscreen="true"
-                          ></iframe>
+                          ></iframe> -->
                         </div>
                       </div>
                       <div class="flex pt-4 justify-content-end">
@@ -1102,11 +1099,13 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 definePageMeta({
   middleware: "auth",
 });
+</script>
 
+<script>
 import FileUpload from "primevue/fileupload";
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -1153,6 +1152,7 @@ export default {
       prospectData: [],
       notices: [],
       submitted: false,
+      logWheel: false,
       currentNote: {},
       lastIndex: 0,
       layout: "grid",
@@ -1173,6 +1173,7 @@ export default {
 
   methods: {
     async signingOut() {
+      this.logWheel = true;
       try {
         const router = useRouter();
         const auth = getAuth();
@@ -1207,6 +1208,7 @@ export default {
 
       try {
         // Upload the file and get the URL
+
         const snapshot = await uploadBytes(storageRef, file);
         const url = await getDownloadURL(snapshot.ref);
         console.log(url);
@@ -1516,4 +1518,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.success-icon {
+  font-size: 150px;
+}
+</style>

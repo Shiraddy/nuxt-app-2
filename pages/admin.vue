@@ -2916,11 +2916,14 @@
   </div>
 </template>
 
-<script>
+<script setup>
 definePageMeta({
   middleware: "admin-auth",
   layout: "default",
 });
+</script>
+
+<script>
 // import { Axios } from "axios";
 import Form from "@/components/Form.vue";
 import Dialog from "primevue/dialog";
