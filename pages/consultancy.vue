@@ -106,7 +106,7 @@
         <h5 class="text-dark-emphasis mt-0">
           We Offer the Following Consultancy Services
         </h5>
-        <div class="row">
+        <div class="row gy-4 gx-3">
           <div class="col-lg-4">
             <div class="card card-body">
               <nuxt-img class="card-image" src="/images/consul3.jpg" alt="" />

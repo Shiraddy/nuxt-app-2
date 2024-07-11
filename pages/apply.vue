@@ -1,725 +1,31 @@
 <template>
   <section class="applyBanner">
     <NavBar></NavBar>
-    <section class="applyWall" v-if="form">
-      <div class="row gx-5">
+    <section class="container-sm" v-if="form">
+      <div class="row">
+        <div class="col-lg-7"></div>
+
         <div
-          class="col-lg-4 d-none d-lg-flex text-start align-items-center justify-content-center bg-white"
+          class="col-lg-5 small text-white filter-hero applyWall d-flex align-items-center"
         >
-          <div class="service-hero-text">
-            <h6 class="fs-beauty fs-4">Apply Here</h6>
-            <h1 class="hero-apply">
+          <div class="py-5 apply-hero-wall">
+            <h6 class="mb-0 hero-message">Apply Here For Free</h6>
+            <h3 class="hero-title">
               BECOME A
-              <span class="text-success fw-bolder">LIFELINE TUTOR</span>
-            </h1>
+              <span class="text-success">TUTOR</span>
+            </h3>
 
-            <p class="fs-5 fs-beauty">
-              <small
-                >Receive contracts to teach students at home after school and
-                weekends.
-              </small>
+            <p class="hero-message">
+              Receive contracts to teach students at home after school and
+              weekends. Join Lifeline today and let us get you assigned.
             </p>
-            <div class="">
-              <button class="btn btn-success shadow-three">
-                <NuxtLink to="/faq" class="nav-link">READ MORE..</NuxtLink>
-              </button>
-            </div>
+            <button class="btn btn-success me-3" @click="applyNow">
+              APPLY NOW
+            </button>
+            <button class="btn btn-outline-success shadow-three">
+              <NuxtLink to="/faq" class="nav-link">READ MORE..</NuxtLink>
+            </button>
           </div>
-        </div>
-
-        <div class="col-lg-8 small text-white filter-hero">
-          <form @submit.prevent="submitTutorForm()" class="applyForm">
-            <h4 class="fw-bolder my-2 text-secondary">APPLICATION</h4>
-
-            <!-- CREATE LOGIN DETAILS -->
-            <fieldset v-if="login">
-              <legend class="legend me-auto">Create Login Details</legend>
-              <section class="">
-                <div class="row gy-2 my-3">
-                  <label for="email" class="label">Email</label>
-                  <div class="col-lg-12">
-                    <inputText
-                      required
-                      class="apply-input shadow-three"
-                      type="email"
-                      v-model="tutorApplication.email"
-                      @keyup="emailValidity()"
-                    />
-
-                    <p v-if="emailErrorMessageShow" class="text-danger lh-1">
-                      <small>{{ emailErrorMessage }}</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-12 col-sm-12">
-                    <label class="label" for="password">Password</label>
-                    <inputText
-                      required
-                      class="apply-input shadow-three"
-                      type="password"
-                      v-model="tutorApplication.password"
-                      name="password"
-                      @keyup="passwordCheck()"
-                    />
-                    <p v-if="passwordErrorMessageShow" class="text-danger lh-1">
-                      <small>{{ passwordErrorMessage }}</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-12 col-sm-12">
-                    <label class="label" for="altpassword"
-                      >Confirm Password</label
-                    >
-                    <inputText
-                      required
-                      class="apply-input shadow-three"
-                      type="password"
-                      name="password-confirm"
-                      v-model="tutorApplication.passwordConfirm"
-                      @keyup="passwordConfirm()"
-                    />
-                    <p v-if="passwordConfirmErrorShow" class="text-danger lh-1">
-                      <small>{{ passwordConfirmError }}</small>
-                    </p>
-                  </div>
-                </div>
-
-                <!-- <input class="apply-input" type="file" name="profilePic" /> -->
-                <div class="d-flex justify-content-between py-3">
-                  <button class="round" :class="login && 'round1'">1/4</button>
-
-                  <button
-                    class="btn btn-success"
-                    type="button"
-                    @click="personalSectionBtn()"
-                  >
-                    Next <small class="pi pi-caret-right"></small>
-                  </button>
-                </div>
-              </section>
-            </fieldset>
-
-            <!-- PERSONAL INFORMATION -->
-            <fieldset v-if="personal">
-              <section class="personal">
-                <legend class="legend me-auto">Personal Details</legend>
-
-                <div class="row gy-2">
-                  <div class="col-lg-12 col-sm-12">
-                    <label class="label" for="firstName">First Name</label>
-                    <inputText
-                      class="apply-input"
-                      name="firstName"
-                      type="text"
-                      v-model="tutorApplication.firstName"
-                      required
-                    />
-
-                    <p class="text-danger" v-if="firstNameError">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-12 col-sm-12">
-                    <label class="label" for="lastName">Last Name</label>
-                    <inputText
-                      class="apply-input"
-                      type="text"
-                      name="lastName"
-                      v-model="tutorApplication.lastName"
-                      required
-                    />
-                    <p class="text-danger lh-1" v-if="lastNameError">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-6 col-sm-12">
-                    <label class="label" for="sex">Sex</label>
-                    <select
-                      name="sex"
-                      class="apply-input"
-                      v-model="tutorApplication.sex"
-                    >
-                      <option disabled>Select Gender</option>
-                      <option value="Male">MALE</option>
-                      <option value="Female">FEMALE</option>
-                    </select>
-                    <p class="text-danger" v-if="sexError">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-6 col-sm-12">
-                    <label class="label" for="dateOfBirth">Date of Birth</label>
-                    <inputText
-                      type="date"
-                      class="apply-input"
-                      v-model="tutorApplication.DoB"
-                    />
-
-                    <p class="text-danger" v-if="DoBError">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-6 col-sm-12">
-                    <label class="label" for="contact">Contact</label>
-                    <inputText
-                      class="apply-input"
-                      type="tel"
-                      name="contact"
-                      v-model="tutorApplication.contact"
-                      required
-                    />
-                    <p class="text-danger" v-if="contactError">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-6 col-sm-12">
-                    <label class="label" for="altContact"
-                      >Emergency Contact</label
-                    >
-                    <inputText
-                      class="apply-input"
-                      type="tel"
-                      name="emergency"
-                      v-model="tutorApplication.emergency"
-                      required
-                    />
-                    <p class="text-danger" v-if="emergencyError">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-                </div>
-
-                <div
-                  class="d-flex justify-content-between my-lg-2 py-lg-3 py-4"
-                >
-                  <button class="round" :class="personal && 'round2'">
-                    2/4
-                  </button>
-                  <div>
-                    <button
-                      class="btn btn-danger me-3"
-                      type="button"
-                      @click="loginSection()"
-                    >
-                      <small class="pi pi-caret-left"></small> Back
-                    </button>
-                    <button
-                      class="btn btn-success"
-                      type="button"
-                      @click="educationSectionBtn()"
-                    >
-                      Next <small class="pi pi-caret-right"></small>
-                    </button>
-                  </div>
-                </div>
-              </section>
-            </fieldset>
-
-            <!-- EDUCATION -->
-            <fieldset v-if="education">
-              <section class="education">
-                <legend class="legend">Education & Qualification</legend>
-                <h6><small>Select Your Student Status</small></h6>
-                <div>
-                  <div
-                    class="btn-group pb-2"
-                    role="group"
-                    aria-label="Vertical radio toggle button group"
-                  >
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="studentStatus"
-                      v-model="tutorApplication.studentStatus"
-                      value="Undergraduate"
-                      id="vbtn-radio1"
-                      @click="amUnderGraduate()"
-                      autocomplete="off"
-                      checked
-                    />
-                    <label
-                      id="undergradbtn"
-                      class="btn btn-outline-success"
-                      for="vbtn-radio1"
-                      >Undergraduate</label
-                    >
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="studentStatus"
-                      v-model="tutorApplication.studentStatus"
-                      value="Graduate"
-                      @click="amGraduate()"
-                      id="vbtn-radio2"
-                      autocomplete="off"
-                    />
-                    <label
-                      id="gradbtn"
-                      class="btn btn-outline-success px-lg-5 px-sm-4"
-                      for="vbtn-radio2"
-                      >Graduate</label
-                    >
-                  </div>
-                </div>
-                <br />
-
-                <!-- UNDERGRADUATE -->
-                <div v-if="underGraduate">
-                  <div class="row my-lg-3 gy-1">
-                    <div class="col-lg-6">
-                      <label class="label" for="school_attending"
-                        >School Attending</label
-                      >
-                      <inputText
-                        class="apply-input"
-                        type="text"
-                        name="school_attending"
-                        v-model="tutorApplication.school_attending"
-                      />
-                      <p
-                        class="text-danger lh-1"
-                        v-if="error.schoolAttendingError"
-                      >
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <label class="label" for="level">Level</label>
-                      <inputText
-                        class="apply-input"
-                        type="text"
-                        name="level"
-                        placeholder="Level; Eg - Level 200"
-                        v-model="tutorApplication.level"
-                      />
-                      <p class="text-danger lh-1" v-if="error.levelError">
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="row my-lg-2 gy-1">
-                    <div class="col-lg-6">
-                      <label class="label" for="highest_level_of_education"
-                        >Certificate Pursuing</label
-                      >
-                      <select
-                        class="apply-input"
-                        name="certPurs"
-                        v-model="tutorApplication.certPurs"
-                      >
-                        <option disabled>Select Certificate</option>
-                        <option value="Masters">Master</option>
-                        <option value="Degree">Degree</option>
-                        <option value="Diploma">Diploma</option>
-                        <option value="HND">HND</option>
-                        <option value="Certificate">Certificate</option>
-                      </select>
-                      <p class="text-danger lh-1" v-if="error.certPursError">
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <label class="label" for="course_studying"
-                        >Course Studying</label
-                      >
-                      <inputText
-                        class="apply-input"
-                        type="text"
-                        name="coursing"
-                        v-model="tutorApplication.coursing"
-                      />
-                      <p class="text-danger lh-1" v-if="error.coursingError">
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- POSTGRADUATES -->
-                <div v-if="graduate">
-                  <div class="row my-lg-2 gy-1">
-                    <div class="col-lg-6">
-                      <label class="label" for="schoolCompleted"
-                        >School Completed</label
-                      >
-                      <inputText
-                        class="apply-input"
-                        type="text"
-                        name="schoolCompleted"
-                        v-model="tutorApplication.schoolCompleted"
-                      />
-                      <p
-                        class="text-danger lh-1"
-                        v-if="error.schoolCompletedError"
-                      >
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <label class="label" for="YoC">Date of Completion</label>
-                      <inputText
-                        class="apply-input"
-                        type="month"
-                        name="YoC"
-                        v-model="tutorApplication.YoC"
-                      />
-                      <p class="text-danger lh-1" v-if="error.YoCError">
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="row my-lg-4">
-                    <div class="col-lg-6">
-                      <label class="label" for="course_studied"
-                        >Course Studied</label
-                      >
-                      <inputText
-                        class="apply-input"
-                        type="text"
-                        name="coursed"
-                        v-model="tutorApplication.coursed"
-                      />
-                      <p class="text-danger lh-1" v-if="error.coursedError">
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <label class="label" for="highest_level_of_education"
-                        >Certificate Attained</label
-                      >
-                      <select
-                        class="apply-input"
-                        name="certAttained"
-                        v-model="tutorApplication.certAttained"
-                      >
-                        <option disabled>Select Certificate</option>
-                        <option value="Masters">Masters</option>
-                        <option value="Degree">Degree</option>
-                        <option value="Diploma">Diploma</option>
-                        <option value="HND">HND</option>
-                        <option value="Certificate">Certificate</option>
-                      </select>
-                      <p
-                        class="text-danger lh-1"
-                        v-if="error.certAttainedError"
-                      >
-                        <small>This field is required</small>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-between py-3">
-                  <button class="round" :class="education && 'round3'">
-                    3/4
-                  </button>
-
-                  <div>
-                    <button
-                      class="me-lg-3 btn btn-danger me-3"
-                      type="button"
-                      @click="toPersonal()"
-                    >
-                      <small class="pi pi-caret-left"></small> Back
-                    </button>
-                    <button
-                      class="btn btn-success me-lg-2"
-                      type="button"
-                      @click="expertiseSectionBtn()"
-                    >
-                      Next <small class="pi pi-caret-right"></small>
-                    </button>
-                  </div>
-                </div>
-              </section>
-            </fieldset>
-
-            <!-- EXPERTISE -->
-            <fieldset v-if="expertise" class="">
-              <div class="container-fluid">
-                <div class="row gy-4">
-                  <!-- <div class="col-lg-6">
-                    <label for="" class="label">Pre-School</label>
-                    <MultiSelect
-                      v-model="tutorApplication.pre_school"
-                      display="chip"
-                      :options="preSchool"
-                      optionLabel="name"
-                      filter
-                      placeholder="Select Subjects"
-                      :maxSelectedLabels="3"
-                      class="apply-input"
-                    />
-                  </div> -->
-                  <div class="col-lg-6 col-12">
-                    <label for="" class="label">Lower Level</label>
-                    <MultiSelect
-                      v-model="tutorApplication.lower_primary"
-                      display="chip"
-                      :options="lowerPrimary"
-                      optionLabel="name"
-                      filter
-                      placeholder="Select Subjects"
-                      :maxSelectedLabels="3"
-                      class="apply-input"
-                    />
-                  </div>
-                  <div class="col-lg-6 col-12">
-                    <label for="" class="label">Upper Primary</label>
-                    <MultiSelect
-                      v-model="tutorApplication.upper_primary"
-                      display="chip"
-                      :options="upperPrimary"
-                      optionLabel="name"
-                      filter
-                      placeholder="Select Subjects"
-                      :maxSelectedLabels="3"
-                      class="apply-input"
-                    />
-                  </div>
-                  <div class="col-lg-6 col-12">
-                    <label for="" class="label">Junior High Sch.</label>
-                    <MultiSelect
-                      v-model="tutorApplication.JHS"
-                      display="chip"
-                      :options="JHS"
-                      optionLabel="name"
-                      filter
-                      placeholder="Select Subjects"
-                      :maxSelectedLabels="3"
-                      class="apply-input"
-                    />
-                  </div>
-                  <div class="col-lg-6 col-12">
-                    <label for="" class="label">Senior High Sch.</label>
-                    <MultiSelect
-                      v-model="tutorApplication.SHS"
-                      display="chip"
-                      :options="SHS"
-                      optionLabel="name"
-                      filter
-                      placeholder="Select Subjects"
-                      :maxSelectedLabels="3"
-                      class="apply-input"
-                    />
-                  </div>
-                  <div class="col-12">
-                    <label for="" class="label">Other Subjects</label>
-                    <Textarea
-                      v-model="tutorApplication.otherSubjects"
-                      class="apply-input"
-                      autoResize
-                      variant="filled"
-                      placeholder="Enter other subjects you can teach"
-                    ></Textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-between py-3">
-                <button class="round" :class="expertise && 'round4'">
-                  4/4
-                </button>
-
-                <div class="py-2">
-                  <button
-                    class="me-lg-3 btn btn-danger me-3"
-                    type="button"
-                    @click="toEducation()"
-                  >
-                    Back
-                  </button>
-                  <button
-                    class="btn btn-success me-lg-2"
-                    type="button"
-                    @click="locationSectionBtn()"
-                  >
-                    Next
-                  </button>
-                </div>
-              </div>
-            </fieldset>
-
-            <!-- CONTACT AND LOCATION -->
-            <fieldset
-              id="contactLocation"
-              class="form-section"
-              data-section="5"
-              v-if="location"
-            >
-              <section class="">
-                <legend class="legend">Location and Other Details</legend>
-
-                <div class="row gy-3">
-                  <div class="col-lg-6">
-                    <label class="label" for="Mobile Money"
-                      >Mobile Money Number</label
-                    >
-                    <inputText
-                      class="apply-input"
-                      type="tel"
-                      name="momo_number"
-                      v-model="tutorApplication.momo_number"
-                      placeholder="For payments of allowances"
-                    />
-                    <p class="text-danger lh-1" v-if="error.mobileMoney">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <label class="label" for="gps">GPS Address</label>
-                    <inputText
-                      class="apply-input"
-                      type="text"
-                      name="gps"
-                      v-model="tutorApplication.gps"
-                      placeholder="Ghana Post GPS of Residence."
-                    />
-                    <p class="text-danger lh-1" v-if="error.gps">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <label class="label" for=""
-                      >How did you hear about us?</label
-                    >
-
-                    <select
-                      v-model="tutorApplication.aboutMedia"
-                      class="apply-input"
-                    >
-                      <option disabled>Select Medium</option>
-                      <option value="WhatsApp">WhatsApp</option>
-                      <option value="Facebook">Facebook</option>
-                      <option value="Friends">Friends</option>
-                    </select>
-                    <p class="text-danger lh-1" v-if="error.aboutMedia">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <label class="label" for="location"
-                      >Area of Residence</label
-                    >
-                    <inputText
-                      class="apply-input"
-                      type="text"
-                      name="location"
-                      v-model="tutorApplication.location"
-                      placeholder="Eg: Moshi-Zongo"
-                    />
-                    <p class="text-danger lh-1" v-if="error.residence">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-lg-12 text-start">
-                  <label class="label" for="accessibleLocations"
-                    >Accessible Locations</label
-                  >
-                  <Textarea
-                    name="accessibleLocations"
-                    v-model="tutorApplication.accessibleLocations"
-                    class="apply-input"
-                    placeholder="Tell us other areas you can teach at: eg. Gumani"
-                  ></Textarea>
-                  <p class="text-danger lh-1" v-if="error.accessibleLocations">
-                    <small>This field is required</small>
-                  </p>
-                </div>
-
-                <div class="col-lg-12 text-start">
-                  <label for="">Motivation for applying</label>
-                  <Textarea
-                    class="apply-input mb-0 pb-0"
-                    name="motivation"
-                    v-model="tutorApplication.motivation"
-                    placeholder="What is your motivation for applying"
-                  ></Textarea>
-                  <div class="row pt-0 mt-0">
-                    <p class="col">
-                      <small
-                        >Max word Limit:
-                        {{ tutorApplication.motivation.length }}/120</small
-                      >
-                    </p>
-                    <p class="col col-lg-3 text-danger" v-if="error.motivation">
-                      <small>This field is required</small>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <input
-                    required
-                    class="form-check-input"
-                    type="checkbox"
-                    name="agreement"
-                    v-model="tutorApplication.agreement"
-                  />
-                  <label class="mx-2" for="agreement">
-                    <small
-                      >I confirm the accuracy of the information provided</small
-                    >
-                  </label>
-                </div>
-
-                <div v-if="submitError">
-                  <small class="bg-danger text-white p-1 rounded">
-                    {{ submitErrorMessage }}
-                  </small>
-                </div>
-
-                <div class="d-flex justify-content-end py-3">
-                  <!-- <button class="round" :class="location && 'round4'">4/4</button> -->
-                  <div>
-                    <button
-                      class="btn btn-danger px-2 prev-section mx-4"
-                      type="button"
-                      @click="toExpertise()"
-                    >
-                      <small class="pi pi-caret-left"></small> Back
-                    </button>
-
-                    <button
-                      class="btn btn-success px-3"
-                      type="submit"
-                      id="applySubmit"
-                    >
-                      Send
-                      <div
-                        class="spinner-border spinner-border-sm"
-                        role="status"
-                        v-if="wheel"
-                      >
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </section>
-            </fieldset>
-
-            <!-- SUBMITTING FORM -->
-            <fieldset id="submit" class="form-section" data-section="6">
-              <section class="submit">
-                <!-- <h3>Thank You For Applying</h3> -->
-              </section>
-            </fieldset>
-          </form>
         </div>
       </div>
     </section>
@@ -756,112 +62,772 @@
     </div>
   </section>
 
-  <div v-if="join" class="services-apply container-sm text-dark">
-    <div class="row py-5 mt-5">
-      <h2 class="mb-0">Why Become a Lifeline Tutor?</h2>
-      <p class="mt-0">Become a Different Tutor</p>
-      <div class="col">
-        <i class="fa fa-map-marker" aria-hidden="true"></i>
-        <h6 class="">Accessible Locations</h6>
-        <p class="px-lg-5 px-3 text-black-50">
-          Get assigned to places closest to you.
-        </p>
-      </div>
+  <div class="container-sm services-apply text-dark pt-3">
+    <form
+      @submit.prevent="submitTutorForm()"
+      class="bg-white py-3 px-lg-5"
+      v-if="applying"
+    >
+      <h3 class="fw-bolder my-2 text-secondary">Lifeline Tutor Application</h3>
 
-      <div class="col">
-        <i class="fa fa-balance-scale" aria-hidden="true"></i>
-        <h6>Fair remuneration</h6>
-        <p class="px-lg-5 px-3 text-black-50">
-          The more engagements, the more pay. We reward you fairly.
-        </p>
-      </div>
+      <!-- CREATE LOGIN DETAILS -->
+      <fieldset v-if="login">
+        <legend class="legend me-auto">Create Login Details</legend>
+        <section class="">
+          <div class="row gy-3 my-3">
+            <label for="email" class="label">Email</label>
+            <div class="col-lg-12">
+              <inputText
+                required
+                class="apply-input shadow-three"
+                type="email"
+                v-model="tutorApplication.email"
+                @keyup="emailValidity()"
+              />
 
-      <div class="col">
-        <i class="fa fa-clock-o" aria-hidden="true"> </i>
-        <h6>Convenient Teaching Times</h6>
-        <p class="px-lg-5 px-3 text-black-50">
-          Negotiate times that suit your work schedules
-        </p>
-      </div>
-    </div>
+              <p v-if="emailErrorMessageShow" class="text-danger lh-1">
+                <small>{{ emailErrorMessage }}</small>
+              </p>
+            </div>
 
-    <div class="row">
-      <div class="col">
-        <i class="fa fa-binoculars" aria-hidden="true"></i>
-        <h6>More Teaching Jobs</h6>
-        <p class="px-lg-5 px-3 text-black-50">
-          Receive new teaching assignments frequently.
-        </p>
-      </div>
-      <div class="col">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-        <h6>Access to Resources</h6>
-        <p class="px-lg-5 px-3 text-black-50">
-          Get access to free curated teaching resources.
-        </p>
-      </div>
+            <div class="col-lg-12 col-sm-12">
+              <label class="label" for="password">Password</label>
+              <inputText
+                required
+                class="apply-input shadow-three"
+                type="password"
+                v-model="tutorApplication.password"
+                name="password"
+                @keyup="passwordCheck()"
+              />
+              <p v-if="passwordErrorMessageShow" class="text-danger lh-1">
+                <small>{{ passwordErrorMessage }}</small>
+              </p>
+            </div>
 
-      <div class="col">
-        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-        <h6>Become Effective</h6>
-        <p class="px-lg-5 px-3 text-black-50">
-          Learn effective methodologies, strategies and techniques.
-        </p>
-      </div>
-    </div>
+            <div class="col-lg-12 col-sm-12">
+              <label class="label" for="altpassword">Confirm Password</label>
+              <inputText
+                required
+                class="apply-input shadow-three"
+                type="password"
+                name="password-confirm"
+                v-model="tutorApplication.passwordConfirm"
+                @keyup="passwordConfirm()"
+              />
+              <p v-if="passwordConfirmErrorShow" class="text-danger lh-1">
+                <small>{{ passwordConfirmError }}</small>
+              </p>
+            </div>
+          </div>
 
-    <button class="btn btn-outline-primary px-4 mb-5" @click="seeMoreBtn">
-      More
-    </button>
+          <!-- <input class="apply-input" type="file" name="profilePic" /> -->
+          <div class="d-flex justify-content-between py-3">
+            <button class="round" :class="login && 'round1'">1/4</button>
 
-    <hr />
+            <button
+              class="btn btn-success"
+              type="button"
+              @click="personalSectionBtn()"
+            >
+              Next <small class="pi pi-caret-right"></small>
+            </button>
+          </div>
+        </section>
+      </fieldset>
 
-    <div class="row bg-danger py-5 shadow-one my-3">
-      <div class="col-lg-6 col-12">
-        <img
-          class="mt-lg-5 mt-3"
-          src="/images/homepage.png"
-          alt=""
-          width="90%"
-        />
-      </div>
-      <div class="col-lg-6 col-12">
-        <div class="px-lg-3 text-start text-white fs-beauty">
-          <h3 class="py-3">Apply to Join Our Team</h3>
-          <div class="test-start">
-            <p class="fs-5">
-              Join our ever-growing team of passionate educators on a quest to
-              change the home tuition landscape in Tamale and beyond.
-            </p>
-            <p class="fs-5">
-              We are redefining how home tuition (extra-classes) should be done.
-              We strongly believe in a complimentary approach model where home
-              tuition:
-            </p>
-            <ul class="fs-beauty fs-5">
-              <li>Gets parents the results they need,</li>
-              <li>Help students overcome various learner challenges,</li>
-              <li>Prepare students for test,</li>
-            </ul>
-            <div class="text-center">
-              <button @click="applyNow()" class="btn btn-secondary btn-lg">
-                Become a Lifeline Tutor
+      <!-- PERSONAL INFORMATION -->
+      <fieldset v-if="personal">
+        <section class="personal">
+          <legend class="legend me-auto">Personal Details</legend>
+
+          <div class="row gy-2">
+            <div class="col-lg-12 col-sm-12">
+              <label class="label" for="firstName">First Name</label>
+              <inputText
+                class="apply-input"
+                name="firstName"
+                type="text"
+                v-model="tutorApplication.firstName"
+                required
+              />
+
+              <p class="text-danger" v-if="firstNameError">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-12 col-sm-12">
+              <label class="label" for="lastName">Last Name</label>
+              <inputText
+                class="apply-input"
+                type="text"
+                name="lastName"
+                v-model="tutorApplication.lastName"
+                required
+              />
+              <p class="text-danger lh-1" v-if="lastNameError">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+              <label class="label" for="sex">Sex</label>
+              <select
+                name="sex"
+                class="apply-input"
+                v-model="tutorApplication.sex"
+              >
+                <option disabled>Select Gender</option>
+                <option value="Male">MALE</option>
+                <option value="Female">FEMALE</option>
+              </select>
+              <p class="text-danger" v-if="sexError">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+              <label class="label" for="dateOfBirth">Date of Birth</label>
+              <inputText
+                type="date"
+                class="apply-input"
+                v-model="tutorApplication.DoB"
+              />
+
+              <p class="text-danger" v-if="DoBError">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+              <label class="label" for="contact">Contact</label>
+              <inputText
+                class="apply-input"
+                type="tel"
+                name="contact"
+                v-model="tutorApplication.contact"
+                required
+              />
+              <p class="text-danger" v-if="contactError">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+              <label class="label" for="altContact">Emergency Contact</label>
+              <inputText
+                class="apply-input"
+                type="tel"
+                name="emergency"
+                v-model="tutorApplication.emergency"
+                required
+              />
+              <p class="text-danger" v-if="emergencyError">
+                <small>This field is required</small>
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between my-lg-2 py-lg-3 py-4">
+            <button class="round" :class="personal && 'round2'">2/4</button>
+            <div>
+              <button
+                class="btn btn-danger me-3"
+                type="button"
+                @click="loginSection()"
+              >
+                <small class="pi pi-caret-left"></small> Back
               </button>
+              <button
+                class="btn btn-success"
+                type="button"
+                @click="educationSectionBtn()"
+              >
+                Next <small class="pi pi-caret-right"></small>
+              </button>
+            </div>
+          </div>
+        </section>
+      </fieldset>
+
+      <!-- EDUCATION -->
+      <fieldset v-if="education">
+        <section class="education">
+          <legend class="legend">Education & Qualification</legend>
+          <h6><small>Select Your Student Status</small></h6>
+          <div>
+            <div
+              class="btn-group pb-2"
+              role="group"
+              aria-label="Vertical radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="studentStatus"
+                v-model="tutorApplication.studentStatus"
+                value="Undergraduate"
+                id="vbtn-radio1"
+                @click="amUnderGraduate()"
+                autocomplete="off"
+                checked
+              />
+              <label
+                id="undergradbtn"
+                class="btn btn-outline-success"
+                for="vbtn-radio1"
+                >Undergraduate</label
+              >
+              <input
+                type="radio"
+                class="btn-check"
+                name="studentStatus"
+                v-model="tutorApplication.studentStatus"
+                value="Graduate"
+                @click="amGraduate()"
+                id="vbtn-radio2"
+                autocomplete="off"
+              />
+              <label
+                id="gradbtn"
+                class="btn btn-outline-success px-lg-5 px-sm-4"
+                for="vbtn-radio2"
+                >Graduate</label
+              >
+            </div>
+          </div>
+          <br />
+
+          <!-- UNDERGRADUATE -->
+          <div v-if="underGraduate">
+            <div class="row my-lg-3 gy-1">
+              <div class="col-lg-6">
+                <label class="label" for="school_attending"
+                  >School Attending</label
+                >
+                <inputText
+                  class="apply-input"
+                  type="text"
+                  name="school_attending"
+                  v-model="tutorApplication.school_attending"
+                />
+                <p class="text-danger lh-1" v-if="error.schoolAttendingError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+
+              <div class="col-lg-6">
+                <label class="label" for="level">Level</label>
+                <inputText
+                  class="apply-input"
+                  type="text"
+                  name="level"
+                  placeholder="Level; Eg - Level 200"
+                  v-model="tutorApplication.level"
+                />
+                <p class="text-danger lh-1" v-if="error.levelError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+            </div>
+
+            <div class="row my-lg-2 gy-1">
+              <div class="col-lg-6">
+                <label class="label" for="highest_level_of_education"
+                  >Certificate Pursuing</label
+                >
+                <select
+                  class="apply-input"
+                  name="certPurs"
+                  v-model="tutorApplication.certPurs"
+                >
+                  <option disabled>Select Certificate</option>
+                  <option value="Masters">Master</option>
+                  <option value="Degree">Degree</option>
+                  <option value="Diploma">Diploma</option>
+                  <option value="HND">HND</option>
+                  <option value="Certificate">Certificate</option>
+                </select>
+                <p class="text-danger lh-1" v-if="error.certPursError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+
+              <div class="col-lg-6">
+                <label class="label" for="course_studying"
+                  >Course Studying</label
+                >
+                <inputText
+                  class="apply-input"
+                  type="text"
+                  name="coursing"
+                  v-model="tutorApplication.coursing"
+                />
+                <p class="text-danger lh-1" v-if="error.coursingError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- POSTGRADUATES -->
+          <div v-if="graduate">
+            <div class="row my-lg-2 gy-1">
+              <div class="col-lg-6">
+                <label class="label" for="schoolCompleted"
+                  >School Completed</label
+                >
+                <inputText
+                  class="apply-input"
+                  type="text"
+                  name="schoolCompleted"
+                  v-model="tutorApplication.schoolCompleted"
+                />
+                <p class="text-danger lh-1" v-if="error.schoolCompletedError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+
+              <div class="col-lg-6">
+                <label class="label" for="YoC">Date of Completion</label>
+                <inputText
+                  class="apply-input"
+                  type="month"
+                  name="YoC"
+                  v-model="tutorApplication.YoC"
+                />
+                <p class="text-danger lh-1" v-if="error.YoCError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+            </div>
+
+            <div class="row my-lg-4">
+              <div class="col-lg-6">
+                <label class="label" for="course_studied">Course Studied</label>
+                <inputText
+                  class="apply-input"
+                  type="text"
+                  name="coursed"
+                  v-model="tutorApplication.coursed"
+                />
+                <p class="text-danger lh-1" v-if="error.coursedError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+
+              <div class="col-lg-6">
+                <label class="label" for="highest_level_of_education"
+                  >Certificate Attained</label
+                >
+                <select
+                  class="apply-input"
+                  name="certAttained"
+                  v-model="tutorApplication.certAttained"
+                >
+                  <option disabled>Select Certificate</option>
+                  <option value="Masters">Masters</option>
+                  <option value="Degree">Degree</option>
+                  <option value="Diploma">Diploma</option>
+                  <option value="HND">HND</option>
+                  <option value="Certificate">Certificate</option>
+                </select>
+                <p class="text-danger lh-1" v-if="error.certAttainedError">
+                  <small>This field is required</small>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between py-3">
+            <button class="round" :class="education && 'round3'">3/4</button>
+
+            <div>
+              <button
+                class="me-lg-3 btn btn-danger me-3"
+                type="button"
+                @click="toPersonal()"
+              >
+                <small class="pi pi-caret-left"></small> Back
+              </button>
+              <button
+                class="btn btn-success me-lg-2"
+                type="button"
+                @click="expertiseSectionBtn()"
+              >
+                Next <small class="pi pi-caret-right"></small>
+              </button>
+            </div>
+          </div>
+        </section>
+      </fieldset>
+
+      <!-- EXPERTISE -->
+      <fieldset v-if="expertise" class="">
+        <div class="container-fluid">
+          <div class="row gy-4">
+            <!-- <div class="col-lg-6">
+                    <label for="" class="label">Pre-School</label>
+                    <MultiSelect
+                      v-model="tutorApplication.pre_school"
+                      display="chip"
+                      :options="preSchool"
+                      optionLabel="name"
+                      filter
+                      placeholder="Select Subjects"
+                      :maxSelectedLabels="3"
+                      class="apply-input"
+                    />
+                  </div> -->
+            <div class="col-lg-6 col-12">
+              <label for="" class="label">Lower Level</label>
+              <MultiSelect
+                v-model="tutorApplication.lower_primary"
+                display="chip"
+                :options="lowerPrimary"
+                optionLabel="name"
+                filter
+                placeholder="Select Subjects"
+                :maxSelectedLabels="3"
+                class="apply-input"
+              />
+            </div>
+            <div class="col-lg-6 col-12">
+              <label for="" class="label">Upper Primary</label>
+              <MultiSelect
+                v-model="tutorApplication.upper_primary"
+                display="chip"
+                :options="upperPrimary"
+                optionLabel="name"
+                filter
+                placeholder="Select Subjects"
+                :maxSelectedLabels="3"
+                class="apply-input"
+              />
+            </div>
+            <div class="col-lg-6 col-12">
+              <label for="" class="label">Junior High Sch.</label>
+              <MultiSelect
+                v-model="tutorApplication.JHS"
+                display="chip"
+                :options="JHS"
+                optionLabel="name"
+                filter
+                placeholder="Select Subjects"
+                :maxSelectedLabels="3"
+                class="apply-input"
+              />
+            </div>
+            <div class="col-lg-6 col-12">
+              <label for="" class="label">Senior High Sch.</label>
+              <MultiSelect
+                v-model="tutorApplication.SHS"
+                display="chip"
+                :options="SHS"
+                optionLabel="name"
+                filter
+                placeholder="Select Subjects"
+                :maxSelectedLabels="3"
+                class="apply-input"
+              />
+            </div>
+            <div class="col-12">
+              <label for="" class="label">Other Subjects</label>
+              <Textarea
+                v-model="tutorApplication.otherSubjects"
+                class="apply-input"
+                autoResize
+                variant="filled"
+                placeholder="Enter other subjects you can teach"
+              ></Textarea>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between py-3">
+          <button class="round" :class="expertise && 'round4'">4/4</button>
+
+          <div class="py-2">
+            <button
+              class="me-lg-3 btn btn-danger me-3"
+              type="button"
+              @click="toEducation()"
+            >
+              Back
+            </button>
+            <button
+              class="btn btn-success me-lg-2"
+              type="button"
+              @click="locationSectionBtn()"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- CONTACT AND LOCATION -->
+      <fieldset
+        id="contactLocation"
+        class="form-section"
+        data-section="5"
+        v-if="location"
+      >
+        <section class="">
+          <legend class="legend">Location and Other Details</legend>
+
+          <div class="row gy-1">
+            <div class="col-lg-6">
+              <label class="label" for="Mobile Money"
+                >Mobile Money Number</label
+              >
+              <inputText
+                class="apply-input"
+                type="tel"
+                name="momo_number"
+                v-model="tutorApplication.momo_number"
+                placeholder="For payments of allowances"
+              />
+              <p class="text-danger lh-1" v-if="error.mobileMoney">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-6">
+              <label class="label" for="gps">GPS Address</label>
+              <inputText
+                class="apply-input"
+                type="text"
+                name="gps"
+                v-model="tutorApplication.gps"
+                placeholder="Ghana Post GPS of Residence."
+              />
+              <p class="text-danger lh-1" v-if="error.gps">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-6">
+              <label class="label" for="">How did you hear about us?</label>
+
+              <select v-model="tutorApplication.aboutMedia" class="apply-input">
+                <option disabled>Select Medium</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Friends">Friends</option>
+              </select>
+              <p class="text-danger lh-1" v-if="error.aboutMedia">
+                <small>This field is required</small>
+              </p>
+            </div>
+
+            <div class="col-lg-6">
+              <label class="label" for="location">Area of Residence</label>
+              <inputText
+                class="apply-input"
+                type="text"
+                name="location"
+                v-model="tutorApplication.location"
+                placeholder="Eg: Moshi-Zongo"
+              />
+              <p class="text-danger lh-1" v-if="error.residence">
+                <small>This field is required</small>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-12 text-start">
+            <label class="label" for="accessibleLocations"
+              >Accessible Locations</label
+            >
+            <Textarea
+              name="accessibleLocations"
+              v-model="tutorApplication.accessibleLocations"
+              class="apply-input"
+              placeholder="Tell us other areas you can teach at: eg. Gumani"
+            ></Textarea>
+            <p class="text-danger lh-1" v-if="error.accessibleLocations">
+              <small>This field is required</small>
+            </p>
+          </div>
+
+          <div class="col-lg-12 text-start">
+            <label for="">Motivation for applying</label>
+            <Textarea
+              class="apply-input mb-0 pb-0"
+              name="motivation"
+              v-model="tutorApplication.motivation"
+              placeholder="What is your motivation for applying"
+            ></Textarea>
+            <div class="row pt-0 mt-0">
+              <p class="col">
+                <small
+                  >Max word Limit:
+                  {{ tutorApplication.motivation.length }}/120</small
+                >
+              </p>
+              <p class="col col-lg-3 text-danger" v-if="error.motivation">
+                <small>This field is required</small>
+              </p>
+            </div>
+          </div>
+
+          <div class="col">
+            <input
+              required
+              class="form-check-input"
+              type="checkbox"
+              name="agreement"
+              v-model="tutorApplication.agreement"
+            />
+            <label class="mx-2" for="agreement">
+              <small>I confirm the accuracy of the information provided</small>
+            </label>
+          </div>
+
+          <div v-if="submitError">
+            <small class="bg-danger text-white p-1 rounded">
+              {{ submitErrorMessage }}
+            </small>
+          </div>
+
+          <div class="d-flex justify-content-end py-lg-2 py-1">
+            <!-- <button class="round" :class="location && 'round4'">4/4</button> -->
+            <div>
+              <button
+                class="btn btn-danger px-2 prev-section mx-4"
+                type="button"
+                @click="toExpertise()"
+              >
+                <small class="pi pi-caret-left"></small> Back
+              </button>
+
+              <button
+                class="btn btn-success px-3"
+                type="submit"
+                id="applySubmit"
+              >
+                Send
+                <div
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  v-if="wheel"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </section>
+      </fieldset>
+
+      <!-- SUBMITTING FORM -->
+      <fieldset id="submit" class="form-section" data-section="6">
+        <section class="submit">
+          <!-- <h3>Thank You For Applying</h3> -->
+        </section>
+      </fieldset>
+    </form>
+
+    <!-- WHY BECOME A TUTOR -->
+    <div v-if="join">
+      <div class="row py-5 mt-5 bg-white mx-lg-1">
+        <h2 class="mb-0">Why Become a Lifeline Tutor?</h2>
+        <p class="mt-0">Become a Different Tutor</p>
+        <div class="col-lg-4">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <h6 class="">Accessible Locations</h6>
+          <p class="px-lg-5 px-3 text-black-50">
+            Get assigned to places closest to you.
+          </p>
+        </div>
+  
+        <div class="col-lg-4">
+          <i class="fa fa-balance-scale" aria-hidden="true"></i>
+          <h6>Fair remuneration</h6>
+          <p class="px-lg-5 px-3 text-black-50">
+            The more engagements, the more pay. We reward you fairly.
+          </p>
+        </div>
+  
+        <div class="col-lg-4">
+          <i class="fa fa-clock-o" aria-hidden="true"> </i>
+          <h6>Convenient Teaching Times</h6>
+          <p class="px-lg-5 px-3 text-black-50">
+            Negotiate times that suit your work schedules
+          </p>
+        </div>
+  
+        <div class="col-lg-4">
+          <i class="fa fa-binoculars" aria-hidden="true"></i>
+          <h6>More Teaching Jobs</h6>
+          <p class="px-lg-5 px-3 text-black-50">
+            Receive new teaching assignments frequently.
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+          <h6>Access to Resources</h6>
+          <p class="px-lg-5 px-3 text-black-50">
+            Get access to free curated teaching resources.
+          </p>
+        </div>
+  
+        <div class="col-lg-4">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+          <h6>Become Effective</h6>
+          <p class="px-lg-5 px-3 text-black-50">
+            Learn effective methodologies, strategies and techniques.
+          </p>
+        </div>
+      </div>
+  
+      <hr />
+  
+      <div class="row bg-danger py-5 shadow-one my-3">
+        <div class="col-lg-6 col-12">
+          <img
+            class="mt-lg-5 mt-3"
+            src="/images/homepage.png"
+            alt=""
+            width="90%"
+          />
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="px-lg-3 text-start text-white fs-beauty">
+            <h3 class="py-3">Apply to Join Our Team</h3>
+            <div class="test-start">
+              <p class="fs-5">
+                Join our ever-growing team of passionate educators on a quest to
+                change the home tuition landscape in Tamale and beyond.
+              </p>
+              <p class="fs-5">
+                We are redefining how home tuition (extra-classes) should be done.
+                We strongly believe in a complimentary approach model where home
+                tuition:
+              </p>
+              <ul class="fs-beauty fs-5">
+                <li>Gets parents the results they need,</li>
+                <li>Help students overcome various learner challenges,</li>
+                <li>Prepare students for test,</li>
+              </ul>
+              <div class="text-center">
+                <button @click="applyNow()" class="btn btn-secondary btn-lg">
+                  Become a Lifeline Tutor
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <About></About>
+      <!-- <Gallery></Gallery> -->
+      <!-- <TutorList></TutorList> -->
+      <TheMessage></TheMessage>
     </div>
-    <!-- <About></About> -->
-    <!-- <Gallery></Gallery> -->
-    <!-- <TutorList></TutorList> -->
-    <!-- <TheMessage></TheMessage> -->
   </div>
+  <ContactUs></ContactUs>
+  <Footer></Footer>
 
-  <div v-if="join">
-    <ContactUs></ContactUs>
-    <Footer></Footer>
-  </div>
 
   <!-----------APPLICATION FORM------------>
 
@@ -922,7 +888,7 @@ export default {
       graduate: false,
       activeTab: true,
       disableBtn: true,
-      seeMore: true,
+
       submitError: false,
       submitErrorMessage: "",
       emailErrorMessage: "",
@@ -1200,10 +1166,6 @@ export default {
       }
     },
 
-    seeMoreBtn() {
-      this.seeMore = !this.seeMore;
-    },
-
     applyNow() {
       this.join = false;
       this.applying = true;
@@ -1455,21 +1417,29 @@ export default {
 
 .applyWall {
   margin: auto auto;
-  width: 75%;
-}
-
-.applyForm {
-  width: 98%;
-  margin: auto auto;
+  /* width: 80%; */
   padding: 1% 3%;
-  height: 90dvh;
-  /* overflow-y: scroll; */
+  height: 80dvh;
 }
 
 .formHead {
   font-size: 1.3rem;
   padding: 10px 0;
   font-weight: bolder;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  margin-bottom: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+}
+
+.hero-message {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-family: "Kanit", sans-serif;
+  font-weight: 350;
 }
 
 .application {
@@ -1505,7 +1475,7 @@ export default {
 
   .applyWall {
     margin: auto auto;
-    width: 90%;
+    width: 95%;
   }
 }
 </style>
