@@ -1,7 +1,11 @@
 <template>
-  <section class="applyBanner">
+  <section v-if="applying" class="client-banner">
     <NavBar></NavBar>
-    <section class="container-sm" v-if="form">
+  </section>
+
+  <section class="applyBanner" v-if="join">
+    <NavBar></NavBar>
+    <section class="container-sm">
       <div class="row">
         <div class="col-lg-7"></div>
 
@@ -29,46 +33,39 @@
         </div>
       </div>
     </section>
-
-    <div v-if="applying">
-      <div class="">
-        <div class="mx-5 pt-5">
-          <div class="row">
-            <div class="col mt-lg-4 mt-md-1 row d-none">
-              <div class="col-2 col-lg-2">
-                <button :class="login && 'btn btn-danger'">1</button> <br />
-                <small :class="login && 'activeTab'">Create Login</small>
-              </div>
-              <div class="col-2 col-lg-2">
-                <button :class="personal && 'btn btn-danger'">2</button> <br />
-                <small :class="personal && 'activeTab'">Personal</small>
-              </div>
-              <div class="col-2 col-lg-2">
-                <button :class="education && 'btn btn-danger'">3</button> <br />
-                <small :class="education && 'activeTab'">Qualification</small>
-              </div>
-              <div class="col-2 col-lg-2">
-                <button :class="expertise && 'btn btn-danger'">4</button> <br />
-                <small :class="expertise && 'activeTab'">Preferences</small>
-              </div>
-              <div class="col-2 col-lg-2">
-                <button :class="location && 'btn btn-danger'">5</button> <br />
-                <small :class="location && 'activeTab'">Location</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <div class="container-sm services-apply text-dark pt-3">
     <form
-      @submit.prevent="submitTutorForm()"
-      class="py-3 px-lg-5"
-      v-if="applying"
+    @submit.prevent="submitTutorForm()"
+    class="py-3 px-lg-5"
+    v-if="applying"
     >
-      <h3 class="fw-bolder my-2 text-secondary">Lifeline Tutor Application</h3>
+    <h3 class="fw-bolder my-2 text-secondary">Lifeline Tutor Application</h3>
+     <div class="d-none d-lg-block my-3">
+       <div class="d-flex justify-content-around">
+         <div class="col-2 col-lg-2">
+           <button :class="login && 'btn btn-danger'">1</button> <br />
+           <small :class="login && 'activeTab'">Create Login</small>
+         </div>
+         <div class="col-2 col-lg-2">
+           <button :class="personal && 'btn btn-danger'">2</button> <br />
+           <small :class="personal && 'activeTab'">Personal</small>
+         </div>
+         <div class="col-2 col-lg-2">
+           <button :class="education && 'btn btn-danger'">3</button> <br />
+           <small :class="education && 'activeTab'">Qualification</small>
+         </div>
+         <div class="col-2 col-lg-2">
+           <button :class="expertise && 'btn btn-danger'">4</button> <br />
+           <small :class="expertise && 'activeTab'">Preferences</small>
+         </div>
+         <div class="col-2 col-lg-2">
+           <button :class="location && 'btn btn-danger'">5</button> <br />
+           <small :class="location && 'activeTab'">Location</small>
+         </div>
+       </div>
+     </div>
 
       <!-- CREATE LOGIN DETAILS -->
       <fieldset v-if="login">
@@ -881,13 +878,11 @@ export default {
       form: true,
       small: false,
       success: false,
-
       contact: false,
       underGraduate: true,
       graduate: false,
       activeTab: true,
       disableBtn: true,
-
       submitError: false,
       submitErrorMessage: "",
       emailErrorMessage: "",
