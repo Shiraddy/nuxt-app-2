@@ -11,7 +11,7 @@
           <div id="banner" class="banner">
             <NavBar></NavBar>
             <!-- HERO PAGE TEXT -->
-            <div class="row">
+            <div class="row gx-4 d-flex align-items-center">
               <div class="col-lg-6 col-md-5 col-sm-12"></div>
               <div
                 class="col-lg-6 text-white my-5 service-hero-text text-white text-start"

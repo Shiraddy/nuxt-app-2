@@ -1,12 +1,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      script: [
-        {
-          src: "https://cdn.lordicon.com/lordicon.js",
-          body: true,
-        },
-      ],
+     
 
       link: [
         {

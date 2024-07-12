@@ -244,8 +244,6 @@ banner-smile .banner-smile {
   padding-bottom: 1rem;
 }
 
-
-
 .hero-home {
   border-bottom: 6px solid red;
 }
@@ -1441,15 +1439,8 @@ hr {
     text-align: center;
   }
 
-  .banner {
-    object-fit: cover;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
   .choose-title {
-    font-size: 3.8vw;
+    font-size: 5.8vw;
   }
 
   .hero-text {
@@ -1610,19 +1601,6 @@ hr {
     padding: 2rem 1rem;
   }
 
-  /* select {
-    display: block;
-    width: 100%;
-    margin: 5% 0;
-    padding: 2% 5%;
-    justify-content: center;
-  } */
-
-  /* .sign-up {
-    height: 78vh;
-    max-width: 115vw;
-  } */
-
   .nav-copyright,
   #tutorContactBtn,
   .sign-image,
@@ -1641,16 +1619,6 @@ hr {
     margin: 10%;
     max-width: 100%;
   }
-
-  /* #sign-in {
-    position: absolute;
-    top: 5%;
-    width: 100%;
-  } */
-
-  /* .fa {
-    font-size: 5vw;
-  } */
 
   .apply-input {
     width: 100%;
@@ -1735,6 +1703,13 @@ hr {
 
   .client-banner {
     height: 20vh;
+  }
+
+  .consult-banner,
+  .counsel-banner,
+  .us-banner,
+  .banner {
+    height: 85dvh;
   }
 
   .tutor-profile-banner {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "Lifeline Educational Solutions",
-  ogTitle: "Lifeline Educational Solutions",
+  title: "Lifeline: Home of Solutions",
+  ogTitle: "Lifeline: Home of Solutions",
   description:
     "A leading educational consultancy company in Ghana providing educational solutions to schools, parents and students.",
   ogDescription:
@@ -15,6 +15,11 @@ useHead({
       src: "	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
       // valid options are: 'head' | 'bodyClose' | 'bodyOpen'
       tagPosition: "bodyClose",
+    },
+
+    {
+      src: "https://cdn.lordicon.com/lordicon.js",
+      tagPosition: "head",
     },
 
     {

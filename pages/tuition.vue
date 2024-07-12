@@ -43,7 +43,12 @@
         </div>
       </div>
       <div v-if="request === false" class="allTuitionData">
-        <h2 class="text-danger fs-1 fw-bolder mt-lg-5 mt-3">Private Tuition</h2>
+        <h2 class="choose-title mt-lg-5 mt-3">
+          <span class="p-overlay-badge">
+            <Badge value="My" severity="contrast"></Badge>
+          </span>
+          HOME TEACHER
+        </h2>
         <small class="fs-4 text-dark-emphasis">
           We Offer the Following and More...
         </small>

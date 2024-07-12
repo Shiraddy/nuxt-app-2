@@ -8,7 +8,10 @@
   <!-----------SERVICES SECTION------------->
   <section>
     <div class="container-sm py-2 services">
-      <h2 class="py-3 choose-title">OUR SERVICES</h2>
+      <h2 class="pt-3 mb-0 choose-title">HOME OF SOLUTIONS</h2>
+      <h6 class="fs-beauty text-secondary mt-0">
+        We provide the following services
+      </h6>
       <hr />
       <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4">

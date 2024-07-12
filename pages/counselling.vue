@@ -43,53 +43,59 @@
           <h2 class="pt-2 mt-3 mb-0 fw-bolder">
             Guidance & Counselling Service
           </h2>
-          <p class="mt-0">
+          <p class="mt-0 text-secondary">
             Empower Your Ward's Future with Lifeline's Guidance and Counseling
             Services
           </p>
           <div class="my-5 py-3">
-            <div class="row">
+            <div class="row gx-5">
               <div class="col-lg-4 col-sm-12">
-                <nuxt-img
-                  src="/images/career.jpg"
-                  alt=""
-                  class="con-image my-2"
-                />
+                <div>
+                  <nuxt-img
+                    src="/images/career.jpg"
+                    alt=""
+                    class="con-image my-2"
+                  />
 
-                <!-- <nuxt-img src="/images/con8.gif" alt="" class="con-image round" /> -->
-                <h5>Career Guidance</h5>
-                <p class="px-2 px-lg-4 text-body-secondary">
-                  Make the right decisions about your career path. Seek
-                  professional counsel.
-                </p>
+                  <!-- <nuxt-img src="/images/con8.gif" alt="" class="con-image round" /> -->
+                  <h5 class="fw-bolder">Career Guidance</h5>
+                  <p class="px-2 px-lg-4 text-body-secondary">
+                    Make the right decisions about your career path. Seek
+                    professional counsel.
+                  </p>
+                </div>
               </div>
 
               <div class="col-lg-4 col-sm-12">
-                <nuxt-img
-                  src="/images/academic.jpg"
-                  alt=""
-                  class="con-image my-2"
-                />
+                <div>
+                  <nuxt-img
+                    src="/images/academic.jpg"
+                    alt=""
+                    class="con-image my-2"
+                  />
 
-                <!-- <nuxt-img src="/images/con2.gif" alt="" class="con-image" /> -->
-                <h5>Academic Guidance</h5>
-                <p class="px-2 px-lg-4 text-body-secondary">
-                  Get the right advice to make informed educational choices.
-                </p>
+                  <!-- <nuxt-img src="/images/con2.gif" alt="" class="con-image" /> -->
+                  <h5 class="fw-bolder">Academic Guidance</h5>
+                  <p class="px-2 px-lg-4 text-body-secondary">
+                    Get the right advice to make informed educational choices.
+                  </p>
+                </div>
               </div>
 
               <div class="col-lg-4 col-sm-12">
-                <nuxt-img
-                  src="/images/coun.jpg"
-                  alt=""
-                  class="con-image my-2"
-                />
-                <!-- <nuxt-img src="/images/con3.gif" alt="" class="con-image" /> -->
-                <h5>Counselling Service</h5>
-                <p class="px-2 px-lg-4 text-body-secondary">
-                  Let us help you through your challenges. Get the right
-                  guidance.
-                </p>
+                <div class="">
+                  <nuxt-img
+                    src="/images/coun.jpg"
+                    alt=""
+                    class="con-image my-2"
+                  />
+                  <!-- <nuxt-img src="/images/con3.gif" alt="" class="con-image" /> -->
+                  <h5 class="fw-bolder">Counselling Service</h5>
+                  <p class="px-2 px-lg-4 text-body-secondary">
+                    Let us help you through your challenges. Get the right
+                    guidance.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

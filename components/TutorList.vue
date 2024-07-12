@@ -1,9 +1,9 @@
 <template>
   <!------------TUTORS SECTION------------->
-  <section  class="shadow-one my-3">
+  <section class="shadow-one my-3">
     <div class="container-fluid py-2 my-5">
       <div class="row">
-        <h3 class="choose-title mt-4">OUR AMAZING TUTORS</h3>
+        <h5 class="choose-title mt-4">Our Amazing Tutors</h5>
         <p class="text-dark-emphasis">Meet some of our Lifeline tutors</p>
         <div class="col-sm-12 col-md-12 col-lg-4 hover">
           <div class="card myCard h-70">
