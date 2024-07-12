@@ -6,10 +6,10 @@
         <div class="col-lg-7"></div>
 
         <div
-          class="col-lg-5 small text-white filter-hero applyWall d-flex align-items-center"
+          class="col-lg-5 small text-white applyWall d-flex align-items-center"
         >
           <div class="py-5 apply-hero-wall">
-            <h6 class="mb-0 hero-message">Apply Here For Free</h6>
+            <h6 class="mb-0 hero-message">Apply Here</h6>
             <h3 class="hero-title">
               BECOME A
               <span class="text-success">TUTOR</span>
@@ -65,7 +65,7 @@
   <div class="container-sm services-apply text-dark pt-3">
     <form
       @submit.prevent="submitTutorForm()"
-      class="bg-white py-3 px-lg-5"
+      class="py-3 px-lg-5"
       v-if="applying"
     >
       <h3 class="fw-bolder my-2 text-secondary">Lifeline Tutor Application</h3>
@@ -730,9 +730,9 @@
 
     <!-- WHY BECOME A TUTOR -->
     <div v-if="join">
-      <div class="row py-5 mt-5 bg-white mx-lg-1">
-        <h2 class="mb-0">Why Become a Lifeline Tutor?</h2>
-        <p class="mt-0">Become a Different Tutor</p>
+      <div class="row gy-3 gx-4 py-5">
+        <h3 class="mb-0">Why Become a Lifeline Tutor?</h3>
+        <!-- <p class="mt-0">Become a Different Tutor</p> -->
         <div class="col-lg-4">
           <i class="fa fa-map-marker" aria-hidden="true"></i>
           <h6 class="">Accessible Locations</h6>
@@ -740,7 +740,7 @@
             Get assigned to places closest to you.
           </p>
         </div>
-  
+
         <div class="col-lg-4">
           <i class="fa fa-balance-scale" aria-hidden="true"></i>
           <h6>Fair remuneration</h6>
@@ -748,7 +748,7 @@
             The more engagements, the more pay. We reward you fairly.
           </p>
         </div>
-  
+
         <div class="col-lg-4">
           <i class="fa fa-clock-o" aria-hidden="true"> </i>
           <h6>Convenient Teaching Times</h6>
@@ -756,7 +756,7 @@
             Negotiate times that suit your work schedules
           </p>
         </div>
-  
+
         <div class="col-lg-4">
           <i class="fa fa-binoculars" aria-hidden="true"></i>
           <h6>More Teaching Jobs</h6>
@@ -771,7 +771,7 @@
             Get access to free curated teaching resources.
           </p>
         </div>
-  
+
         <div class="col-lg-4">
           <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
           <h6>Become Effective</h6>
@@ -780,10 +780,10 @@
           </p>
         </div>
       </div>
-  
+
       <hr />
-  
-      <div class="row bg-danger py-5 shadow-one my-3">
+
+      <div class="row bg-success py-5 shadow-one my-3">
         <div class="col-lg-6 col-12">
           <img
             class="mt-lg-5 mt-3"
@@ -801,9 +801,9 @@
                 change the home tuition landscape in Tamale and beyond.
               </p>
               <p class="fs-5">
-                We are redefining how home tuition (extra-classes) should be done.
-                We strongly believe in a complimentary approach model where home
-                tuition:
+                We are redefining how home tuition (extra-classes) should be
+                done. We strongly believe in a complimentary approach model
+                where home tuition:
               </p>
               <ul class="fs-beauty fs-5">
                 <li>Gets parents the results they need,</li>
@@ -811,7 +811,7 @@
                 <li>Prepare students for test,</li>
               </ul>
               <div class="text-center">
-                <button @click="applyNow()" class="btn btn-secondary btn-lg">
+                <button @click="applyNow()" class="btn btn-primary btn-lg">
                   Become a Lifeline Tutor
                 </button>
               </div>
@@ -827,7 +827,6 @@
   </div>
   <ContactUs></ContactUs>
   <Footer></Footer>
-
 
   <!-----------APPLICATION FORM------------>
 
@@ -1417,9 +1416,10 @@ export default {
 
 .applyWall {
   margin: auto auto;
-  /* width: 80%; */
+
   padding: 1% 3%;
-  height: 80dvh;
+  height: 65dvh;
+  text-align: start;
 }
 
 .formHead {
@@ -1449,7 +1449,7 @@ export default {
 
 .applyBanner {
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.686), rgba(0, 0, 0, 0.541)),
     url(/images/tutor2.jpg);
   object-fit: cover;
@@ -1476,6 +1476,11 @@ export default {
   .applyWall {
     margin: auto auto;
     width: 95%;
+    text-align: center;
+  }
+
+  .applyBanner {
+    height: 85vh;
   }
 }
 </style>

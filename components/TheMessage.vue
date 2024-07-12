@@ -79,7 +79,7 @@
             ></div>
           </div>
 
-          <div class="py-2">
+          <div class="py-1">
             <button class="btn btn-success shadow-two" type="submit">
               SEND MESSAGE
               <span id="loading-spinner" v-if="wheel">

@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row px-lg-3 px-2 my-3">
+    <div class="row my-3">
       <div class="col-lg-6 col-12 shadow-two d-none d-lg-block">
         <div class="text-body-secondary story">
           <hr />
