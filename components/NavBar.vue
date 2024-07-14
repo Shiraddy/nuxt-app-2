@@ -87,7 +87,7 @@
               ></NuxtLink>
               <div class="dropdown-content text-start">
                 <NuxtLink class="nav-link menu-link" to="/tuition"
-                  >Private Tuition</NuxtLink
+                  >Home Tuition</NuxtLink
                 >
                 <NuxtLink class="nav-link menu-link" to="/counselling"
                   >Counselling</NuxtLink

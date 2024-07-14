@@ -18,7 +18,7 @@
           <div class="card shadow-three myCard">
             <nuxt-img class="service-image" src="/images/student1.png" alt="" />
             <RouterLink class="btn btn-danger btn-service" to="/tuition"
-              >Private Tuition</RouterLink
+              >Home Tuition</RouterLink
             >
             <p class="service-text text-dark-emphasis my-2 px-lg-2 px-4">
               We offer your child the best tuition experience using varied

@@ -20,7 +20,7 @@
           data-bs-ride="true"
         >
           <div class="carousel-inner">
-            <div class="px-lg-3 about-desc text-start">
+            <div class="px-lg-3 about-desc">
               <div
                 class="carousel-item active caro-item-about"
                 data-bs-interval="10000"
@@ -118,6 +118,7 @@ export default {
   line-height: 1.7;
   font-size: 1.3rem;
   padding: 10px 0;
+  text-align:justify;
 }
 
 @media only screen and (max-width: 600px) {
