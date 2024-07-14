@@ -3178,9 +3178,12 @@
               <TabPanel header="Offer"
                 ><section class="shadow-two my-3 row">
                   <div class="col-lg-6 d-none d-lg-block pb-5 bg-success"></div>
-                  <div class="col-lg-6 shadow-two bg-white row text-start">
-                    <form @submit.prevent="uploadOffer" class="row row-g-">
-                      <h4 class="my-lg-4 my-2">OFFER UPLOADS</h4>
+                  <div class="col-lg-6 shadow-two bg-white row">
+                    <h4 class="my-lg-4 my-2">OFFERS</h4>
+                    <form
+                      @submit.prevent="uploadOffer"
+                      class="row text-start gy-2"
+                    >
                       <div class="col-lg-6">
                         <label for="">Contract Type:</label> <br />
                         <select
@@ -3274,7 +3277,8 @@
                         <label for="">Objectives</label>
                         <Editor
                           v-model="offer.objectives"
-                          editorStyle="height: 150px"
+                          editorStyle="height: 100px"
+                          class="shadow"
                         />
                       </div>
 
@@ -3426,6 +3430,83 @@
                   </div>
                 </section>
               </TabPanel>
+              <tabPanel header="Gallery">
+                <div class="row shadow">
+                  <div class="col-lg-6 shadow-two d-none d-lg-block"></div>
+                  <div class="col-lg-6 shadow bg-white py-2 px-3">
+                    <div></div>
+                    <h4 class="my-lg-3 fw-bolder text-secondary">GALLERY</h4>
+                    <form
+                      class="row gy-2 gx-2 my-3"
+                      @submit.prevent="galleryUpload"
+                    >
+                      <div class="col-lg-12 col-12">
+                        <label class="label" for="">Title</label>
+                        <inputText
+                          class="apply-input"
+                          type="text"
+                          v-model="gallery.title"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-lg-12 col-12">
+                        <label class="label" for="">Month</label>
+                        <inputText
+                          class="apply-input"
+                          type="month"
+                          v-model="gallery.month"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-lg-12">
+                        <label class="label" for="">Description</label>
+                        <textarea
+                          class="apply-input"
+                          type="text"
+                          v-model="gallery.desc"
+                          required
+                        />
+                      </div>
+
+                      <FileUpload
+                        ref="fileUpload"
+                        customUpload
+                        :multiple="false"
+                        mode="advanced"
+                        :auto="false"
+                        :showCancelButton="true"
+                        :showUploadButton="false"
+                        choose-label="Attach Log Sheet"
+                        :previewWidth="150"
+                        :maxFileSize="1000000"
+                        invalidFileSizeMessage="File too big (Should be less than 1mb)"
+                        accept="image/*"
+                      >
+                        <template #empty>
+                          <span>Drag and drop your Log Sheet to upload.</span>
+                        </template>
+                      </FileUpload>
+
+                      <div class="my-1">
+                        <button class="btn btn-danger px-3 mx-3" type="reset">
+                          RESET
+                        </button>
+                        <button class="btn btn-success my-lg-4" type="submit">
+                          SUBMIT
+                          <span id="loading-spinner" v-if="galleryWheel">
+                            <div
+                              class="spinner-border spinner-border-sm"
+                              role="status"
+                            ></div>
+                          </span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </tabPanel>
             </TabView>
           </div>
         </section>
@@ -3525,6 +3606,7 @@ export default {
       todoList: [],
       todoItem: "",
       done: false,
+      gallery: [],
       selectTuitionDays: [
         { name: "Monday", key: "Mon" },
         { name: "Tuesday", key: "Tue" },
@@ -4386,6 +4468,72 @@ export default {
       const email = "";
       const tutorRef = doc(db, "Tutor Applications", email);
       await updateDoc(tutorRef, contract);
+    },
+
+    async galleryUpload(event) {
+      const fileUpload = this.$refs.fileUpload;
+      const files = fileUpload.files;
+
+      if (files.length === 0) {
+        alert("Please attach a log sheet file before submitting.");
+        return;
+      }
+
+      const file = files[0];
+      const user = auth.currentUser;
+      const form = this.logSheet;
+      const tutor = user.email;
+      const student = this.logSheet.student;
+      const month = this.logSheet.month;
+      const fileName = student + "-" + month;
+      const storageRef = ref(
+        storage,
+        "Log Sheets/" + user.email + "/" + month + "/" + fileName
+      );
+
+      try {
+        // Upload the file and get the URL
+
+        const snapshot = await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(snapshot.ref);
+        console.log(url);
+        this.logSheet.imageUrl = url;
+        console.log("File uploaded successfully!");
+
+        // Get the existing log sheets for the user
+        const logSheetRef = doc(db, "Tutor Applications", tutor);
+        const docSnap = await getDoc(logSheetRef);
+        let existingSheets = [];
+        if (docSnap.exists()) {
+          existingSheets = docSnap.data().logSheet || [];
+        }
+
+        // Add the new log sheet to the existing ones
+        existingSheets.push(form);
+        await setDoc(
+          logSheetRef,
+          {
+            logSheet: existingSheets,
+          },
+          { merge: true }
+        );
+        // console.log("Sheet Info Uploaded", existingSheets);
+        // alert("Log Sheet Uploaded");
+        this.logSheet = false;
+        this.submitted = true;
+
+        // Reset the form
+        this.logSheet.student = "";
+        this.logSheet.contact = "";
+        this.logSheet.expected = "";
+        this.logSheet.total = "";
+        this.logSheet.imageUrl = "";
+        this.logSheet.momo_number = "";
+        this.logSheet.month = "";
+        fileUpload.clear(); // Clear the file input
+      } catch (error) {
+        console.log("Error submitting LogSheet", error);
+      }
     },
 
     refreshMessages() {

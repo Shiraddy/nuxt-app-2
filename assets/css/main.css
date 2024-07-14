@@ -37,11 +37,19 @@ label {
 body {
   background-color: #ece2e1;
   text-align: center;
+  font-size: 100%;
   box-sizing: border-box;
-  font-family: "Kanit", "Lora";
+  font-family: "Kanit", "Lora", Georgia, "Times New Roman", Times, serif;
 }
 
-/* Vue-code Over-ride */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Merriweather",Georgia, "Times New Roman", Times, serif;
+}
 
 /************BANNER************/
 .banner {

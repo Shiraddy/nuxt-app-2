@@ -116,43 +116,6 @@
           </div>
         </section>
 
-        <section class="container-lg py-3 d-block my-5">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 bg-success shadow-two">
-              <div
-                class="lh-base mt-lg-4 fs-5 py-5 px-lg-3 px-4 text-white text-start fs-beauty"
-              >
-                <p>
-                  Our private tuition services cater to students seeking
-                  targeted assistance in various subjects and educational
-                  levels. With Lifeline, your ward receives individualized
-                  attention and customized learning plans tailored to their
-                  specific needs and learning pace.
-                </p>
-                <p>
-                  Our experienced tutors are adept at clarifying complex
-                  concepts, reinforcing foundational knowledge, and igniting a
-                  passion for learning. Whether it's mathematics, science,
-                  language arts, or any other subject, our tutors excel in
-                  guiding students toward academic excellence.
-                </p>
-              </div>
-            </div>
-            <div
-              class="col-sm-12 col-md-12 col-lg-6 shadow-two d-lg-block d-none"
-            >
-              <div>
-                <nuxt-img
-                  src="/images/tutor2.jpg"
-                  alt=""
-                  class="consultantPic mt-4 nuxt-img-fluid"
-                />
-                <small>Let's start learning now.</small>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section class="container-lg py-3 d-block shadow-one">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 banner-smile">
@@ -161,7 +124,7 @@
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 bg-danger">
-              <p class="lh-lg mt-lg-4 fs-4 px-lg-3 px-3 text-white fs-beauty">
+              <p class="lh-lg fs-4 px-lg-3 px-3 text-white fs-beauty">
                 "Welcome to Lifeline's Private Tuition Service! Empowering
                 students to excel academically is our passion. With personalized
                 attention, tailored lesson plans, and experienced tutors, we
@@ -245,6 +208,46 @@
             @click="display"
             >SIGN UP</a
           >
+        </section>
+
+        <section class="container-lg py-3 d-block my-5">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 bg-success shadow-two">
+              <div
+                class="mt-lg-4 fs-5 py-5 px-lg-3 px-4 text-white text-start fs-beauty"
+              >
+                <p>
+                  Our private tuition services cater to students seeking
+                  targeted assistance in various subjects and educational
+                  levels.
+                </p>
+
+                <p>
+                  With Lifeline, your ward receives individualized attention and
+                  customized learning plans tailored to their specific needs and
+                  learning pace.
+                </p>
+
+                <p>
+                  Our experienced tutors are adept at clarifying complex
+                  concepts, reinforcing foundational knowledge, and igniting a
+                  passion for learning.
+                </p>
+              </div>
+            </div>
+            <div
+              class="col-sm-12 col-md-12 col-lg-6 shadow-two d-lg-block d-none"
+            >
+              <div>
+                <nuxt-img
+                  src="/images/tutor2.jpg"
+                  alt=""
+                  class="consultantPic mt-4 nuxt-img-fluid"
+                />
+                <h5 class="my-2 text-secondary">Let's start learning now.</h5>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- About us -->

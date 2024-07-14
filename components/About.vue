@@ -25,7 +25,7 @@
                 class="carousel-item active caro-item-about"
                 data-bs-interval="10000"
               >
-                <p>
+                <p class="first">
                   We are an educational hub in the heart of Tamale, Northern
                   Region, Ghana. Incorporated in 2019, we provide a wide range
                   of educational solutions.
@@ -118,12 +118,25 @@ export default {
   line-height: 1.7;
   font-size: 1.3rem;
   padding: 10px 0;
-  text-align:justify;
+  text-align: justify;
+}
+.first::first-letter {
+  font-size: 2rem;
+  /* color: black; */
+  font-weight: bolder;
+  /* font-style: oblique; */
 }
 
 @media only screen and (max-width: 600px) {
   .about-desc {
     font-size: 0.99rem;
+  }
+
+  .about-desc {
+    line-height: 1.7;
+    font-size: 1.3rem;
+    padding: 10px 0;
+    text-align: start;
   }
 }
 </style>
