@@ -6,6 +6,25 @@ a {
   text-decoration: none;
 }
 
+/* a:link {
+  color: red;
+}
+
+
+a:visited {
+  color: green;
+}
+
+
+a:hover {
+  color: hotpink;
+}
+
+
+a:active {
+  color: blue;
+} */
+
 label {
   display: inlinblock;
 }
@@ -33,7 +52,7 @@ body {
   object-fit: cover;
   background-size: cover;
   overflow: hidden;
-  background-position: right center;
+  background-position: center left;
   background-repeat: no-repeat;
 }
 

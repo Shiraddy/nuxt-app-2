@@ -3,30 +3,44 @@
   <div class="Gallery-container">
     <div class="Gallery-card">
       <div class="card-content">
-        <img src="/images/Skill.png" alt="" class="" width="100%" />
-        <h2 class="title">Gallery</h2>
+        <img src="/images/consul1.jpg" alt="" class="" width="100%" />
+        <h5 class="title">Gallery</h5>
         <div class="backdrop"></div>
       </div>
     </div>
     <div class="Gallery-card">
       <div class="card-content">
-        <img src="/images/Skill.png" alt="" class="" width="100%" />
-        <h2 class="title">Gallery</h2>
+        <img src="/images/consul2.jpg" alt="" class="" width="100%" />
+        <h5 class="title">Gallery</h5>
         <div class="backdrop"></div>
       </div>
     </div>
     <div class="Gallery-card">
       <div class="card-content">
-        <img src="/images/Skill.png" alt="" class="" width="100%" />
-        <h2 class="title">Gallery</h2>
+        <img src="/images/consul3.jpg" alt="" class="" width="100%" />
+        <h5 class="title">Gallery</h5>
         <div class="backdrop"></div>
       </div>
     </div>
     <div class="Gallery-card">
       <div class="card-content">
-        <img src="/images/Skill.png" alt="" class="" width="100%" />
-        <h2 class="title">Gallery</h2>
+        <img src="/images/consul4.jpg" alt="" class="" width="100%" />
+        <h5 class="title">Gallery</h5>
         <div class="backdrop"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <div class="row gy-3 gx-2">
+      <div class="col-lg-4">
+        <Image src="/images/academic.jpg" alt="Image" width="250" preview />
+      </div>
+      <div class="col-lg-4">
+        <Image src="/images/tutor2.jpg" alt="Image" width="250" preview />
+      </div>
+      <div class="col-lg-4">
+        <Image src="/images/us.jpg" alt="Image" width="250" preview />
       </div>
     </div>
   </div>

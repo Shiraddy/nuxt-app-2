@@ -151,25 +151,20 @@
           </section>
 
           <section>
-            <div class="row my-5 py-5">
+            <div class="row my-5 gy-3 gx-5">
               <div class="col-lg-6 text-start">
-                <h2 class="px-lg-5">
+                <h2 class="">
                   <span class="text-danger fs-1">O</span>ur Guidance &
                   Counselling
                 </h2>
-                <p class="text-body-secondary px-lg-5 px-2 lh-lg">
+                <p class="text-body-secondary lh-lg">
                   At Lifeline Educational Solutions Limited, we understand that
                   making crucial decisions about education and personal growth
                   can be daunting. That's why our expert guidance and counseling
                   services are here to navigate this journey with you and your
                   ward.
                 </p>
-                <button
-                  class="btn btn-outline-primary ms-lg-5 bookSession"
-                  @click="formToggle()"
-                >
-                  Speak to a Counsellor
-                </button>
+                <Button label="Book Session" @click="formToggle()" raised/>
               </div>
               <div class="col-lg-6">
                 <nuxt-img src="/images/next.jpg" alt="" class="decision" />
@@ -185,12 +180,13 @@
               >
                 <h2>Ready to Move to the Next Level?</h2>
                 <p>Speak to a professional Counsellor Today</p>
-                <button
+                <!-- <button
                   class="btn btn-success bookSession"
                   @click="formToggle()"
                 >
                   Book Session
-                </button>
+                </button> -->
+                <Button label="Book Session" @click="formToggle()" raised/>
               </div>
               <div class="col-lg-6">
                 <nuxt-img

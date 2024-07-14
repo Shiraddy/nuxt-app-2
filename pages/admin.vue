@@ -1424,7 +1424,7 @@
                         Update Contract
                       </div>
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Status</label>
@@ -1434,7 +1434,7 @@
                               {{
                                 selectedParent
                                   ? selectedParent.data.status
-                                  : "Status"
+                                  : "Select Status"
                               }}
                             </div>
                           </template>
@@ -1454,7 +1454,7 @@
                       </div>
 
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Sessions</label>
@@ -1464,7 +1464,7 @@
                               {{
                                 selectedParent
                                   ? selectedParent.data.weeklySession
-                                  : "Sessions"
+                                  : "Select Sessions"
                               }}
                             </div>
                           </template>
@@ -1484,7 +1484,7 @@
                         </Inplace>
                       </div>
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Fee</label>
@@ -1509,7 +1509,7 @@
                         </Inplace>
                       </div>
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Discount</label>
@@ -1519,7 +1519,7 @@
                               {{
                                 selectedParent
                                   ? selectedParent.data.discount
-                                  : "Discount"
+                                  : "Enter Discount"
                               }}
                             </div>
                           </template>
@@ -1559,7 +1559,7 @@
                       <form>
                         <div class="row">
                           <div class="col-lg-6">
-                            <Inplace>
+                            <Inplace :closable="true">
                               <template #display>
                                 <div class="text-start fw-bolder">
                                   <label for="">Tutor</label>
@@ -1567,7 +1567,7 @@
                                 {{
                                   selectedParent
                                     ? selectedParent.data.tutor
-                                    : "Name"
+                                    : "Tutor Name"
                                 }}
                               </template>
                               <template #content="{ closeCallback }">
@@ -1582,7 +1582,7 @@
                             </Inplace>
                           </div>
                           <div class="col-lg-6">
-                            <Inplace>
+                            <Inplace :closable="true">
                               <template #display>
                                 <div class="text-start fw-bolder">
                                   <label for="">Contact</label>
@@ -1606,7 +1606,7 @@
                             </Inplace>
                           </div>
                           <div class="col-lg-6">
-                            <Inplace>
+                            <Inplace :closable="true">
                               <template #display>
                                 <div class="text-start fw-bolder">
                                   <label for="">Pay</label>
@@ -1629,7 +1629,7 @@
                             </Inplace>
                           </div>
                           <div class="col-lg-6">
-                            <Inplace>
+                            <Inplace :closable="true">
                               <template #display>
                                 <div class="text-start fw-bolder">
                                   <label for="">Momo Number</label>
@@ -1776,7 +1776,7 @@
                 <Column field="firstName" header="First Name"></Column>
                 <Column field="student" header="Student"></Column>
                 <Column field="student" header="Consideration">
-                  <Inplace>
+                  <Inplace :closable="true">
                     <template #display>
                       <div class="text-start fw-bolder">
                         <h6>Testing Code</h6>
@@ -1801,7 +1801,8 @@
             </div>
           </section>
 
-          <section class="my-lg-4 my-3" id="contracts">
+          <!-- LOG SHEETS -->
+          <section class="my-lg-4 my-3" id="contracts" v-if="logSheet">
             <h4 class="text-start pt-4 mx-3 fw-bolder">Tutor Log Sheets</h4>
             <DataTable
               :value="logSheets"
@@ -1922,176 +1923,680 @@
 
           <!-- TUTORS PANEL -->
           <div class="card my-3 mx-4" v-if="tutorTable">
-            <DataTable
-              v-model:filters="tutorFilter"
-              v-model:selection="selectedTutor"
-              stateStorage="session"
-              selectionMode="single"
-              :value="tutors"
-              ref="tt"
-              sortMode="multiple"
-              showGridlines
-              removableSort
-              paginator
-              :rows="5"
-              dataKey="email"
-              :rowsPerPageOptions="[5, 10, 20, 50]"
-              :globalFilterFields="['firstName', 'lastName', 'contact']"
-              filterDisplay="menu"
-              :loading="loading"
-              paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
-              currentPageReportTemplate="{first} to {last} of {totalRecords}"
-            >
-              <template #paginatorstart>
-                <Button type="button" icon="pi pi-refresh" text />
-              </template>
-              <template #paginatorend>
-                <Button
-                  type="button"
-                  @click="exportCS($event)"
-                  icon="pi pi-download"
-                  text
-                />
-              </template>
+            <TabView>
+              <TabPanel header="Tutors">
+                <DataTable
+                  v-model:filters="tutorFilter"
+                  v-model:selection="selectedTutor"
+                  stateStorage="session"
+                  selectionMode="single"
+                  :value="tutorsList()"
+                  ref="tt"
+                  sortMode="multiple"
+                  showGridlines
+                  removableSort
+                  paginator
+                  :rows="5"
+                  dataKey="email"
+                  :rowsPerPageOptions="[5, 10, 20, 50]"
+                  :globalFilterFields="['firstName', 'lastName', 'contact']"
+                  filterDisplay="menu"
+                  :loading="loading"
+                  paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
+                  currentPageReportTemplate="{first} to {last} of {totalRecords}"
+                >
+                  <template #paginatorstart>
+                    <Button type="button" icon="pi pi-refresh" text />
+                  </template>
+                  <template #paginatorend>
+                    <Button
+                      type="button"
+                      @click="exportCS($event)"
+                      icon="pi pi-download"
+                      text
+                    />
+                  </template>
 
-              <template #header>
-                <div class="row">
-                  <TabView>
-                    <TabPanel header="Tutors"></TabPanel>
-                    <TabPanel header="Applicants"></TabPanel>
-                    <TabPanel header="Disqualified"></TabPanel>
-                    <TabPanel header="Pending"></TabPanel>
-                  </TabView>
-                  <div class="col text-start d-flex">
-                    <h2 class="">Tutors</h2>
-                    <div class="mt-1 mx-2"></div>
-                  </div>
-                  <div class="col">
-                    <IconField>
+                  <template #header>
+                    <div class="row">
+                      <div class="col text-start d-flex">
+                        <h2 class="">Tutors</h2>
+                        <div class="mt-1 mx-2"></div>
+                      </div>
+                      <div class="col">
+                        <IconField>
+                          <InputText
+                            v-model="tutorFilter['global'].value"
+                            placeholder="Keyword Search"
+                          />
+                        </IconField>
+                      </div>
+                    </div>
+                  </template>
+                  <template #empty> No Tutor found. </template>
+                  <template #loading>
+                    Loading tutors data. Please wait.
+                  </template>
+
+                  <Column field="lastName" header="Last Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.lastName }}
+                    </template>
+                    <template #filter="{ filterModel }">
                       <InputText
-                        v-model="tutorFilter['global'].value"
-                        placeholder="Keyword Search"
-                      />
-                    </IconField>
-                  </div>
-                </div>
-              </template>
-              <template #empty> No Tutor found. </template>
-              <template #loading> Loading tutors data. Please wait. </template>
-
-              <Column field="lastName" header="Last Name" sortable>
-                <template #body="{ data }">
-                  {{ data.lastName }}
-                </template>
-                <template #filter="{ filterModel }">
-                  <InputText
-                    v-model="filterModel.value"
-                    type="text"
-                    class="p-column-filter"
-                    placeholder="Search by name"
-                  />
-                </template>
-              </Column>
-              <Column field="firstName" header="First Name" sortable>
-                <template #body="{ data }">
-                  {{ data.firstName }}
-                </template>
-                <template #filter="{ filterModel }">
-                  <InputText
-                    v-model="filterModel.value"
-                    type="text"
-                    class="p-column-filter"
-                    placeholder="Search by name"
-                  />
-                </template>
-              </Column>
-
-              <Column
-                field="studentStatus"
-                header="Education"
-                sortable
-              ></Column>
-
-              <Column
-                field="category"
-                header="Category"
-                sortable
-                bodyClass="text-center"
-              >
-                <template #body="{ data }">
-                  <Tag
-                    :value="data.category"
-                    :severity="getSeverity(data.status)"
-                  />
-                </template>
-                <template #filter="{ filterModel }">
-                  <Dropdown
-                    v-model="filterModel.value"
-                    :options="category"
-                    placeholder="Select One"
-                    class="p-column-filter"
-                    showClear
-                  >
-                    <template #option="slotProps">
-                      <Tag
-                        :value="slotProps.option"
-                        :severity="getSeverity(slotProps.option)"
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
                       />
                     </template>
-                  </Dropdown>
-                </template>
-              </Column>
-
-              <Column
-                field="contact"
-                header="Contact"
-                bodyClass="text-center"
-              ></Column>
-
-              <Column
-                field="status"
-                header="Status"
-                sortable
-                bodyClass="text-center"
-              >
-                <template #body="{ data }">
-                  <Tag
-                    :value="data.status"
-                    :severity="getSeverity(data.status)"
-                  />
-                </template>
-                <template #filter="{ filterModel }">
-                  <Dropdown
-                    v-model="filterModel.value"
-                    :options="status"
-                    placeholder="Select One"
-                    class="p-column-filter"
-                  >
-                    <template #option="slotProps">
-                      <Tag
-                        :value="slotProps.option"
-                        :severity="getSeverity(slotProps.option)"
+                  </Column>
+                  <Column field="firstName" header="First Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.firstName }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <InputText
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
                       />
                     </template>
-                  </Dropdown> </template
-              ></Column>
+                  </Column>
 
-              <Column
-                header="Action"
-                headerStyle="width: 5rem; text-align: center"
-                bodyStyle="text-align: center; overflow: visible"
-              >
-                <template #body="{ data }">
-                  <Button
-                    type="button"
-                    icon="pi pi-align-center"
-                    @click="editTutor(data)"
-                    style="font-size: 0.7rem"
-                    rounded
-                  />
-                </template>
-              </Column>
-            </DataTable>
+                  <Column
+                    field="studentStatus"
+                    header="Education"
+                    sortable
+                  ></Column>
+
+                  <Column
+                    field="category"
+                    header="Category"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.category"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="category"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                        showClear
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown>
+                    </template>
+                  </Column>
+
+                  <Column
+                    field="contact"
+                    header="Contact"
+                    bodyClass="text-center"
+                  ></Column>
+
+                  <Column
+                    field="status"
+                    header="Status"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.status"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="status"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown> </template
+                  ></Column>
+
+                  <Column
+                    header="Action"
+                    headerStyle="width: 5rem; text-align: center"
+                    bodyStyle="text-align: center; overflow: visible"
+                  >
+                    <template #body="{ data }">
+                      <Button
+                        type="button"
+                        icon="pi pi-align-center"
+                        @click="editTutor(data)"
+                        style="font-size: 0.7rem"
+                        rounded
+                      />
+                    </template>
+                  </Column>
+                </DataTable>
+              </TabPanel>
+              <TabPanel header="Applicants">
+                <DataTable
+                  v-model:filters="tutorFilter"
+                  v-model:selection="selectedTutor"
+                  stateStorage="session"
+                  selectionMode="single"
+                  :value="applicantsList()"
+                  ref="tt"
+                  sortMode="multiple"
+                  showGridlines
+                  removableSort
+                  paginator
+                  :rows="5"
+                  dataKey="email"
+                  :rowsPerPageOptions="[5, 10, 20, 50]"
+                  :globalFilterFields="['firstName', 'lastName', 'contact']"
+                  filterDisplay="menu"
+                  :loading="loading"
+                  paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
+                  currentPageReportTemplate="{first} to {last} of {totalRecords}"
+                >
+                  <template #paginatorstart>
+                    <Button type="button" icon="pi pi-refresh" text />
+                  </template>
+                  <template #paginatorend>
+                    <Button
+                      type="button"
+                      @click="exportCS($event)"
+                      icon="pi pi-download"
+                      text
+                    />
+                  </template>
+
+                  <template #header>
+                    <div class="row">
+                      <div class="col text-start d-flex">
+                        <h2 class="">Tutors</h2>
+                        <div class="mt-1 mx-2"></div>
+                      </div>
+                      <div class="col">
+                        <IconField>
+                          <InputText
+                            v-model="tutorFilter['global'].value"
+                            placeholder="Keyword Search"
+                          />
+                        </IconField>
+                      </div>
+                    </div>
+                  </template>
+                  <template #empty> No Tutor found. </template>
+                  <template #loading>
+                    Loading tutors data. Please wait.
+                  </template>
+
+                  <Column field="lastName" header="Last Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.lastName }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <InputText
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
+                      />
+                    </template>
+                  </Column>
+                  <Column field="firstName" header="First Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.firstName }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <InputText
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
+                      />
+                    </template>
+                  </Column>
+
+                  <Column
+                    field="studentStatus"
+                    header="Education"
+                    sortable
+                  ></Column>
+
+                  <Column
+                    field="category"
+                    header="Category"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.category"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="category"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                        showClear
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown>
+                    </template>
+                  </Column>
+
+                  <Column
+                    field="contact"
+                    header="Contact"
+                    bodyClass="text-center"
+                  ></Column>
+
+                  <Column
+                    field="status"
+                    header="Status"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.status"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="status"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown> </template
+                  ></Column>
+
+                  <Column
+                    header="Action"
+                    headerStyle="width: 5rem; text-align: center"
+                    bodyStyle="text-align: center; overflow: visible"
+                  >
+                    <template #body="{ data }">
+                      <Button
+                        type="button"
+                        icon="pi pi-align-center"
+                        @click="editTutor(data)"
+                        style="font-size: 0.7rem"
+                        rounded
+                      />
+                    </template>
+                  </Column>
+                </DataTable>
+              </TabPanel>
+              <TabPanel header="Disqualified">
+                <DataTable
+                  v-model:filters="tutorFilter"
+                  v-model:selection="selectedTutor"
+                  stateStorage="session"
+                  selectionMode="single"
+                  :value="tutors"
+                  ref="tt"
+                  sortMode="multiple"
+                  showGridlines
+                  removableSort
+                  paginator
+                  :rows="5"
+                  dataKey="email"
+                  :rowsPerPageOptions="[5, 10, 20, 50]"
+                  :globalFilterFields="['firstName', 'lastName', 'contact']"
+                  filterDisplay="menu"
+                  :loading="loading"
+                  paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
+                  currentPageReportTemplate="{first} to {last} of {totalRecords}"
+                >
+                  <template #paginatorstart>
+                    <Button type="button" icon="pi pi-refresh" text />
+                  </template>
+                  <template #paginatorend>
+                    <Button
+                      type="button"
+                      @click="exportCS($event)"
+                      icon="pi pi-download"
+                      text
+                    />
+                  </template>
+
+                  <template #header>
+                    <div class="row">
+                      <div class="col text-start d-flex">
+                        <h2 class="">Tutors</h2>
+                        <div class="mt-1 mx-2"></div>
+                      </div>
+                      <div class="col">
+                        <IconField>
+                          <InputText
+                            v-model="tutorFilter['global'].value"
+                            placeholder="Keyword Search"
+                          />
+                        </IconField>
+                      </div>
+                    </div>
+                  </template>
+                  <template #empty> No Tutor found. </template>
+                  <template #loading>
+                    Loading tutors data. Please wait.
+                  </template>
+
+                  <Column field="lastName" header="Last Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.lastName }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <InputText
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
+                      />
+                    </template>
+                  </Column>
+                  <Column field="firstName" header="First Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.firstName }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <InputText
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
+                      />
+                    </template>
+                  </Column>
+
+                  <Column
+                    field="studentStatus"
+                    header="Education"
+                    sortable
+                  ></Column>
+
+                  <Column
+                    field="category"
+                    header="Category"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.category"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="category"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                        showClear
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown>
+                    </template>
+                  </Column>
+
+                  <Column
+                    field="contact"
+                    header="Contact"
+                    bodyClass="text-center"
+                  ></Column>
+
+                  <Column
+                    field="status"
+                    header="Status"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.status"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="status"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown> </template
+                  ></Column>
+
+                  <Column
+                    header="Action"
+                    headerStyle="width: 5rem; text-align: center"
+                    bodyStyle="text-align: center; overflow: visible"
+                  >
+                    <template #body="{ data }">
+                      <Button
+                        type="button"
+                        icon="pi pi-align-center"
+                        @click="editTutor(data)"
+                        style="font-size: 0.7rem"
+                        rounded
+                      />
+                    </template>
+                  </Column>
+                </DataTable>
+              </TabPanel>
+              <TabPanel header="Pending">
+                <DataTable
+                  v-model:filters="tutorFilter"
+                  v-model:selection="selectedTutor"
+                  stateStorage="session"
+                  selectionMode="single"
+                  :value="tutors"
+                  ref="tt"
+                  sortMode="multiple"
+                  showGridlines
+                  removableSort
+                  paginator
+                  :rows="5"
+                  dataKey="email"
+                  :rowsPerPageOptions="[5, 10, 20, 50]"
+                  :globalFilterFields="['firstName', 'lastName', 'contact']"
+                  filterDisplay="menu"
+                  :loading="loading"
+                  paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
+                  currentPageReportTemplate="{first} to {last} of {totalRecords}"
+                >
+                  <template #paginatorstart>
+                    <Button type="button" icon="pi pi-refresh" text />
+                  </template>
+                  <template #paginatorend>
+                    <Button
+                      type="button"
+                      @click="exportCS($event)"
+                      icon="pi pi-download"
+                      text
+                    />
+                  </template>
+
+                  <template #header>
+                    <div class="row">
+                      <div class="col text-start d-flex">
+                        <h2 class="">Tutors</h2>
+                        <div class="mt-1 mx-2"></div>
+                      </div>
+                      <div class="col">
+                        <IconField>
+                          <InputText
+                            v-model="tutorFilter['global'].value"
+                            placeholder="Keyword Search"
+                          />
+                        </IconField>
+                      </div>
+                    </div>
+                  </template>
+                  <template #empty> No Tutor found. </template>
+                  <template #loading>
+                    Loading tutors data. Please wait.
+                  </template>
+
+                  <Column field="lastName" header="Last Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.lastName }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <InputText
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
+                      />
+                    </template>
+                  </Column>
+                  <Column field="firstName" header="First Name" sortable>
+                    <template #body="{ data }">
+                      {{ data.firstName }}
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <InputText
+                        v-model="filterModel.value"
+                        type="text"
+                        class="p-column-filter"
+                        placeholder="Search by name"
+                      />
+                    </template>
+                  </Column>
+
+                  <Column
+                    field="studentStatus"
+                    header="Education"
+                    sortable
+                  ></Column>
+
+                  <Column
+                    field="category"
+                    header="Category"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.category"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="category"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                        showClear
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown>
+                    </template>
+                  </Column>
+
+                  <Column
+                    field="contact"
+                    header="Contact"
+                    bodyClass="text-center"
+                  ></Column>
+
+                  <Column
+                    field="status"
+                    header="Status"
+                    sortable
+                    bodyClass="text-center"
+                  >
+                    <template #body="{ data }">
+                      <Tag
+                        :value="data.status"
+                        :severity="getSeverity(data.status)"
+                      />
+                    </template>
+                    <template #filter="{ filterModel }">
+                      <Dropdown
+                        v-model="filterModel.value"
+                        :options="status"
+                        placeholder="Select One"
+                        class="p-column-filter"
+                      >
+                        <template #option="slotProps">
+                          <Tag
+                            :value="slotProps.option"
+                            :severity="getSeverity(slotProps.option)"
+                          />
+                        </template>
+                      </Dropdown> </template
+                  ></Column>
+
+                  <Column
+                    header="Action"
+                    headerStyle="width: 5rem; text-align: center"
+                    bodyStyle="text-align: center; overflow: visible"
+                  >
+                    <template #body="{ data }">
+                      <Button
+                        type="button"
+                        icon="pi pi-align-center"
+                        @click="editTutor(data)"
+                        style="font-size: 0.7rem"
+                        rounded
+                      />
+                    </template>
+                  </Column>
+                </DataTable>
+              </TabPanel>
+            </TabView>
 
             <!-- TUTOR DIALOG -->
             <Dialog
@@ -2341,7 +2846,7 @@
                     </div>
                     <div class="row text-start">
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Status</label>
@@ -2349,7 +2854,9 @@
 
                             <div>
                               {{
-                                selectedTutor ? selectedTutor.status : "Status"
+                                selectedTutor
+                                  ? selectedTutor.status
+                                  : "Select Status"
                               }}
                             </div>
                           </template>
@@ -2369,7 +2876,7 @@
                       </div>
 
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Rating</label>
@@ -2377,7 +2884,9 @@
 
                             <div>
                               {{
-                                selectedTutor ? selectedTutor.rating : "Status"
+                                selectedTutor
+                                  ? selectedTutor.rating
+                                  : "Select Rating"
                               }}
                             </div>
                           </template>
@@ -2403,7 +2912,7 @@
                       </div>
 
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Category</label>
@@ -2413,7 +2922,7 @@
                               {{
                                 selectedTutor
                                   ? selectedTutor.category
-                                  : "Category"
+                                  : "Select category"
                               }}
                             </div>
                           </template>
@@ -2436,7 +2945,7 @@
                       </div>
 
                       <div class="col-lg-6">
-                        <Inplace>
+                        <Inplace :closable="true">
                           <template #display>
                             <div class="text-start fw-bolder">
                               <label for="">Student Status</label>
@@ -2446,7 +2955,7 @@
                               {{
                                 selectedTutor
                                   ? selectedTutor.studentStatus
-                                  : "Type"
+                                  : "Select student status"
                               }}
                             </div>
                           </template>
@@ -3637,9 +4146,6 @@ export default {
 
     tutorsList() {
       const tutors = this.tutors.filter((tutor) => tutor.category === "tutor");
-      // const sortedTutors = tutors.sort((a, b) =>
-      //   a.lastName.localeCompare(b.lastName)
-      // );
       return tutors;
     },
 

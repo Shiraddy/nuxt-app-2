@@ -15,7 +15,7 @@
       <hr />
       <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="card shadow-three hover myCard">
+          <div class="card shadow-three myCard">
             <nuxt-img class="service-image" src="/images/student1.png" alt="" />
             <RouterLink class="btn btn-danger btn-service" to="/tuition"
               >Private Tuition</RouterLink
@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="card shadow-three hover myCard">
+          <div class="card shadow-three myCard">
             <nuxt-img
               class="service-image"
               src="/images/counsel1.png"
@@ -46,7 +46,7 @@
         </div>
 
         <div class="col-sm-12 col-md-4 col-lg-4">
-          <div class="card shadow-three hover myCard">
+          <div class="card shadow-three myCard">
             <nuxt-img
               class="service-image"
               src="/images/skill1.png"
