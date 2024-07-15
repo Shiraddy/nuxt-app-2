@@ -1,6 +1,6 @@
 <template>
   <h3 class="mt-lg-4">Our Gallery</h3>
-  <div class="Gallery-container">
+  <!-- <div class="Gallery-container">
     <div class="Gallery-card">
       <div class="card-content">
         <img src="/images/consul1.jpg" alt="" class="" width="100%" />
@@ -29,18 +29,18 @@
         <div class="backdrop"></div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="container my-5">
     <div class="row gy-3 gx-2">
       <div class="col-lg-4">
-        <Image src="/images/academic.jpg" alt="Image" width="250" preview />
+        <Image src="/images/academic.jpg" alt="Image" width="250" height="180" preview />
       </div>
       <div class="col-lg-4">
-        <Image src="/images/tutor2.jpg" alt="Image" width="250" preview />
+        <Image src="/images/tutor2.jpg" alt="Image" width="250" height="180" preview />
       </div>
       <div class="col-lg-4">
-        <Image src="/images/us.jpg" alt="Image" width="250" preview />
+        <Image src="/images/us.jpg" alt="Image" width="250" height="180" preview />
       </div>
     </div>
   </div>
@@ -84,5 +84,10 @@ export default {
 .card-content > .title {
   opacity: 1;
   translate: 0 0;
+}
+
+.gallery {
+  width: 250px;
+  height: 150px;
 }
 </style>

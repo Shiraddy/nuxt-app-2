@@ -37,35 +37,35 @@
 
   <div class="container-sm services-apply text-dark pt-3">
     <form
-    @submit.prevent="submitTutorForm()"
-    class="py-3 px-lg-5"
-    v-if="applying"
+      @submit.prevent="submitTutorForm()"
+      class="py-3 px-lg-5"
+      v-if="applying"
     >
-    <h3 class="fw-bolder my-2 text-secondary">Lifeline Tutor Application</h3>
-     <div class="d-none d-lg-block my-3">
-       <div class="d-flex justify-content-around">
-         <div class="col-2 col-lg-2">
-           <button :class="login && 'btn btn-danger'">1</button> <br />
-           <small :class="login && 'activeTab'">Create Login</small>
-         </div>
-         <div class="col-2 col-lg-2">
-           <button :class="personal && 'btn btn-danger'">2</button> <br />
-           <small :class="personal && 'activeTab'">Personal</small>
-         </div>
-         <div class="col-2 col-lg-2">
-           <button :class="education && 'btn btn-danger'">3</button> <br />
-           <small :class="education && 'activeTab'">Qualification</small>
-         </div>
-         <div class="col-2 col-lg-2">
-           <button :class="expertise && 'btn btn-danger'">4</button> <br />
-           <small :class="expertise && 'activeTab'">Preferences</small>
-         </div>
-         <div class="col-2 col-lg-2">
-           <button :class="location && 'btn btn-danger'">5</button> <br />
-           <small :class="location && 'activeTab'">Location</small>
-         </div>
-       </div>
-     </div>
+      <h3 class="fw-bolder my-2 text-secondary">Lifeline Tutor Application</h3>
+      <div class="d-none d-lg-block my-3">
+        <div class="d-flex justify-content-around">
+          <div class="col-2 col-lg-2">
+            <button :class="login && 'btn btn-danger'">1</button> <br />
+            <small :class="login && 'activeTab'">Create Login</small>
+          </div>
+          <div class="col-2 col-lg-2">
+            <button :class="personal && 'btn btn-danger'">2</button> <br />
+            <small :class="personal && 'activeTab'">Personal</small>
+          </div>
+          <div class="col-2 col-lg-2">
+            <button :class="education && 'btn btn-danger'">3</button> <br />
+            <small :class="education && 'activeTab'">Qualification</small>
+          </div>
+          <div class="col-2 col-lg-2">
+            <button :class="expertise && 'btn btn-danger'">4</button> <br />
+            <small :class="expertise && 'activeTab'">Preferences</small>
+          </div>
+          <div class="col-2 col-lg-2">
+            <button :class="location && 'btn btn-danger'">5</button> <br />
+            <small :class="location && 'activeTab'">Location</small>
+          </div>
+        </div>
+      </div>
 
       <!-- CREATE LOGIN DETAILS -->
       <fieldset v-if="login">
@@ -822,8 +822,6 @@
       <TheMessage></TheMessage>
     </div>
   </div>
-  <ContactUs></ContactUs>
-  <Footer></Footer>
 
   <!-----------APPLICATION FORM------------>
 
@@ -860,9 +858,45 @@
       </div>
     </div>
   </div>
+  <ContactUs></ContactUs>
+  <Footer></Footer>
 </template>
 
 <script>
+import { initializeApp } from "firebase/app";
+
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  deleteDoc,
+  addDoc,
+  setDoc,
+  doc,
+  query,
+  where,
+  updateDoc,
+} from "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
+  authDomain: "lifeline-edu-site.firebaseapp.com",
+  projectId: "lifeline-edu-site",
+  storageBucket: "lifeline-edu-site.appspot.com",
+  messagingSenderId: "1059969595497",
+  appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
+};
+
+const firebase = initializeApp(firebaseConfig);
+const auth = getAuth(firebase);
+const db = getFirestore(firebase);
+
 export default {
   name: "Tutor Application",
   data() {
@@ -1072,16 +1106,28 @@ export default {
 
         try {
           const email = this.tutorApplication.email;
+          const password = this.tutorApplication.password;
           const application = this.tutorApplication;
-          const tutorRef = doc(db, "Tutor Applications", email);
+          const router = useRouter();
+          const usersRef = collection(db, "Tutor Applications");
+          const q = query(usersRef, where("email", "==", email));
 
-          // Set a timeout of 10 seconds for the application submission
-          const submissionPromise = setDoc(tutorRef, application, {
-            merge: true,
-          });
+          const querySnapshot = await getDocs(q);
+
+          if (!querySnapshot.empty) {
+            alert("User already exist, Please Login");
+            router.push("/login");
+          } else {
+            const newUserCredentials = await createUser(email, password);
+            console.log("User Created", newUserCredentials);
+            const tutorRef = doc(db, "Tutor Applications", email);
+            const submissionPromise = setDoc(tutorRef, application, {
+              merge: true,
+            });
+          }
 
           const timeoutPromise = new Promise((resolve, reject) => {
-            setTimeout(() => reject(new Error("Timeout error")), 10000); // 10 seconds
+            setTimeout(() => reject(new Error("Timeout error")), 10000);
           });
 
           await Promise.race([submissionPromise, timeoutPromise]);
@@ -1089,7 +1135,7 @@ export default {
           this.applying = false;
           this.form = false;
           this.success = true;
-          // console.log("Tutor Application", application);
+          console.log("Tutor Application", application);
         } catch (error) {
           console.error("Application Unsuccessful", error);
 

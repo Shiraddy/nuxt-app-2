@@ -23,11 +23,6 @@ useHead({
     },
 
     {
-      src: "https://fonts.googleapis.com/icon?family=Material+Icons",
-      tagPosition: "head",
-    },
-
-    {
       src: "https://www.google.com/recaptcha/api.js",
       async: true,
       defer: true,
