@@ -164,6 +164,7 @@
                 </div>
               </div>
             </nav>
+
             <div class="container-fluid">
               <div class="row mt-lg-5 px-0 py-0">
                 <div class="col-lg-4 col-sm-12">
@@ -180,8 +181,8 @@
 
           <div class="container-fluid" id="dashboard">
             <!-- DASHBOARD -->
-            <section class="row shadow-two rounded profile">
-              <div class="col-lg-12 col-sm-12 py-3 row">
+            <section class="shadow-two rounded profile">
+              <div class="col-lg-12 col-sm-12 py-3 px-3 row d-flex align-items-center justify-content-center">
                 <h5 class="text-start fw-bolder py-1">MY DASHBOARD</h5>
 
                 <div class="col-lg-4 col-12">
@@ -215,12 +216,12 @@
 
               <!-- BOARD -->
 
-              <section class="row">
+              <section class="row px-3">
                 <div class="col-lg-8">
                   <!-- NOTICE BOARD -->
-                  <div class="shadow-two bg-white row notice">
+                  <div class="shadow-two bg-white row notice" id="noticeBoard">
                     <h4 class="fw-bolder">Notice Board</h4>
-                    <div id="noticeBoard">
+                    <div >
                       <div v-if="getCurrentNote">
                         <h5 class="fw-bolder">{{ getCurrentNote.title }}</h5>
                         <p class="mx-3 user-select-none">
@@ -618,7 +619,7 @@
 
               <!-- OFFERS -->
 
-              <section class="shadow-two">
+              <section class="shadow-two" id="offers">
                 <div class="px-5 py-5">
                   <a class="navbar-brand pt-3" href="#">Lifeline Offers</a>
                   <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
