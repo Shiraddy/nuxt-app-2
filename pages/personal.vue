@@ -1,404 +1,520 @@
 <template>
-  <section class="container-fluid">
-    <div class="row">
-      <div class="col-lg-2 shadow-two bg-success d-none d-lg-block">
-        <!-- SIDE BAR -->
-        <div class="side-bar">
-          <div class="d-flex justify-content-start">
-            <div class="mt-lg-2">
-              <div class="">
-                <!-- <img
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-2 shadow-two bg-success d-none d-lg-block">
+          <!-- SIDE BAR -->
+          <div class="side-bar">
+            <div class="d-flex justify-content-start">
+              <div class="mt-lg-2">
+                <div class="">
+                  <!-- <img
                   class="profile-pic d-none d-lg-block"
                   src="/images/Pic.png"
                   alt=""
                 /> -->
 
-                <div class="mt-lg-3">
-                  <Avatar
-                    label="LT"
-                    class="mr-2"
-                    size="xlarge"
-                    shape="circle"
-                  />
-                  <h1 class="text-uppercase text-white mb-0 fs-6">
-                    {{ fullName }}
-                  </h1>
-                  <small class="mt-0 text-white d-6 fs-beauty">{{
-                    profile.email
-                  }}</small>
+                  <div class="mt-lg-3">
+                    <Avatar
+                      label="LT"
+                      class="mr-2"
+                      size="xlarge"
+                      shape="circle"
+                    />
+                    <h1 class="text-uppercase text-white mb-0 fs-6">
+                      {{ fullName }}
+                    </h1>
+                    <small class="mt-0 text-white d-6 fs-beauty">{{
+                      profile.email
+                    }}</small>
+                  </div>
+                  <ul class="navbar-nav text-start ms-4 mt-4">
+                    <li class="nav-item">
+                      <a class="link-user" href="#dashboard"
+                        ><i class="bi-columns-gap me-2 text-white"></i
+                        >DASHBOARD</a
+                      >
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="link-user" href="#resourceCentre"
+                        ><i class="bi-collection me-2"></i>PROFILE</a
+                      >
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="link-user" href="#resourceCentre"
+                        ><i class="bi-collection me-2"></i>RESOURCES</a
+                      >
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="link-user" href="#training"
+                        ><i class="bi-laptop me-2"></i>TRAINING</a
+                      >
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="link-user" href="#offers"
+                        ><i class="bi-files me-2"></i>OFFERS</a
+                      >
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="link-user" href="#tutorForms"
+                        ><i class="bi-clipboard-data me-2"></i>SUBMIT FORMS</a
+                      >
+                    </li>
+                  </ul>
                 </div>
-                <ul class="navbar-nav text-start ms-4 mt-4">
-                  <li class="nav-item">
-                    <a class="link-user" href="#dashboard"
-                      ><i class="bi-columns-gap me-2 text-white"></i
-                      >DASHBOARD</a
-                    >
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="link-user" href="#resourceCentre"
-                      ><i class="bi-collection me-2"></i>PROFILE</a
-                    >
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="link-user" href="#resourceCentre"
-                      ><i class="bi-collection me-2"></i>RESOURCES</a
-                    >
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="link-user" href="#training"
-                      ><i class="bi-laptop me-2"></i>TRAINING</a
-                    >
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="link-user" href="#offers"
-                      ><i class="bi-files me-2"></i>OFFERS</a
-                    >
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="link-user" href="#tutorForms"
-                      ><i class="bi-clipboard-data me-2"></i>SUBMIT FORMS</a
-                    >
-                  </li>
-                </ul>
+                <div class="">
+                  <button
+                    class="btn btn-danger shadow-two my-3"
+                    @click="signingOut"
+                  >
+                    <i class="bi-box-arrow-left text-white me-2"></i>Logout
+                  </button>
+                </div>
               </div>
-              <div class="">
-                <button
-                  class="btn btn-danger shadow-two my-3"
-                  @click="signingOut"
-                >
-                  <i class="bi-box-arrow-left text-white me-2"></i>Logout
+            </div>
+          </div>
+        </div>
+
+        <!-- MOBILE NAVBAR -->
+        <div class="d-lg-none sticky-top">
+          <nav class="navbar bg-success">
+            <div class="container-fluid">
+              <a class="navbar-brand text-white" href="#">Lifeline</a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#tutorNavbar"
+              >
+                <span class="bi-filter-square fs-2 text-white"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="tutorNavbar">
+              <ul class="navbar-nav text-start ms-4 mt-4 bg-dark">
+                <li class="nav-item">
+                  <a class="link-user" href="#dashboard"
+                    ><i class="bi-columns-gap me-2 text-white"></i>DASHBOARD</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="link-user" href="#profile"
+                    ><i class="bi-collection me-2"></i>PROFILE</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="link-user" href="#resource"
+                    ><i class="bi-collection me-2"></i>RESOURCES</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="link-user" href="#training"
+                    ><i class="bi-laptop me-2"></i>TRAINING</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="link-user" href="#offers"
+                    ><i class="bi-files me-2"></i>OFFERS</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="link-user" href="#forms"
+                    ><i class="bi-clipboard-data me-2"></i>SUBMIT FORMS</a
+                  >
+                </li>
+              </ul>
+              <div class="text-start ms-4 my-3">
+                <button @click="signingOut" class="btn btn-danger">
+                  Log Out
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MOBILE NAVBAR -->
-      <div class="d-lg-none sticky-top">
-        <nav class="navbar bg-success">
-          <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">Lifeline</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#tutorNavbar"
-            >
-              <span class="bi-filter-square fs-2 text-white"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="tutorNavbar">
-            <ul class="navbar-nav text-start ms-4 mt-4 bg-dark">
-              <li class="nav-item">
-                <a class="link-user" href="#dashboard"
-                  ><i class="bi-columns-gap me-2 text-white"></i>DASHBOARD</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a class="link-user" href="#profile"
-                  ><i class="bi-collection me-2"></i>PROFILE</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a class="link-user" href="#resource"
-                  ><i class="bi-collection me-2"></i>RESOURCES</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a class="link-user" href="#training"
-                  ><i class="bi-laptop me-2"></i>TRAINING</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a class="link-user" href="#offers"
-                  ><i class="bi-files me-2"></i>OFFERS</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a class="link-user" href="#forms"
-                  ><i class="bi-clipboard-data me-2"></i>SUBMIT FORMS</a
-                >
-              </li>
-            </ul>
-            <div class="text-start ms-4 my-3">
-              <button @click="signingOut" class="btn btn-danger">
-                Log Out
-              </button>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <!-- MAIN BODY AREA -->
-      <div class="col-lg-10 col-12">
-        <div class="tutor-profile-banner">
-          <nav class="d-none d-lg-block">
-            <div class="container-fluid">
-              <div class="nav">
-                <a class="navbar-brand text-danger fs-3 me-auto" href="#"
-                  >LIFELINE</a
-                >
-                <div class="text-white me-4">
-                  <i class="bi-bell me-3"></i>
-                  <i class="bi-chat-square-text"></i>
-                </div>
-
-                <p class="text-white">{{ currentTime }}</p>
-
-                <h6 class="text-white mt-1 mx-2">
-                  {{ profile.lastName }} {{ profile.firstName }}
-                </h6>
-                <i class="bi-sliders mx-1 text-white"></i>
-              </div>
-            </div>
           </nav>
+        </div>
 
-          <div class="row mt-lg-5">
-            <div class="col-lg-4 col-sm-12">
-              <div class="tutor-profile-hero px-1">
-                <h2 class="fs-3 fw-bolder mb-0">
-                  Hello {{ profile.firstName }},
-                </h2>
-                <p class="fs-beauty fs-5 mt-0 pb-0">It's {{ date() }}</p>
+        <!-- MAIN BODY AREA -->
+        <div class="col-lg-10 col-12">
+          <div class="tutor-profile-banner">
+            <nav class="d-none d-lg-block">
+              <div class="container-fluid">
+                <div class="nav">
+                  <a class="navbar-brand text-danger fs-3 me-auto" href="#"
+                    >LIFELINE</a
+                  >
+                  <div class="text-white me-4">
+                    <i class="bi-bell me-3"></i>
+                    <i class="bi-chat-square-text"></i>
+                  </div>
+
+                  <p class="text-white">{{ currentTime }}</p>
+
+                  <h6 class="text-white mt-1 mx-2">
+                    {{ profile.lastName }} {{ profile.firstName }}
+                  </h6>
+                  <i class="bi-sliders mx-1 text-white"></i>
+                </div>
+              </div>
+            </nav>
+            <div class="container-fluid">
+              <div class="row mt-lg-5 px-0 py-0">
+                <div class="col-lg-4 col-sm-12">
+                  <div class="tutor-profile-hero px-1">
+                    <h2 class="fs-3 fw-bolder mb-0">
+                      Hello {{ profile.firstName }},
+                    </h2>
+                    <p class="fs-beauty fs-5 mt-0 pb-0">It's {{ date() }}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="container-fluid" id="dashboard">
-          <!-- DASHBOARD -->
-          <section class="row shadow-two rounded profile">
-            <div class="col-lg-12 col-sm-12 py-3 row">
-              <h5 class="text-start fw-bolder py-1">MY DASHBOARD</h5>
+          <div class="container-fluid" id="dashboard">
+            <!-- DASHBOARD -->
+            <section class="row shadow-two rounded profile">
+              <div class="col-lg-12 col-sm-12 py-3 row">
+                <h5 class="text-start fw-bolder py-1">MY DASHBOARD</h5>
 
-              <div class="col-lg-4 col-12">
-                <div class="revenue shadow-two bg-white text-success">
-                  <h6>ALLOWANCE</h6>
-                  <h4 class="fw-bolder">
-                    <i class="bi-receipt-cutoff me-2"></i>Ghc {{ totalPay }}.00
-                  </h4>
+                <div class="col-lg-4 col-12">
+                  <div class="revenue shadow-two bg-white text-success">
+                    <h6>ALLOWANCE</h6>
+                    <h4 class="fw-bolder">
+                      <i class="bi-receipt-cutoff me-2"></i>Ghc
+                      {{ totalPay }}.00
+                    </h4>
+                  </div>
                 </div>
-              </div>
 
-              <div class="col-lg-4 col-12">
-                <div class="profit shadow-two bg-white text-primary">
-                  <h6 class="">BONUS</h6>
-                  <h4 class="fw-bolder">
-                    <i class="bi-graph-up me-2"></i>Ghc {{ bonus }}.00
-                  </h4>
+                <div class="col-lg-4 col-12">
+                  <div class="profit shadow-two bg-white text-primary">
+                    <h6 class="">BONUS</h6>
+                    <h4 class="fw-bolder">
+                      <i class="bi-graph-up me-2"></i>Ghc {{ bonus }}.00
+                    </h4>
+                  </div>
                 </div>
-              </div>
 
-              <div class="col-lg-4 col-12">
-                <div class="client shadow-two bg-white text-danger">
-                  <h6>PENALTY</h6>
-                  <h4 class="fw-bolder">
-                    <i class="bi-graph-down me-2"></i>Ghc {{ penalty }}.00
-                  </h4>
-                </div>
-              </div>
-            </div>
-
-            <!-- BOARD -->
-            <section class="row">
-              <div class="col-lg-8">
-                <!-- NOTICE BOARD -->
-                <div class="shadow-two bg-white row notice">
-                  <h4 class="fw-bolder">Notice Board</h4>
-                  <div id="noticeBoard">
-                    <div v-if="getCurrentNote">
-                      <h5 class="fw-bolder">{{ getCurrentNote.title }}</h5>
-                      <p class="mx-3 user-select-none">
-                        {{ getCurrentNote.message }}
-                      </p>
-                      <div class="text-end">
-                        <small>{{ getCurrentNote.Date_Issued }}</small>
-                      </div>
-                    </div>
-                    <div>
-                      <button
-                        type="button"
-                        class="btn btn-success mx-3"
-                        @click="showPrevious"
-                      >
-                        <i class="bi-chevron-double-left"></i>
-                      </button>
-
-                      <button
-                        type="button"
-                        class="btn btn-success"
-                        @click="showNext"
-                      >
-                        <i class="bi-chevron-double-right"></i>
-                      </button>
-                    </div>
+                <div class="col-lg-4 col-12">
+                  <div class="client shadow-two bg-white text-danger">
+                    <h6>PENALTY</h6>
+                    <h4 class="fw-bolder">
+                      <i class="bi-graph-down me-2"></i>Ghc {{ penalty }}.00
+                    </h4>
                   </div>
                 </div>
               </div>
 
-              <!-- PROFILE -->
-              <div class="col-lg-4" id="profile">
-                <div class="quote shadow-two text-start my-lg-1 my-3">
-                  <h4 class="fw-bolder mt-2">My Profile</h4>
-                  <div class="col mt-4">
-                    <h6 class="fs-beauty text-muted text-uppercase">
-                      <i class="bi-person-circle me-2"></i> Tutor:
-                      {{ profile.lastName }} {{ profile.firstName }}
-                    </h6>
-                  </div>
+              <!-- BOARD -->
 
-                  <div class="col">
-                    <h6 class="fs-beauty text-muted text-uppercase">
-                      <i class="bi-check-circle me-2"></i>Category:
-                      {{ profile.category }}
-                    </h6>
-                  </div>
-
-                  <div class="col">
-                    <h6 class="fs-beauty text-muted text-uppercase">
-                      <i class="bi-info-circle me-2"></i> Status:
-                      {{ profile.status }}
-                    </h6>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- TUTOR CONTRACTS -->
-            <section class="my-lg-4 my-3" id="contracts">
-              <h4 class="text-start pt-4 mx-3 fw-bolder">Tutor contracts</h4>
-              <DataTable
-                :value="profile.contracts"
-                sortMode="multiple"
-                showGridlines
-                removableSort
-                paginator
-                :rows="5"
-                :rowsPerPageOptions="[5, 10, 20, 50]"
-                tableStyle="min-width: 50rem"
-                class="shadow-one"
-              >
-                <Column
-                  field="parent"
-                  header="Parent"
-                  sortable
-                  style="width: 20%"
-                ></Column>
-                <Column
-                  field="student"
-                  header="Student"
-                  sortable
-                  style="width: 25%"
-                ></Column>
-                <Column
-                  field="class"
-                  header="Class"
-                  sortable
-                  style="width: 5%"
-                ></Column>
-                <Column
-                  field="status"
-                  header="Status"
-                  sortable
-                  style="width: 5%"
-                ></Column>
-                <Column
-                  field="weeklySession"
-                  header="Session"
-                  sortable
-                  style="width: 5%"
-                ></Column>
-                <Column
-                  field="contact"
-                  header="Contact"
-                  style="width: 10%"
-                ></Column>
-                <Column
-                  field="pay"
-                  header="Pay"
-                  sortable
-                  style="width: 5%"
-                ></Column>
-                <Column
-                  field="deduction"
-                  header="Penalty"
-                  sortable
-                  style="width: 5%"
-                ></Column>
-                <Column
-                  field="consideration"
-                  header="Bonus"
-                  sortable
-                  style="width: 5%"
-                ></Column>
-              </DataTable>
-            </section>
-
-            <!-- RESOURCE CENTRE -->
-            <section class="col-lg-12 mt-5 mt-lg-2" id="resource">
-              <!-- <h4>Resource Centre</h4> -->
-              <div class="section bg-white shadow-one">
-                <!-- LIFELINE -->
-                <a class="navbar-brand" href="#">Resource Centre</a>
-
-                <div class="row object-fit-cover">
-                  <div class="col-12">
-                    <div class="lifeline text-start">
-                      <div class="row my-3 py-2">
-                        <div class="col-lg-6">
-                          <h4 class="mx-3 fw-bolder">Tutor Repository</h4>
-                          <!-- <small>Download Lifeline's Resources</small> -->
-                        </div>
-                        <div class="col-lg-6 col-sm-12">
-                          <form class="d-flex" role="search">
-                            <input
-                              class="form-control me-2 shadow-one"
-                              type="search"
-                              placeholder="Search"
-                            />
-                          </form>
+              <section class="row">
+                <div class="col-lg-8">
+                  <!-- NOTICE BOARD -->
+                  <div class="shadow-two bg-white row notice">
+                    <h4 class="fw-bolder">Notice Board</h4>
+                    <div id="noticeBoard">
+                      <div v-if="getCurrentNote">
+                        <h5 class="fw-bolder">{{ getCurrentNote.title }}</h5>
+                        <p class="mx-3 user-select-none">
+                          {{ getCurrentNote.message }}
+                        </p>
+                        <div class="text-end">
+                          <small>{{ getCurrentNote.Date_Issued }}</small>
                         </div>
                       </div>
+                      <div>
+                        <button
+                          type="button"
+                          class="btn btn-success mx-3"
+                          @click="showPrevious"
+                        >
+                          <i class="bi-chevron-double-left"></i>
+                        </button>
 
-                      <TabView>
-                        <TabPanel header="Lifeline">
+                        <button
+                          type="button"
+                          class="btn btn-success"
+                          @click="showNext"
+                        >
+                          <i class="bi-chevron-double-right"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PROFILE -->
+                <div class="col-lg-4" id="profile">
+                  <div class="quote shadow-two text-start my-lg-1 my-3">
+                    <h4 class="fw-bolder mt-2">My Profile</h4>
+                    <div class="col mt-4">
+                      <h6 class="fs-beauty text-muted text-uppercase">
+                        <i class="bi-person-circle me-2"></i> Tutor:
+                        {{ profile.lastName }} {{ profile.firstName }}
+                      </h6>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fs-beauty text-muted text-uppercase">
+                        <i class="bi-check-circle me-2"></i>Category:
+                        {{ profile.category }}
+                      </h6>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fs-beauty text-muted text-uppercase">
+                        <i class="bi-info-circle me-2"></i> Status:
+                        {{ profile.status }}
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- TUTOR CONTRACTS -->
+              <section class="my-lg-4 my-3" id="contracts">
+                <h4 class="text-start pt-4 mx-3 fw-bolder">Tutor contracts</h4>
+                <DataTable
+                  :value="profile.contracts"
+                  sortMode="multiple"
+                  showGridlines
+                  removableSort
+                  paginator
+                  :rows="5"
+                  :rowsPerPageOptions="[5, 10, 20, 50]"
+                  tableStyle="min-width: 50rem"
+                  class="shadow-one"
+                >
+                  <Column
+                    field="parent"
+                    header="Parent"
+                    sortable
+                    style="width: 20%"
+                  ></Column>
+                  <Column
+                    field="student"
+                    header="Student"
+                    sortable
+                    style="width: 25%"
+                  ></Column>
+                  <Column
+                    field="class"
+                    header="Class"
+                    sortable
+                    style="width: 5%"
+                  ></Column>
+                  <Column
+                    field="status"
+                    header="Status"
+                    sortable
+                    style="width: 5%"
+                  ></Column>
+                  <Column
+                    field="weeklySession"
+                    header="Session"
+                    sortable
+                    style="width: 5%"
+                  ></Column>
+                  <Column
+                    field="contact"
+                    header="Contact"
+                    style="width: 10%"
+                  ></Column>
+                  <Column
+                    field="pay"
+                    header="Pay"
+                    sortable
+                    style="width: 5%"
+                  ></Column>
+                  <Column
+                    field="deduction"
+                    header="Penalty"
+                    sortable
+                    style="width: 5%"
+                  ></Column>
+                  <Column
+                    field="consideration"
+                    header="Bonus"
+                    sortable
+                    style="width: 5%"
+                  ></Column>
+                </DataTable>
+              </section>
+
+              <!-- RESOURCE CENTRE -->
+              <section class="col-lg-12 mt-5 mt-lg-2" id="resource">
+                <!-- <h4>Resource Centre</h4> -->
+                <div class="section bg-white shadow-one">
+                  <!-- LIFELINE -->
+                  <a class="navbar-brand" href="#">Resource Centre</a>
+
+                  <div class="row object-fit-cover">
+                    <div class="col-12">
+                      <div class="lifeline text-start">
+                        <div class="row my-3 py-2">
+                          <div class="col-lg-6">
+                            <h4 class="mx-3 fw-bolder">Tutor Repository</h4>
+                            <!-- <small>Download Lifeline's Resources</small> -->
+                          </div>
+                          <div class="col-lg-6 col-sm-12">
+                            <form class="d-flex" role="search">
+                              <input
+                                class="form-control me-2 shadow-one"
+                                type="search"
+                                placeholder="Search"
+                              />
+                            </form>
+                          </div>
+                        </div>
+
+                        <TabView>
+                          <TabPanel header="Lifeline">
+                            <table
+                              class="table table-sm border-primary table-hover resource"
+                            >
+                              <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Name</th>
+                                  <th scope="col">Description</th>
+                                  <th scope="col">Download</th>
+                                </tr>
+                              </thead>
+
+                              <tbody
+                                class="table-group-divider"
+                                id="lesResCentre"
+                              >
+                                <tr>
+                                  <td>1</td>
+                                  <td>Log Sheet</td>
+                                  <td class="">
+                                    This is used to record tutor attendance.
+                                  </td>
+                                  <td>
+                                    <a
+                                      class="btn btn-danger"
+                                      href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLog%20sheet.pdf?alt=media&token=a1a2927c-c086-4f20-8930-808a782794bb"
+                                      id="download"
+                                      ><i class="bi-download"></i
+                                    ></a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>Code of Conduct</td>
+                                  <td>This documents spells out our rules.</td>
+                                  <td>
+                                    <a
+                                      class="btn btn-danger"
+                                      href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLifeline's%20Tutor%20Code%20of%20Conduct.pdf?alt=media&token=17cbb614-401f-495f-9311-8b4aa8076a6e"
+                                      id="download"
+                                      ><i class="bi-download"></i
+                                    ></a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>Tutor's Handbook</td>
+                                  <td>
+                                    This document will help you become a better
+                                    tutor.
+                                  </td>
+                                  <td>
+                                    <a
+                                      class="btn btn-danger"
+                                      href="#"
+                                      id="download"
+                                      ><i class="bi-download"></i
+                                    ></a>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td>3</td>
+                                  <td>Phonics</td>
+                                  <td>
+                                    Learn the sounds of letters, blending and
+                                    more.
+                                  </td>
+                                  <td>
+                                    <a
+                                      class="btn btn-danger"
+                                      href="https://www.readingbear.org/"
+                                      target="framename"
+                                      ><i class="bi-download"></i
+                                    ></a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </TabPanel>
+                          <TabPanel header="Linked">
+                            <!-- READING CLINIC -->
+                            <section class="shadow-two">
+                              <iframe
+                                src="https://www.uniteforliteracy.com/"
+                                class="shadow-two resource-frame"
+                                frameborder="0"
+                              ></iframe>
+                            </section>
+                          </TabPanel>
+                          <TabPanel header="G.E.S"></TabPanel>
+                        </TabView>
+                      </div>
+
+                      <!-- GES DATA TABLE -->
+                      <template>
+                        <div class="text-start mt-5">
+                          <div class="row my-3">
+                            <div class="col-lg-6">
+                              <h5>Standards Based Curriculum</h5>
+                            </div>
+                            <div class="col-lg-6">
+                              <form class="d-flex" role="search">
+                                <input
+                                  class="form-control me-2 shadow-one"
+                                  type="search"
+                                  placeholder="Search"
+                                  aria-label="Search"
+                                  id="gesResSearch"
+                                />
+                              </form>
+                            </div>
+                          </div>
+
+                          <!-- <p>Ghana Education Service (GES) Standards Based Curriculum.</p> -->
                           <table
-                            class="table table-sm border-primary table-hover resource"
+                            class="table table-sm table-bordered border-primary table-hover resource"
                           >
-                            <thead>
+                            <thead class="">
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Download</th>
+                                <th scope="col">CLASS</th>
+                                <th scope="col">SUBJECT</th>
+                                <th scope="col">DOWNLOAD</th>
                               </tr>
                             </thead>
-
                             <tbody
                               class="table-group-divider"
-                              id="lesResCentre"
+                              id="gesResCentre"
                             >
                               <tr>
                                 <td>1</td>
-                                <td>Log Sheet</td>
-                                <td class="">
-                                  This is used to record tutor attendance.
-                                </td>
+                                <td>BASIC ONE</td>
+                                <td>ENGLISH LANGUAGE</td>
                                 <td>
                                   <a
                                     class="btn btn-danger"
-                                    href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLog%20sheet.pdf?alt=media&token=a1a2927c-c086-4f20-8930-808a782794bb"
+                                    href="#"
                                     id="download"
                                     ><i class="bi-download"></i
                                   ></a>
@@ -406,24 +522,21 @@
                               </tr>
                               <tr>
                                 <td>2</td>
-                                <td>Code of Conduct</td>
-                                <td>This documents spells out our rules.</td>
+                                <td>BASIC ONE</td>
+                                <td>MATHEMATICS</td>
                                 <td>
                                   <a
                                     class="btn btn-danger"
-                                    href="https://firebasestorage.googleapis.com/v0/b/lifeline-edu-site.appspot.com/o/Tutor%20Resources%2FLifeline's%20Tutor%20Code%20of%20Conduct.pdf?alt=media&token=17cbb614-401f-495f-9311-8b4aa8076a6e"
+                                    href="#"
                                     id="download"
-                                    ><i class="bi-download"></i
+                                    ><<i class="bi-download"></i
                                   ></a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>3</td>
-                                <td>Tutor's Handbook</td>
-                                <td>
-                                  This document will help you become a better
-                                  tutor.
-                                </td>
+                                <td>BASIC ONE</td>
+                                <td>SCIENCE</td>
                                 <td>
                                   <a
                                     class="btn btn-danger"
@@ -435,138 +548,41 @@
                               </tr>
 
                               <tr>
-                                <td>3</td>
-                                <td>Phonics</td>
+                                <td>4</td>
+                                <td>BASIC TWO</td>
+                                <td>ENGLISH LANGUAGE</td>
                                 <td>
-                                  Learn the sounds of letters, blending and
-                                  more.
+                                  <button class="btn btn-danger">
+                                    <i class="bi-download"></i>
+                                  </button>
                                 </td>
+                              </tr>
+                              <tr>
+                                <td>5</td>
+                                <td>BASIC TWO</td>
+                                <td>MATHEMATICS</td>
                                 <td>
-                                  <a
-                                    class="btn btn-danger"
-                                    href="https://www.readingbear.org/"
-                                    target="framename"
-                                    ><i class="bi-download"></i
-                                  ></a>
+                                  <button class="btn btn-danger">
+                                    <i class="bi-download"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>6</td>
+                                <td>BASIC TWO</td>
+                                <td>SCIENCE</td>
+                                <td>
+                                  <button class="btn btn-danger">
+                                    <i class="bi-download"></i>
+                                  </button>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                        </TabPanel>
-                        <TabPanel header="Linked">
-                          <!-- READING CLINIC -->
-                          <section class="shadow-two">
-                            <iframe
-                              src="https://www.uniteforliteracy.com/"
-                              class="shadow-two resource-frame"
-                              frameborder="0"
-                            ></iframe>
-                          </section>
-                        </TabPanel>
-                        <TabPanel header="G.E.S"></TabPanel>
-                      </TabView>
-                    </div>
-
-                    <!-- GES DATA TABLE -->
-                    <template>
-                      <div class="text-start mt-5">
-                        <div class="row my-3">
-                          <div class="col-lg-6">
-                            <h5>Standards Based Curriculum</h5>
-                          </div>
-                          <div class="col-lg-6">
-                            <form class="d-flex" role="search">
-                              <input
-                                class="form-control me-2 shadow-one"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                                id="gesResSearch"
-                              />
-                            </form>
-                          </div>
                         </div>
+                      </template>
 
-                        <!-- <p>Ghana Education Service (GES) Standards Based Curriculum.</p> -->
-                        <table
-                          class="table table-sm table-bordered border-primary table-hover resource"
-                        >
-                          <thead class="">
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">CLASS</th>
-                              <th scope="col">SUBJECT</th>
-                              <th scope="col">DOWNLOAD</th>
-                            </tr>
-                          </thead>
-                          <tbody class="table-group-divider" id="gesResCentre">
-                            <tr>
-                              <td>1</td>
-                              <td>BASIC ONE</td>
-                              <td>ENGLISH LANGUAGE</td>
-                              <td>
-                                <a class="btn btn-danger" href="#" id="download"
-                                  ><i class="bi-download"></i
-                                ></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>BASIC ONE</td>
-                              <td>MATHEMATICS</td>
-                              <td>
-                                <a class="btn btn-danger" href="#" id="download"
-                                  ><<i class="bi-download"></i
-                                ></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>3</td>
-                              <td>BASIC ONE</td>
-                              <td>SCIENCE</td>
-                              <td>
-                                <a class="btn btn-danger" href="#" id="download"
-                                  ><i class="bi-download"></i
-                                ></a>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>4</td>
-                              <td>BASIC TWO</td>
-                              <td>ENGLISH LANGUAGE</td>
-                              <td>
-                                <button class="btn btn-danger">
-                                  <i class="bi-download"></i>
-                                </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>5</td>
-                              <td>BASIC TWO</td>
-                              <td>MATHEMATICS</td>
-                              <td>
-                                <button class="btn btn-danger">
-                                  <i class="bi-download"></i>
-                                </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>6</td>
-                              <td>BASIC TWO</td>
-                              <td>SCIENCE</td>
-                              <td>
-                                <button class="btn btn-danger">
-                                  <i class="bi-download"></i>
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </template>
-
-                    <!-- <div class="reading text-start px-5 mt-5">
+                      <!-- <div class="reading text-start px-5 mt-5">
                 <h5>Reading Centre</h5>
                 <p>Reading resource to help you teach reading effectively.</p>
                 <table
@@ -595,365 +611,369 @@
                   </tbody>
                 </table>
               </div> -->
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <!-- OFFERS -->
+              <!-- OFFERS -->
 
-            <section class="col-lg-12 shadow-two" id="offers">
-              <div class="section">
-                <a class="navbar-brand pt-3" href="#">Lifeline Offers</a>
-                <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
-                  <div
-                    class="col-lg-4 col-sm-6 gy-3 gx-4 overflow-hidden"
-                    v-for="offer in offers"
-                  >
-                    <div class="card h-80 mb-3 rounded">
-                      <div class="card-header py-1">
-                        <h4 class="fw-bolder text-secondary pt-1">
-                          {{ offer.type }}
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <p class="fs-6">MODE: {{ offer.mode }}</p>
-                        <p>LEVEL: {{ offer.level }}</p>
-                        <p>DURATION: {{ offer.duration }}</p>
-                        <p>LOCATION: {{ offer.location }}</p>
-                        <h5 class="fw-bolder">{{ offer.allowance }}</h5>
-                        <div class="py-2 d-flex justify-content-between">
-                          <small
-                            class="text-end shadow-three px-2 fw-bolder"
-                            :class="
-                              offer.available ? 'text-danger' : 'text-success'
-                            "
-                          >
-                            {{ offer.availability ? "Available" : "Awarded" }}
-                          </small>
-                          <small
-                            class="shadow-three fw-bolder text-primary px-2"
-                          >
-                            {{ offer.mode }}
-                          </small>
+              <section class="shadow-two">
+                <div class="px-5 py-5">
+                  <a class="navbar-brand pt-3" href="#">Lifeline Offers</a>
+                  <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+                    <div
+                      class="col-lg-4 col-sm-6 gy-3 gx-4 overflow-hidden"
+                      v-for="offer in offers"
+                    >
+                      <div class="card h-80 mb-3 rounded">
+                        <div class="card-header py-1">
+                          <h4 class="fw-bolder text-secondary pt-1">
+                            {{ offer.type }}
+                          </h4>
                         </div>
-                        <!-- <small
+                        <div class="card-body">
+                          <p class="fs-6">MODE: {{ offer.mode }}</p>
+                          <p>LEVEL: {{ offer.level }}</p>
+                          <p>DURATION: {{ offer.duration }}</p>
+                          <p>LOCATION: {{ offer.location }}</p>
+                          <h5 class="fw-bolder">{{ offer.allowance }}</h5>
+                          <div class="py-2 d-flex justify-content-between">
+                            <small
+                              class="text-end shadow-three px-2 fw-bolder"
+                              :class="
+                                offer.available ? 'text-danger' : 'text-success'
+                              "
+                            >
+                              {{ offer.availability ? "Available" : "Awarded" }}
+                            </small>
+                            <small
+                              class="shadow-three fw-bolder text-primary px-2"
+                            >
+                              {{ offer.mode }}
+                            </small>
+                          </div>
+                          <!-- <small
                           class="pi pi-info-circle text-primary fw-bolder fs-5 m-4"
                           @click="offerInfo(offer)"
                         >Info</small> -->
 
-                        <small
-                          class="pi pi-info-circle fw-bolder bg-success p-2 rounded fs-5 m-4 text-white"
-                          @click="offerInfo(offer)"
-                          ><span class="mx-1">Details</span></small
-                        >
+                          <small
+                            class="pi pi-info-circle fw-bolder bg-success p-2 rounded fs-5 m-4 text-white"
+                            @click="offerInfo(offer)"
+                            ><span class="mx-1">Details</span></small
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <Dialog
-                v-model:visible="offerInfoDialog"
-                modal
-                maximizable
-                :draggable="true"
-                :pt="{
-                  root: 'border-none',
-                  mask: {
-                    style: 'backdrop-filter: blur(2px)',
-                  },
-                }"
-                header="Offer Application"
-                :style="{ width: '35vw' }"
-                :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
-              >
-                <span class="text-surface-500 dark:text-surface-400 block mb-8"
-                  >Offer Objectives</span
+                <Dialog
+                  v-model:visible="offerInfoDialog"
+                  modal
+                  maximizable
+                  :draggable="true"
+                  :pt="{
+                    root: 'border-none',
+                    mask: {
+                      style: 'backdrop-filter: blur(2px)',
+                    },
+                  }"
+                  header="Offer Application"
+                  :style="{ width: '35vw' }"
+                  :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
                 >
-                <pre>
+                  <span
+                    class="text-surface-500 dark:text-surface-400 block mb-8"
+                    >Offer Objectives</span
+                  >
+                  <pre>
                   {{ selectedOffer }}
-                </pre>
-                <div class="text-start">
-                  <p>Level: {{ selectedOffer.level }}</p>
-                  <p>Class: {{ selectedOffer.class }}</p>
-                  <p>Location: {{ selectedOffer.location }}</p>
-                  <p>Subjects: {{ selectedOffer.subjects }}</p>
-                  <!-- <p>Subjects: {{ selectedOffer.subjects }}</p> -->
-                  <p>Subjects: {{ selectedOffer.objectives }}</p>
-                </div>
+                </pre
+                  >
+                  <div class="text-start">
+                    <p>Level: {{ selectedOffer.level }}</p>
+                    <p>Class: {{ selectedOffer.class }}</p>
+                    <p>Location: {{ selectedOffer.location }}</p>
+                    <p>Subjects: {{ selectedOffer.subjects }}</p>
+                    <!-- <p>Subjects: {{ selectedOffer.subjects }}</p> -->
+                    <p>Subjects: {{ selectedOffer.objectives }}</p>
+                  </div>
 
-                <!-- <div class="container-fluid">
+                  <!-- <div class="container-fluid">
                   <Editor v-model="value" editorStyle="height: 300px" />
                 </div> -->
 
-                <div class="flex justify-end g-2 my-3">
-                  <Button
+                  <div class="flex justify-end g-2 my-3">
+                    <Button
+                      type="button"
+                      label="Reset"
+                      class="mx-3"
+                      severity="secondary"
+                    ></Button>
+                    <Button
+                      type="button"
+                      label="Apply"
+                      @click="offerInfoDialog = false"
+                    ></Button>
+                  </div>
+                </Dialog>
+              </section>
+
+              <!-- FORMS -->
+              <section class="shadow-two my-3">
+                <!-- SWITCH BTN -->
+                <div class="btn-group my-4" role="group">
+                  <button
                     type="button"
-                    label="Reset"
-                    class="mx-3"
-                    severity="secondary"
-                  ></Button>
-                  <Button
+                    class="btn btn-outline-success"
+                    @click="logSheetBtn"
+                  >
+                    LOG SHEET
+                  </button>
+                  <button
                     type="button"
-                    label="Apply"
-                    @click="offerInfoDialog = false"
-                  ></Button>
+                    class="btn btn-outline-success"
+                    @click="progressReportBtn"
+                  >
+                    PROGRESS REPORT
+                  </button>
                 </div>
-              </Dialog>
-            </section>
 
-            <!-- FORMS -->
-            <section class="col-lg-12 shadow-two my-3">
-              <!-- SWITCH BTN -->
-              <div class="btn-group my-4" role="group">
-                <button
-                  type="button"
-                  class="btn btn-outline-success"
-                  @click="logSheetBtn"
-                >
-                  LOG SHEET
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-outline-success"
-                  @click="progressReportBtn"
-                >
-                  PROGRESS REPORT
-                </button>
-              </div>
-
-              <!-- <div class="px-5">
+                <!-- <div class="px-5">
                 <div class="row shadow-two">
                   <div class="col-lg-6 d-none d-lg-block"></div>
                 </div>
               </div> -->
 
-              <div class="px-lg-5 py-4 mx-2 mx-lg-3">
-                <div class="row shadow-two">
-                  <div
-                    class="col-lg-6 shadow-two bg-white"
-                    v-if="progressReport"
-                  >
-                    <form class="row gy-3">
-                      <h4 class="py-4 text-secondary fw-bolder">
-                        PROGRESS REPORT
+                <div class="px-lg-5 py-4 mx-2 mx-lg-3">
+                  <div class="row shadow-two px-3">
+                    <div
+                      class="col-lg-6 shadow-two bg-white"
+                      v-if="progressReport"
+                    >
+                      <form class="row gy-3">
+                        <h4 class="py-4 text-secondary fw-bolder">
+                          PROGRESS REPORT
+                        </h4>
+                        <div class="col-lg-6 col-12">
+                          <label for="" class="label">Contract Type</label>
+                          <select class="apply-input">
+                            <option value="">select</option>
+                            <option value="DUO">DUO</option>
+                            <option value="TRI">TRI</option>
+                            <option value="QUAD">QUAD</option>
+                            <option value="PENT">PENT</option>
+                          </select>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                          <label class="label" for="">Mode of Tuition:</label>
+                          <select class="apply-input">
+                            <option value="">select</option>
+                            <option value="online">Online</option>
+                            <option value="in-person">In-Person</option>
+                          </select>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                          <label for="level" class="label">Level:</label>
+                          <select class="apply-input">
+                            <option value="">select</option>
+                            <option value="KG">KINDERGARTEN</option>
+                            <option value="PRIMARY">PRIMARY</option>
+                            <option value="JHS">JHS</option>
+                            <option value="SHS">SHS</option>
+                          </select>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                          <label for="class" class="label">Class</label>
+                          <input
+                            class="apply-input"
+                            type="tel"
+                            name="class"
+                            placeholder="Eg: B1"
+                          />
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                          <label for="lesson duration" class="label"
+                            >Lesson Duration</label
+                          >
+                          <select name="duration" id="" class="apply-input">
+                            <option value="">select</option>
+                            <option value="1 hour">1 hour</option>
+                            <option value="1.5 hours">1.5 hrs</option>
+                            <option value="2 hours">2 hrs</option>
+                            <option value="2.5 hours">2.5 hrs</option>
+                            <option value="3 hours">3 hrs</option>
+                          </select>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                          <label for="location" class="label">Location:</label>
+                          <input
+                            class="apply-input"
+                            type="text"
+                            name="location"
+                            placeholder="LOCATION"
+                          />
+                        </div>
+
+                        <div class="col-12">
+                          <label for="subjects" class="label">Subjects</label>
+                          <textarea
+                            name="subjects"
+                            id=""
+                            class="apply-input"
+                            placeholder="Objectives/Subjects"
+                          ></textarea>
+                        </div>
+
+                        <div class="my-2">
+                          <button type="reset" class="btn btn-danger mx-3">
+                            RESET
+                          </button>
+                          <button
+                            class="btn btn-success my-2 shadow-two"
+                            type="submit"
+                            name="postContract"
+                          >
+                            SUBMIT
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+
+                    <!-- LOG SHEET -->
+                    <div
+                      class="col-lg-6 shadow-two bg-white py-2"
+                      v-if="logSheet"
+                    >
+                      <div></div>
+                      <h4 class="my-lg-3 fw-bolder text-secondary">
+                        LOG SHEET
                       </h4>
-                      <div class="col-lg-6 col-12">
-                        <label for="" class="label">Contract Type</label>
-                        <select class="apply-input">
-                          <option value="">select</option>
-                          <option value="DUO">DUO</option>
-                          <option value="TRI">TRI</option>
-                          <option value="QUAD">QUAD</option>
-                          <option value="PENT">PENT</option>
-                        </select>
-                      </div>
+                      <form class="row my-3" @submit.prevent="submitLogSheet">
+                        <div class="col-lg-6 my-lg-2">
+                          <label class="label" for="">Student</label>
+                          <inputText
+                            class="apply-input"
+                            type="text"
+                            v-model="logSheet.student"
+                            required
+                          />
+                        </div>
 
-                      <div class="col-lg-6 col-12">
-                        <label class="label" for="">Mode of Tuition:</label>
-                        <select class="apply-input">
-                          <option value="">select</option>
-                          <option value="online">Online</option>
-                          <option value="in-person">In-Person</option>
-                        </select>
-                      </div>
+                        <div class="col-lg-6 my-lg-2">
+                          <label class="label" for="">Month</label>
+                          <inputText
+                            class="apply-input"
+                            type="month"
+                            v-model="logSheet.month"
+                            required
+                          />
+                        </div>
 
-                      <div class="col-lg-6 col-12">
-                        <label for="level" class="label">Level:</label>
-                        <select class="apply-input">
-                          <option value="">select</option>
-                          <option value="KG">KINDERGARTEN</option>
-                          <option value="PRIMARY">PRIMARY</option>
-                          <option value="JHS">JHS</option>
-                          <option value="SHS">SHS</option>
-                        </select>
-                      </div>
+                        <div class="col-lg-6 my-lg-2">
+                          <label class="label" for="">Expected Sessions</label>
+                          <inputText
+                            class="apply-input"
+                            type="number"
+                            v-model="logSheet.expected"
+                            required
+                          />
+                        </div>
 
-                      <div class="col-lg-6 col-12">
-                        <label for="class" class="label">Class</label>
-                        <input
-                          class="apply-input"
-                          type="tel"
-                          name="class"
-                          placeholder="Eg: B1"
-                        />
-                      </div>
+                        <div class="col-lg-6 my-lg-2">
+                          <label class="label" for="">Total Sessions</label>
+                          <inputText
+                            class="apply-input"
+                            type="number"
+                            v-model="logSheet.total"
+                            required
+                          />
+                        </div>
 
-                      <div class="col-lg-6 col-12">
-                        <label for="lesson duration" class="label"
-                          >Lesson Duration</label
+                        <FileUpload
+                          ref="fileUpload"
+                          customUpload
+                          :multiple="false"
+                          mode="advanced"
+                          :auto="false"
+                          :showCancelButton="true"
+                          :showUploadButton="false"
+                          choose-label="Attach Log Sheet"
+                          :previewWidth="150"
+                          :maxFileSize="1000000"
+                          invalidFileSizeMessage="File too big (Should be less than 1mb)"
+                          accept="image/*"
                         >
-                        <select name="duration" id="" class="apply-input">
-                          <option value="">select</option>
-                          <option value="1 hour">1 hour</option>
-                          <option value="1.5 hours">1.5 hrs</option>
-                          <option value="2 hours">2 hrs</option>
-                          <option value="2.5 hours">2.5 hrs</option>
-                          <option value="3 hours">3 hrs</option>
-                        </select>
-                      </div>
+                          <template #empty>
+                            <span>Drag and drop your Log Sheet to upload.</span>
+                          </template>
+                        </FileUpload>
 
-                      <div class="col-lg-6 col-12">
-                        <label for="location" class="label">Location:</label>
-                        <input
-                          class="apply-input"
-                          type="text"
-                          name="location"
-                          placeholder="LOCATION"
-                        />
-                      </div>
-
-                      <div class="col-12">
-                        <label for="subjects" class="label">Subjects</label>
-                        <textarea
-                          name="subjects"
-                          id=""
-                          class="apply-input"
-                          placeholder="Objectives/Subjects"
-                        ></textarea>
-                      </div>
-
-                      <div class="my-2">
-                        <button type="reset" class="btn btn-danger mx-3">
-                          RESET
-                        </button>
-                        <button
-                          class="btn btn-success my-2 shadow-two"
-                          type="submit"
-                          name="postContract"
-                        >
-                          SUBMIT
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-
-                  <!-- LOG SHEET -->
-                  <div
-                    class="col-lg-6 shadow-two bg-white py-2"
-                    v-if="logSheet"
-                  >
-                    <div></div>
-                    <h4 class="my-lg-3 fw-bolder text-secondary">LOG SHEET</h4>
-                    <form class="row my-3" @submit.prevent="submitLogSheet">
-                      <div class="col-lg-6 my-lg-2">
-                        <label class="label" for="">Student</label>
-                        <inputText
-                          class="apply-input"
-                          type="text"
-                          v-model="logSheet.student"
-                          required
-                        />
-                      </div>
-
-                      <div class="col-lg-6 my-lg-2">
-                        <label class="label" for="">Month</label>
-                        <inputText
-                          class="apply-input"
-                          type="month"
-                          v-model="logSheet.month"
-                          required
-                        />
-                      </div>
-
-                      <div class="col-lg-6 my-lg-2">
-                        <label class="label" for="">Expected Sessions</label>
-                        <inputText
-                          class="apply-input"
-                          type="number"
-                          v-model="logSheet.expected"
-                          required
-                        />
-                      </div>
-
-                      <div class="col-lg-6 my-lg-2">
-                        <label class="label" for="">Total Sessions</label>
-                        <inputText
-                          class="apply-input"
-                          type="number"
-                          v-model="logSheet.total"
-                          required
-                        />
-                      </div>
-
-                      <FileUpload
-                        ref="fileUpload"
-                        customUpload
-                        :multiple="false"
-                        mode="advanced"
-                        :auto="false"
-                        :showCancelButton="true"
-                        :showUploadButton="false"
-                        choose-label="Attach Log Sheet"
-                        :previewWidth="150"
-                        :maxFileSize="1000000"
-                        invalidFileSizeMessage="File too big (Should be less than 1mb)"
-                        accept="image/*"
-                      >
-                        <template #empty>
-                          <span>Drag and drop your Log Sheet to upload.</span>
-                        </template>
-                      </FileUpload>
-
-                      <div class="my-3">
-                        <button class="btn btn-danger px-3 mx-3" type="reset">
-                          RESET
-                        </button>
-                        <button class="btn btn-success my-lg-4" type="submit">
-                          SUBMIT
-                          <span id="loading-spinner" v-if="logWheel">
-                            <div
-                              class="spinner-border spinner-border-sm"
-                              role="status"
-                            ></div>
-                          </span>
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <div
-                    class="col-lg-6 shadow-two bg-white py-5"
-                    v-if="submitted"
-                  >
-                    <h3>
-                      <i
-                        class="bi bi-hand-thumbs-up text-success success-icon"
-                      ></i>
-                    </h3>
-                    <!-- <lord-icon
+                        <div class="my-3">
+                          <button class="btn btn-danger px-3 mx-3" type="reset">
+                            RESET
+                          </button>
+                          <button class="btn btn-success my-lg-4" type="submit">
+                            SUBMIT
+                            <span id="loading-spinner" v-if="logWheel">
+                              <div
+                                class="spinner-border spinner-border-sm"
+                                role="status"
+                              ></div>
+                            </span>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div
+                      class="col-lg-6 shadow-two bg-white py-5"
+                      v-if="submitted"
+                    >
+                      <h3>
+                        <i
+                          class="bi bi-hand-thumbs-up text-success success-icon"
+                        ></i>
+                      </h3>
+                      <!-- <lord-icon
                       src="https://cdn.lordicon.com/dangivhk.json"
                       trigger="loop"
                       delay="2000"
                       style="width: 85px; height: 85px"
                     >
                     </lord-icon> -->
-                    <h2 class="text-success">Submission Successful</h2>
-                    <!-- <button class="btn btn-success me-3">View Sheet</button> -->
-                    <button class="btn btn-success" @click="moreLogsheet">
-                      Submit another
-                    </button>
+                      <h2 class="text-success">Submission Successful</h2>
+                      <!-- <button class="btn btn-success me-3">View Sheet</button> -->
+                      <button class="btn btn-success" @click="moreLogsheet">
+                        Submit another
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <!-- TRAINING -->
-            <section
-              class="d-none d-lg-block px-5 py-3 shadow-two"
-              id="training"
-            >
-              <div class="px-5 py-5">
-                <a class="navbar-brand" href="#">Training</a>
+              <!-- TRAINING -->
+              <section
+                class="d-none d-lg-block px-5 py-3 shadow-two"
+                id="training"
+              >
+                <div class="px-5 py-5">
+                  <a class="navbar-brand" href="#">Training</a>
 
-                <Stepper>
-                  <StepperPanel header="Course Outline">
-                    <template #content="{ nextCallback }">
-                      <div class="flex flex-column h-12rem">
-                        <div
-                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-                        >
-                          <!-- <iframe
+                  <Stepper>
+                    <StepperPanel header="Course Outline">
+                      <template #content="{ nextCallback }">
+                        <div class="flex flex-column h-12rem">
+                          <div
+                            class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                          >
+                            <!-- <iframe
                             src="https://docs.google.com/presentation/d/e/2PACX-1vS6LQfaUqPWGECS-5B8CotEciAAFI3PuLIacC9AXLYehYpd0cHSuTuoyZxxX6bZ41Hot8qi0UjHiJYK/embed?start=false&loop=false&delayms=3000"
                             frameborder="0"
                             width="850"
@@ -962,106 +982,107 @@
                             mozallowfullscreen="true"
                             webkitallowfullscreen="true"
                           ></iframe> -->
+                          </div>
                         </div>
-                      </div>
-                      <div class="flex pt-4 justify-content-end">
-                        <Button
-                          label="Next"
-                          icon="pi pi-arrow-right"
-                          iconPos="right"
-                          @click="nextCallback"
-                        />
-                      </div>
-                    </template>
-                  </StepperPanel>
-                  <StepperPanel header="Introduction">
-                    <template #content="{ prevCallback, nextCallback }">
-                      <div class="flex flex-column h-12rem">
-                        <div
-                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-                        >
-                          Content II
+                        <div class="flex pt-4 justify-content-end">
+                          <Button
+                            label="Next"
+                            icon="pi pi-arrow-right"
+                            iconPos="right"
+                            @click="nextCallback"
+                          />
                         </div>
-                      </div>
-                      <div class="flex pt-4 justify-content-between">
-                        <Button
-                          label="Back"
-                          severity="secondary"
-                          icon="pi pi-arrow-left"
-                          @click="prevCallback"
-                        />
-                        <Button
-                          label="Next"
-                          icon="pi pi-arrow-right"
-                          iconPos="right"
-                          @click="nextCallback"
-                        />
-                      </div>
-                    </template>
-                  </StepperPanel>
-                  <StepperPanel header="Mission & Vision">
-                    <template #content="{ prevCallback, nextCallback }">
-                      <div class="flex flex-column h-12rem">
-                        <div
-                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-                        >
-                          Content III
+                      </template>
+                    </StepperPanel>
+                    <StepperPanel header="Introduction">
+                      <template #content="{ prevCallback, nextCallback }">
+                        <div class="flex flex-column h-12rem">
+                          <div
+                            class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                          >
+                            Content II
+                          </div>
                         </div>
-                      </div>
-                      <div class="flex pt-4 justify-content-between">
-                        <Button
-                          label="Back"
-                          severity="secondary"
-                          icon="pi pi-arrow-left"
-                          @click="prevCallback"
-                        />
-                        <Button
-                          label="Next"
-                          icon="pi pi-arrow-right"
-                          iconPos="right"
-                          @click="nextCallback"
-                        />
-                      </div>
-                    </template>
-                  </StepperPanel>
-                  <StepperPanel header="Tools of the Trade">
-                    <template #content="{ prevCallback }">
-                      <div class="flex flex-column h-12rem">
-                        <div
-                          class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-                        >
-                          Content III
+                        <div class="flex pt-4 justify-content-between">
+                          <Button
+                            label="Back"
+                            severity="secondary"
+                            icon="pi pi-arrow-left"
+                            @click="prevCallback"
+                          />
+                          <Button
+                            label="Next"
+                            icon="pi pi-arrow-right"
+                            iconPos="right"
+                            @click="nextCallback"
+                          />
                         </div>
-                      </div>
-                      <div class="flex pt-4 justify-content-start">
-                        <Button
-                          label="Back"
-                          severity="secondary"
-                          icon="pi pi-arrow-left"
-                          @click="prevCallback"
-                        />
-                      </div>
-                    </template>
-                  </StepperPanel>
-                </Stepper>
+                      </template>
+                    </StepperPanel>
+                    <StepperPanel header="Mission & Vision">
+                      <template #content="{ prevCallback, nextCallback }">
+                        <div class="flex flex-column h-12rem">
+                          <div
+                            class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                          >
+                            Content III
+                          </div>
+                        </div>
+                        <div class="flex pt-4 justify-content-between">
+                          <Button
+                            label="Back"
+                            severity="secondary"
+                            icon="pi pi-arrow-left"
+                            @click="prevCallback"
+                          />
+                          <Button
+                            label="Next"
+                            icon="pi pi-arrow-right"
+                            iconPos="right"
+                            @click="nextCallback"
+                          />
+                        </div>
+                      </template>
+                    </StepperPanel>
+                    <StepperPanel header="Tools of the Trade">
+                      <template #content="{ prevCallback }">
+                        <div class="flex flex-column h-12rem">
+                          <div
+                            class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                          >
+                            Content III
+                          </div>
+                        </div>
+                        <div class="flex pt-4 justify-content-start">
+                          <Button
+                            label="Back"
+                            severity="secondary"
+                            icon="pi pi-arrow-left"
+                            @click="prevCallback"
+                          />
+                        </div>
+                      </template>
+                    </StepperPanel>
+                  </Stepper>
+                </div>
+              </section>
+
+              <!-- MESSAGE -->
+              <section class="px-5 py-3 shadow-two my-4">
+                <TheMessage></TheMessage>
+              </section>
+
+              <!-- <button @click="fetchProspects">Get Prospects</button> -->
+              <div v-for="prospect in prospectData">
+                <p>
+                  {{ prospect.parent }} {{ prospect.student }}
+                  {{ prospect.contact }}
+                </p>
               </div>
             </section>
 
-            <!-- MESSAGE -->
-            <section class="px-5 py-3 shadow-two my-4">
-              <TheMessage></TheMessage>
-            </section>
-
-            <!-- <button @click="fetchProspects">Get Prospects</button> -->
-            <div v-for="prospect in prospectData">
-              <p>
-                {{ prospect.parent }} {{ prospect.student }}
-                {{ prospect.contact }}
-              </p>
-            </div>
-          </section>
-
-          <Dictionary></Dictionary>
+            <Dictionary></Dictionary>
+          </div>
         </div>
       </div>
     </div>
@@ -1545,7 +1566,6 @@ export default {
   backdrop-filter: blur(3px);
 }
 
-
 @media only screen and (max-width: 620px) {
   /* For mobile phones: */
   .tutor-profile-banner {
@@ -1562,9 +1582,13 @@ export default {
   }
 
   .container-fluid {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin: 0 !important;
-}
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* .row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  } */
 }
 </style>
