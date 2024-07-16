@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <section class="container-fluid">
     <div class="row">
       <div class="col-lg-2 shadow-two bg-success d-none d-lg-block">
         <!-- SIDE BAR -->
@@ -202,7 +202,7 @@
 
               <div class="col-lg-4 col-12">
                 <div class="client shadow-two bg-white text-danger">
-                  <h6>DEDUCTIONS</h6>
+                  <h6>PENALTY</h6>
                   <h4 class="fw-bolder">
                     <i class="bi-graph-down me-2"></i>Ghc {{ penalty }}.00
                   </h4>
@@ -1065,7 +1065,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <nav class="d-none sticky-bottom bg-success">
     <div class="container-fluid">
@@ -1524,5 +1524,47 @@ export default {
 <style scoped>
 .success-icon {
   font-size: 150px;
+}
+
+.tutor-profile-banner {
+  width: 100%;
+  height: 28vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.686), rgba(0, 0, 0, 0.541)),
+    url(/images/us.jpg);
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tutor-profile-hero {
+  color: #fff;
+  text-align: start;
+  margin-top: 1.4%;
+  margin-left: 2%;
+  backdrop-filter: blur(3px);
+}
+
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .tutor-profile-banner {
+    height: 3.5%;
+    width: 100%;
+    background-size: cover;
+  }
+
+  .tutor-profile-hero {
+    color: #fff;
+    text-align: start;
+    margin-top: 7rem;
+    padding-left: 1.5%;
+  }
+
+  .container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
 }
 </style>
