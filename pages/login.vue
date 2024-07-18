@@ -3,71 +3,76 @@
     <div class="text-white bg-danger banner">
       <NavBar></NavBar>
 
-      <section class="container-sm">
-        <div id="offer" class="row py-lg-3 form-sign-in">
-          <div class="col-lg-8 text-start d-none d-lg-block"></div>
-          <div class="col-lg-4 col-md-6 col-sm-12 py-4 shadow-two login">
-            <div class="py-2">
-              <h3 class="fw-bolder fs-beauty">WELCOME BACK</h3>
-              <p>Login With Your Credentials</p>
-            </div>
-            <form @submit.prevent="signInUser">
-              <input
-                required
-                type="text"
-                class="apply-input mb-4 res-shadow"
-                name="email"
-                @keydown="loginErrorDisplay"
-                placeholder="Enter your email"
-                v-model.trim="email"
-              />
+      <section class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6 d-none d-lg-block"></div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="shadow-two login px-3 form-sign-in">
+                <div class="py-2">
+                  <h3 class="fw-bolder fs-beauty">WELCOME BACK</h3>
+                  <p>Login With Your Credentials</p>
+                </div>
+                <form @submit.prevent="signInUser">
+                  <input
+                    required
+                    type="text"
+                    class="apply-input mb-4 res-shadow"
+                    name="email"
+                    @keydown="loginErrorDisplay"
+                    placeholder="Enter your email"
+                    v-model.trim="email"
+                  />
 
-              <br />
+                  <br />
 
-              <input
-                required
-                class="apply-input res-shadow"
-                type="password"
-                name="password"
-                placeholder="Password"
-                @keydown="loginErrorDisplay"
-                v-model.trim="password"
-              />
-              <br />
+                  <input
+                    required
+                    class="apply-input res-shadow"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    @keydown="loginErrorDisplay"
+                    v-model.trim="password"
+                  />
+                  <br />
 
-              <!-- Login Error Message -->
-              <p v-if="loginError" class="my-2 mx-5 mx-lg-0">
-                {{ errorMessage }}
-              </p>
+                  <!-- Login Error Message -->
+                  <p v-if="loginError" class="my-2 mx-5 mx-lg-0">
+                    {{ errorMessage }}
+                  </p>
 
-              <!-- SUBMIT BUTTON -->
-              <button type="submit" class="btn btn-danger apply-input mt-3">
-                Sign In
-                <span id="loading-spinner" v-if="wheel">
-                  <div
-                    class="spinner-border spinner-border-sm text-white"
-                    role="status"
-                  ></div>
-                </span>
-              </button>
-              <br />
+                  <!-- SUBMIT BUTTON -->
+                  <button type="submit" class="btn btn-danger apply-input mt-3">
+                    Sign In
+                    <span id="loading-spinner" v-if="wheel">
+                      <div
+                        class="spinner-border spinner-border-sm text-white"
+                        role="status"
+                      ></div>
+                    </span>
+                  </button>
+                  <br />
 
-              <div class="row text-white">
-                <small class="col">
-                  <a class="link" href="#" @click="resetPassword"
-                    >Forgot Password</a
-                  >
-                </small>
-                <small class="col">
-                  <RouterLink class="link" to="/apply">Sign-Up</RouterLink>
-                </small>
+                  <div class="row text-white">
+                    <small class="col">
+                      <a class="link" href="#" @click="resetPassword"
+                        >Forgot Password</a
+                      >
+                    </small>
+                    <small class="col">
+                      <RouterLink class="link" to="/apply">Sign-Up</RouterLink>
+                    </small>
+                  </div>
+                </form>
+                <div class="mt-5">
+                  <p class="">
+                    <small>Lifeline Educational Solutions&copy;</small>
+                  </p>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
-        <!-- NAVBAR -->
-        <div class="d-flex justify-content-end d-none d-lg-flex">
-          <p class="me-5 pe-3">Lifeline Educational Solutions Limited&copy;</p>
         </div>
       </section>
     </div>
@@ -75,25 +80,6 @@
 </template>
 
 <script>
-// import { initializeApp } from "firebase/app";
-// import {
-//   createUserWithEmailAndPassword,
-//   getAuth,
-//   signInWithEmailAndPassword,
-// } from "firebase/auth";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
-//   authDomain: "lifeline-edu-site.firebaseapp.com",
-//   projectId: "lifeline-edu-site",
-//   storageBucket: "lifeline-edu-site.appspot.com",
-//   messagingSenderId: "1059969595497",
-//   appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
-// };
-
-// const firebase = initializeApp(firebaseConfig);
-// const auth = getAuth(firebase);
-
 export default {
   name: "Login",
   data() {
@@ -166,4 +152,26 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.form-sign-in {
+  width: 400px;
+  padding: 2rem 1rem;
+}
+
+@media only screen and (max-width: 620px) {
+  .banner {
+    height: 100dvh;
+  }
+
+  .form-sign-in {
+    width: 95vw;
+    margin: 40% 10px;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>

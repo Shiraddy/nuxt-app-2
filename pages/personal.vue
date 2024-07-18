@@ -2,18 +2,12 @@
   <section>
     <div class="container-fluid">
       <div class="row">
+        <!-- SIDE BAR -->
         <div class="col-lg-2 shadow-two bg-success d-none d-lg-block">
-          <!-- SIDE BAR -->
           <div class="side-bar">
             <div class="d-flex justify-content-start">
               <div class="mt-lg-2">
                 <div class="">
-                  <!-- <img
-                  class="profile-pic d-none d-lg-block"
-                  src="/images/Pic.png"
-                  alt=""
-                /> -->
-
                   <div class="mt-lg-3">
                     <Avatar
                       label="LT"
@@ -165,15 +159,13 @@
               </div>
             </nav>
 
-            <div class="container-fluid">
-              <div class="row mt-lg-5 px-0 py-0">
-                <div class="col-lg-4 col-sm-12">
-                  <div class="tutor-profile-hero px-1">
-                    <h2 class="fs-3 fw-bolder mb-0">
-                      Hello {{ profile.firstName }},
-                    </h2>
-                    <p class="fs-beauty fs-5 mt-0 pb-0">It's {{ date() }}</p>
-                  </div>
+            <div class="row mt-lg-5 px-0 py-0">
+              <div class="col-lg-4 col-sm-12">
+                <div class="tutor-profile-hero px-1">
+                  <h2 class="fs-3 fw-bolder mb-0">
+                    Hello {{ profile.firstName }},
+                  </h2>
+                  <p class="fs-beauty fs-5 mt-0 pb-0">It's {{ date() }}</p>
                 </div>
               </div>
             </div>
@@ -182,7 +174,9 @@
           <div class="container-fluid" id="dashboard">
             <!-- DASHBOARD -->
             <section class="shadow-two rounded profile">
-              <div class="col-lg-12 col-sm-12 py-3 px-3 row d-flex align-items-center justify-content-center">
+              <div
+                class="col-lg-12 col-sm-12 py-3 px-3 row d-flex align-items-center justify-content-center"
+              >
                 <h5 class="text-start fw-bolder py-1">MY DASHBOARD</h5>
 
                 <div class="col-lg-4 col-12">
@@ -220,8 +214,11 @@
                 <div class="col-lg-8">
                   <!-- NOTICE BOARD -->
                   <div class="shadow-two bg-white row notice" id="noticeBoard">
-                    <h4 class="fw-bolder">Notice Board</h4>
-                    <div >
+                    <div class="text-start">
+                      <h4 class="fw-bolder">Notice Board</h4>
+                    </div>
+
+                    <div>
                       <div v-if="getCurrentNote">
                         <h5 class="fw-bolder">{{ getCurrentNote.title }}</h5>
                         <p class="mx-3 user-select-none">
@@ -620,6 +617,49 @@
               <!-- OFFERS -->
 
               <section class="shadow-two" id="offers">
+                <Carousel :value="offers" :numVisible="3" :numScroll="3">
+                  <template #item="slotProps">
+                    <div class="border-1 surface-border border-round m-2 p-3">
+                      <div class="mb-3">
+                        <div class="relative mx-auto">
+                          <img
+                            :src="
+                              'https://primefaces.org/cdn/primevue/images/product/' +
+                              slotProps.data.availability
+                            "
+                            :alt="slotProps.data.type"
+                            class="w-full border-round"
+                          />
+                          <Tag
+                            :value="slotProps.data.status"
+                            :severity="getSeverity(slotProps.data.status)"
+                            class="absolute"
+                            style="left: 5px; top: 5px"
+                          />
+                        </div>
+                      </div>
+                      <div class="mb-3 font-medium">
+                        {{ slotProps.data.type }}
+                      </div>
+                      <div
+                        class="flex justify-content-between align-items-center"
+                      >
+                        <div class="mt-0 font-semibold text-xl">
+                          ${{ slotProps.data.allowance }}
+                        </div>
+                        <span>
+                          <Button
+                            icon="pi pi-heart"
+                            severity="secondary"
+                            outlined
+                          />
+                          <Button icon="pi pi-shopping-cart" class="ml-2" />
+                        </span>
+                      </div>
+                    </div>
+                  </template>
+                </Carousel>
+
                 <div class="px-5 py-5">
                   <a class="navbar-brand pt-3" href="#">Lifeline Offers</a>
                   <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
@@ -654,10 +694,6 @@
                               {{ offer.mode }}
                             </small>
                           </div>
-                          <!-- <small
-                          class="pi pi-info-circle text-primary fw-bolder fs-5 m-4"
-                          @click="offerInfo(offer)"
-                        >Info</small> -->
 
                           <small
                             class="pi pi-info-circle fw-bolder bg-success p-2 rounded fs-5 m-4 text-white"
@@ -1086,42 +1122,43 @@
           </div>
         </div>
       </div>
+
+      <nav class="d-none sticky-bottom bg-success">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <ul class="nav justify-content-between">
+                <li class="nav-item">
+                  <a class="nav-link" href="#dashboard">
+                    <i class="bi-columns-gap"></i
+                    ><span class="d-block">Dashboard</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#offers">
+                    <i class="bi-journal-richtext"></i
+                    ><span class="d-block">Offers</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#resourceCentre">
+                    <i class="bi-command"></i
+                    ><span class="d-block">Resources</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#tutorForms">
+                    <i class="bi-filter-square"></i
+                    ><span class="d-block">Forms</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
     </div>
   </section>
-
-  <nav class="d-none sticky-bottom bg-success">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          <ul class="nav justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link" href="#dashboard">
-                <i class="bi-columns-gap"></i
-                ><span class="d-block">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#offers">
-                <i class="bi-journal-richtext"></i
-                ><span class="d-block">Offers</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#resourceCentre">
-                <i class="bi-command"></i><span class="d-block">Resources</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#tutorForms">
-                <i class="bi-filter-square"></i
-                ><span class="d-block">Forms</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
 </template>
 
 <script setup>
@@ -1281,76 +1318,6 @@ export default {
       this.logSheet = true;
       this.progressReport = false;
     },
-
-    onUpload(e) {
-      const file = e.target.files[0]; //Vue upload
-      this.logSheet.imageUrl = URL.createObjectURL(file);
-
-      // const user = auth.currentUser;
-      // const contact = this.profile.contact;
-      // const student = this.logSheet.student;
-      // const month = this.logSheet.month;
-      // const fileName = student + "-" + month + "-";
-      // console.log(file);
-
-      // const storageRef = ref(
-      //   storage,
-      //   "Log Sheets/" + user.email + "/" + month + "/" + fileName
-      // );
-
-      // uploadBytes(storageRef, file)
-      //   .then((snapshot) => {
-      //     g// const user = auth.currentUser;
-      // const contact = this.profile.contact;
-      // const student = this.logSheet.student;
-      // const month = this.logSheet.month;
-      // const fileName = student + "-" + month + "-";
-      // console.log(file);
-
-      // const storageRef = ref(
-      //   storage,
-      //   "Log Sheets/" + user.email + "/" + month + "/" + fileName
-      // );
-
-      // uploadBytes(storageRef, file)
-      //   .then((snapshot) => {
-      //     getDownloadURL(snapshot.ref)
-      //       .then((url) => {
-      //         console.log(url);
-      //         // this.formData.imageUrl = url;
-      //       })
-      //       .catch((error) => {
-      //         console.error("Error getting download URL:", error);
-      //       });
-      //     console.log("Uploaded a blob or file!");
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error uploading file:", error);
-      //   });
-    },
-
-    // async onPrimevueUpload(event) {
-    //   const file = event.files[0];
-    //   const user = auth.currentUser;
-    //   const contact = this.profile.contact;
-    //   const student = this.logSheet.student;
-    //   const month = this.logSheet.month;
-    //   const fileName = student + "-" + month;
-    //   const storageRef = ref(
-    //     storage,
-    //     "Log Sheets/" + user.email + "/" + month + "/" + fileName
-    //   );
-
-    //   try {
-    //     const snapshot = await uploadBytes(storageRef, file);
-    //     const url = await getDownloadURL(snapshot.ref);
-    //     console.log(url);
-    //     this.logSheet.imageUrl = url;
-    //     console.log("File uploaded successfully!");
-    //   } catch (error) {
-    //     console.error("Error uploading file:", error);
-    //   }
-    // },
 
     async getUserInfo() {
       const auth = getAuth();
@@ -1578,7 +1545,7 @@ export default {
   .tutor-profile-hero {
     color: #fff;
     text-align: start;
-    margin-top: 7rem;
+    margin-top: 21.5%;
     padding-left: 1.5%;
   }
 

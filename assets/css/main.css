@@ -6,6 +6,11 @@ a {
   text-decoration: none;
 }
 
+button {
+  /* border: red solid 1px; */
+  border-radius: 5px;
+}
+
 /* a:link {
   color: red;
 }
@@ -649,7 +654,14 @@ banner-smile .banner-smile {
   width: 100%;
   margin-bottom: 1%;
   padding: 0.33rem 0.8rem;
+  border-radius: 5px;
+  border: transparent;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+/* .apply-input:focus {
+  background-color: rgba(153, 205, 50, 0.329);
+} */
 
 .apply-sm-input {
   width: 25%;
@@ -1023,10 +1035,6 @@ hr {
 }
 
 /* Sign-in */
-.form-sign-in {
-  width: 82vw;
-  padding: 2rem 1rem;
-}
 
 .sign-in-message {
   padding-top: 3rem;
@@ -1061,11 +1069,6 @@ hr {
   font-size: 1.3vw;
   line-height: 1.6;
 }
-
-/* .login-text {
-  font-family: "Kanit", sans-serif;
-  font-size: 2rem;
-} */
 
 .login {
   backdrop-filter: blur(10px);
@@ -1104,6 +1107,14 @@ hr {
 
 .shadow-four {
   box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.16), -5px -5px 9px rgba(0, 0, 0, 0.23);
+}
+
+.shadow-five {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.div-card {
+  box-shadow: 10px 10px lightblue;
 }
 
 .blur {
@@ -1372,8 +1383,6 @@ hr {
   margin: auto auto;
 }
 
-
-
 .bottom-nav {
   display: inline-flex;
   justify-content: space-around;
@@ -1391,6 +1400,7 @@ hr {
   border-radius: 1%;
   padding: 2% 3%;
   /* margin: 0 2%; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .danger {
@@ -1605,12 +1615,6 @@ hr {
     color: #fff;
   }
 
-  .form-sign-in {
-    width: 84vw;
-    height: 85vh;
-    padding: 2rem 1rem;
-  }
-
   .nav-copyright,
   #tutorContactBtn,
   .sign-image,
@@ -1698,12 +1702,6 @@ hr {
     width: 90%;
     margin: auto auto;
     margin-top: 17%;
-  }
-
-  .login {
-    width: 100vw;
-    margin: auto auto;
-    backdrop-filter: blur(5px);
   }
 
   .client-form-text {

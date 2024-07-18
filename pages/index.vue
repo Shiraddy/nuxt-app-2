@@ -2,7 +2,7 @@
 
 <template>
   <!-- HERO PAGE AND NAV-BAR -->
-  <Carousel></Carousel>
+  <Herowall></Herowall>
   <!-- <Hero></Hero> -->
 
   <!-----------SERVICES SECTION------------->

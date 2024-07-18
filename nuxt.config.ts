@@ -1,7 +1,8 @@
 export default defineNuxtConfig({
   app: {
     head: {
-     
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
 
       link: [
         {
@@ -31,7 +32,7 @@ export default defineNuxtConfig({
           href: "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
           // href: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css",
         },
-        
+
         {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Kanit:wght@200;300&family=Merriweather:wght@400;900&family=Montserrat:wght@800&family=Noto+Serif:wght@600&family=Open+Sans&family=PT+Sans&display=swap",
@@ -57,7 +58,7 @@ export default defineNuxtConfig({
 
   experimental: {
     restoreState: true,
-    watcher: "chokidar",
+    // watcher: "chokidar",
   },
 
   modules: [

@@ -1124,6 +1124,10 @@ export default {
             const submissionPromise = setDoc(tutorRef, application, {
               merge: true,
             });
+            this.applying = false;
+            this.form = false;
+            this.success = true;
+            console.log("Tutor Application", application);
           }
 
           const timeoutPromise = new Promise((resolve, reject) => {
@@ -1131,11 +1135,6 @@ export default {
           });
 
           await Promise.race([submissionPromise, timeoutPromise]);
-
-          this.applying = false;
-          this.form = false;
-          this.success = true;
-          console.log("Tutor Application", application);
         } catch (error) {
           console.error("Application Unsuccessful", error);
 

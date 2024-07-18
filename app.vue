@@ -1,6 +1,7 @@
 <script setup lang="ts">
 useSeoMeta({
   title: "Lifeline: Home of Solutions",
+  // titleTemplate: "%s - Site Title",
   ogTitle: "Lifeline: Home of Solutions",
   description:
     "A leading educational consultancy company in Ghana providing educational solutions to schools, parents and students.",
@@ -26,7 +27,6 @@ useHead({
       src: "https://www.google.com/recaptcha/api.js",
       async: true,
       defer: true,
-      // valid options are: 'head' | 'bodyClose' | 'bodyOpen'
       tagPosition: "head",
     },
   ],
@@ -36,6 +36,6 @@ useHead({
 <template>
   <div>
     <NuxtPage />
-    <!-- <NuxtWelcome /> -->
   </div>
 </template>
+
