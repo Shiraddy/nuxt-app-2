@@ -65,10 +65,11 @@
                     </small>
                   </div>
                 </form>
-                <div class="mt-5">
-                  <p class="">
-                    <small>Lifeline Educational Solutions&copy;</small>
-                  </p>
+                <div class="mt-4">
+                  <Divider type="solid">
+                    <small>Home of Solutions&copy;</small>
+                  </Divider>
+                  <!-- <p class=""></p> -->
                 </div>
               </div>
             </div>
@@ -155,7 +156,9 @@ export default {
 <style scoped>
 .form-sign-in {
   width: 400px;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
+  background-color: aliceblue;
+  color: black;
 }
 
 @media only screen and (max-width: 620px) {
@@ -165,6 +168,8 @@ export default {
 
   .form-sign-in {
     width: 95vw;
+    background-color: aliceblue;
+    color: black;
     margin: 40% 10px;
   }
 
