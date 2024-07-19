@@ -1,20 +1,18 @@
 <template>
-  <Message severity="secondary" :life="1000">
-    <!-- <template #messageicon>
-      <Avatar image="/images/logo.png" shape="circle" />
-    </template> -->
+  <!-- <Message severity="secondary" :life="1000">
+    
     <p class="text-start mt-3 mx-3">
       Review our Frequently Asked Questions
       <RouterLink class="link" to="/faq">(FAQ)</RouterLink>
       for additional information.
     </p>
-  </Message>
+  </Message> -->
   <section>
     <div v-if="smallBanner" class="client-banner"><NavBar></NavBar></div>
   </section>
 
   <section v-if="bigBanner">
-    <!-----------Our Offers------------->
+   
     <div class="container-sm py-2 my-lg-5 services-apply mt-5 my-4">
       <div class="tutorFormRegister">
         <!-- Tutor Request Form -->
@@ -131,9 +129,7 @@
                         id="parentEmail"
                         placeholder="Enter email address"
                       />
-                      <!-- <div class="text-danger" v-if="!requestForm.parentName">
-              Please Enter Your Name
-            </div> -->
+                     
                     </div>
                   </div>
 
@@ -499,7 +495,40 @@
                           <option value="3">3 hours</option>
                         </select>
                       </div>
+
+                      <div class="py-3 col-lg-6">
+                        <label class="label" for=""
+                          >Preferred Tuition Days</label
+                        >
+
+                        <MultiSelect
+                          v-model="requestForm.tuition_days"
+                          display="chip"
+                          :options="tuitionDaysOptions"
+                          optionLabel="name"
+                          variant="filled"
+                          placeholder="Select days"
+                          :maxSelectedLabels="3"
+                          class="apply-input"
+                        />
+                      </div>
+
+                      <div class="py-3 col-lg-6">
+                        <label class="label" for="">Lesson Start Times</label>
+
+                        <MultiSelect
+                          v-model="requestForm.lessonTimes"
+                          display="chip"
+                          :options="lessonTimes"
+                          optionLabel="name"
+                          variant="filled"
+                          placeholder="Select lesson start times"
+                          :maxSelectedLabels="3"
+                          class="apply-input"
+                        />
+                      </div>
                     </div>
+
                     <div class="col-lg-12 mt-4 text-start">
                       <label class="label my-3" for="online"
                         >Preferred Subject(s)</label
@@ -900,53 +929,12 @@
     </div>
   </div>
 
-  <!-- Footer -->
+
 </template>
 
 <script>
-// import About from "@/components/About.vue";
-// import ContactUs from "@/components/ContactUs.vue";
-// import Footer from "@/components/Footer.vue";
-// import ChooseUs from "@/components/ChooseUs.vue";
-// import NavBar from "@/components/NavBar.vue";
-// import TheMessage from "@/components/TheMessage.vue";
-// import { initializeApp } from "firebase/app";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// import {
-//   getFirestore,
-//   collection,
-//   getDocs,
-//   setDoc,
-//   doc,
-//   addDoc,
-//   updateDoc,
-// } from "firebase/firestore";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
-//   authDomain: "lifeline-edu-site.firebaseapp.com",
-//   projectId: "lifeline-edu-site",
-//   storageBucket: "gs://lifeline-edu-site.appspot.com/",
-//   storageBucket: "lifeline-edu-site.appspot.com",
-//   messagingSenderId: "1059969595497",
-//   appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
-// };
-
-// const firebase = initializeApp(firebaseConfig);
-// const db = getFirestore(firebase);
-// const auth = getAuth(firebase);
-
 export default {
-  name: "Private Tuition",
-
-  // components: {
-  //   About,
-  //   ContactUs,
-  //   Footer,
-  //   ChooseUs,
-  //   TheMessage,
-  //   NavBar,
-  // },
+  name: "Tutor Request Form",
 
   data() {
     return {
@@ -998,6 +986,29 @@ export default {
         other: ["Home School", "Preparation", "Other"],
       },
 
+      tuitionDaysOptions: [
+        { name: "Monday", time: "" },
+        { name: "Tuesday", time: "" },
+        { name: "Wednesday", time: "" },
+        { name: "Thursday", time: "" },
+        { name: "Friday", time: "" },
+        { name: "Saturday", time: "" },
+        { name: "Sunday", time: "" },
+      ],
+
+      lessonTimes: [
+        { name: "3:00pm", num: 300 },
+        { name: "3:30pm", num: 330 },
+        { name: "4:00pm", num: 400 },
+        { name: "4:30pm", num: 430 },
+        { name: "5:00pm", num: 500 },
+        { name: "5:30pm", num: 530 },
+        { name: "6:00pm", num: 600 },
+        { name: "6:30pm", num: 630 },
+        { name: "7:00pm", num: 700 },
+        { name: "Other", num: null },
+      ],
+
       requestForm: {
         parentName: "",
         address: "",
@@ -1020,6 +1031,8 @@ export default {
         weeklySession: 3,
         periodLength: 1,
         preferredSubjects: [],
+        tuition_days: [],
+        lessonTimes: [],
         pastTutors: [],
         payments: [],
         comments: [],
@@ -1378,6 +1391,12 @@ export default {
 
 .stepFour {
   display: none;
+}
+
+.p-multiselect {
+  /* background-color: yellow; */
+  padding: 0 2px;
+  background-color: transparent;
 }
 
 .link {

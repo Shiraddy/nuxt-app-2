@@ -654,14 +654,15 @@ banner-smile .banner-smile {
   width: 100%;
   margin-bottom: 1%;
   padding: 0.33rem 0.8rem;
+  background-color: whitesmoke;
   border-radius: 5px;
   border: transparent;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* .apply-input:focus {
-  background-color: rgba(153, 205, 50, 0.329);
-} */
+.apply-input:focus {
+  outline: 1px green solid;
+}
 
 .apply-sm-input {
   width: 25%;

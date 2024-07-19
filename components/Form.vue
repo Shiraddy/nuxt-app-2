@@ -30,18 +30,6 @@
           data-section="1"
           id="parentInfo"
         >
-          <Message severity="secondary" :life="1000">
-            <template #messageicon>
-              <Avatar image="/images/logo.png" shape="circle" />
-            </template>
-            <p class="text-start mt-3 mx-3">
-              Dear Parent, <br />
-              Kindly review our Frequently Asked Questions
-              <RouterLink class="link" to="/faq">(FAQ)</RouterLink>
-              if you require additional information.
-            </p>
-          </Message>
-
           <h5 class="legend me-auto">Parent/Guardian Details</h5>
 
           <div class="row">
@@ -110,9 +98,6 @@
                 id="parentEmail"
                 placeholder="Enter email address"
               />
-              <!-- <div class="text-danger" v-if="!requestForm.parentName">
-              Please Enter Your Name
-            </div> -->
             </div>
           </div>
 
@@ -276,6 +261,7 @@
                         <div>{{ slotProps.option.name }}</div>
                       </div>
                     </template>
+
                     <template #footer>
                       <div class="py-2 px-3">
                         <b>{{
@@ -447,7 +433,38 @@
                   <option value="3">3 hours</option>
                 </select>
               </div>
+
+              <div class="py-3 col-lg-6">
+                <label class="label" for="">Preferred Tuition Days</label>
+
+                <MultiSelect
+                  v-model="requestForm.tuition_days"
+                  display="chip"
+                  :options="tuitionDaysOptions"
+                  optionLabel="name"
+                  variant="filled"
+                  placeholder="Select days"
+                  :maxSelectedLabels="3"
+                  class="apply-input"
+                />
+              </div>
+
+              <div class="py-3 col-lg-6">
+                <label class="label" for="">Lesson Start Times</label>
+
+                <MultiSelect
+                  v-model="requestForm.lessonTimes"
+                  display="chip"
+                  :options="lessonTimes"
+                  optionLabel="name"
+                  variant="filled"
+                  placeholder="Select lesson start times"
+                  :maxSelectedLabels="3"
+                  class="apply-input"
+                />
+              </div>
             </div>
+
             <div class="col-lg-12 mt-4 text-start">
               <label class="label my-3" for="online"
                 >Preferred Subject(s)</label
@@ -754,6 +771,12 @@
             <label for="">I confirm the accuracy of this Information</label>
           </div>
 
+          <div v-if="submissionError" class="my-3">
+            <small class="bg-danger p-3 text-white fw-bolder">
+              {{ submissionErrorMessage }}</small
+            >
+          </div>
+
           <div class="py-5 py-sm-5 d-lg-flex justify-content-end" id="sendBtn">
             <button
               type="button"
@@ -782,31 +805,6 @@
 </template>
 
 <script>
-// import { initializeApp } from "firebase/app";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// import {
-//   getFirestore,
-//   collection,
-//   getDocs,
-//   setDoc,
-//   doc,
-//   addDoc,
-//   updateDoc,
-// } from "firebase/firestore";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCBifZJX3PdlX-rplxV8NC6NItIG_dCTEM",
-//   authDomain: "lifeline-edu-site.firebaseapp.com",
-//   projectId: "lifeline-edu-site",
-//   storageBucket: "gs://lifeline-edu-site.appspot.com/",
-//   storageBucket: "lifeline-edu-site.appspot.com",
-//   messagingSenderId: "1059969595497",
-//   appId: "1:1059969595497:web:5e6ee511c2174333ec8af8",
-// };
-
-// const firebase = initializeApp(firebaseConfig);
-// const auth = getAuth(firebase);
-
 export default {
   name: "Tutor Request",
   request: false,
@@ -855,6 +853,30 @@ export default {
         other: ["Home School", "Preparation", "Other"],
       },
 
+      tuitionDaysOptions: [
+        { name: "Monday", time: "" },
+        { name: "Tuesday", time: "" },
+        { name: "Wednesday", time: "" },
+        { name: "Thursday", time: "" },
+        { name: "Friday", time: "" },
+        { name: "Saturday", time: "" },
+        { name: "Sunday", time: "" },
+      ],
+
+      lessonTimes: [
+        { name: "3:00pm", num: 300 },
+        { name: "3:30pm", num: 330 },
+        { name: "4:00pm", num: 400 },
+        { name: "4:30pm", num: 430 },
+        { name: "5:00pm", num: 500 },
+        { name: "5:30pm", num: 530 },
+        { name: "6:00pm", num: 600 },
+        { name: "6:30pm", num: 630 },
+        { name: "7:00pm", num: 700 },
+        { name: "Other", num: null },
+      ],
+
+
       requestForm: {
         parentName: "",
         address: "",
@@ -877,6 +899,8 @@ export default {
         weeklySession: 3,
         periodLength: 1,
         preferredSubjects: [],
+        tuition_days: [],
+        lessonTimes: [],
         pastTutors: [],
         payments: [],
         comments: [],
