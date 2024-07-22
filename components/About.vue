@@ -135,7 +135,7 @@ export default {
 
   .about-desc {
     /* line-height: 1.7; */
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     padding: 0.7rem 0;
     text-align: start;
   }
