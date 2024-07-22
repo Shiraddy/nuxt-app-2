@@ -7,7 +7,7 @@
 
   <!-----------SERVICES SECTION------------->
   <section>
-    <div class="container-sm py-2 services">
+    <div class="container-sm py-4 services">
       <h2 class="pt-3 mb-0 choose-title">HOME OF SOLUTIONS</h2>
       <h6 class="fs-beauty text-secondary mt-0">
         We provide the following services
@@ -21,8 +21,8 @@
               >Home Tuition</RouterLink
             >
             <p class="service-text text-dark-emphasis my-2 px-lg-2 px-4">
-              We offer your child the best tuition experience using varied
-              methods and approaches.
+              Get a home teacher for your child and help him become his very
+              best. Your child deserves the best.
             </p>
           </div>
         </div>
@@ -39,8 +39,8 @@
             >
 
             <p class="service-text text-dark-emphasis my-2 px-lg-2 px-4">
-              Our guidance and counseling empowers you to make the right
-              decisions about your ward.
+              Receive expert assistance to make the right decisions for the
+              future. Avoid the pitfalls.
             </p>
           </div>
         </div>
@@ -56,8 +56,8 @@
               >Consultancy</RouterLink
             >
             <p class="service-text text-dark-emphasis my-2 px-lg-2 px-4">
-              We proffer solutions to the many educational challenges schools
-              face through training and expertise.
+              Get in touch with the industry experts. Let us move your
+              organization the next level.
             </p>
           </div>
         </div>

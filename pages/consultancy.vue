@@ -102,10 +102,14 @@
 
     <div v-if="page">
       <section>
-        <h2 class="fs-2 pt-2 mb-0 fw-bolder">EDUCATIONAL CONSULTANCY</h2>
-        <h5 class="text-dark-emphasis mt-0">
-          We Offer the Following Consultancy Services
-        </h5>
+        <h2 class="choose-title mt-lg-5 mt-3">
+          <span class="p-overlay-badge">
+            <Badge value="MY" severity="contrast" size="large"></Badge>
+          </span>
+          CONSULTANT
+        </h2>
+        <h2 class="fs-2 pt-2 mb-0 fw-bolder"></h2>
+        <h5 class="text-dark-emphasis mt-0">LET'S GET STARTED..</h5>
         <div class="row gy-4 gx-3">
           <div class="col-lg-4">
             <div class="card card-body">
@@ -120,11 +124,10 @@
           <div class="col-lg-4">
             <div class="card card-body">
               <nuxt-img class="card-image" src="/images/consul5.jpg" alt="" />
-              <div class="card-title">Service Training</div>
+              <div class="card-title">Recruitment</div>
               <p class="card-text text-dark-emphasis">
-                We offer refresher trainings in teaching methodologies and
-                techniques, classroom management, effective teacher-student
-                communication, lesson-notes-preparation, etc
+                Let us handle your teacher recruitment and monitoring needs for
+                you. We take things to the next level.
               </p>
             </div>
           </div>

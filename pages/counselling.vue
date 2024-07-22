@@ -27,7 +27,7 @@
                   class="btn btn-primary btn-lg shadow-two mx my-3 bookSession animate__animated animate__bounceIn"
                   @click="formToggle()"
                 >
-                  BOOK SESSION
+                  ADVISE ME
                   <i class="fa fa-arrow-circle-o-down"></i>
                 </a>
               </p>
@@ -40,8 +40,11 @@
     <section>
       <div class="container-sm py-2 services">
         <div class="counsellingIntro" v-if="description">
-          <h2 class="pt-2 mt-3 mb-0 fw-bolder">
-            Guidance & Counselling Service
+          <h2 class="choose-title mt-lg-5 mt-3">
+            COUNSEL
+            <span class="p-overlay-badge">
+              <Badge value="Me" severity="contrast" size="large"></Badge>
+            </span>
           </h2>
           <p class="mt-0 text-secondary">
             Empower Your Ward's Future with Lifeline's Guidance and Counseling
@@ -164,7 +167,7 @@
                   services are here to navigate this journey with you and your
                   ward.
                 </p>
-                <Button label="Book Session" @click="formToggle()" raised/>
+                <Button label="Book Session" @click="formToggle()" raised />
               </div>
               <div class="col-lg-6">
                 <nuxt-img src="/images/next.jpg" alt="" class="decision" />
@@ -186,7 +189,7 @@
                 >
                   Book Session
                 </button> -->
-                <Button label="Book Session" @click="formToggle()" raised/>
+                <Button label="Book Session" @click="formToggle()" raised />
               </div>
               <div class="col-lg-6">
                 <nuxt-img
