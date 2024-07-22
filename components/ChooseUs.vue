@@ -1,5 +1,5 @@
 <template>
-  <div class="my-4 shadow-one bg-white container-fluid">
+  <div class="my-5 shadow-one bg-white container-fluid">
     <h5 class="py-3 choose-title">Why Choose Us</h5>
     <div class="row">
       <div class="col-lg-4 px-5 py-3">

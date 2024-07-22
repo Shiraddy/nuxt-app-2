@@ -27,7 +27,7 @@
     </div>
   </section>
 
-  <div class="container-sm py-3 services mt-lg-5">
+  <div class="container-sm py-3 services-apply mt-lg-5">
     <section v-if="consultancyForm">
       <div class="container py-4 form-apply shadow-three">
         <form>
@@ -114,17 +114,17 @@
           <div class="col-lg-4">
             <div class="card card-body">
               <nuxt-img class="card-image" src="/images/consul3.jpg" alt="" />
-              <div class="card-title">Educational Technology</div>
+              <h6 class="fw-bolder card-title py-2">Edu-Tech</h6>
               <p class="card-text text-dark-emphasis">
-                We help schools use technology to assist in effective school
-                management. This includes website creation and management. etc
+                Let us put you on the map using advanced web technologies. We
+                build websites and create web app for schools.
               </p>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="card card-body">
               <nuxt-img class="card-image" src="/images/consul5.jpg" alt="" />
-              <div class="card-title">Recruitment</div>
+              <h6 class="fw-bolder card-title py-2">Recruitment</h6>
               <p class="card-text text-dark-emphasis">
                 Let us handle your teacher recruitment and monitoring needs for
                 you. We take things to the next level.
@@ -135,11 +135,10 @@
           <div class="col-lg-4">
             <div class="card card-body">
               <nuxt-img class="card-image" src="/images/consul2.jpg" alt="" />
-              <div class="card-title">Strategic Planning</div>
+              <h6 class="fw-bolder card-title py-2">Monitoring</h6>
               <p class="card-text text-dark-emphasis">
-                We assist schools in developing long-term strategic plans,
-                defining their vision, mission, and values, and aligning their
-                resources to achieve their educational goals.
+                We provide monitoring services for schools. We monitor and
+                evaluate teachers and ensure effectiveness.
               </p>
             </div>
           </div>

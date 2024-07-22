@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid my-5">
     <div class="row my-3">
       <div class="col-lg-6 col-12 shadow-two d-none d-lg-block">
         <div class="text-body-secondary story">
@@ -124,6 +124,7 @@ export default {
   font-size: 2rem;
   /* color: black; */
   font-weight: bolder;
+  padding: 1rem 0;
   /* font-style: oblique; */
 }
 
@@ -134,8 +135,8 @@ export default {
 
   .about-desc {
     /* line-height: 1.7; */
-    font-size: 10.rem;
-    padding: 10px 0;
+    font-size: 0.9rem;
+    padding: 0.7rem 0;
     text-align: start;
   }
 }
