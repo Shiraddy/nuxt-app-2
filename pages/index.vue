@@ -70,14 +70,14 @@
 
       <!-- FORM -->
       <section>
-        <div class="shadow-one mx-lg-3 testimony">
+        <div class="shadow-one mx-lg-3 testimony bg-white">
           <div class="text-center animate__animated animate__fadeInRight">
-            <h3 class="title fw-bolder mt-lg-5 text-muted">
+            <!-- <h3 class="title fw-bolder mt-lg-5 text-muted">
               REQUEST A TUTOR NOW
-            </h3>
-            <!-- <Divider align="center" type="dotted">
-              <b>Center</b>
-            </Divider> -->
+            </h3> -->
+            <Divider align="center" type="solid">
+              <b class="text-secondary">LET'S GET STARTED</b>
+            </Divider>
             <p class="paragraph py-0 my-0 lead">
               Your child deserves top-tier tutoring and a superior educational
               experience. Lifeline is dedicated to providing just that. We
@@ -147,7 +147,7 @@ export default {
 }
 
 .paragraph {
-  /* font-size: 1vh; */
+  font-size: 1.3rem;
   padding: 5% 7%;
 }
 
@@ -162,9 +162,8 @@ export default {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .paragraph {
-    font-size: 1.7vh;
-    /* padding: 5% 7%; */
-  }
+  font-size: 0.99rem;
+}
 
   .title {
     font-size: 1.7vh;

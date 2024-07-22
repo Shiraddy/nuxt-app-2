@@ -1,8 +1,8 @@
 <template>
   <section>
     <div
-      id="hero-carousel"
-      class="carousel slide carousel-fade"
+      id="hero"
+      class="carousel-fade"
       data-bs-ride="carousel"
       data-bs-interval="3500"
     >
@@ -103,19 +103,84 @@
             </div>
           </div>
         </div>
+
+
+        <!-- <div class="carousel-controls">
+          <i
+            type="button"
+            data-bs-target="#hero"
+            data-bs-slide="prev"
+            class="bi-caret-left-square text-danger fs-1 me-3"
+          ></i>
+  
+          <i
+            type="button"
+            data-bs-target="#hero"
+            data-bs-slide="next"
+            class="bi-caret-right-square text-danger fs-1"
+          ></i>
+        </div> -->
       </div>
+
     </div>
   </section>
 </template>
 
 <script>
-import NavBar from "./NavBar.vue";
 export default {
   name: "Carousel",
-  components: {
-    NavBar,
-  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.carousel-inner.banner {
+  position: relative;
+  height: 500px; /* Adjust the height as needed */
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Adjust the width as needed */
+  max-width: 800px; /* Set a maximum width for the card */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Adjust the background color and opacity */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.parent-quote {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .parent-quote {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+</style>

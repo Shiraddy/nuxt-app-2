@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid my-5">
-    <div class="row my-3">
+    <div class="row">
       <div class="col-lg-6 col-12 shadow-two d-none d-lg-block">
         <div class="text-body-secondary story">
           <hr />
@@ -16,7 +16,7 @@
         <h3 class="text-body-secondary pt-3">About Us</h3>
         <div
           id="about-lifeline"
-          class="carousel slide py-lg-5 py-1 px-lg-3 px-2"
+          class="carousel slide px-lg-3 px-2"
           data-bs-ride="true"
         >
           <div class="carousel-inner">
@@ -124,7 +124,7 @@ export default {
   font-size: 2rem;
   /* color: black; */
   font-weight: bolder;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
   /* font-style: oblique; */
 }
 
@@ -135,8 +135,7 @@ export default {
 
   .about-desc {
     /* line-height: 1.7; */
-    font-size: 1.2rem;
-    padding: 0.7rem 0;
+    font-size: 1rem;
     text-align: start;
   }
 }
