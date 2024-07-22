@@ -3,7 +3,10 @@
   <div class="container-fluid">
     <div class="row view-height">
       <!-- SIDE BAR -->
-      <div :class="wideScreen ? 'd-none' : 'col-lg-2'" class="shadow-two">
+      <div
+        :class="wideScreen ? 'd-none' : 'col-lg-2'"
+        class="shadow-two bg-success"
+      >
         <div class="mt-lg-2 side-bar">
           <!-- <img class="admin-pic" src="/images/Pic.png" alt="" /> -->
 
@@ -85,7 +88,7 @@
 
       <!-- MAIN AREA -->
       <div class="container-fluid" :class="wideScreen ? 'col-12' : 'col-10'">
-        <Toolbar class="mb-2">
+        <Toolbar class="mb-2 shadow">
           <template #start>
             <Button
               icon="pi pi-desktop"
@@ -258,10 +261,10 @@
                     <p><small>Goals of the Day</small></p>
                     <div
                       v-for="(todo, index) in todoList"
-                      class="text-start mx-2"
+                      class="text-start mx-2 shadow"
                       :key="index"
                     >
-                      <input type="checkbox" v-model="todo.done" />
+                      <input type="checkbox" v-model="todo.done" class="shadow"/>
                       <label
                         class="text-start ms-2"
                         :class="todo.done ? 'red' : 'green'"
@@ -4593,9 +4596,19 @@ a:hover {
   color: rgb(20, 20, 95);
 }
 
-.p-toolbar {
-  /* backdrop-filter: blur(3px); */
-  background-color: transparent;
+.p-toolbar,
+.p-menubar,
+.p-menu,
+.p-menu-start,
+.p-menu-center,
+.p-menu-end,
+.p-component,
+.p-toolbar-group-center,
+.p-toolbar-group-start,
+.p-toolbar-group-end {
+  /* background-color: transparent; */
+  border: 0;
+  outline: 0;
 }
 
 .message {

@@ -4,9 +4,10 @@
       <div class="col-lg-6 d-none d-lg-block">
         <div class="card fs-beauty"></div>
       </div>
-      <div class="col-lg-6 bg-white shadow-two">
+      <div class="col-lg-6 col-sm-12 bg-white shadow-two">
         <h4 class="my-lg-4 my-3">CONTACT US</h4>
         <form @submit.prevent="contactForm" class="">
+
           <div class="">
             <label for="type" class="label">Topic:</label>
             <inputText

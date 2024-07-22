@@ -116,15 +116,10 @@
           </div>
         </section>
 
-        <section class="container-lg py-3 d-block shadow-one">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 banner-smile">
-              <div>
-                <p class="smile">Learn with a smile. We have you covered.</p>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 bg-danger">
-              <p class="lh-lg fs-4 px-lg-3 px-3 text-white fs-beauty">
+        <section class="container-fluid my-5 py-3 shadow-one bg-success">
+          <div class="">
+            <div class="">
+              <p class="text-center px-lg-5 px-2 py-5 text-white fs-beauty fs-4">
                 "Welcome to Lifeline's Private Tuition Service! Empowering
                 students to excel academically is our passion. With personalized
                 attention, tailored lesson plans, and experienced tutors, we
@@ -213,9 +208,7 @@
         <section class="container-lg py-3 d-block my-5">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 bg-success shadow-two">
-              <div
-                class="mt-lg-4 fs-5 py-5 px-lg-3 px-4 text-white text-start fs-beauty"
-              >
+              <div class="text-desc">
                 <p>
                   Our private tuition services cater to students seeking
                   targeted assistance in various subjects and educational
@@ -482,4 +475,20 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.text-desc {
+  text-align: start;
+  font-size: 1.2rem;
+  color: white;
+  padding: 5rem 2rem;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .text-desc {
+    font-size: 1rem;
+  }
+
+  
+}
+</style>

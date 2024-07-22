@@ -16,7 +16,7 @@
         <h3 class="text-body-secondary pt-3">About Us</h3>
         <div
           id="about-lifeline"
-          class="carousel slide py-lg-5 py-2 px-lg-3 px-2"
+          class="carousel slide py-lg-5 py-1 px-lg-3 px-2"
           data-bs-ride="true"
         >
           <div class="carousel-inner">
@@ -133,8 +133,8 @@ export default {
   }
 
   .about-desc {
-    line-height: 1.7;
-    font-size: 1.3rem;
+    /* line-height: 1.7; */
+    font-size: 10.rem;
     padding: 10px 0;
     text-align: start;
   }

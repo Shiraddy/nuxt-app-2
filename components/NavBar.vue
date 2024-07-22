@@ -164,4 +164,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.nav-Link {
+  font-family: "Kanit", "Lora", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+</style>
