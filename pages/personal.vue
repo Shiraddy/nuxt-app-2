@@ -617,7 +617,7 @@
               <!-- OFFERS -->
 
               <section class="shadow-two" id="offers">
-                <Carousel :value="offers" :numVisible="3" :numScroll="3">
+                <!-- <Carousel :value="offers" :numVisible="3" :numScroll="3">
                   <template #item="slotProps">
                     <div class="border-1 surface-border border-round m-2 p-3">
                       <div class="mb-3">
@@ -658,7 +658,7 @@
                       </div>
                     </div>
                   </template>
-                </Carousel>
+                </Carousel> -->
 
                 <div class="px-5 py-5">
                   <a class="navbar-brand pt-3" href="#">Lifeline Offers</a>
@@ -698,7 +698,7 @@
                           <small
                             class="pi pi-info-circle fw-bolder bg-success p-2 rounded fs-5 m-4 text-white"
                             @click="offerInfo(offer)"
-                            ><span class="mx-1">Details</span></small
+                            ><span class="mx-1">Apply</span></small
                           >
                         </div>
                       </div>
@@ -721,34 +721,74 @@
                   :style="{ width: '35vw' }"
                   :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
                 >
-                  <span
+                  <!-- <span
                     class="text-surface-500 dark:text-surface-400 block mb-8"
-                    >Offer Objectives</span
-                  >
-                  <pre>
+                    >Application</span
+                  > -->
+                  <div class="text-start row gy-1">
+                    <div class="col-lg-6">
+                      <p>Level: {{ selectedOffer.level }}</p>
+                    </div>
+                    <div class="col-lg-6">
+                      <p>Class: {{ selectedOffer.class }}</p>
+                    </div>
+                    <div class="col-lg-6">
+                      <p>Location: {{ selectedOffer.location }}</p>
+                    </div>
+                    <div class="col-lg-6">
+                      <p>Pay: {{ selectedOffer.allowance }}</p>
+                    </div>
+                    <div class="col-lg-6">
+                      <p>Mode: {{ selectedOffer.mode }}</p>
+                    </div>
+                    <div class="col-lg-6">
+                      <p>
+                        Status:
+                        {{ selectedOffer.availability ? "Available" : "Awarded" }}
+                      </p>
+                    </div>
+                    <div class="col-12">
+                      <p>Subjects: {{ selectedOffer.subjects }}</p>
+                    </div>
+
+                    <div class="col-12">
+                      <p>Objectives: {{ selectedOffer.objectives }}</p>
+                    </div>
+                  </div>
+
+                  <!-- <pre>
                   {{ selectedOffer }}
                 </pre
-                  >
-                  <div class="text-start">
-                    <p>Level: {{ selectedOffer.level }}</p>
-                    <p>Class: {{ selectedOffer.class }}</p>
-                    <p>Location: {{ selectedOffer.location }}</p>
-                    <p>Subjects: {{ selectedOffer.subjects }}</p>
-                    <!-- <p>Subjects: {{ selectedOffer.subjects }}</p> -->
-                    <p>Subjects: {{ selectedOffer.objectives }}</p>
-                  </div>
+                  > -->
+                  <form action="" class="row gy-3">
+                    <!-- <div class="col-lg-12">
+                      <label for="" class="label">Subject</label>
+                      <InputText type="text" class="apply-input" />
+                    </div> -->
+
+                    <div class="col-lg-12">
+                      <label for="" class="label">Application</label>
+                      <Textarea
+                        v-model="value"
+                        class="apply-input"
+                        rows="5"
+                        cols="30"
+                        placeholder="Why should we consider you for this offer?"
+                      />
+                    </div>
+                  </form>
 
                   <!-- <div class="container-fluid">
                   <Editor v-model="value" editorStyle="height: 300px" />
                 </div> -->
 
-                  <div class="flex justify-end g-2 my-3">
-                    <Button
+                  <div class="g-2 my-3 d-grid">
+                    <!-- <Button
                       type="button"
                       label="Reset"
                       class="mx-3"
                       severity="secondary"
-                    ></Button>
+                    ></Button> -->
                     <Button
                       type="button"
                       label="Apply"
@@ -1108,14 +1148,6 @@
               <section class="px-5 py-3 shadow-two my-4">
                 <TheMessage></TheMessage>
               </section>
-
-              <!-- <button @click="fetchProspects">Get Prospects</button> -->
-              <div v-for="prospect in prospectData">
-                <p>
-                  {{ prospect.parent }} {{ prospect.student }}
-                  {{ prospect.contact }}
-                </p>
-              </div>
             </section>
 
             <Dictionary></Dictionary>

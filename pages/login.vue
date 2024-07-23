@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="text-white bg-danger banner">
+    <div class="banner">
       <NavBar></NavBar>
 
       <section class="container-fluid">
@@ -9,15 +9,15 @@
           <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="d-flex justify-content-center align-items-center">
               <div class="shadow-two login px-3 form-sign-in">
-                <div class="py-2">
-                  <h3 class="fw-bolder fs-beauty">WELCOME BACK</h3>
+                <div class="py-2 title">
+                  <h3 class="fw-bolder">WELCOME BACK</h3>
                   <p>Login With Your Credentials</p>
                 </div>
                 <form @submit.prevent="signInUser">
                   <input
                     required
                     type="text"
-                    class="apply-input mb-4 res-shadow"
+                    class="apply-input mb-4"
                     name="email"
                     @keydown="loginErrorDisplay"
                     placeholder="Enter your email"
@@ -28,7 +28,7 @@
 
                   <input
                     required
-                    class="apply-input res-shadow"
+                    class="apply-input"
                     type="password"
                     name="password"
                     placeholder="Password"
@@ -38,30 +38,33 @@
                   <br />
 
                   <!-- Login Error Message -->
-                  <p v-if="loginError" class="my-2 mx-5 mx-lg-0">
+                  <p v-if="loginError" class="my-2 mx-5 mx-lg-0 text-danger">
                     {{ errorMessage }}
                   </p>
 
                   <!-- SUBMIT BUTTON -->
-                  <button type="submit" class="btn btn-danger apply-input mt-3">
-                    Sign In
-                    <span id="loading-spinner" v-if="wheel">
-                      <div
-                        class="spinner-border spinner-border-sm text-white"
-                        role="status"
-                      ></div>
-                    </span>
-                  </button>
-                  <br />
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-danger mt-3">
+                      Sign In
+                      <span id="loading-spinner" v-if="wheel">
+                        <div
+                          class="spinner-border spinner-border-sm text-white"
+                          role="status"
+                        ></div>
+                      </span>
+                    </button>
+                  </div>
 
-                  <div class="row text-white">
+                  <div class="row mt-1">
                     <small class="col">
-                      <a class="link" href="#" @click="resetPassword"
+                      <a class="text-secondary" href="#" @click="resetPassword"
                         >Forgot Password</a
                       >
                     </small>
                     <small class="col">
-                      <RouterLink class="link" to="/apply">Sign-Up</RouterLink>
+                      <RouterLink class="text-secondary" to="/apply"
+                        >Sign-Up</RouterLink
+                      >
                     </small>
                   </div>
                 </form>
@@ -159,6 +162,10 @@ export default {
   padding: 2.5rem 1rem;
   background-color: aliceblue;
   color: black;
+}
+
+.title p {
+  color: rgba(0, 0, 0, 0.589);
 }
 
 @media only screen and (max-width: 620px) {
