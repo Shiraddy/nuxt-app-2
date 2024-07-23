@@ -261,10 +261,14 @@
                     <p><small>Goals of the Day</small></p>
                     <div
                       v-for="(todo, index) in todoList"
-                      class="text-start mx-2 shadow"
+                      class="text-start mx-2"
                       :key="index"
                     >
-                      <input type="checkbox" v-model="todo.done" class="shadow"/>
+                      <input
+                        type="checkbox"
+                        v-model="todo.done"
+                        class="shadow-five"
+                      />
                       <label
                         class="text-start ms-2"
                         :class="todo.done ? 'red' : 'green'"
@@ -274,7 +278,7 @@
                     <div class="my-3 text-center">
                       <IconField>
                         <InputText
-                          class="mx-3"
+                          class="mx-3 shadow-five"
                           v-model="todoItem"
                           @keyup.enter="addTodo"
                         />
@@ -3590,6 +3594,8 @@ export default {
       uploadsSection: true,
       tutorTable: false,
       applicantsTable: false,
+      logSheet: false,
+      galleryWheel: false,
       tutorsTable: true,
       financeSection: false,
       date: null,

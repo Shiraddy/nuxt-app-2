@@ -160,7 +160,7 @@
             </nav>
 
             <div class="row mt-lg-5 px-0 py-0">
-              <div class="col-lg-4 col-sm-12">
+              <div class="col-lg-4 col-sm-12 post">
                 <div class="tutor-profile-hero px-1">
                   <h2 class="fs-3 fw-bolder mb-0">
                     Hello {{ profile.firstName }},
@@ -744,7 +744,9 @@
                     <div class="col-lg-6">
                       <p>
                         Status:
-                        {{ selectedOffer.availability ? "Available" : "Awarded" }}
+                        {{
+                          selectedOffer.availability ? "Available" : "Awarded"
+                        }}
                       </p>
                     </div>
                     <div class="col-12">
@@ -1561,7 +1563,8 @@ export default {
 .tutor-profile-hero {
   color: #fff;
   text-align: start;
-  margin-top: 1.4%;
+  /* margin-top: 15%; */
+  position: absolute;
   margin-left: 2%;
   backdrop-filter: blur(3px);
 }
@@ -1569,15 +1572,20 @@ export default {
 @media only screen and (max-width: 620px) {
   /* For mobile phones: */
   .tutor-profile-banner {
-    height: 3.5%;
+    height: 25vh;
     width: 100%;
     background-size: cover;
   }
 
+  /* .post {
+    position: relative;
+  } */
+
   .tutor-profile-hero {
     color: #fff;
     text-align: start;
-    margin-top: 21.5%;
+    bottom: 67%;
+    /* margin-top: 30%; */
     padding-left: 1.5%;
   }
 

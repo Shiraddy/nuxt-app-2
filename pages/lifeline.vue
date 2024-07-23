@@ -33,16 +33,17 @@
                 {{ errorMessage }}
               </p>
               <!-- SUBMIT BUTTON -->
-              <button class="btn btn-danger apply-input mt-3" type="submit">
-                Sign In
-                <span id="loading-spinner" v-if="wheel">
-                  <div
-                    class="spinner-border spinner-border-sm text-white"
-                    role="status"
-                  ></div>
-                </span>
-              </button>
-              <br />
+              <div class="d-grid">
+                <button class="btn btn-danger mt-3" type="submit">
+                  Sign In
+                  <span id="loading-spinner" v-if="wheel">
+                    <div
+                      class="spinner-border spinner-border-sm text-white"
+                      role="status"
+                    ></div>
+                  </span>
+                </button>
+              </div>
 
               <div class="row">
                 <p class="col">
